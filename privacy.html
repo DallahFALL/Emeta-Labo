@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité | e-META LABS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
+    <style>
+        .privacy-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 50px;
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .privacy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 25, 47, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .privacy-content h4 {
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        .privacy-content p {
+            color: #e6f1ff;
+            line-height: 1.8;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .btn-return {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-return:hover {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="privacy-header">
+        <div class="logo-container">
+            <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 5 L95 25 V75 L50 95 L5 75 V25 Z" stroke="#d4af37" stroke-width="2" fill="none"/>
+                <circle cx="50" cy="50" r="8" fill="#d4af37"/>
+            </svg>
+            <div class="brand-text">
+                <h1 style="font-size: 1.2rem;">e-META LABS</h1>
+            </div>
+        </div>
+        <a href="#" onclick="window.close(); return false;" class="btn-return" data-i18n="btn_return">Retour au Moteur IA</a>
+    </header>
+
+    <main>
+        <div class="privacy-container">
+            <h2 style="text-align: center; color: #d4af37; font-family: 'Cinzel', serif; margin-bottom: 5px; font-size: 2rem;" data-i18n="modal_title">Politique de Confidentialité</h2>
+            <p style="text-align: center; color: #8892b0; font-size: 0.9rem; margin-bottom: 50px;" data-i18n="priv_date">Dernière mise à jour : Février 2026</p>
+
+            <div class="privacy-content">
+                <h4 data-i18n="priv_t1">1. Identité et Opérations</h4>
+                <p data-i18n="priv_c1">...</p>
+
+                <h4 data-i18n="priv_t2">2. Collecte et Traitement des Données</h4>
+                <p data-i18n="priv_c2">...</p>
+
+                <h4 data-i18n="priv_t3">3. Souveraineté et Intelligence Artificielle</h4>
+                <p data-i18n="priv_c3">...</p>
+
+                <h4 data-i18n="priv_t4">4. Ancrage Blockchain et Propriété Intellectuelle</h4>
+                <p data-i18n="priv_c4">...</p>
+                
+                <h4 data-i18n="priv_t5">5. Clause de Non-Substitution</h4>
+                <p data-i18n="priv_c5">...</p>
+
+                <h4 data-i18n="priv_t6">6. Contact & Droits Internationaux</h4>
+                <p data-i18n="priv_c6">...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" style="margin-top: 50px;">
+        <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
+    </footer>
+
+    <script src="i18n.js"></script>
+    
+</body>
+</html>
