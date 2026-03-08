@@ -165,6 +165,7 @@ if (form) {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
+        // Validations finales
         const whatsappConsent = document.getElementById('whatsapp-consent');
         if (!whatsappConsent.checked) {
             setCustomMessage(whatsappConsent);
@@ -183,10 +184,20 @@ if (form) {
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         
-        // 1. Déclencher l'effet Wow
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const loadingText = document.getElementById('loadingText');
-        if (loadingOverlay) loadingOverlay.style.display = 'flex';
+        // ==========================================
+        // DÉBUT DE L'EFFET WOW (UX/UI DYNAMIQUE)
+        // ==========================================
+        
+        // 1. Cacher le formulaire pour faire place au loader
+        form.style.display = 'none';
+        
+        // 2. Afficher l'écran de chargement (le nouvel ID ou l'ancien en fallback)
+        const wowLoader = document.getElementById('emeta-loader');
+        const statusText = document.getElementById('emeta-status');
+        const oldLoadingOverlay = document.getElementById('loadingOverlay'); // Fallback
+        
+        if (wowLoader) wowLoader.style.display = 'block';
+        else if (oldLoadingOverlay) oldLoadingOverlay.style.display = 'flex';
 
         // Détection de la langue pour l'animation
         const currentLang = document.documentElement.lang || 'fr';
@@ -234,12 +245,22 @@ if (form) {
         const loadingSteps = allLoadingSteps[currentLang] || allLoadingSteps['fr'];
         let stepIndex = 0;
         
+        // Animation du texte
         const textInterval = setInterval(() => {
-            if (stepIndex < loadingSteps.length && loadingText) {
-                loadingText.innerText = loadingSteps[stepIndex];
+            if (stepIndex < loadingSteps.length) {
+                // Met à jour le Wow Loader ou l'ancien overlay
+                if (statusText) statusText.innerText = loadingSteps[stepIndex];
+                else {
+                    const oldText = document.getElementById('loadingText');
+                    if(oldText) oldText.innerText = loadingSteps[stepIndex];
+                }
                 stepIndex++;
             }
         }, 1800); // Change de phrase toutes les 1.8 secondes
+
+        // ==========================================
+        // PRÉPARATION DES DONNÉES ET ENVOI API
+        // ==========================================
 
         // Préparation du fichier (Base64) avec limite de 2.5 Mo
         let fileData = null;
@@ -249,7 +270,11 @@ if (form) {
             if (fileInput.files[0].size > 2.5 * 1024 * 1024) {
                 alert("Pour garantir une analyse IA ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.");
                 submitBtn.disabled = false;
-                if(loadingOverlay) loadingOverlay.style.display = 'none';
+                
+                // RESTAURATION SI ERREUR DE TAILLE
+                form.style.display = 'block'; 
+                if(wowLoader) wowLoader.style.display = 'none';
+                if(oldLoadingOverlay) oldLoadingOverlay.style.display = 'none';
                 clearInterval(textInterval);
                 return;
             }
@@ -283,31 +308,49 @@ if (form) {
             body: JSON.stringify(formData)
         })
         .then(async response => {
-            clearInterval(textInterval); // Stopper le défilement
-            if(loadingOverlay) loadingOverlay.style.display = 'none'; // Cacher l'écran de chargement
+            clearInterval(textInterval); // Stopper le défilement des phrases
 
             if (response.ok) {
                 const aiResponse = await response.text();
-                // Afficher le résultat avec un message de félicitations
+                
+                // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS (Le climax du Wow Effect)
+                if (wowLoader) {
+                    wowLoader.innerHTML = `
+                        <div style="font-size: 50px; margin-bottom: 15px;">✅</div>
+                        <h3 style="color: #28a745; font-family: 'Arial', sans-serif;">Audit Généré & Sécurisé</h3>
+                        <p style="font-size: 16px; color: #555; margin-bottom: 25px;">Un exemplaire PDF certifié a été expédié à votre adresse email.</p>
+                        <button onclick="location.reload()" style="padding: 12px 25px; background: #002D62; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Réaliser une nouvelle analyse</button>
+                    `;
+                } else if (oldLoadingOverlay) {
+                    oldLoadingOverlay.style.display = 'none';
+                }
+
+                // 2. OUVERTURE DU POPUP POUR LECTURE RAPIDE DE L'IA
                 const resultBody = document.getElementById('resultBody');
                 if(resultBody) {
-                    resultBody.innerHTML = 
-                        `<div style="text-align:center; margin-bottom: 20px;">
-                            <span style="font-size: 3rem;">✅</span>
-                            <h3 style="color:#25D366; margin-top: 10px;">Audit Généré & Sécurisé</h3>
-                            <p style="font-size: 0.9rem; color:#8892b0;">Un exemplaire PDF certifié a été expédié à votre adresse email.</p>
-                         </div>` + aiResponse;
+                    // On injecte directement le texte brut de Make dans le corps du popup
+                    resultBody.innerHTML = aiResponse;
                 }
                 const resModal = document.getElementById('resultModal');
-                if(resModal) resModal.style.display = 'flex';
+                if(resModal) {
+                    // On affiche le popup après 1 seconde pour laisser le client voir le ✅ vert
+                    setTimeout(() => {
+                        resModal.style.display = 'flex';
+                    }, 1000);
+                }
+                
                 submitBtn.innerText = "Analyse Terminée";
             } else {
                 throw new Error('Erreur serveur');
             }
         })
         .catch(error => {
+            // RESTAURATION DU FORMULAIRE EN CAS D'ÉCHEC
             clearInterval(textInterval);
-            if(loadingOverlay) loadingOverlay.style.display = 'none';
+            form.style.display = 'block';
+            if(wowLoader) wowLoader.style.display = 'none';
+            if(oldLoadingOverlay) oldLoadingOverlay.style.display = 'none';
+            
             console.error('Erreur:', error);
             alert("Erreur de connexion avec le serveur IA. Veuillez réessayer.");
             submitBtn.disabled = false;
