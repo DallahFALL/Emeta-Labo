@@ -7,6 +7,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
+    
+    <style>
+        /* Pulse lumineux sur le conteneur principal */
+        .glass-card {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            transition: box-shadow 0.4s ease-in-out;
+        }
+        .glass-card:hover {
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.7);
+        }
+
+        /* Illumination des champs de saisie au focus */
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            border-color: #d4af37 !important;
+            outline: none;
+        }
+
+        /* Effet Wow sur les boutons sélectionnés (Secteurs/Expertises) */
+        .checkbox-btn input:checked + span {
+            background: rgba(212, 175, 55, 0.15) !important;
+            border-color: #d4af37 !important;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.3) !important;
+            color: #fff !important;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+        }
+
+        /* Bouton Lancer Analyse Ultra-Lumineux */
+        .btn-gold.glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.9), 0 0 10px #fff; }
+            100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        }
+
+        /* Espacement esthétique pour le lexique */
+        .lexique-item {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
 </head>
 <body>
 
@@ -34,7 +82,7 @@
     </header>
 
     <div class="counter-container" style="text-align: center; padding: 15px 0; background: rgba(10, 25, 47, 0.8); border-bottom: 1px solid rgba(212, 175, 55, 0.2);">
-        <span style="font-family: 'Cinzel', serif; color: #d4af37; font-size: 1.5rem; font-weight: bold;" id="live-counter">1,420</span>
+        <span style="font-family: 'Cinzel', serif; color: #d4af37; font-size: 1.5rem; font-weight: bold;" id="live-counter-top">1,420</span>
         <span style="color: #8892b0; font-size: 0.9rem; margin-left: 10px; text-transform: uppercase; letter-spacing: 1px;" data-i18n="lbl_counter">Diagnostics Sécurisés & Ancrés</span>
     </div>
 
@@ -85,7 +133,7 @@
                     
                     <div style="display: flex; justify-content: space-between; align-items: baseline;">
                         <label class="section-label" data-i18n="lbl_sector">Secteur Stratégique</label>
-                        <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: none;" data-i18n="btn_guide">📖 Guide des Expertises</a>
+                        <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: none; text-shadow: 0 0 5px rgba(212,175,55,0.5);" data-i18n="btn_guide">📖 Guide des Expertises</a>
                     </div>
                     
                   <div class="grid-options">
@@ -198,7 +246,7 @@
                     <div class="opt-in-container" style="margin-bottom: 20px; font-size: 0.9em; color: var(--white); background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.2);">
                         <input type="checkbox" id="whatsapp-consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
                         <label for="whatsapp-consent" style="display:inline; margin-left: 5px;" data-i18n="lbl_wa_optin">
-                            J'accepte de recevoir mon analyse stratégique par <strong style="color:#25D366;">WhatsApp</strong>.
+                            J'accepte de recevoir mon analyse stratégique par <strong style="color:#25D366; text-shadow: 0 0 5px rgba(37, 211, 102, 0.4);">WhatsApp</strong>.
                         </label>
                     </div>
 
@@ -208,17 +256,13 @@
                     </div>
                 </div>
             </form>
-        <div id="emeta-loader" style="display: none; text-align: center; padding: 50px 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eaeaea; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <div id="emeta-loader" style="display: none; text-align: center; padding: 50px 20px; background: #0a192f; border-radius: 12px; border: 1px solid #d4af37; margin-top: 20px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);">
     
-    <div style="width: 50px; height: 50px; border: 4px solid #e0e0e0; border-top: 4px solid #002D62; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px;"></div>
+    <div style="width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2); border-top: 4px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px;"></div>
     
-    <h3 style="color: #002D62; font-family: 'Arial', sans-serif; font-weight: bold; margin-bottom: 10px;">Moteur e-META LABS activé</h3>
-    <p id="emeta-status" style="font-size: 16px; color: #555; font-family: 'Arial', sans-serif;">Initialisation de la connexion sécurisée...</p>
+    <h3 style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">Moteur e-META LABS activé</h3>
+    <p id="emeta-status" style="font-size: 16px; color: #8892b0; font-family: 'Inter', sans-serif;">Initialisation de la connexion sécurisée...</p>
 </div>
-
-<style>
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-</style>
         </div>
     </main>
 
@@ -234,7 +278,7 @@
     <div id="privacyOverlay" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2 data-i18n="modal_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px;">Politique de Confidentialité</h2>
+            <h2 data-i18n="modal_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Politique de Confidentialité</h2>
             <div class="modal-body" style="max-height: 50vh; overflow-y: auto; text-align: left; padding-right:10px;">
                 <h4 data-i18n="priv_t1" style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">1. Identité et Opérations</h4>
                 <p data-i18n="priv_c1">...</p>
@@ -251,16 +295,41 @@
    <div id="guideOverlay" class="modal-overlay">
         <div class="modal-content" style="max-width: 600px;">
             <span class="close-guide" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #8892b0;">&times;</span>
-            <h2 data-i18n="guide_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37;">Lexique Stratégique</h2>
+            <h2 data-i18n="guide_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Lexique Stratégique</h2>
             
             <div class="modal-body" style="max-height: 60vh; overflow-y: auto; text-align: left; padding-right:15px; color: #e6f1ff; font-size: 0.9rem; line-height: 1.6;">
+                
                 <h4 data-i18n="guide_sec_title" style="color:#d4af37; font-family:'Cinzel', serif; margin-bottom: 10px;">Secteurs Stratégiques</h4>
-                <div data-i18n="guide_sec_desc" style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-                    </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <p class="lexique-item" data-i18n="lex_sec_fintech"><strong>• FinTech & DeFi :</strong> Finance numérique, paiements et décentralisation.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_gov"><strong>• GovTech & Smart Cities :</strong> Modernisation de l'État et numérisation des services publics.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_health"><strong>• Santé & BioTech :</strong> Innovations médicales et gestion des données de santé.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_green"><strong>• GreenTech & Énergies :</strong> Transition écologique, décarbonation et énergies renouvelables.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_agri"><strong>• AgriTech & Food Sec. :</strong> Sécurité alimentaire et optimisation technologique agricole.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_log"><strong>• Logistique & Supply :</strong> Optimisation de la chaîne logistique et traçabilité globale.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_mine"><strong>• Mines, Pétrole & Gaz :</strong> Extraction intelligente, sécurité et conformité.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_btp"><strong>• Immobilier & PropTech:</strong> Innovation immobilière et gestion de bâtiments intelligents.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_retail"><strong>• E-commerce & Retail :</strong> Retail digital, expérience client et transactions.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_edu"><strong>• Éducation (EdTech) :</strong> Plateformes d'apprentissage et transmission du savoir.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_tour"><strong>• Tourisme & Hôtellerie:</strong> Digitalisation de l'hôtellerie et gestion des flux.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_media"><strong>• Industries Créatives :</strong> Médias, divertissement et propriété intellectuelle.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_consulting" style="color:#d4af37;"><strong>• Conseil & Services B2B :</strong> Stratégie d'entreprise, transformation digitale et accompagnement des dirigeants.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_saas" style="color:#d4af37;"><strong>• SaaS & Éditeurs :</strong> Développement de solutions cloud, scalabilité et modèles d'abonnement.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_telecom" style="color:#d4af37; border-bottom: none;"><strong>• Télécoms & Infra. :</strong> Connectivité à haut débit, data centers et souveraineté des réseaux.</p>
+                </div>
 
                 <h4 data-i18n="guide_exp_title" style="color:#d4af37; font-family:'Cinzel', serif; margin-bottom: 10px;">Expertises Requises</h4>
-                <div data-i18n="guide_exp_desc" style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px;">
-                    </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px;">
+                    <p class="lexique-item" data-i18n="lex_exp_ai"><strong>• GenAI & Data Science :</strong> Intégration de l'IA pour l'analyse prédictive et l'automatisation.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_cyber"><strong>• Cybersécurité :</strong> Protection des infrastructures critiques et audit de résilience.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_esg"><strong>• Ingénierie ESG :</strong> Stratégie environnementale, sociale et de gouvernance.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_web3"><strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique (Woleet).</p>
+                    <p class="lexique-item" data-i18n="lex_exp_mkt"><strong>• Marketing Digital :</strong> Stratégie d'acquisition, visibilité en ligne et conversion.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_proc"><strong>• Opti. des Processus :</strong> Excellence opérationnelle et réduction des coûts (RPA).</p>
+                    <p class="lexique-item" data-i18n="lex_exp_hr"><strong>• Gestion des Talents :</strong> Recrutement prédictif, rétention et formation 2.0.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_design"><strong>• Design Thinking :</strong> Expérience utilisateur et innovation produit.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_gtm" style="color:#d4af37; border-bottom: none;"><strong>• Go-to-Market & Growth:</strong> Stratégie de pénétration de marché, distribution et acquisition client asymétrique.</p>
+                </div>
             </div>
             
             <button class="btn-gold full-width close-guide-btn" data-i18n="btn_close" style="margin-top:20px;">Fermer</button>
@@ -268,7 +337,7 @@
     </div>
 
     <div id="loadingOverlay" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(15px); background: rgba(10, 25, 47, 0.9);">
-        <div class="loading-content" style="text-align: center; padding: 40px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 8px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); background: #0a192f;">
+        <div class="loading-content" style="text-align: center; padding: 40px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 8px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); background: #0a192f;">
             <div class="loader-spinner" style="margin: 0 auto 20px;"></div>
             <h3 data-i18n="loading_title" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 15px; letter-spacing: 2px;">MOTEUR IA EN ACTION</h3>
             <p id="loadingText" data-i18n="loading_init" style="color: #25D366; font-family: monospace; font-size: 1.1rem; letter-spacing: 1px;">Initialisation des protocoles...</p>
