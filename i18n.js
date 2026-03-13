@@ -34,7 +34,11 @@ const translations = {
         sec_edu: "Éducation & EdTech",
         sec_tour: "Tourisme & Hôtellerie",
         sec_media: "Industries Créatives & Médias",
-        
+        "sec_consulting": "Conseil & Services B2B",
+        "sec_saas": "SaaS & Éditeurs Logiciels",
+        "sec_telecom": "Télécoms & Infrastructures",
+        "exp_gtm": "Go-to-Market & Growth Strategy",
+    
         lbl_geo: "Zone d'Intervention",
         opt_geo_def: "Sélectionner une zone...",
         grp_africa: "Afrique",
@@ -153,6 +157,10 @@ const translations = {
         sec_edu: "Education & EdTech",
         sec_tour: "Tourism & Hospitality",
         sec_media: "Creative Industries & Media",
+        "sec_consulting": "Consulting & B2B Services",
+        "sec_saas": "SaaS & Software Providers",
+        "sec_telecom": "Telecom & Infrastructure",
+        "exp_gtm": "Go-to-Market & Growth Strategy",
         
         lbl_geo: "Area of Operation",
         opt_geo_def: "Select an area...",
@@ -272,6 +280,10 @@ const translations = {
         sec_edu: "Educación y EdTech",
         sec_tour: "Turismo y Hostelería",
         sec_media: "Industrias Creativas y Medios",
+        "sec_consulting": "Consultoría y Servicios B2B",
+        "sec_saas": "SaaS y Proveedores de Software",
+        "sec_telecom": "Telecomunicaciones e Infraestructura",
+        "exp_gtm": "Go-to-Market y Estrategia de Crecimiento",
         
         lbl_geo: "Zona de Intervención",
         opt_geo_def: "Seleccione una zona...",
@@ -391,6 +403,10 @@ const translations = {
         sec_edu: "تكنولوجيا التعليم",
         sec_tour: "السياحة والضيافة",
         sec_media: "الإعلام الإبداعي",
+        "sec_consulting": "الاستشارات وخدمات الشركات",
+        "sec_saas": "البرمجيات كخدمة وناشرو البرامج",
+        "sec_telecom": "الاتصالات والبنية التحتية",
+        "exp_gtm": "استراتيجية الوصول للسوق والنمو",
         
         lbl_geo: "منطقة التدخل",
         opt_geo_def: "اختر منطقة التدخل...",
