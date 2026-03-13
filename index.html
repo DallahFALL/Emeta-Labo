@@ -88,71 +88,77 @@
                         <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: none;" data-i18n="btn_guide">📖 Guide des Expertises</a>
                     </div>
                     
-                    <div class="grid-options">
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech_DeFi"> <span data-i18n="sec_fintech">FinTech & DeFi</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech_SmartCities"> <span data-i18n="sec_gov">GovTech & Smart Cities</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Health_BioTech"> <span data-i18n="sec_health">Santé & BioTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="GreenTech_Energy"> <span data-i18n="sec_green">GreenTech & Énergies</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech_FoodSec"> <span data-i18n="sec_agri">AgriTech & Food Security</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Logistics_SupplyChain"> <span data-i18n="sec_log">Logistique & Supply Chain</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Mining_OilGas"> <span data-i18n="sec_mine">Mines, Pétrole & Gaz</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="RealEstate_PropTech"> <span data-i18n="sec_btp">Immobilier & PropTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Ecommerce_Retail"> <span data-i18n="sec_retail">E-commerce & Retail</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Education_EdTech"> <span data-i18n="sec_edu">Éducation & EdTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Tourism_Hospitality"> <span data-i18n="sec_tour">Tourisme & Hôtellerie</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Creative_Media"> <span data-i18n="sec_media">Industries Créatives & Médias</span></label>
-                    </div>
+                  <div class="grid-options">
+    <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech_DeFi"> <span data-i18n="sec_fintech">FinTech & DeFi</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech_SmartCities"> <span data-i18n="sec_gov">GovTech & Smart Cities</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Health_BioTech"> <span data-i18n="sec_health">Santé & BioTech</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="GreenTech_Energy"> <span data-i18n="sec_green">GreenTech & Énergies</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech_FoodSec"> <span data-i18n="sec_agri">AgriTech & Food Security</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Logistics_SupplyChain"> <span data-i18n="sec_log">Logistique & Supply Chain</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Mining_OilGas"> <span data-i18n="sec_mine">Mines, Pétrole & Gaz</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="RealEstate_PropTech"> <span data-i18n="sec_btp">Immobilier & PropTech</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Ecommerce_Retail"> <span data-i18n="sec_retail">E-commerce & Retail</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Education_EdTech"> <span data-i18n="sec_edu">Éducation & EdTech</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Tourism_Hospitality"> <span data-i18n="sec_tour">Tourisme & Hôtellerie</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Creative_Media"> <span data-i18n="sec_media">Industries Créatives & Médias</span></label>
+    
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Consulting_B2B"> <span data-i18n="sec_consulting">Conseil & Services B2B</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="SaaS_Software"> <span data-i18n="sec_saas">SaaS & Éditeurs Logiciels</span></label>
+    <label class="checkbox-btn"><input type="radio" name="sector" value="Telecom_Infra"> <span data-i18n="sec_telecom">Télécoms & Infrastructures</span></label>
+</div>
 
-                    <label class="section-label mt-2" data-i18n="lbl_geo">Zone d'Intervention</label>
-                    <div class="input-group">
-                        <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
-                            <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
-                            <optgroup label="Afrique" data-i18n="grp_africa">
-                                <option value="Senegal" data-i18n="geo_sn">Sénégal (Dakar Hub)</option>
-                                <option value="CotedIvoire" data-i18n="geo_ci">Côte d'Ivoire (Abidjan Hub)</option>
-                                <option value="Nigeria" data-i18n="geo_ng">Nigeria (Lagos Hub)</option>
-                                <option value="Maroc" data-i18n="geo_ma">Maroc (Casablanca Hub)</option>
-                                <option value="SouthAfrica" data-i18n="geo_za">Afrique du Sud (Johannesburg)</option>
-                            </optgroup>
-                            <optgroup label="Amérique du Nord" data-i18n="grp_na">
-                                <option value="USA" data-i18n="geo_us">États-Unis (USA)</option>
-                                <option value="Canada" data-i18n="geo_ca">Canada (Toronto / Montréal)</option>
-                            </optgroup>
-                            <optgroup label="Amérique Latine" data-i18n="grp_latam">
-                                <option value="LatAm_Brazil" data-i18n="geo_br">Brésil (São Paulo)</option>
-                                <option value="LatAm_General" data-i18n="geo_latam">Amérique Latine (Mexique, Colombie...)</option>
-                            </optgroup>
-                            <optgroup label="Asie-Pacifique (APAC)" data-i18n="grp_apac">
-                                <option value="China" data-i18n="geo_cn">Chine (Shanghai / Beijing)</option>
-                                <option value="Singapore" data-i18n="geo_sg">Singapour (Hub APAC)</option>
-                                <option value="India" data-i18n="geo_in">Inde (Mumbai / Bangalore)</option>
-                            </optgroup>
-                            <optgroup label="Europe" data-i18n="grp_eu">
-                                <option value="France" data-i18n="geo_fr">France (Paris Hub)</option>
-                                <option value="UK" data-i18n="geo_uk">Royaume-Uni (Londres)</option>
-                                <option value="EU_General" data-i18n="geo_eu">Union Européenne (Allemagne, Espagne...)</option>
-                            </optgroup>
-                            <optgroup label="Moyen-Orient (MENA)" data-i18n="grp_mena">
-                                <option value="UAE" data-i18n="geo_ae">Émirats Arabes Unis (Dubai Hub)</option>
-                                <option value="SaudiArabia" data-i18n="geo_sa">Arabie Saoudite (Riyadh)</option>
-                            </optgroup>
-                            <optgroup label="Global" data-i18n="grp_global">
-                                <option value="Global" data-i18n="geo_global">International / Multi-Zones</option>
-                            </optgroup>
-                        </select>
-                    </div>
+<label class="section-label mt-2" data-i18n="lbl_geo">Zone d'Intervention</label>
+<div class="input-group">
+    <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
+        <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
+        <optgroup label="Afrique" data-i18n="grp_africa">
+            <option value="Senegal" data-i18n="geo_sn">Sénégal (Dakar Hub)</option>
+            <option value="CotedIvoire" data-i18n="geo_ci">Côte d'Ivoire (Abidjan Hub)</option>
+            <option value="Nigeria" data-i18n="geo_ng">Nigeria (Lagos Hub)</option>
+            <option value="Maroc" data-i18n="geo_ma">Maroc (Casablanca Hub)</option>
+            <option value="SouthAfrica" data-i18n="geo_za">Afrique du Sud (Johannesburg)</option>
+        </optgroup>
+        <optgroup label="Amérique du Nord" data-i18n="grp_na">
+            <option value="USA" data-i18n="geo_us">États-Unis (USA)</option>
+            <option value="Canada" data-i18n="geo_ca">Canada (Toronto / Montréal)</option>
+        </optgroup>
+        <optgroup label="Amérique Latine" data-i18n="grp_latam">
+            <option value="LatAm_Brazil" data-i18n="geo_br">Brésil (São Paulo)</option>
+            <option value="LatAm_General" data-i18n="geo_latam">Amérique Latine (Mexique, Colombie...)</option>
+        </optgroup>
+        <optgroup label="Asie-Pacifique (APAC)" data-i18n="grp_apac">
+            <option value="China" data-i18n="geo_cn">Chine (Shanghai / Beijing)</option>
+            <option value="Singapore" data-i18n="geo_sg">Singapour (Hub APAC)</option>
+            <option value="India" data-i18n="geo_in">Inde (Mumbai / Bangalore)</option>
+        </optgroup>
+        <optgroup label="Europe" data-i18n="grp_eu">
+            <option value="France" data-i18n="geo_fr">France (Paris Hub)</option>
+            <option value="UK" data-i18n="geo_uk">Royaume-Uni (Londres)</option>
+            <option value="EU_General" data-i18n="geo_eu">Union Européenne (Allemagne, Espagne...)</option>
+        </optgroup>
+        <optgroup label="Moyen-Orient (MENA)" data-i18n="grp_mena">
+            <option value="UAE" data-i18n="geo_ae">Émirats Arabes Unis (Dubai Hub)</option>
+            <option value="SaudiArabia" data-i18n="geo_sa">Arabie Saoudite (Riyadh)</option>
+        </optgroup>
+        <optgroup label="Global" data-i18n="grp_global">
+            <option value="Global" data-i18n="geo_global">International / Multi-Zones</option>
+        </optgroup>
+    </select>
+</div>
 
-                    <label class="section-label mt-2" data-i18n="lbl_expertise">Expertise Requise</label>
-                    <div class="grid-options">
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="ESG_Climate"> <span data-i18n="exp_esg">Ingénierie ESG & Climat</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Web3_Blockchain"> <span data-i18n="exp_web3">Web3 & Blockchain (Woleet)</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Digital_Marketing"> <span data-i18n="exp_mkt">Marketing Digital & SEO</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Process_Optimization"> <span data-i18n="exp_proc">Optimisation des Processus</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="HR_Talent"> <span data-i18n="exp_hr">Gestion des Talents (RH)</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Design_Thinking"> <span data-i18n="exp_design">Design Thinking & UX</span></label>
-                    </div>
+<label class="section-label mt-2" data-i18n="lbl_expertise">Expertise Requise</label>
+<div class="grid-options">
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="ESG_Climate"> <span data-i18n="exp_esg">Ingénierie ESG & Climat</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Web3_Blockchain"> <span data-i18n="exp_web3">Web3 & Blockchain (Woleet)</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Digital_Marketing"> <span data-i18n="exp_mkt">Marketing Digital & SEO</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Process_Optimization"> <span data-i18n="exp_proc">Optimisation des Processus</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="HR_Talent"> <span data-i18n="exp_hr">Gestion des Talents (RH)</span></label>
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Design_Thinking"> <span data-i18n="exp_design">Design Thinking & UX</span></label>
+    
+    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GoToMarket_Growth"> <span data-i18n="exp_gtm">Go-to-Market & Growth Strategy</span></label>
+</div>
 
                     <div class="btn-container split">
                         <button type="button" class="btn-outline" onclick="nextStep(1)" data-i18n="btn_prev">Retour</button>
