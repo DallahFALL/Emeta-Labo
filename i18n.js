@@ -1,5 +1,5 @@
 /* * PROJET : e-META LABS
- * FICHIER : i18n.js (Traduction Intégrale Exhaustive + Vision Sublime)
+ * FICHIER : i18n.js (Traduction Intégrale Exhaustive + Nouveaux Secteurs)
  */
 
 const translations = {
@@ -8,7 +8,7 @@ const translations = {
         hero_label: "MASTER DIAGNOSTIC 2026",
         hero_slogan_1: "Excellence Stratégique",
         hero_slogan_2: "& Haute Précision IA",
-        subtitle: "Excellence Stratégique & Haute Précision IA", // Conservé par sécurité
+        subtitle: "Excellence Stratégique & Haute Précision IA",
         
         btn_reset: "↻ Reset",
         lbl_counter: "Diagnostics Sécurisés & Ancrés",
@@ -34,10 +34,9 @@ const translations = {
         sec_edu: "Éducation & EdTech",
         sec_tour: "Tourisme & Hôtellerie",
         sec_media: "Industries Créatives & Médias",
-        "sec_consulting": "Conseil & Services B2B",
-        "sec_saas": "SaaS & Éditeurs Logiciels",
-        "sec_telecom": "Télécoms & Infrastructures",
-        "exp_gtm": "Go-to-Market & Growth Strategy",
+        sec_consulting: "Conseil & Services B2B",
+        sec_saas: "SaaS & Éditeurs Logiciels",
+        sec_telecom: "Télécoms & Infrastructures",
     
         lbl_geo: "Zone d'Intervention",
         opt_geo_def: "Sélectionner une zone...",
@@ -76,13 +75,14 @@ const translations = {
         exp_proc: "Optimisation des Processus",
         exp_hr: "Gestion des Talents (RH)",
         exp_design: "Design Thinking & UX",
+        exp_gtm: "Go-to-Market & Growth Strategy",
         
         btn_prev: "Retour",
         btn_next_matrice: "Ouvrir Matrice",
         
         step3_title: "03. Matrice Analyse",
         lbl_context: "Contexte Opérationnel",
-        ph_context: "Décrivez votre situation actuelle, vos objectifs à 1-3 ans et vos défis majeurs (concurrence, financement, transition digitale...). Plus vous fournirez de détails, plus les recommandations de l'IA seront chirurgicales.",
+        ph_context: "Décrivez votre situation actuelle, vos objectifs à 1-3 ans et vos défis majeurs. Plus vous fournirez de détails, plus les recommandations de l'IA seront chirurgicales.",
         lbl_file_upload: "📄 Joindre un Document (Optionnel)",
         btn_browse: "Parcourir...",
         lbl_no_file: "Aucun fichier",
@@ -97,13 +97,35 @@ const translations = {
         btn_new_analysis: "Nouvelle Analyse",
         msg_reset_confirm: "Voulez-vous vraiment recommencer ?",
         
-        // --- GUIDE LEXIQUE ---
+        // --- GUIDE LEXIQUE (INDIVIDUEL) ---
         guide_title: "Lexique Stratégique",
         guide_sec_title: "1. Secteurs Stratégiques",
-        guide_sec_desc: "<strong style='color:#d4af37;'>• FinTech / DeFi :</strong> Finance numérique, paiements et décentralisation.<br><strong style='color:#d4af37;'>• GovTech :</strong> Modernisation de l'État et numérisation des services publics.<br><strong style='color:#d4af37;'>• Santé & BioTech :</strong> Innovations médicales et gestion des données de santé.<br><strong style='color:#d4af37;'>• GreenTech :</strong> Transition écologique, décarbonation et énergies renouvelables.<br><strong style='color:#d4af37;'>• AgriTech :</strong> Sécurité alimentaire et optimisation technologique agricole.<br><strong style='color:#d4af37;'>• Logistique :</strong> Optimisation de la supply chain et traçabilité globale.<br><strong style='color:#d4af37;'>• Mines & Pétrole :</strong> Extraction intelligente, sécurité et conformité.<br><strong style='color:#d4af37;'>• PropTech :</strong> Innovation immobilière et gestion de bâtiments intelligents.<br><strong style='color:#d4af37;'>• E-commerce :</strong> Retail digital, expérience client et transactions.<br><strong style='color:#d4af37;'>• Éducation (EdTech) :</strong> Plateformes d'apprentissage et transmission du savoir.<br><strong style='color:#d4af37;'>• Tourisme :</strong> Digitalisation de l'hôtellerie et gestion des flux.<br><strong style='color:#d4af37;'>• Industries Créatives :</strong> Médias, divertissement et propriété intellectuelle.",
-        
+        lex_sec_fintech: "<strong>• FinTech & DeFi :</strong> Finance numérique, paiements et décentralisation.",
+        lex_sec_gov: "<strong>• GovTech & Smart Cities :</strong> Modernisation de l'État et numérisation des services publics.",
+        lex_sec_health: "<strong>• Santé & BioTech :</strong> Innovations médicales et gestion des données de santé.",
+        lex_sec_green: "<strong>• GreenTech & Énergies :</strong> Transition écologique, décarbonation et énergies renouvelables.",
+        lex_sec_agri: "<strong>• AgriTech & Food Sec. :</strong> Sécurité alimentaire et optimisation technologique agricole.",
+        lex_sec_log: "<strong>• Logistique & Supply :</strong> Optimisation de la chaîne logistique et traçabilité globale.",
+        lex_sec_mine: "<strong>• Mines, Pétrole & Gaz :</strong> Extraction intelligente, sécurité et conformité.",
+        lex_sec_btp: "<strong>• Immobilier & PropTech:</strong> Innovation immobilière et gestion de bâtiments intelligents.",
+        lex_sec_retail: "<strong>• E-commerce & Retail :</strong> Retail digital, expérience client et transactions.",
+        lex_sec_edu: "<strong>• Éducation (EdTech) :</strong> Plateformes d'apprentissage et transmission du savoir.",
+        lex_sec_tour: "<strong>• Tourisme & Hôtellerie:</strong> Digitalisation de l'hôtellerie et gestion des flux.",
+        lex_sec_media: "<strong>• Industries Créatives :</strong> Médias, divertissement et propriété intellectuelle.",
+        lex_sec_consulting: "<strong>• Conseil & Services B2B :</strong> Stratégie d'entreprise, transformation digitale et accompagnement des dirigeants.",
+        lex_sec_saas: "<strong>• SaaS & Éditeurs :</strong> Développement de solutions cloud, scalabilité et modèles d'abonnement.",
+        lex_sec_telecom: "<strong>• Télécoms & Infra. :</strong> Connectivité à haut débit, data centers et souveraineté des réseaux.",
+
         guide_exp_title: "2. Expertises Technologiques",
-        guide_exp_desc: "<strong style='color:#d4af37;'>• GenAI & Data :</strong> Intégration de l'IA pour l'analyse prédictive et l'automatisation.<br><strong style='color:#d4af37;'>• Cybersécurité :</strong> Protection des infrastructures critiques et audit de résilience.<br><strong style='color:#d4af37;'>• Ingénierie ESG :</strong> Stratégie environnementale, sociale et de gouvernance.<br><strong style='color:#d4af37;'>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique (Woleet).<br><strong style='color:#d4af37;'>• Marketing Digital :</strong> Stratégie d'acquisition, SEO et visibilité en ligne.<br><strong style='color:#d4af37;'>• Optimisation Processus :</strong> Excellence opérationnelle et réduction des coûts.<br><strong style='color:#d4af37;'>• Gestion des Talents (RH) :</strong> Recrutement, rétention et formation 2.0.<br><strong style='color:#d4af37;'>• Design Thinking :</strong> Expérience utilisateur (UX) et innovation produit.",
+        lex_exp_ai: "<strong>• GenAI & Data Science :</strong> Intégration de l'IA pour l'analyse prédictive et l'automatisation.",
+        lex_exp_cyber: "<strong>• Cybersécurité :</strong> Protection des infrastructures critiques et audit de résilience.",
+        lex_exp_esg: "<strong>• Ingénierie ESG :</strong> Stratégie environnementale, sociale et de gouvernance.",
+        lex_exp_web3: "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique (Woleet).",
+        lex_exp_mkt: "<strong>• Marketing Digital :</strong> Stratégie d'acquisition, visibilité en ligne et conversion.",
+        lex_exp_proc: "<strong>• Opti. des Processus :</strong> Excellence opérationnelle et réduction des coûts (RPA).",
+        lex_exp_hr: "<strong>• Gestion des Talents :</strong> Recrutement prédictif, rétention et formation 2.0.",
+        lex_exp_design: "<strong>• Design Thinking :</strong> Expérience utilisateur et innovation produit.",
+        lex_exp_gtm: "<strong>• Go-to-Market & Growth:</strong> Stratégie de pénétration de marché, distribution et acquisition client asymétrique.",
 
         // --- CHARTE JURIDIQUE EXHAUSTIVE ---
         modal_title: "Politique de Souveraineté & Confidentialité",
@@ -157,10 +179,9 @@ const translations = {
         sec_edu: "Education & EdTech",
         sec_tour: "Tourism & Hospitality",
         sec_media: "Creative Industries & Media",
-        "sec_consulting": "Consulting & B2B Services",
-        "sec_saas": "SaaS & Software Providers",
-        "sec_telecom": "Telecom & Infrastructure",
-        "exp_gtm": "Go-to-Market & Growth Strategy",
+        sec_consulting: "Consulting & B2B Services",
+        sec_saas: "SaaS & Software Providers",
+        sec_telecom: "Telecom & Infrastructure",
         
         lbl_geo: "Area of Operation",
         opt_geo_def: "Select an area...",
@@ -199,13 +220,14 @@ const translations = {
         exp_proc: "Process Optimization",
         exp_hr: "Talent Management (HR)",
         exp_design: "Design Thinking & UX",
+        exp_gtm: "Go-to-Market & Growth Strategy",
         
         btn_prev: "Back",
         btn_next_matrice: "Open Matrix",
         
         step3_title: "03. Analysis Matrix",
         lbl_context: "Operational Context",
-        ph_context: "Describe your current situation, 1-3 year goals, and major challenges (competition, funding, digital transition...). The more details you provide, the more precise the AI recommendations will be.",
+        ph_context: "Describe your current situation, 1-3 year goals, and major challenges. The more details you provide, the more precise the AI recommendations will be.",
         lbl_file_upload: "📄 Attach Document (Optional)",
         btn_browse: "Browse...",
         lbl_no_file: "No file selected",
@@ -220,13 +242,35 @@ const translations = {
         btn_new_analysis: "New Analysis",
         msg_reset_confirm: "Restart the form?",
         
-        // --- GUIDE LEXIQUE ---
+        // --- GUIDE LEXIQUE (INDIVIDUEL) ---
         guide_title: "Strategic Glossary",
         guide_sec_title: "1. Strategic Sectors",
-        guide_sec_desc: "<strong style='color:#d4af37;'>• FinTech / DeFi:</strong> Digital finance, payments, and decentralization.<br><strong style='color:#d4af37;'>• GovTech:</strong> State modernization and public service digitization.<br><strong style='color:#d4af37;'>• Health & BioTech:</strong> Medical innovations and health data management.<br><strong style='color:#d4af37;'>• GreenTech:</strong> Ecological transition, decarbonization, and renewable energy.<br><strong style='color:#d4af37;'>• AgriTech:</strong> Food security and agricultural technological optimization.<br><strong style='color:#d4af37;'>• Logistics:</strong> Supply chain optimization and global traceability.<br><strong style='color:#d4af37;'>• Mining, Oil & Gas:</strong> Smart extraction, safety, and compliance.<br><strong style='color:#d4af37;'>• PropTech:</strong> Real estate innovation and smart building management.<br><strong style='color:#d4af37;'>• E-commerce:</strong> Digital retail, customer experience, and transactions.<br><strong style='color:#d4af37;'>• Education (EdTech):</strong> Learning platforms and knowledge transfer.<br><strong style='color:#d4af37;'>• Tourism:</strong> Hospitality digitization and flow management.<br><strong style='color:#d4af37;'>• Creative Industries:</strong> Media, entertainment, and intellectual property.",
-        
+        lex_sec_fintech: "<strong>• FinTech & DeFi:</strong> Digital finance, payments, and decentralization.",
+        lex_sec_gov: "<strong>• GovTech & Smart Cities:</strong> State modernization and public service digitization.",
+        lex_sec_health: "<strong>• Health & BioTech:</strong> Medical innovations and health data management.",
+        lex_sec_green: "<strong>• GreenTech & Energy:</strong> Ecological transition, decarbonization, and renewable energy.",
+        lex_sec_agri: "<strong>• AgriTech & Food Sec.:</strong> Food security and agricultural technological optimization.",
+        lex_sec_log: "<strong>• Logistics & Supply:</strong> Supply chain optimization and global traceability.",
+        lex_sec_mine: "<strong>• Mining, Oil & Gas:</strong> Smart extraction, safety, and compliance.",
+        lex_sec_btp: "<strong>• PropTech:</strong> Real estate innovation and smart building management.",
+        lex_sec_retail: "<strong>• E-commerce & Retail:</strong> Digital retail, customer experience, and transactions.",
+        lex_sec_edu: "<strong>• Education (EdTech):</strong> Learning platforms and knowledge transfer.",
+        lex_sec_tour: "<strong>• Tourism & Hospitality:</strong> Hospitality digitization and flow management.",
+        lex_sec_media: "<strong>• Creative Industries:</strong> Media, entertainment, and intellectual property.",
+        lex_sec_consulting: "<strong>• Consulting & B2B:</strong> Corporate strategy, digital transformation, and executive advisory.",
+        lex_sec_saas: "<strong>• SaaS & Software:</strong> Cloud solutions development, scalability, and subscription models.",
+        lex_sec_telecom: "<strong>• Telecom & Infra.:</strong> High-speed connectivity, data centers, and network sovereignty.",
+
         guide_exp_title: "2. Technological Expertise",
-        guide_exp_desc: "<strong style='color:#d4af37;'>• GenAI & Data:</strong> AI integration for predictive analysis and automation.<br><strong style='color:#d4af37;'>• Cybersecurity:</strong> Protection of critical infrastructure and resilience audits.<br><strong style='color:#d4af37;'>• ESG Engineering:</strong> Environmental, Social, and Governance strategy.<br><strong style='color:#d4af37;'>• Web3 & Blockchain:</strong> Tokenization, traceability, and digital anchoring (Woleet).<br><strong style='color:#d4af37;'>• Digital Marketing:</strong> Acquisition strategy, SEO, and online visibility.<br><strong style='color:#d4af37;'>• Process Optimization:</strong> Operational excellence and cost reduction.<br><strong style='color:#d4af37;'>• Talent Management (HR):</strong> Recruitment, retention, and 2.0 training.<br><strong style='color:#d4af37;'>• Design Thinking:</strong> User experience (UX) and product innovation.",
+        lex_exp_ai: "<strong>• GenAI & Data:</strong> AI integration for predictive analysis and automation.",
+        lex_exp_cyber: "<strong>• Cybersecurity:</strong> Protection of critical infrastructure and resilience audits.",
+        lex_exp_esg: "<strong>• ESG Engineering:</strong> Environmental, Social, and Governance strategy.",
+        lex_exp_web3: "<strong>• Web3 & Blockchain:</strong> Tokenization, traceability, and digital anchoring (Woleet).",
+        lex_exp_mkt: "<strong>• Digital Marketing:</strong> Acquisition strategy, SEO, and online visibility.",
+        lex_exp_proc: "<strong>• Process Opti.:</strong> Operational excellence and cost reduction.",
+        lex_exp_hr: "<strong>• Talent Mgt (HR):</strong> Recruitment, retention, and 2.0 training.",
+        lex_exp_design: "<strong>• Design Thinking:</strong> User experience (UX) and product innovation.",
+        lex_exp_gtm: "<strong>• Go-to-Market & Growth:</strong> Market penetration strategy, distribution, and asymmetric client acquisition.",
 
         // --- CHARTE JURIDIQUE EXHAUSTIVE ---
         modal_title: "Sovereignty & Privacy Policy",
@@ -280,10 +324,10 @@ const translations = {
         sec_edu: "Educación y EdTech",
         sec_tour: "Turismo y Hostelería",
         sec_media: "Industrias Creativas y Medios",
-        "sec_consulting": "Consultoría y Servicios B2B",
-        "sec_saas": "SaaS y Proveedores de Software",
-        "sec_telecom": "Telecomunicaciones e Infraestructura",
-        "exp_gtm": "Go-to-Market y Estrategia de Crecimiento",
+        sec_consulting: "Consultoría y Servicios B2B",
+        sec_saas: "SaaS y Proveedores de Software",
+        sec_telecom: "Telecomunicaciones e Infraestructura",
+        exp_gtm: "Go-to-Market y Estrategia de Crecimiento",
         
         lbl_geo: "Zona de Intervención",
         opt_geo_def: "Seleccione una zona...",
@@ -328,7 +372,7 @@ const translations = {
         
         step3_title: "03. Matriz de Análisis",
         lbl_context: "Contexto Operativo",
-        ph_context: "Describa su situación actual, objetivos a 1-3 años y desafíos principales (competencia, financiamiento, transición digital...). Cuantos más detalles proporcione, más precisas serán las recomendaciones de la IA.",
+        ph_context: "Describa su situación actual, objetivos a 1-3 años y desafíos principales. Cuantos más detalles proporcione, más precisas serán las recomendaciones.",
         lbl_file_upload: "📄 Adjuntar Documento",
         btn_browse: "Explorar...",
         lbl_no_file: "Ningún archivo",
@@ -343,13 +387,35 @@ const translations = {
         btn_new_analysis: "Nuevo Análisis",
         msg_reset_confirm: "¿Deseas reiniciar?",
         
-        // --- GUIDE LEXIQUE ---
+        // --- GUIDE LEXIQUE (INDIVIDUEL) ---
         guide_title: "Glosario Estratégico",
         guide_sec_title: "1. Sectores Estratégicos",
-        guide_sec_desc: "<strong style='color:#d4af37;'>• FinTech / DeFi:</strong> Finanzas digitales, pagos y descentralización.<br><strong style='color:#d4af37;'>• GovTech:</strong> Modernización del Estado y digitalización de servicios públicos.<br><strong style='color:#d4af37;'>• Salud y BioTech:</strong> Innovaciones médicas y gestión de datos de salud.<br><strong style='color:#d4af37;'>• GreenTech:</strong> Transición ecológica, descarbonización y energías renovables.<br><strong style='color:#d4af37;'>• AgriTech:</strong> Seguridad alimentaria y optimización tecnológica agrícola.<br><strong style='color:#d4af37;'>• Logística:</strong> Optimización de la cadena de suministro y trazabilidad.<br><strong style='color:#d4af37;'>• Minería y Gas:</strong> Extracción inteligente, seguridad y cumplimiento.<br><strong style='color:#d4af37;'>• PropTech:</strong> Innovación inmobiliaria y gestión de edificios inteligentes.<br><strong style='color:#d4af37;'>• E-commerce:</strong> Retail digital, experiencia del cliente y transacciones.<br><strong style='color:#d4af37;'>• Educación (EdTech):</strong> Plataformas de aprendizaje y transferencia de conocimiento.<br><strong style='color:#d4af37;'>• Turismo:</strong> Digitalización de la hostelería y gestión de flujos.<br><strong style='color:#d4af37;'>• Industrias Creativas:</strong> Medios, entretenimiento y propiedad intelectual.",
-        
+        lex_sec_fintech: "<strong>• FinTech y DeFi:</strong> Finanzas digitales, pagos y descentralización.",
+        lex_sec_gov: "<strong>• GovTech y Smart Cities:</strong> Modernización del Estado y digitalización de servicios públicos.",
+        lex_sec_health: "<strong>• Salud y BioTech:</strong> Innovaciones médicas y gestión de datos de salud.",
+        lex_sec_green: "<strong>• GreenTech y Energía:</strong> Transición ecológica, descarbonización y energías renovables.",
+        lex_sec_agri: "<strong>• AgriTech y Alimentación:</strong> Seguridad alimentaria y optimización tecnológica agrícola.",
+        lex_sec_log: "<strong>• Logística y Cadena:</strong> Optimización de la cadena de suministro y trazabilidad.",
+        lex_sec_mine: "<strong>• Minería y Gas:</strong> Extracción inteligente, seguridad y cumplimiento.",
+        lex_sec_btp: "<strong>• PropTech:</strong> Innovación inmobiliaria y gestión de edificios inteligentes.",
+        lex_sec_retail: "<strong>• E-commerce y Retail:</strong> Retail digital, experiencia del cliente y transacciones.",
+        lex_sec_edu: "<strong>• Educación (EdTech):</strong> Plataformas de aprendizaje y transferencia de conocimiento.",
+        lex_sec_tour: "<strong>• Turismo y Hostelería:</strong> Digitalización de la hostelería y gestión de flujos.",
+        lex_sec_media: "<strong>• Industrias Creativas:</strong> Medios, entretenimiento y propiedad intelectual.",
+        lex_sec_consulting: "<strong>• Consultoría y B2B:</strong> Estrategia corporativa, transformación digital y asesoramiento ejecutivo.",
+        lex_sec_saas: "<strong>• SaaS y Software:</strong> Desarrollo de soluciones en la nube, escalabilidad y modelos de suscripción.",
+        lex_sec_telecom: "<strong>• Telecom e Infra.:</strong> Conectividad de alta velocidad, centros de datos y soberanía de redes.",
+
         guide_exp_title: "2. Experiencia Tecnológica",
-        guide_exp_desc: "<strong style='color:#d4af37;'>• GenAI & Data:</strong> Integración de IA para análisis predictivo y automatización.<br><strong style='color:#d4af37;'>• Ciberseguridad:</strong> Protección de infraestructuras críticas y auditorías de resiliencia.<br><strong style='color:#d4af37;'>• Ingeniería ESG:</strong> Estrategia Ambiental, Social y de Gobernanza.<br><strong style='color:#d4af37;'>• Web3 y Blockchain:</strong> Tokenización, trazabilidad y anclaje digital (Woleet).<br><strong style='color:#d4af37;'>• Marketing Digital:</strong> Estrategia de adquisición, SEO y visibilidad en línea.<br><strong style='color:#d4af37;'>• Optimización de Procesos:</strong> Excelencia operativa y reducción de costos.<br><strong style='color:#d4af37;'>• Gestión de Talento (RRHH):</strong> Reclutamiento, retención y formación 2.0.<br><strong style='color:#d4af37;'>• Design Thinking:</strong> Experiencia de usuario (UX) e innovación de productos.",
+        lex_exp_ai: "<strong>• GenAI & Data:</strong> Integración de IA para análisis predictivo y automatización.",
+        lex_exp_cyber: "<strong>• Ciberseguridad:</strong> Protección de infraestructuras críticas y auditorías de resiliencia.",
+        lex_exp_esg: "<strong>• Ingeniería ESG:</strong> Estrategia Ambiental, Social y de Gobernanza.",
+        lex_exp_web3: "<strong>• Web3 y Blockchain:</strong> Tokenización, trazabilidad y anclaje digital (Woleet).",
+        lex_exp_mkt: "<strong>• Marketing Digital:</strong> Estrategia de adquisición, SEO y visibilidad en línea.",
+        lex_exp_proc: "<strong>• Optimización de Proc.:</strong> Excelencia operativa y reducción de costos.",
+        lex_exp_hr: "<strong>• Gestión de Talento:</strong> Reclutamiento, retención y formación 2.0.",
+        lex_exp_design: "<strong>• Design Thinking:</strong> Experiencia de usuario (UX) e innovación de productos.",
+        lex_exp_gtm: "<strong>• Go-to-Market y Crecimiento:</strong> Estrategia de penetración de mercado, distribución y adquisición asimétrica de clientes.",
 
         // --- CHARTE JURIDIQUE EXHAUSTIVE ---
         modal_title: "Política de Soberanía y Privacidad",
@@ -403,10 +469,10 @@ const translations = {
         sec_edu: "تكنولوجيا التعليم",
         sec_tour: "السياحة والضيافة",
         sec_media: "الإعلام الإبداعي",
-        "sec_consulting": "الاستشارات وخدمات الشركات",
-        "sec_saas": "البرمجيات كخدمة وناشرو البرامج",
-        "sec_telecom": "الاتصالات والبنية التحتية",
-        "exp_gtm": "استراتيجية الوصول للسوق والنمو",
+        sec_consulting: "الاستشارات وخدمات الشركات",
+        sec_saas: "البرمجيات كخدمة وناشرو البرامج",
+        sec_telecom: "الاتصالات والبنية التحتية",
+        exp_gtm: "استراتيجية الوصول للسوق والنمو",
         
         lbl_geo: "منطقة التدخل",
         opt_geo_def: "اختر منطقة التدخل...",
@@ -451,7 +517,7 @@ const translations = {
         
         step3_title: "03. مصفوفة التحليل",
         lbl_context: "السياق التشغيلي",
-        ph_context: "صف وضعك الحالي وأهدافك لمدة 1-3 سنوات والتحديات الرئيسية (المنافسة، التمويل، التحول الرقمي...). كلما قدمت تفاصيل أكثر، كانت توصيات الذكاء الاصطناعي أكثر دقة.",
+        ph_context: "صف وضعك الحالي وأهدافك والتحديات الرئيسية. كلما قدمت تفاصيل أكثر، كانت توصيات الذكاء الاصطناعي أكثر دقة.",
         lbl_file_upload: "📄 إرفاق مستند (اختياري)",
         btn_browse: "تصفح...",
         lbl_no_file: "لم يتم تحديد أي ملف",
@@ -466,13 +532,35 @@ const translations = {
         btn_new_analysis: "تحليل جديد",
         msg_reset_confirm: "هل تريد حقًا البدء من جديد؟",
         
-        // --- GUIDE LEXIQUE ---
+        // --- GUIDE LEXIQUE (INDIVIDUEL) ---
         guide_title: "المعجم الاستراتيجي",
         guide_sec_title: "1. القطاعات الاستراتيجية",
-        guide_sec_desc: "<strong style='color:#d4af37;'>• التكنولوجيا المالية:</strong> التمويل الرقمي، المدفوعات واللامركزية.<br><strong style='color:#d4af37;'>• تكنولوجيا الحكومة:</strong> تحديث الدولة ورقمنة الخدمات العامة.<br><strong style='color:#d4af37;'>• الصحة والتكنولوجيا الحيوية:</strong> الابتكارات الطبية وإدارة البيانات الصحية.<br><strong style='color:#d4af37;'>• التكنولوجيا الخضراء:</strong> التحول البيئي وإزالة الكربون والطاقة المتجددة.<br><strong style='color:#d4af37;'>• التكنولوجيا الزراعية:</strong> الأمن الغذائي والتحسين التكنولوجي الزراعي.<br><strong style='color:#d4af37;'>• اللوجستيات:</strong> تحسين سلسلة التوريد والتتبع العالمي.<br><strong style='color:#d4af37;'>• التعدين والغاز:</strong> الاستخراج الذكي والسلامة والامتثال.<br><strong style='color:#d4af37;'>• تكنولوجيا العقارات:</strong> الابتكار العقاري وإدارة المباني الذكية.<br><strong style='color:#d4af37;'>• التجارة الإلكترونية:</strong> التجزئة الرقمية، تجربة العملاء والمعاملات.<br><strong style='color:#d4af37;'>• تكنولوجيا التعليم:</strong> منصات التعلم ونقل المعرفة.<br><strong style='color:#d4af37;'>• السياحة:</strong> رقمنة الضيافة وإدارة التدفقات.<br><strong style='color:#d4af37;'>• الصناعات الإبداعية:</strong> الإعلام والترفيه والملكية الفكرية.",
-        
+        lex_sec_fintech: "<strong>• التكنولوجيا المالية:</strong> التمويل الرقمي، المدفوعات واللامركزية.",
+        lex_sec_gov: "<strong>• تكنولوجيا الحكومة:</strong> تحديث الدولة ورقمنة الخدمات العامة.",
+        lex_sec_health: "<strong>• الصحة والتكنولوجيا الحيوية:</strong> الابتكارات الطبية وإدارة البيانات الصحية.",
+        lex_sec_green: "<strong>• التكنولوجيا الخضراء:</strong> التحول البيئي وإزالة الكربون والطاقة المتجددة.",
+        lex_sec_agri: "<strong>• التكنولوجيا الزراعية:</strong> الأمن الغذائي والتحسين التكنولوجي الزراعي.",
+        lex_sec_log: "<strong>• اللوجستيات:</strong> تحسين سلسلة التوريد والتتبع العالمي.",
+        lex_sec_mine: "<strong>• التعدين والغاز:</strong> الاستخراج الذكي والسلامة والامتثال.",
+        lex_sec_btp: "<strong>• تكنولوجيا العقارات:</strong> الابتكار العقاري وإدارة المباني الذكية.",
+        lex_sec_retail: "<strong>• التجارة الإلكترونية:</strong> التجزئة الرقمية، تجربة العملاء والمعاملات.",
+        lex_sec_edu: "<strong>• تكنولوجيا التعليم:</strong> منصات التعلم ونقل المعرفة.",
+        lex_sec_tour: "<strong>• السياحة:</strong> رقمنة الضيافة وإدارة التدفقات.",
+        lex_sec_media: "<strong>• الصناعات الإبداعية:</strong> الإعلام والترفيه والملكية الفكرية.",
+        lex_sec_consulting: "<strong>• الاستشارات وخدمات B2B:</strong> استراتيجية الشركات، التحول الرقمي، والتوجيه التنفيذي.",
+        lex_sec_saas: "<strong>• البرمجيات كخدمة (SaaS):</strong> تطوير الحلول السحابية، القابلية للتوسع، ونماذج الاشتراك.",
+        lex_sec_telecom: "<strong>• الاتصالات والبنية التحتية:</strong> الاتصال عالي السرعة، مراكز البيانات، والسيادة على الشبكات.",
+
         guide_exp_title: "2. الخبرات التكنولوجية",
-        guide_exp_desc: "<strong style='color:#d4af37;'>• الذكاء الاصطناعي التوليدي:</strong> دمج الذكاء الاصطناعي للتحليل التنبؤي والأتمتة.<br><strong style='color:#d4af37;'>• الأمن السيبراني:</strong> حماية البنية التحتية الحيوية وتدقيق المرونة.<br><strong style='color:#d4af37;'>• الهندسة البيئية (ESG):</strong> الاستراتيجية البيئية والاجتماعية وحوكمة الشركات.<br><strong style='color:#d4af37;'>• الويب 3 والبلوكشين:</strong> تحويل الأصول إلى رموز، التتبع والتوثيق الرقمي (Woleet).<br><strong style='color:#d4af37;'>• التسويق الرقمي:</strong> استراتيجية الاستحواذ وتحسين محركات البحث.<br><strong style='color:#d4af37;'>• تحسين العمليات:</strong> التميز التشغيلي وخفض التكاليف.<br><strong style='color:#d4af37;'>• إدارة المواهب:</strong> التوظيف والاحتفاظ والتدريب.<br><strong style='color:#d4af37;'>• التفكير التصميمي:</strong> تجربة المستخدم (UX) وابتكار المنتجات.",
+        lex_exp_ai: "<strong>• الذكاء الاصطناعي التوليدي:</strong> دمج الذكاء الاصطناعي للتحليل التنبؤي والأتمتة.",
+        lex_exp_cyber: "<strong>• الأمن السيبراني:</strong> حماية البنية التحتية الحيوية وتدقيق المرونة.",
+        lex_exp_esg: "<strong>• الهندسة البيئية (ESG):</strong> الاستراتيجية البيئية والاجتماعية وحوكمة الشركات.",
+        lex_exp_web3: "<strong>• الويب 3 والبلوكشين:</strong> تحويل الأصول إلى رموز، التتبع والتوثيق الرقمي.",
+        lex_exp_mkt: "<strong>• التسويق الرقمي:</strong> استراتيجية الاستحواذ وتحسين محركات البحث.",
+        lex_exp_proc: "<strong>• تحسين العمليات:</strong> التميز التشغيلي وخفض التكاليف.",
+        lex_exp_hr: "<strong>• إدارة المواهب:</strong> التوظيف والاحتفاظ والتدريب.",
+        lex_exp_design: "<strong>• التفكير التصميمي:</strong> تجربة المستخدم (UX) وابتكار المنتجات.",
+        lex_exp_gtm: "<strong>• استراتيجية الوصول للسوق:</strong> استراتيجية اختراق السوق، التوزيع، واكتساب العملاء بشكل غير متماثل.",
         
         // --- CHARTE JURIDIQUE EXHAUSTIVE ---
         modal_title: "سياسة السيادة والخصوصية",
