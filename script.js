@@ -1,5 +1,5 @@
 /* * PROJET : e-META LABS
- * FICHIER : script.js (Engine Make & Validations + Wow Effect Multilingue)
+ * FICHIER : script.js (Engine Make & Validations + Wow Effect Multilingue + UX Premium)
  */
 
 const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f"; 
@@ -191,7 +191,7 @@ if (form) {
         // 1. Cacher le formulaire pour faire place au loader
         form.style.display = 'none';
         
-        // 2. Afficher l'écran de chargement (le nouvel ID ou l'ancien en fallback)
+        // 2. Afficher l'écran de chargement
         const wowLoader = document.getElementById('emeta-loader');
         const statusText = document.getElementById('emeta-status');
         const oldLoadingOverlay = document.getElementById('loadingOverlay'); // Fallback
@@ -248,7 +248,6 @@ if (form) {
         // Animation du texte
         const textInterval = setInterval(() => {
             if (stepIndex < loadingSteps.length) {
-                // Met à jour le Wow Loader ou l'ancien overlay
                 if (statusText) statusText.innerText = loadingSteps[stepIndex];
                 else {
                     const oldText = document.getElementById('loadingText');
@@ -256,13 +255,12 @@ if (form) {
                 }
                 stepIndex++;
             }
-        }, 1800); // Change de phrase toutes les 1.8 secondes
+        }, 1800); 
 
         // ==========================================
         // PRÉPARATION DES DONNÉES ET ENVOI API
         // ==========================================
 
-        // Préparation du fichier (Base64) avec limite de 2.5 Mo
         let fileData = null;
         let fileName = null;
         const fileInput = document.getElementById('clientFile');
@@ -311,29 +309,59 @@ if (form) {
             clearInterval(textInterval); // Stopper le défilement des phrases
 
             if (response.ok) {
-                const aiResponse = await response.text();
+                // Récupération de l'URL du PDF envoyée par Make.com
+                const pdfUrl = await response.text(); 
                 
-                // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS (Le climax du Wow Effect)
+                // ⚠️ À MODIFIER ABSOLUMENT : METTEZ VOTRE VRAI LIEN CALENDLY CI-DESSOUS
+                const calendlyUrl = "https://calendly.com/VOTRE_LIEN_ICI";
+                
+                // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS (THEME OR/LUXE)
                 if (wowLoader) {
                     wowLoader.innerHTML = `
-                        <div style="font-size: 50px; margin-bottom: 15px;">✅</div>
-                        <h3 style="color: #28a745; font-family: 'Arial', sans-serif;">Audit Généré & Sécurisé</h3>
-                        <p style="font-size: 16px; color: #555; margin-bottom: 25px;">Un exemplaire PDF certifié a été expédié à votre adresse email.</p>
-                        <button onclick="location.reload()" style="padding: 12px 25px; background: #002D62; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Réaliser une nouvelle analyse</button>
+                        <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">✅</div>
+                        <h3 style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;">Audit Généré & Sécurisé</h3>
+                        <p style="font-size: 16px; color: #8892b0; margin-bottom: 25px;">Le sceau cryptographique a été appliqué. Le document est prêt.</p>
+                        <button onclick="location.reload()" class="btn-outline" style="padding: 10px 20px;">Nouvelle analyse</button>
                     `;
                 } else if (oldLoadingOverlay) {
                     oldLoadingOverlay.style.display = 'none';
                 }
 
-                // 2. OUVERTURE DU POPUP POUR LECTURE RAPIDE DE L'IA
+                // 2. OUVERTURE DU POPUP PREMIUM (PORTAIL HIGH-TICKET)
                 const resultBody = document.getElementById('resultBody');
                 if(resultBody) {
-                    // On injecte directement le texte brut de Make dans le corps du popup
-                    resultBody.innerHTML = aiResponse;
+                    resultBody.innerHTML = `
+                        <div style="text-align: center; margin-top: 10px;">
+                            <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">
+                                Votre diagnostic stratégique a été généré avec succès. Il est scellé et prêt pour consultation.
+                            </p>
+
+                            <a href="${pdfUrl}" target="_blank" class="btn-gold glow" style="display: block; width: 100%; text-decoration: none; margin-bottom: 30px; padding: 15px; font-size: 1.1rem; border-radius: 4px; box-sizing: border-box;">
+                                📄 TÉLÉCHARGER L'AUDIT (PDF)
+                            </a>
+
+                            <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 30px 0 25px 0; position: relative;">
+                                <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a192f; padding: 0 15px; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">
+                                    NEXT STEP
+                                </span>
+                            </div>
+
+                            <h4 style="color: #e6f1ff; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem;">
+                                Débriefing Exécutif
+                            </h4>
+                            <p style="font-size: 0.85rem; color: #8892b0; margin-bottom: 20px;">
+                                L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner e-META LABS.
+                            </p>
+
+                            <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0 15px rgba(37, 211, 102, 0.15); box-sizing: border-box;">
+                                📅 RÉSERVER MON DÉBRIEFING (45 MIN)
+                            </a>
+                        </div>
+                    `;
                 }
                 const resModal = document.getElementById('resultModal');
                 if(resModal) {
-                    // On affiche le popup après 1 seconde pour laisser le client voir le ✅ vert
+                    // On affiche le popup après 1 seconde pour laisser le client voir le ✅
                     setTimeout(() => {
                         resModal.style.display = 'flex';
                     }, 1000);
