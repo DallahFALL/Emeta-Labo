@@ -305,40 +305,61 @@ if (form) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
-        .then(async response => {
+  .then(async response => {
             clearInterval(textInterval); // Stopper le défilement des phrases
 
             if (response.ok) {
-                // Récupération de l'URL du PDF envoyée par Make.com
-                const pdfUrl = await response.text(); 
+                // Récupération de la réponse envoyée par Make.com
+                const aiResponse = await response.text(); 
                 
-                // ⚠️ À MODIFIER ABSOLUMENT : METTEZ VOTRE VRAI LIEN CALENDLY CI-DESSOUS
-                const calendlyUrl = "https://calendly.com/e-metalabs/debriefing";
+                // On vérifie si Make.com a fait un TimeOut (réponse "Accepted")
+                const isTimeout = aiResponse.trim() === "Accepted";
+                const pdfUrl = isTimeout ? "#" : aiResponse;
                 
-                // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS (THEME OR/LUXE)
+                // ⚠️ REMPLACEZ L'URL CI-DESSOUS PAR VOTRE VRAI LIEN CALENDLY COMPLET ⚠️
+                const calendlyUrl = "https://calendly.com/e-metalabs"; // <-- METTEZ VOTRE LIEN ICI
+                
+                // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS
                 if (wowLoader) {
                     wowLoader.innerHTML = `
                         <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">✅</div>
                         <h3 style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;">Audit Généré & Sécurisé</h3>
-                        <p style="font-size: 16px; color: #8892b0; margin-bottom: 25px;">Le sceau cryptographique a été appliqué. Le document est prêt.</p>
+                        <p style="font-size: 16px; color: #8892b0; margin-bottom: 25px;">Le sceau cryptographique a été appliqué. L'analyse est terminée.</p>
                         <button onclick="location.reload()" class="btn-outline" style="padding: 10px 20px;">Nouvelle analyse</button>
                     `;
-                } else if (oldLoadingOverlay) {
-                    oldLoadingOverlay.style.display = 'none';
                 }
 
-                // 2. OUVERTURE DU POPUP PREMIUM (PORTAIL HIGH-TICKET)
+                // 2. GESTION DU BOUTON PDF (TÉLÉCHARGEMENT DIRECT OU ENVOI EMAIL)
+                let pdfHtmlContent = "";
+                if (isTimeout) {
+                    // Si l'IA a pris plus de 40 secondes
+                    pdfHtmlContent = `
+                        <div style="background: rgba(212, 175, 55, 0.05); border: 1px dashed #d4af37; padding: 15px; border-radius: 4px; margin-bottom: 30px;">
+                            <p style="color: #d4af37; font-size: 0.95rem; margin: 0;">
+                                ⏳ <strong>Analyse Complexe Terminée.</strong><br>
+                                Votre matrice stratégique est en cours d'ancrage. Le rapport PDF certifié va arriver <strong>directement dans votre boîte email</strong> d'ici 1 à 2 minutes.
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    // Si l'IA a répondu vite
+                    pdfHtmlContent = `
+                        <a href="${pdfUrl}" target="_blank" style="display: block; width: 100%; background: #d4af37; color: #0a192f; font-weight: bold; text-align: center; text-decoration: none; margin-bottom: 30px; padding: 15px; font-size: 1.1rem; border-radius: 4px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); box-sizing: border-box;">
+                            📄 TÉLÉCHARGER L'AUDIT (PDF)
+                        </a>
+                    `;
+                }
+
+                // 3. OUVERTURE DU POPUP PREMIUM
                 const resultBody = document.getElementById('resultBody');
                 if(resultBody) {
                     resultBody.innerHTML = `
                         <div style="text-align: center; margin-top: 10px;">
                             <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">
-                                Votre diagnostic stratégique a été généré avec succès. Il est scellé et prêt pour consultation.
+                                Les algorithmes e-META LABS ont finalisé le traitement de vos données.
                             </p>
 
-                            <a href="${pdfUrl}" target="_blank" class="btn-gold glow" style="display: block; width: 100%; text-decoration: none; margin-bottom: 30px; padding: 15px; font-size: 1.1rem; border-radius: 4px; box-sizing: border-box;">
-                                📄 TÉLÉCHARGER L'AUDIT (PDF)
-                            </a>
+                            ${pdfHtmlContent}
 
                             <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 30px 0 25px 0; position: relative;">
                                 <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a192f; padding: 0 15px; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">
@@ -353,7 +374,7 @@ if (form) {
                                 L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner e-META LABS.
                             </p>
 
-                            <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0 15px rgba(37, 211, 102, 0.15); box-sizing: border-box;">
+                            <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0 15px rgba(37, 211, 102, 0.15); box-sizing: border-box; text-align: center;">
                                 📅 RÉSERVER MON DÉBRIEFING (45 MIN)
                             </a>
                         </div>
@@ -361,10 +382,7 @@ if (form) {
                 }
                 const resModal = document.getElementById('resultModal');
                 if(resModal) {
-                    // On affiche le popup après 1 seconde pour laisser le client voir le ✅
-                    setTimeout(() => {
-                        resModal.style.display = 'flex';
-                    }, 1000);
+                    setTimeout(() => { resModal.style.display = 'flex'; }, 1000);
                 }
                 
                 submitBtn.innerText = "Analyse Terminée";
@@ -373,6 +391,7 @@ if (form) {
             }
         })
         .catch(error => {
+// LE RESTE DE VOTRE CODE (CATCH) RESTE LE MÊME 
             // RESTAURATION DU FORMULAIRE EN CAS D'ÉCHEC
             clearInterval(textInterval);
             form.style.display = 'block';
