@@ -317,7 +317,7 @@ if (form) {
                 const pdfUrl = isTimeout ? "#" : aiResponse;
                 
                 // ⚠️ REMPLACEZ L'URL CI-DESSOUS PAR VOTRE VRAI LIEN CALENDLY COMPLET ⚠️
-                const calendlyUrl = "https://calendly.com/e-metalabs/"; // <-- METTEZ VOTRE LIEN ICI
+                const calendlyUrl = "https://calendly.com/e-metalabs/30min"
                 
                 // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS
                 if (wowLoader) {
