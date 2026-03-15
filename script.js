@@ -313,7 +313,7 @@ if (form) {
                 const pdfUrl = await response.text(); 
                 
                 // ⚠️ À MODIFIER ABSOLUMENT : METTEZ VOTRE VRAI LIEN CALENDLY CI-DESSOUS
-                const calendlyUrl = "https://calendly.com/VOTRE_LIEN_ICI";
+                const calendlyUrl = "https://calendly.com/e-metalabs/debriefing";
                 
                 // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS (THEME OR/LUXE)
                 if (wowLoader) {
