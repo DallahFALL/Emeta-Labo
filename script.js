@@ -319,33 +319,87 @@ if (form) {
                 // ⚠️ REMPLACEZ L'URL CI-DESSOUS PAR VOTRE VRAI LIEN CALENDLY COMPLET ⚠️
                 const calendlyUrl = "https://calendly.com/e-metalabs/30min"
                 
+                // ==========================================
+                // DICTIONNAIRE MULTILINGUE DE L'ÉCRAN FINAL
+                // ==========================================
+                const uiTexts = {
+                    fr: {
+                        successTitle: "Audit Généré & Sécurisé",
+                        successDesc: "Le sceau cryptographique a été appliqué. L'analyse est terminée.",
+                        newAnalysis: "Nouvelle analyse",
+                        popupSubtitle: "Les algorithmes e-META LABS ont finalisé le traitement de vos données.",
+                        timeoutWarning: "⏳ <strong>Analyse Complexe Terminée.</strong><br>Votre matrice stratégique est en cours d'ancrage. Le rapport PDF certifié va arriver <strong>directement dans votre boîte email</strong> d'ici 1 à 2 minutes.",
+                        downloadBtn: "📄 TÉLÉCHARGER L'AUDIT (PDF)",
+                        nextStep: "NEXT STEP",
+                        debriefingTitle: "Débriefing Exécutif",
+                        debriefingDesc: "L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner e-META LABS.",
+                        calendlyBtn: "📅 RÉSERVER MON DÉBRIEFING (45 MIN)"
+                    },
+                    en: {
+                        successTitle: "Audit Generated & Secured",
+                        successDesc: "The cryptographic seal has been applied. The analysis is complete.",
+                        newAnalysis: "New Analysis",
+                        popupSubtitle: "e-META LABS algorithms have finalized your data processing.",
+                        timeoutWarning: "⏳ <strong>Complex Analysis Completed.</strong><br>Your strategic matrix is being anchored. The certified PDF report will arrive <strong>directly in your inbox</strong> in 1 to 2 minutes.",
+                        downloadBtn: "📄 DOWNLOAD AUDIT (PDF)",
+                        nextStep: "NEXT STEP",
+                        debriefingTitle: "Executive Debriefing",
+                        debriefingDesc: "AI has laid the analytical foundations. Move to execution with an e-META LABS Senior Partner.",
+                        calendlyBtn: "📅 BOOK MY DEBRIEFING (45 MIN)"
+                    },
+                    es: {
+                        successTitle: "Auditoría Generada y Asegurada",
+                        successDesc: "El sello criptográfico ha sido aplicado. El análisis ha finalizado.",
+                        newAnalysis: "Nuevo Análisis",
+                        popupSubtitle: "Los algoritmos de e-META LABS han finalizado el procesamiento de sus datos.",
+                        timeoutWarning: "⏳ <strong>Análisis Complejo Completado.</strong><br>Su matriz estratégica está siendo anclada. El informe PDF certificado llegará <strong>directamente a su correo electrónico</strong> en 1 o 2 minutos.",
+                        downloadBtn: "📄 DESCARGAR AUDITORÍA (PDF)",
+                        nextStep: "NEXT STEP",
+                        debriefingTitle: "Debriefing Ejecutivo",
+                        debriefingDesc: "La IA ha sentado las bases analíticas. Pase a la ejecución con un Senior Partner de e-META LABS.",
+                        calendlyBtn: "📅 RESERVAR MI DEBRIEFING (45 MIN)"
+                    },
+                    ar: {
+                        successTitle: "تم إنشاء التدقيق وتأمينه",
+                        successDesc: "تم تطبيق الختم المشفر. اكتمل التحليل.",
+                        newAnalysis: "تحليل جديد",
+                        popupSubtitle: "لقد أنهت خوارزميات e-META LABS معالجة بياناتك.",
+                        timeoutWarning: "⏳ <strong>اكتمل التحليل المعقد.</strong><br>يتم الآن تثبيت مصفوفتك الاستراتيجية. سيصل تقرير PDF المعتمد <strong>مباشرة إلى بريدك الإلكتروني</strong> في غضون دقيقة إلى دقيقتين.",
+                        downloadBtn: "📄 تحميل التدقيق (PDF)",
+                        nextStep: "الخطوة التالية",
+                        debriefingTitle: "استخلاص المعلومات التنفيذية",
+                        debriefingDesc: "لقد وضع الذكاء الاصطناعي الأسس التحليلية. انتقل إلى التنفيذ مع شريك رئيسي من e-META LABS.",
+                        calendlyBtn: "📅 حجز جلستي (45 دقيقة)"
+                    }
+                };
+
+                // Sélection de la bonne langue (fr par défaut si introuvable)
+                const t = uiTexts[currentLang] || uiTexts.fr;
+
                 // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS
                 if (wowLoader) {
                     wowLoader.innerHTML = `
                         <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">✅</div>
-                        <h3 style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;">Audit Généré & Sécurisé</h3>
-                        <p style="font-size: 16px; color: #8892b0; margin-bottom: 25px;">Le sceau cryptographique a été appliqué. L'analyse est terminée.</p>
-                        <button onclick="location.reload()" class="btn-outline" style="padding: 10px 20px;">Nouvelle analyse</button>
+                        <h3 style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;">${t.successTitle}</h3>
+                        <p style="font-size: 16px; color: #8892b0; margin-bottom: 25px;">${t.successDesc}</p>
+                        <button onclick="location.reload()" class="btn-outline" style="padding: 10px 20px;">${t.newAnalysis}</button>
                     `;
                 }
 
                 // 2. GESTION DU BOUTON PDF (TÉLÉCHARGEMENT DIRECT OU ENVOI EMAIL)
                 let pdfHtmlContent = "";
                 if (isTimeout) {
-                    // Si l'IA a pris plus de 40 secondes
                     pdfHtmlContent = `
                         <div style="background: rgba(212, 175, 55, 0.05); border: 1px dashed #d4af37; padding: 15px; border-radius: 4px; margin-bottom: 30px;">
                             <p style="color: #d4af37; font-size: 0.95rem; margin: 0;">
-                                ⏳ <strong>Analyse Complexe Terminée.</strong><br>
-                                Votre matrice stratégique est en cours d'ancrage. Le rapport PDF certifié va arriver <strong>directement dans votre boîte email</strong> d'ici 1 à 2 minutes.
+                                ${t.timeoutWarning}
                             </p>
                         </div>
                     `;
                 } else {
-                    // Si l'IA a répondu vite
                     pdfHtmlContent = `
                         <a href="${pdfUrl}" target="_blank" style="display: block; width: 100%; background: #d4af37; color: #0a192f; font-weight: bold; text-align: center; text-decoration: none; margin-bottom: 30px; padding: 15px; font-size: 1.1rem; border-radius: 4px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); box-sizing: border-box;">
-                            📄 TÉLÉCHARGER L'AUDIT (PDF)
+                            ${t.downloadBtn}
                         </a>
                     `;
                 }
@@ -356,26 +410,26 @@ if (form) {
                     resultBody.innerHTML = `
                         <div style="text-align: center; margin-top: 10px;">
                             <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">
-                                Les algorithmes e-META LABS ont finalisé le traitement de vos données.
+                                ${t.popupSubtitle}
                             </p>
 
                             ${pdfHtmlContent}
 
                             <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 30px 0 25px 0; position: relative;">
                                 <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a192f; padding: 0 15px; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">
-                                    NEXT STEP
+                                    ${t.nextStep}
                                 </span>
                             </div>
 
                             <h4 style="color: #e6f1ff; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem;">
-                                Débriefing Exécutif
+                                ${t.debriefingTitle}
                             </h4>
                             <p style="font-size: 0.85rem; color: #8892b0; margin-bottom: 20px;">
-                                L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner e-META LABS.
+                                ${t.debriefingDesc}
                             </p>
 
                             <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0 15px rgba(37, 211, 102, 0.15); box-sizing: border-box; text-align: center;">
-                                📅 RÉSERVER MON DÉBRIEFING (45 MIN)
+                                ${t.calendlyBtn}
                             </a>
                         </div>
                     `;
@@ -385,7 +439,8 @@ if (form) {
                     setTimeout(() => { resModal.style.display = 'flex'; }, 1000);
                 }
                 
-                submitBtn.innerText = "Analyse Terminée";
+                // Remise à zéro du texte du bouton selon la langue
+                submitBtn.innerText = t.successTitle;
             } else {
                 throw new Error('Erreur serveur');
             }
