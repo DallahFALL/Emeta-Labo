@@ -184,7 +184,7 @@ if (form) {
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         
-        // ==========================================
+// ==========================================
         // DÉBUT DE L'EFFET WOW (UX/UI DYNAMIQUE)
         // ==========================================
         
@@ -201,8 +201,20 @@ if (form) {
 
         // Détection de la langue pour l'animation
         const currentLang = document.documentElement.lang || 'fr';
+
+        // 3. TRADUCTION DYNAMIQUE DU TITRE DU LOADER
+        const loaderTitle = document.getElementById('loader-title');
+        if (loaderTitle) {
+            const titles = {
+                fr: "MOTEUR e-META LABS ACTIVÉ",
+                en: "e-META LABS ENGINE ACTIVATED",
+                es: "MOTOR e-META LABS ACTIVADO",
+                ar: "تم تنشيط محرك e-META LABS"
+            };
+            loaderTitle.innerText = titles[currentLang] || titles.fr;
+        }
         
-        // Textes d'attente psychologiques traduits
+        // Textes d'attente psychologiques traduits (défilement)
         const allLoadingSteps = {
             fr: [
                 "Analyse sémantique du contexte...",
