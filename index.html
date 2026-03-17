@@ -159,9 +159,14 @@
                             <input type="radio" name="sector" value="other" id="sector-other">
                             <span class="card-content">
                                 <span style="font-size: 24px; margin-bottom: 10px; display: block;">💡</span>
-                                <span id="autre-text">Autre / Sur-mesure</span>
+                                <span id="autre-text" data-i18n="sec_other">Autre / Sur-mesure</span>
                             </span>
                         </label>
+                    </div>
+
+                    <div id="custom-sector-container" style="display: none; margin-top: 20px; animation: fadeIn 0.5s;">
+                        <label id="custom-sector-label" data-i18n="lbl_custom_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block; text-transform: uppercase;">Précisez votre industrie :</label>
+                        <input type="text" id="custom-sector-input" data-i18n="ph_custom_sector" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
                     </div>
 
                     <div id="custom-sector-container" style="display: none; margin-top: 20px; animation: fadeIn 0.5s;">
