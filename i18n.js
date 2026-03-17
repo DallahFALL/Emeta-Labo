@@ -37,7 +37,10 @@ const translations = {
         sec_consulting: "Conseil & Services B2B",
         sec_saas: "SaaS & Éditeurs Logiciels",
         sec_telecom: "Télécoms & Infrastructures",
-    
+        sec_other: "Autre / Sur-mesure",
+        lbl_custom_sector: "Précisez votre industrie :",
+        ph_custom_sector: "Ex: Sport Professionnel, Aérospatial...",
+        
         lbl_geo: "Zone d'Intervention",
         opt_geo_def: "Sélectionner une zone...",
         grp_africa: "Afrique",
@@ -182,6 +185,9 @@ const translations = {
         sec_consulting: "Consulting & B2B Services",
         sec_saas: "SaaS & Software Providers",
         sec_telecom: "Telecom & Infrastructure",
+        sec_other: "Other / Custom",
+        lbl_custom_sector: "Specify your industry:",
+        ph_custom_sector: "Ex: Professional Sports, Aerospace...",
         
         lbl_geo: "Area of Operation",
         opt_geo_def: "Select an area...",
@@ -327,6 +333,9 @@ const translations = {
         sec_consulting: "Consultoría y Servicios B2B",
         sec_saas: "SaaS y Proveedores de Software",
         sec_telecom: "Telecomunicaciones e Infraestructura",
+        sec_other: "Otro / A medida",
+        lbl_custom_sector: "Especifique su industria:",
+        ph_custom_sector: "Ej: Deporte Profesional, Aeroespacial...",
         
         lbl_geo: "Zona de Intervención",
         opt_geo_def: "Seleccione una zona...",
@@ -472,6 +481,9 @@ const translations = {
         sec_consulting: "الاستشارات وخدمات الشركات",
         sec_saas: "البرمجيات كخدمة وناشرو البرامج",
         sec_telecom: "الاتصالات والبنية التحتية",
+        sec_other: "أخرى / مخصص",
+        lbl_custom_sector: "حدد مجال عملك :",
+        ph_custom_sector: "مثال: الرياضة الاحترافية، الفضاء...",
         
         lbl_geo: "منطقة التدخل",
         opt_geo_def: "اختر منطقة التدخل...",
