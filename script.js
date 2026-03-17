@@ -171,21 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    
-        const currentTr = tr[docLang] || tr.fr;
-        autreText.innerText = currentTr.btn;
-        customLabel.innerText = currentTr.label;
-        customInputTr.placeholder = currentTr.ph;
-        
-        // Ajustement visuel RTL pour l'arabe
-        if(docLang === 'ar') {
-            customInputTr.style.textAlign = 'right';
-            customInputTr.dir = 'rtl';
-        }
-    }
-
-    // ==========================================
-    // 4. MAGIE DU BOUTON "SUR-MESURE" (Affichage)
+    // 3. MAGIE DU BOUTON "SUR-MESURE" (Affichage)
     // ==========================================
     const sectorRadios = document.querySelectorAll('input[name="sector"]');
     const customSectorContainer = document.getElementById('custom-sector-container');
@@ -197,6 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.target.value === 'other') {
                     customSectorContainer.style.display = 'block';
                     customSectorInput.focus();
+                    
+                    // Ajustement RTL si la langue en cours est Arabe
+                    const docLang = document.documentElement.lang || 'fr';
+                    if (docLang === 'ar') {
+                        customSectorInput.style.textAlign = 'right';
+                        customSectorInput.dir = 'rtl';
+                    } else {
+                        customSectorInput.style.textAlign = 'left';
+                        customSectorInput.dir = 'ltr';
+                    }
                 } else {
                     customSectorContainer.style.display = 'none';
                     customSectorInput.value = '';
