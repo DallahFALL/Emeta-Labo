@@ -1,5 +1,5 @@
 /* * PROJET : e-META LABS
- * FICHIER : script.js (Engine Make & Validations + Wow Effect Multilingue + UX Premium)
+ * FICHIER : script.js (Engine Make & Validations + Wow Effect Multilingue + UX Premium + Smart Sector)
  */
 
 const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f"; 
@@ -77,10 +77,22 @@ function validateStep1() {
 function validateStep2() {
     const sector = document.querySelector('input[name="sector"]:checked');
     const geo = document.getElementById('geo-zone');
+    
     if (!sector) {
         alert("Veuillez sélectionner un Secteur Stratégique.");
         return false;
     }
+    
+    // Vérification du champ Sur-Mesure
+    if (sector.value === 'other') {
+        const customInput = document.getElementById('custom-sector-input');
+        if (!customInput || !customInput.value.trim()) {
+            alert("Veuillez préciser votre industrie sur-mesure dans le champ apparu.");
+            if(customInput) customInput.focus();
+            return false;
+        }
+    }
+
     if (geo.value === "") {
         geo.setCustomValidity("Veuillez sélectionner une zone.");
         geo.reportValidity();
@@ -158,6 +170,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === guideModal) guideModal.style.display = 'none';
         if (e.target === resultModal) resultModal.style.display = 'none';
     });
+
+    // 5. MAGIE DU BOUTON "SUR-MESURE" (Smart Sector)
+    const sectorRadios = document.querySelectorAll('input[name="sector"]');
+    const customSectorContainer = document.getElementById('custom-sector-container');
+    const customSectorInput = document.getElementById('custom-sector-input');
+
+    if (sectorRadios.length > 0 && customSectorContainer) {
+        sectorRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'other') {
+                    customSectorContainer.style.display = 'block';
+                    customSectorInput.focus();
+                } else {
+                    customSectorContainer.style.display = 'none';
+                    customSectorInput.value = '';
+                }
+            });
+        });
+    }
 });
 
 const form = document.getElementById('diagnosticForm');
@@ -184,7 +215,7 @@ if (form) {
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         
-// ==========================================
+        // ==========================================
         // DÉBUT DE L'EFFET WOW (UX/UI DYNAMIQUE)
         // ==========================================
         
@@ -296,13 +327,20 @@ if (form) {
             }
         }
 
+        // Récupération intelligente du secteur (Grille OU Champ Sur-Mesure)
+        let finalSector = document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié";
+        if (finalSector === 'other') {
+            const customInput = document.getElementById('custom-sector-input');
+            finalSector = customInput ? customInput.value.trim() : "Sur-mesure non précisé";
+        }
+
         const formData = {
             timestamp: new Date().toISOString(),
             company: document.getElementById('company').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
             whatsapp_optin: true,
-            sector: document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié",
+            sector: finalSector, // Variable intelligente injectée ici
             geoZone: document.getElementById('geo-zone').value,
             expertises: Array.from(document.querySelectorAll('input[name="expertise"]:checked')).map(cb => cb.value),
             context: document.getElementById('context').value,
@@ -317,7 +355,7 @@ if (form) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
-  .then(async response => {
+        .then(async response => {
             clearInterval(textInterval); // Stopper le défilement des phrases
 
             if (response.ok) {
@@ -329,7 +367,7 @@ if (form) {
                 const pdfUrl = isTimeout ? "#" : aiResponse;
                 
                 // ⚠️ REMPLACEZ L'URL CI-DESSOUS PAR VOTRE VRAI LIEN CALENDLY COMPLET ⚠️
-                const calendlyUrl = "https://calendly.com/e-metalabs/30min"
+                const calendlyUrl = "https://calendly.com/e-metalabs/30min";
                 
                 // ==========================================
                 // DICTIONNAIRE MULTILINGUE DE L'ÉCRAN FINAL
@@ -458,7 +496,6 @@ if (form) {
             }
         })
         .catch(error => {
-// LE RESTE DE VOTRE CODE (CATCH) RESTE LE MÊME 
             // RESTAURATION DU FORMULAIRE EN CAS D'ÉCHEC
             clearInterval(textInterval);
             form.style.display = 'block';
