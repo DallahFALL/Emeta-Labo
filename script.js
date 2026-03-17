@@ -83,7 +83,7 @@ function validateStep2() {
         return false;
     }
     
-    // Vérification du champ Sur-Mesure
+    // Vérification de sécurité pour le champ Sur-Mesure
     if (sector.value === 'other') {
         const customInput = document.getElementById('custom-sector-input');
         if (!customInput || !customInput.value.trim()) {
@@ -99,17 +99,6 @@ function validateStep2() {
         return false;
     }
     return true;
-}
-
-function resetForm() {
-    const lang = document.documentElement.lang || 'fr';
-    const msg = (lang === 'fr') ? "Voulez-vous vraiment recommencer ?" : "Do you really want to restart?";
-    if(confirm(msg)) {
-        document.getElementById('diagnosticForm').reset();
-        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-        document.getElementById('step-1').classList.add('active');
-        document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
-    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -130,48 +119,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Gestion de la Politique de Confidentialité (Modal)
+    // 2. Gestion des Modaux (Confidentialité, Guide, Résultat)
     const privacyModal = document.getElementById('privacyOverlay');
     const openPrivacyBtn = document.getElementById('openPrivacy');
     if (openPrivacyBtn && privacyModal) {
-        openPrivacyBtn.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            privacyModal.style.display = 'flex';
-        });
+        openPrivacyBtn.addEventListener('click', (e) => { e.preventDefault(); privacyModal.style.display = 'flex'; });
         document.querySelectorAll('.close-modal, .close-modal-btn').forEach(btn => {
             btn.addEventListener('click', () => { privacyModal.style.display = 'none'; });
         });
     }
 
-    // 3. Gestion du Guide des Expertises (Modal)
     const guideModal = document.getElementById('guideOverlay');
     const openGuideBtn = document.getElementById('openGuide');
     if (openGuideBtn && guideModal) {
-        openGuideBtn.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            guideModal.style.display = 'flex';
-        });
+        openGuideBtn.addEventListener('click', (e) => { e.preventDefault(); guideModal.style.display = 'flex'; });
         document.querySelectorAll('.close-guide, .close-guide-btn').forEach(btn => {
             btn.addEventListener('click', () => { guideModal.style.display = 'none'; });
         });
     }
 
-    // 4. Modal Résultat IA
     const resultModal = document.getElementById('resultModal');
     if (resultModal) {
-        document.querySelector('.close-result').addEventListener('click', () => {
-            resultModal.style.display = 'none';
-        });
+        document.querySelector('.close-result').addEventListener('click', () => { resultModal.style.display = 'none'; });
     }
     
-    // Fermeture des modaux au clic extérieur
     window.addEventListener('click', (e) => {
         if (e.target === privacyModal) privacyModal.style.display = 'none';
         if (e.target === guideModal) guideModal.style.display = 'none';
         if (e.target === resultModal) resultModal.style.display = 'none';
     });
 
-    // 5. MAGIE DU BOUTON "SUR-MESURE" (Smart Sector)
+    // ==========================================
+    // 3. TRADUCTION DYNAMIQUE DU BOUTON "SUR-MESURE"
+    // ==========================================
+    const autreText = document.getElementById('autre-text');
+    const customLabel = document.getElementById('custom-sector-label');
+    const customInputTr = document.getElementById('custom-sector-input');
+    const docLang = document.documentElement.lang || 'fr';
+
+    if (autreText && customLabel && customInputTr) {
+        const tr = {
+            fr: { btn: "Autre / Sur-mesure", label: "Précisez votre industrie :", ph: "Ex: Sport Professionnel, Aérospatial..." },
+            en: { btn: "Other / Custom", label: "Specify your industry:", ph: "Ex: Professional Sports, Aerospace..." },
+            es: { btn: "Otro / A medida", label: "Especifique su industria:", ph: "Ej: Deporte Profesional, Aeroespacial..." },
+            ar: { btn: "أخرى / مخصص", label: ":حدد مجال عملك", ph: "مثال: الرياضة الاحترافية، الفضاء..." }
+        };
+        const currentTr = tr[docLang] || tr.fr;
+        autreText.innerText = currentTr.btn;
+        customLabel.innerText = currentTr.label;
+        customInputTr.placeholder = currentTr.ph;
+        
+        // Ajustement visuel RTL pour l'arabe
+        if(docLang === 'ar') {
+            customInputTr.style.textAlign = 'right';
+            customInputTr.dir = 'rtl';
+        }
+    }
+
+    // ==========================================
+    // 4. MAGIE DU BOUTON "SUR-MESURE" (Affichage)
+    // ==========================================
     const sectorRadios = document.querySelectorAll('input[name="sector"]');
     const customSectorContainer = document.getElementById('custom-sector-container');
     const customSectorInput = document.getElementById('custom-sector-input');
@@ -219,21 +226,18 @@ if (form) {
         // DÉBUT DE L'EFFET WOW (UX/UI DYNAMIQUE)
         // ==========================================
         
-        // 1. Cacher le formulaire pour faire place au loader
         form.style.display = 'none';
         
-        // 2. Afficher l'écran de chargement
         const wowLoader = document.getElementById('emeta-loader');
         const statusText = document.getElementById('emeta-status');
-        const oldLoadingOverlay = document.getElementById('loadingOverlay'); // Fallback
+        const oldLoadingOverlay = document.getElementById('loadingOverlay'); 
         
         if (wowLoader) wowLoader.style.display = 'block';
         else if (oldLoadingOverlay) oldLoadingOverlay.style.display = 'flex';
 
-        // Détection de la langue pour l'animation
         const currentLang = document.documentElement.lang || 'fr';
 
-        // 3. TRADUCTION DYNAMIQUE DU TITRE DU LOADER
+        // TRADUCTION DU TITRE DU LOADER
         const loaderTitle = document.getElementById('loader-title');
         if (loaderTitle) {
             const titles = {
@@ -245,50 +249,32 @@ if (form) {
             loaderTitle.innerText = titles[currentLang] || titles.fr;
         }
         
-        // Textes d'attente psychologiques traduits (défilement)
         const allLoadingSteps = {
             fr: [
-                "Analyse sémantique du contexte...",
-                "Corrélation avec les données sectorielles...",
-                "Génération des matrices stratégiques Gemini...",
-                "Cryptographie SHA-256 en cours...",
-                "Ancrage sur la Blockchain (Woleet)...",
-                "Mise en page du rapport PDF confidentiel...",
-                "Finalisation sécurisée..."
+                "Analyse sémantique du contexte...", "Corrélation avec les données sectorielles...",
+                "Génération des matrices stratégiques Gemini...", "Cryptographie SHA-256 en cours...",
+                "Ancrage sur la Blockchain (Woleet)...", "Mise en page du rapport PDF confidentiel...", "Finalisation sécurisée..."
             ],
             en: [
-                "Semantic context analysis...",
-                "Correlation with sectoral data...",
-                "Generating Gemini strategic matrices...",
-                "SHA-256 cryptography in progress...",
-                "Anchoring on the Blockchain (Woleet)...",
-                "Formatting confidential PDF report...",
-                "Secure finalization..."
+                "Semantic context analysis...", "Correlation with sectoral data...",
+                "Generating Gemini strategic matrices...", "SHA-256 cryptography in progress...",
+                "Anchoring on the Blockchain (Woleet)...", "Formatting confidential PDF report...", "Secure finalization..."
             ],
             es: [
-                "Análisis semántico del contexto...",
-                "Correlación con datos sectoriales...",
-                "Generando matrices estratégicas Gemini...",
-                "Criptografía SHA-256 en curso...",
-                "Anclaje en la Blockchain (Woleet)...",
-                "Formateando el informe PDF confidencial...",
-                "Finalización segura..."
+                "Análisis semántico del contexto...", "Correlación con datos sectoriales...",
+                "Generando matrices estratégicas Gemini...", "Criptografía SHA-256 en curso...",
+                "Anclaje en la Blockchain (Woleet)...", "Formateando el informe PDF confidencial...", "Finalización segura..."
             ],
             ar: [
-                "التحليل الدلالي للسياق...",
-                "الارتباط بالبيانات القطاعية...",
-                "إنشاء المصفوفات الاستراتيجية للذكاء الاصطناعي...",
-                "تشفير SHA-256 قيد التقدم...",
-                "التوثيق على البلوكشين (Woleet)...",
-                "تنسيق تقرير PDF السري...",
-                "الانتهاء الآمن..."
+                "التحليل الدلالي للسياق...", "الارتباط بالبيانات القطاعية...",
+                "إنشاء المصفوفات الاستراتيجية للذكاء الاصطناعي...", "تشفير SHA-256 قيد التقدم...",
+                "التوثيق على البلوكشين (Woleet)...", "تنسيق تقرير PDF السري...", "الانتهاء الآمن..."
             ]
         };
         
         const loadingSteps = allLoadingSteps[currentLang] || allLoadingSteps['fr'];
         let stepIndex = 0;
         
-        // Animation du texte
         const textInterval = setInterval(() => {
             if (stepIndex < loadingSteps.length) {
                 if (statusText) statusText.innerText = loadingSteps[stepIndex];
@@ -311,8 +297,6 @@ if (form) {
             if (fileInput.files[0].size > 2.5 * 1024 * 1024) {
                 alert("Pour garantir une analyse IA ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.");
                 submitBtn.disabled = false;
-                
-                // RESTAURATION SI ERREUR DE TAILLE
                 form.style.display = 'block'; 
                 if(wowLoader) wowLoader.style.display = 'none';
                 if(oldLoadingOverlay) oldLoadingOverlay.style.display = 'none';
@@ -327,7 +311,7 @@ if (form) {
             }
         }
 
-        // Récupération intelligente du secteur (Grille OU Champ Sur-Mesure)
+        // Récupération intelligente du secteur
         let finalSector = document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié";
         if (finalSector === 'other') {
             const customInput = document.getElementById('custom-sector-input');
@@ -340,7 +324,7 @@ if (form) {
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
             whatsapp_optin: true,
-            sector: finalSector, // Variable intelligente injectée ici
+            sector: finalSector, 
             geoZone: document.getElementById('geo-zone').value,
             expertises: Array.from(document.querySelectorAll('input[name="expertise"]:checked')).map(cb => cb.value),
             context: document.getElementById('context').value,
@@ -349,84 +333,59 @@ if (form) {
             attachedFileBase64: fileData 
         };
 
-        // Envoi à Make.com
         fetch(WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
         .then(async response => {
-            clearInterval(textInterval); // Stopper le défilement des phrases
+            clearInterval(textInterval); 
 
             if (response.ok) {
-                // Récupération de la réponse envoyée par Make.com
                 const aiResponse = await response.text(); 
-                
-                // On vérifie si Make.com a fait un TimeOut (réponse "Accepted")
                 const isTimeout = aiResponse.trim() === "Accepted";
                 const pdfUrl = isTimeout ? "#" : aiResponse;
                 
-                // ⚠️ REMPLACEZ L'URL CI-DESSOUS PAR VOTRE VRAI LIEN CALENDLY COMPLET ⚠️
+                // ⚠️ LIEN CALENDLY (VOTRE AGENDA)
                 const calendlyUrl = "https://calendly.com/e-metalabs/30min";
                 
-                // ==========================================
-                // DICTIONNAIRE MULTILINGUE DE L'ÉCRAN FINAL
-                // ==========================================
                 const uiTexts = {
                     fr: {
-                        successTitle: "Audit Généré & Sécurisé",
-                        successDesc: "Le sceau cryptographique a été appliqué. L'analyse est terminée.",
-                        newAnalysis: "Nouvelle analyse",
-                        popupSubtitle: "Les algorithmes e-META LABS ont finalisé le traitement de vos données.",
+                        successTitle: "Audit Généré & Sécurisé", successDesc: "Le sceau cryptographique a été appliqué. L'analyse est terminée.",
+                        newAnalysis: "Nouvelle analyse", popupSubtitle: "Les algorithmes e-META LABS ont finalisé le traitement de vos données.",
                         timeoutWarning: "⏳ <strong>Analyse Complexe Terminée.</strong><br>Votre matrice stratégique est en cours d'ancrage. Le rapport PDF certifié va arriver <strong>directement dans votre boîte email</strong> d'ici 1 à 2 minutes.",
-                        downloadBtn: "📄 TÉLÉCHARGER L'AUDIT (PDF)",
-                        nextStep: "NEXT STEP",
-                        debriefingTitle: "Débriefing Exécutif",
-                        debriefingDesc: "L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner e-META LABS.",
+                        downloadBtn: "📄 TÉLÉCHARGER L'AUDIT (PDF)", nextStep: "NEXT STEP",
+                        debriefingTitle: "Débriefing Exécutif", debriefingDesc: "L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner e-META LABS.",
                         calendlyBtn: "📅 RÉSERVER MON DÉBRIEFING (45 MIN)"
                     },
                     en: {
-                        successTitle: "Audit Generated & Secured",
-                        successDesc: "The cryptographic seal has been applied. The analysis is complete.",
-                        newAnalysis: "New Analysis",
-                        popupSubtitle: "e-META LABS algorithms have finalized your data processing.",
+                        successTitle: "Audit Generated & Secured", successDesc: "The cryptographic seal has been applied. The analysis is complete.",
+                        newAnalysis: "New Analysis", popupSubtitle: "e-META LABS algorithms have finalized your data processing.",
                         timeoutWarning: "⏳ <strong>Complex Analysis Completed.</strong><br>Your strategic matrix is being anchored. The certified PDF report will arrive <strong>directly in your inbox</strong> in 1 to 2 minutes.",
-                        downloadBtn: "📄 DOWNLOAD AUDIT (PDF)",
-                        nextStep: "NEXT STEP",
-                        debriefingTitle: "Executive Debriefing",
-                        debriefingDesc: "AI has laid the analytical foundations. Move to execution with an e-META LABS Senior Partner.",
+                        downloadBtn: "📄 DOWNLOAD AUDIT (PDF)", nextStep: "NEXT STEP",
+                        debriefingTitle: "Executive Debriefing", debriefingDesc: "AI has laid the analytical foundations. Move to execution with an e-META LABS Senior Partner.",
                         calendlyBtn: "📅 BOOK MY DEBRIEFING (45 MIN)"
                     },
                     es: {
-                        successTitle: "Auditoría Generada y Asegurada",
-                        successDesc: "El sello criptográfico ha sido aplicado. El análisis ha finalizado.",
-                        newAnalysis: "Nuevo Análisis",
-                        popupSubtitle: "Los algoritmos de e-META LABS han finalizado el procesamiento de sus datos.",
+                        successTitle: "Auditoría Generada y Asegurada", successDesc: "El sello criptográfico ha sido aplicado. El análisis ha finalizado.",
+                        newAnalysis: "Nuevo Análisis", popupSubtitle: "Los algoritmos de e-META LABS han finalizado el procesamiento de sus datos.",
                         timeoutWarning: "⏳ <strong>Análisis Complejo Completado.</strong><br>Su matriz estratégica está siendo anclada. El informe PDF certificado llegará <strong>directamente a su correo electrónico</strong> en 1 o 2 minutos.",
-                        downloadBtn: "📄 DESCARGAR AUDITORÍA (PDF)",
-                        nextStep: "NEXT STEP",
-                        debriefingTitle: "Debriefing Ejecutivo",
-                        debriefingDesc: "La IA ha sentado las bases analíticas. Pase a la ejecución con un Senior Partner de e-META LABS.",
+                        downloadBtn: "📄 DESCARGAR AUDITORÍA (PDF)", nextStep: "NEXT STEP",
+                        debriefingTitle: "Debriefing Ejecutivo", debriefingDesc: "La IA ha sentado las bases analíticas. Pase a la ejecución con un Senior Partner de e-META LABS.",
                         calendlyBtn: "📅 RESERVAR MI DEBRIEFING (45 MIN)"
                     },
                     ar: {
-                        successTitle: "تم إنشاء التدقيق وتأمينه",
-                        successDesc: "تم تطبيق الختم المشفر. اكتمل التحليل.",
-                        newAnalysis: "تحليل جديد",
-                        popupSubtitle: "لقد أنهت خوارزميات e-META LABS معالجة بياناتك.",
+                        successTitle: "تم إنشاء التدقيق وتأمينه", successDesc: "تم تطبيق الختم المشفر. اكتمل التحليل.",
+                        newAnalysis: "تحليل جديد", popupSubtitle: "لقد أنهت خوارزميات e-META LABS معالجة بياناتك.",
                         timeoutWarning: "⏳ <strong>اكتمل التحليل المعقد.</strong><br>يتم الآن تثبيت مصفوفتك الاستراتيجية. سيصل تقرير PDF المعتمد <strong>مباشرة إلى بريدك الإلكتروني</strong> في غضون دقيقة إلى دقيقتين.",
-                        downloadBtn: "📄 تحميل التدقيق (PDF)",
-                        nextStep: "الخطوة التالية",
-                        debriefingTitle: "استخلاص المعلومات التنفيذية",
-                        debriefingDesc: "لقد وضع الذكاء الاصطناعي الأسس التحليلية. انتقل إلى التنفيذ مع شريك رئيسي من e-META LABS.",
+                        downloadBtn: "📄 تحميل التدقيق (PDF)", nextStep: "الخطوة التالية",
+                        debriefingTitle: "استخلاص المعلومات التنفيذية", debriefingDesc: "لقد وضع الذكاء الاصطناعي الأسس التحليلية. انتقل إلى التنفيذ مع شريك رئيسي من e-META LABS.",
                         calendlyBtn: "📅 حجز جلستي (45 دقيقة)"
                     }
                 };
 
-                // Sélection de la bonne langue (fr par défaut si introuvable)
                 const t = uiTexts[currentLang] || uiTexts.fr;
 
-                // 1. TRANSFORMATION DU LOADER EN ÉCRAN DE SUCCÈS
                 if (wowLoader) {
                     wowLoader.innerHTML = `
                         <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">✅</div>
@@ -436,14 +395,11 @@ if (form) {
                     `;
                 }
 
-                // 2. GESTION DU BOUTON PDF (TÉLÉCHARGEMENT DIRECT OU ENVOI EMAIL)
                 let pdfHtmlContent = "";
                 if (isTimeout) {
                     pdfHtmlContent = `
                         <div style="background: rgba(212, 175, 55, 0.05); border: 1px dashed #d4af37; padding: 15px; border-radius: 4px; margin-bottom: 30px;">
-                            <p style="color: #d4af37; font-size: 0.95rem; margin: 0;">
-                                ${t.timeoutWarning}
-                            </p>
+                            <p style="color: #d4af37; font-size: 0.95rem; margin: 0;">${t.timeoutWarning}</p>
                         </div>
                     `;
                 } else {
@@ -454,30 +410,19 @@ if (form) {
                     `;
                 }
 
-                // 3. OUVERTURE DU POPUP PREMIUM
                 const resultBody = document.getElementById('resultBody');
                 if(resultBody) {
                     resultBody.innerHTML = `
                         <div style="text-align: center; margin-top: 10px;">
-                            <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">
-                                ${t.popupSubtitle}
-                            </p>
-
+                            <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">${t.popupSubtitle}</p>
                             ${pdfHtmlContent}
-
                             <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 30px 0 25px 0; position: relative;">
                                 <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a192f; padding: 0 15px; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">
                                     ${t.nextStep}
                                 </span>
                             </div>
-
-                            <h4 style="color: #e6f1ff; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem;">
-                                ${t.debriefingTitle}
-                            </h4>
-                            <p style="font-size: 0.85rem; color: #8892b0; margin-bottom: 20px;">
-                                ${t.debriefingDesc}
-                            </p>
-
+                            <h4 style="color: #e6f1ff; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem;">${t.debriefingTitle}</h4>
+                            <p style="font-size: 0.85rem; color: #8892b0; margin-bottom: 20px;">${t.debriefingDesc}</p>
                             <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0 15px rgba(37, 211, 102, 0.15); box-sizing: border-box; text-align: center;">
                                 ${t.calendlyBtn}
                             </a>
@@ -489,14 +434,12 @@ if (form) {
                     setTimeout(() => { resModal.style.display = 'flex'; }, 1000);
                 }
                 
-                // Remise à zéro du texte du bouton selon la langue
                 submitBtn.innerText = t.successTitle;
             } else {
                 throw new Error('Erreur serveur');
             }
         })
         .catch(error => {
-            // RESTAURATION DU FORMULAIRE EN CAS D'ÉCHEC
             clearInterval(textInterval);
             form.style.display = 'block';
             if(wowLoader) wowLoader.style.display = 'none';
