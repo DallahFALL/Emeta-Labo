@@ -87,29 +87,31 @@
     </div>
 
     <section class="hero-sublime">
-    <div class="container">
-        <p class="label-gold" data-i18n="hero_label">MASTER DIAGNOSTIC 2026</p>
-        
-        <h1 class="slogan-ia">
-            <span data-i18n="hero_slogan_1">Excellence Stratégique</span> <br>
-            <span class="precision-text" data-i18n="hero_slogan_2">& Haute Précision IA</span>
-        </h1>
-        
-        <div class="status-container">
-            <div class="gauge-glow">
-                <span class="count" id="live-counter">1,420</span>
+        <div class="container">
+            <p class="label-gold" data-i18n="hero_label">MASTER DIAGNOSTIC 2026</p>
+            
+            <h1 class="slogan-ia">
+                <span data-i18n="hero_slogan_1">Excellence Stratégique</span> <br>
+                <span class="precision-text" data-i18n="hero_slogan_2">& Haute Précision IA</span>
+            </h1>
+            
+            <div class="status-container">
+                <div class="gauge-glow">
+                    <span class="count" id="live-counter">1,420</span>
+                </div>
+                <p class="description" data-i18n="lbl_counter">
+                    Diagnostics Sécurisés & Ancrés
+                </p>
             </div>
-            <p class="description" data-i18n="lbl_counter">
-                Diagnostics Sécurisés & Ancrés
-            </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<main class="main-container">
-    <div class="glass-card">
-        <form id="diagnosticForm">
-            <div class="form-step active" id="step-1">
+    <main class="main-container">
+        <div class="glass-card">
+            
+            <form id="diagnosticForm">
+                
+                <div class="form-step active" id="step-1">
                     <h3 data-i18n="step1_title">01. Identification</h3>
                     <div class="input-group">
                         <label for="company" data-i18n="lbl_company">Société / Entité</label>
@@ -136,98 +138,88 @@
                         <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: none; text-shadow: 0 0 5px rgba(212,175,55,0.5);" data-i18n="btn_guide">📖 Guide des Expertises</a>
                     </div>
                     
-                  <div class="grid-options">
-    <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech_DeFi"> <span data-i18n="sec_fintech">FinTech & DeFi</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech_SmartCities"> <span data-i18n="sec_gov">GovTech & Smart Cities</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Health_BioTech"> <span data-i18n="sec_health">Santé & BioTech</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="GreenTech_Energy"> <span data-i18n="sec_green">GreenTech & Énergies</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech_FoodSec"> <span data-i18n="sec_agri">AgriTech & Food Security</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Logistics_SupplyChain"> <span data-i18n="sec_log">Logistique & Supply Chain</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Mining_OilGas"> <span data-i18n="sec_mine">Mines, Pétrole & Gaz</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="RealEstate_PropTech"> <span data-i18n="sec_btp">Immobilier & PropTech</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Ecommerce_Retail"> <span data-i18n="sec_retail">E-commerce & Retail</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Education_EdTech"> <span data-i18n="sec_edu">Éducation & EdTech</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Tourism_Hospitality"> <span data-i18n="sec_tour">Tourisme & Hôtellerie</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Creative_Media"> <span data-i18n="sec_media">Industries Créatives & Médias</span></label>
-    
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Consulting_B2B"> <span data-i18n="sec_consulting">Conseil & Services B2B</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="SaaS_Software"> <span data-i18n="sec_saas">SaaS & Éditeurs Logiciels</span></label>
-    <label class="checkbox-btn"><input type="radio" name="sector" value="Telecom_Infra"> <span data-i18n="sec_telecom">Télécoms & Infrastructures</span></label>
-    <label class="radio-card">
-        <input type="radio" name="sector" value="other" id="sector-other">
-        <span class="card-content">
-            <span style="font-size: 24px; margin-bottom: 10px; display: block;">💡</span>
-            <span>Autre / Sur-mesure</span>
-        </span>
-    </label>
-    </div>
-<div id="custom-sector-container" style="display: none; margin-top: 20px; animation: fadeIn 0.5s;">
-        <label style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block;">Précisez votre industrie :</label>
-        <input type="text" id="custom-sector-input" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
-    </div>
-<label class="section-label mt-2" data-i18n="lbl_geo">Zone d'Intervention</label>
-<div class="input-group">
-    <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
-        <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
-        <optgroup label="Afrique" data-i18n="grp_africa">
-            <option value="Senegal" data-i18n="geo_sn">Sénégal (Dakar Hub)</option>
-            <option value="CotedIvoire" data-i18n="geo_ci">Côte d'Ivoire (Abidjan Hub)</option>
-            <option value="Nigeria" data-i18n="geo_ng">Nigeria (Lagos Hub)</option>
-            <option value="Maroc" data-i18n="geo_ma">Maroc (Casablanca Hub)</option>
-            <option value="SouthAfrica" data-i18n="geo_za">Afrique du Sud (Johannesburg)</option>
-        </optgroup>
-        <optgroup label="Amérique du Nord" data-i18n="grp_na">
-            <option value="USA" data-i18n="geo_us">États-Unis (USA)</option>
-            <option value="Canada" data-i18n="geo_ca">Canada (Toronto / Montréal)</option>
-        </optgroup>
-        <optgroup label="Amérique Latine" data-i18n="grp_latam">
-            <option value="LatAm_Brazil" data-i18n="geo_br">Brésil (São Paulo)</option>
-            <option value="LatAm_General" data-i18n="geo_latam">Amérique Latine (Mexique, Colombie...)</option>
-        </optgroup>
-        <optgroup label="Asie-Pacifique (APAC)" data-i18n="grp_apac">
-            <option value="China" data-i18n="geo_cn">Chine (Shanghai / Beijing)</option>
-            <option value="Singapore" data-i18n="geo_sg">Singapour (Hub APAC)</option>
-            <option value="India" data-i18n="geo_in">Inde (Mumbai / Bangalore)</option>
-        </optgroup>
-        <optgroup label="Europe" data-i18n="grp_eu">
-            <option value="France" data-i18n="geo_fr">France (Paris Hub)</option>
-            <option value="UK" data-i18n="geo_uk">Royaume-Uni (Londres)</option>
-            <option value="EU_General" data-i18n="geo_eu">Union Européenne (Allemagne, Espagne...)</option>
-        </optgroup>
-        <optgroup label="Moyen-Orient (MENA)" data-i18n="grp_mena">
-            <option value="UAE" data-i18n="geo_ae">Émirats Arabes Unis (Dubai Hub)</option>
-            <option value="SaudiArabia" data-i18n="geo_sa">Arabie Saoudite (Riyadh)</option>
-        </optgroup>
-        <optgroup label="Global" data-i18n="grp_global">
-            <option value="Global" data-i18n="geo_global">International / Multi-Zones</option>
-        </optgroup>
-    </select>
-</div>
+                    <div class="grid-options">
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech_DeFi"> <span data-i18n="sec_fintech">FinTech & DeFi</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech_SmartCities"> <span data-i18n="sec_gov">GovTech & Smart Cities</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Health_BioTech"> <span data-i18n="sec_health">Santé & BioTech</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="GreenTech_Energy"> <span data-i18n="sec_green">GreenTech & Énergies</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech_FoodSec"> <span data-i18n="sec_agri">AgriTech & Food Security</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Logistics_SupplyChain"> <span data-i18n="sec_log">Logistique & Supply Chain</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Mining_OilGas"> <span data-i18n="sec_mine">Mines, Pétrole & Gaz</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="RealEstate_PropTech"> <span data-i18n="sec_btp">Immobilier & PropTech</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Ecommerce_Retail"> <span data-i18n="sec_retail">E-commerce & Retail</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Education_EdTech"> <span data-i18n="sec_edu">Éducation & EdTech</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Tourism_Hospitality"> <span data-i18n="sec_tour">Tourisme & Hôtellerie</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Creative_Media"> <span data-i18n="sec_media">Industries Créatives & Médias</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Consulting_B2B"> <span data-i18n="sec_consulting">Conseil & Services B2B</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="SaaS_Software"> <span data-i18n="sec_saas">SaaS & Éditeurs Logiciels</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Telecom_Infra"> <span data-i18n="sec_telecom">Télécoms & Infrastructures</span></label>
+                        
+                        <label class="radio-card">
+                            <input type="radio" name="sector" value="other" id="sector-other">
+                            <span class="card-content">
+                                <span style="font-size: 24px; margin-bottom: 10px; display: block;">💡</span>
+                                <span id="autre-text">Autre / Sur-mesure</span>
+                            </span>
+                        </label>
+                    </div>
 
-<label class="section-label mt-2" data-i18n="lbl_expertise">Expertise Requise</label>
-<div class="grid-options">
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="ESG_Climate"> <span data-i18n="exp_esg">Ingénierie ESG & Climat</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Web3_Blockchain"> <span data-i18n="exp_web3">Web3 & Blockchain (Woleet)</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Digital_Marketing"> <span data-i18n="exp_mkt">Marketing Digital & SEO</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Process_Optimization"> <span data-i18n="exp_proc">Optimisation des Processus</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="HR_Talent"> <span data-i18n="exp_hr">Gestion des Talents (RH)</span></label>
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Design_Thinking"> <span data-i18n="exp_design">Design Thinking & UX</span></label>
-    
-    <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GoToMarket_Growth"> <span data-i18n="exp_gtm">Go-to-Market & Growth Strategy</span></label>
-    <label class="radio-card">
-        <input type="radio" name="sector" value="other" id="sector-other">
-        <span class="card-content">
-            <span style="font-size: 24px; margin-bottom: 10px; display: block;">💡</span>
-            <span>Autre / Sur-mesure</span>
-        </span>
-    </label>
-</div>
                     <div id="custom-sector-container" style="display: none; margin-top: 20px; animation: fadeIn 0.5s;">
-        <label style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block;">Précisez votre industrie :</label>
-        <input type="text" id="custom-sector-input" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
-    </div>
+                        <label id="custom-sector-label" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block;">Précisez votre industrie :</label>
+                        <input type="text" id="custom-sector-input" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
+                    </div>
+
+                    <label class="section-label mt-2" data-i18n="lbl_geo">Zone d'Intervention</label>
+                    <div class="input-group">
+                        <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
+                            <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
+                            <optgroup label="Afrique" data-i18n="grp_africa">
+                                <option value="Senegal" data-i18n="geo_sn">Sénégal (Dakar Hub)</option>
+                                <option value="CotedIvoire" data-i18n="geo_ci">Côte d'Ivoire (Abidjan Hub)</option>
+                                <option value="Nigeria" data-i18n="geo_ng">Nigeria (Lagos Hub)</option>
+                                <option value="Maroc" data-i18n="geo_ma">Maroc (Casablanca Hub)</option>
+                                <option value="SouthAfrica" data-i18n="geo_za">Afrique du Sud (Johannesburg)</option>
+                            </optgroup>
+                            <optgroup label="Amérique du Nord" data-i18n="grp_na">
+                                <option value="USA" data-i18n="geo_us">États-Unis (USA)</option>
+                                <option value="Canada" data-i18n="geo_ca">Canada (Toronto / Montréal)</option>
+                            </optgroup>
+                            <optgroup label="Amérique Latine" data-i18n="grp_latam">
+                                <option value="LatAm_Brazil" data-i18n="geo_br">Brésil (São Paulo)</option>
+                                <option value="LatAm_General" data-i18n="geo_latam">Amérique Latine (Mexique, Colombie...)</option>
+                            </optgroup>
+                            <optgroup label="Asie-Pacifique (APAC)" data-i18n="grp_apac">
+                                <option value="China" data-i18n="geo_cn">Chine (Shanghai / Beijing)</option>
+                                <option value="Singapore" data-i18n="geo_sg">Singapour (Hub APAC)</option>
+                                <option value="India" data-i18n="geo_in">Inde (Mumbai / Bangalore)</option>
+                            </optgroup>
+                            <optgroup label="Europe" data-i18n="grp_eu">
+                                <option value="France" data-i18n="geo_fr">France (Paris Hub)</option>
+                                <option value="UK" data-i18n="geo_uk">Royaume-Uni (Londres)</option>
+                                <option value="EU_General" data-i18n="geo_eu">Union Européenne (Allemagne, Espagne...)</option>
+                            </optgroup>
+                            <optgroup label="Moyen-Orient (MENA)" data-i18n="grp_mena">
+                                <option value="UAE" data-i18n="geo_ae">Émirats Arabes Unis (Dubai Hub)</option>
+                                <option value="SaudiArabia" data-i18n="geo_sa">Arabie Saoudite (Riyadh)</option>
+                            </optgroup>
+                            <optgroup label="Global" data-i18n="grp_global">
+                                <option value="Global" data-i18n="geo_global">International / Multi-Zones</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <label class="section-label mt-2" data-i18n="lbl_expertise">Expertise Requise</label>
+                    <div class="grid-options">
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="ESG_Climate"> <span data-i18n="exp_esg">Ingénierie ESG & Climat</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Web3_Blockchain"> <span data-i18n="exp_web3">Web3 & Blockchain (Woleet)</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Digital_Marketing"> <span data-i18n="exp_mkt">Marketing Digital & SEO</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Process_Optimization"> <span data-i18n="exp_proc">Optimisation des Processus</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="HR_Talent"> <span data-i18n="exp_hr">Gestion des Talents (RH)</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Design_Thinking"> <span data-i18n="exp_design">Design Thinking & UX</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GoToMarket_Growth"> <span data-i18n="exp_gtm">Go-to-Market & Growth Strategy</span></label>
+                        </div>
 
                     <div class="btn-container split">
                         <button type="button" class="btn-outline" onclick="nextStep(1)" data-i18n="btn_prev">Retour</button>
@@ -277,13 +269,12 @@
                     </div>
                 </div>
             </form>
-        <div id="emeta-loader" style="display: none; text-align: center; padding: 50px 20px; background: #0a192f; border-radius: 12px; border: 1px solid #d4af37; margin-top: 20px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);">
-    
-    <div style="width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2); border-top: 4px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px;"></div>
-    
-<h3 id="loader-title" style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">Moteur e-META LABS activé</h3>
-    <p id="emeta-status" style="font-size: 16px; color: #8892b0; font-family: 'Inter', sans-serif;">Initialisation de la connexion sécurisée...</p>
-</div>
+
+            <div id="emeta-loader" style="display: none; text-align: center; padding: 50px 20px; background: #0a192f; border-radius: 12px; border: 1px solid #d4af37; margin-top: 20px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);">
+                <div style="width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2); border-top: 4px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px;"></div>
+                <h3 id="loader-title" style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">Moteur e-META LABS activé</h3>
+                <p id="emeta-status" style="font-size: 16px; color: #8892b0; font-family: 'Inter', sans-serif;">Initialisation de la connexion sécurisée...</p>
+            </div>
         </div>
     </main>
 
@@ -306,14 +297,14 @@
                 <h4 data-i18n="priv_t2" style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">2. Souveraineté des Données</h4>
                 <p data-i18n="priv_c2">...</p>
                 <div style="text-align: center; margin-top: 25px;">
-    <a href="privacy.html" id="policy_link" target="_blank" class="gold-link" style="display: inline-block; padding: 10px 15px; border: 1px solid #d4af37; border-radius: 4px; text-decoration: none;" data-i18n="btn_full_policy">📑 Consulter la Charte Complète</a>
-</div>
+                    <a href="privacy.html" id="policy_link" target="_blank" class="gold-link" style="display: inline-block; padding: 10px 15px; border: 1px solid #d4af37; border-radius: 4px; text-decoration: none;" data-i18n="btn_full_policy">📑 Consulter la Charte Complète</a>
+                </div>
             </div>
             <button class="btn-gold full-width close-modal-btn" data-i18n="btn_close" style="margin-top:20px;">Fermer</button>
         </div>
     </div>
 
-<div id="guideOverlay" class="modal-overlay">
+    <div id="guideOverlay" class="modal-overlay">
         <div class="modal-content" style="max-width: 600px;">
             <span class="close-guide" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #8892b0;">&times;</span>
             <h2 data-i18n="guide_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Lexique Stratégique</h2>
