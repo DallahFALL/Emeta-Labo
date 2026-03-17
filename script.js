@@ -171,20 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 3. TRADUCTION DYNAMIQUE DU BOUTON "SUR-MESURE"
-    // ==========================================
-    const autreText = document.getElementById('autre-text');
-    const customLabel = document.getElementById('custom-sector-label');
-    const customInputTr = document.getElementById('custom-sector-input');
-    const docLang = document.documentElement.lang || 'fr';
-
-    if (autreText && customLabel && customInputTr) {
-        const tr = {
-            fr: { btn: "Autre / Sur-mesure", label: "Précisez votre industrie :", ph: "Ex: Sport Professionnel, Aérospatial..." },
-            en: { btn: "Other / Custom", label: "Specify your industry:", ph: "Ex: Professional Sports, Aerospace..." },
-            es: { btn: "Otro / A medida", label: "Especifique su industria:", ph: "Ej: Deporte Profesional, Aeroespacial..." },
-            ar: { btn: "أخرى / مخصص", label: ":حدد مجال عملك", ph: "مثال: الرياضة الاحترافية، الفضاء..." }
-        };
+    
         const currentTr = tr[docLang] || tr.fr;
         autreText.innerText = currentTr.btn;
         customLabel.innerText = currentTr.label;
