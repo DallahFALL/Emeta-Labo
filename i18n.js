@@ -327,7 +327,6 @@ const translations = {
         sec_consulting: "Consultoría y Servicios B2B",
         sec_saas: "SaaS y Proveedores de Software",
         sec_telecom: "Telecomunicaciones e Infraestructura",
-        exp_gtm: "Go-to-Market y Estrategia de Crecimiento",
         
         lbl_geo: "Zona de Intervención",
         opt_geo_def: "Seleccione una zona...",
@@ -366,6 +365,7 @@ const translations = {
         exp_proc: "Optimización de Procesos",
         exp_hr: "Gestión de Talento (RRHH)",
         exp_design: "Design Thinking y UX",
+        exp_gtm: "Go-to-Market y Estrategia de Crecimiento",
         
         btn_prev: "Volver",
         btn_next_matrice: "Abrir Matriz",
@@ -472,7 +472,6 @@ const translations = {
         sec_consulting: "الاستشارات وخدمات الشركات",
         sec_saas: "البرمجيات كخدمة وناشرو البرامج",
         sec_telecom: "الاتصالات والبنية التحتية",
-        exp_gtm: "استراتيجية الوصول للسوق والنمو",
         
         lbl_geo: "منطقة التدخل",
         opt_geo_def: "اختر منطقة التدخل...",
@@ -511,6 +510,7 @@ const translations = {
         exp_proc: "تحسين العمليات",
         exp_hr: "الموارد البشرية",
         exp_design: "تجربة المستخدم",
+        exp_gtm: "استراتيجية الوصول للسوق والنمو",
         
         btn_prev: "رجوع",
         btn_next_matrice: "فتح مصفوفة التحليل",
