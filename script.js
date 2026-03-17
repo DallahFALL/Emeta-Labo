@@ -101,6 +101,27 @@ function validateStep2() {
     return true;
 }
 
+// Fonction de réinitialisation du formulaire (Ajoutée pour corriger le bouton Reset)
+function resetForm() {
+    const lang = document.documentElement.lang || 'fr';
+    const msg = (lang === 'fr') ? "Voulez-vous vraiment recommencer ?" : "Do you really want to restart?";
+    if(confirm(msg)) {
+        const form = document.getElementById('diagnosticForm');
+        if (form) form.reset();
+        
+        // Cacher le champ sur-mesure si ouvert
+        const customSectorContainer = document.getElementById('custom-sector-container');
+        if (customSectorContainer) customSectorContainer.style.display = 'none';
+
+        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+        const step1 = document.getElementById('step-1');
+        if (step1) step1.classList.add('active');
+        
+        const glassCard = document.querySelector('.glass-card');
+        if (glassCard) glassCard.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Nom de Fichier
     const fileInput = document.getElementById('clientFile');
