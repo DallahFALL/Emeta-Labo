@@ -8,7 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
-    
+  <script>
+        // Cadenas de sécurité pour le Laboratoire
+        var mdp = prompt("Laboratoire e-META LABS. Accès restreint. Mot de passe :");
+        if (mdp !== "Meta2026!") {
+            document.write("<h1 style='text-align:center; margin-top:20%; font-family:sans-serif;'>Accès Refusé.</h1>");
+            window.stop(); 
+        }
+    </script>  
     <style>
         /* Pulse lumineux sur le conteneur principal */
         .glass-card {
