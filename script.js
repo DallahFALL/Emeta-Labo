@@ -456,28 +456,48 @@ if (form) {
         });
     });
 }
-// --- ROUTEUR FINANCIER FEDAPAY ---
+// --- ROUTEUR FINANCIER & PONT MAKE.COM ---
 document.getElementById('diagnosticForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Empêche la page de se recharger
+    e.preventDefault(); // Empêche le rechargement brutal de la page
 
-    // 1. On cache le formulaire et on affiche le beau loader de chargement
+    // 1. On cache le formulaire et on active le radar IA
     document.getElementById('diagnosticForm').style.display = 'none';
     document.getElementById('emeta-loader').style.display = 'block';
 
-    // 2. On lit la mémoire pour savoir quel plan a été choisi
-    const plan = document.getElementById('plan_choisi').value;
+    // 2. On collecte TOUTES les précieuses données du client
+    const planChoisi = document.getElementById('plan_choisi').value;
+    const payload = {
+        plan: planChoisi,
+        company: document.getElementById('company').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        context: document.getElementById('context').value
+        // Make.com recevra ce paquet complet !
+    };
 
-    // 3. On déclenche la redirection après 2.5 secondes (pour l'effet d'analyse IA)
-    setTimeout(() => {
-        if (plan === 'pro') {
+    // 3. REMPLACEZ CETTE URL PAR VOTRE VRAI WEBHOOK MAKE.COM
+    const webhookMake = "https://hook.make.com/votre_code_secret_ici";
+
+    // 4. On tire les données vers Make en arrière-plan
+    fetch(webhookMake, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        // 5. SEULEMENT QUAND MAKE A REÇU LES DONNÉES, on envoie à la caisse FedaPay
+        if (planChoisi === 'pro') {
             window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
-        } else if (plan === 'expert') {
+        } else if (planChoisi === 'expert') {
             window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
         } else {
-            // C'est le plan STARTER (gratuit)
-            alert("Mode STARTER activé. Les données partent vers Make.com !");
-            // Plus tard, nous mettrons ici le lien vers votre Webhook Make
+            alert("Mode STARTER activé. Audit en cours de génération !");
             location.reload(); 
         }
-    }, 2500);
+    })
+    .catch(error => {
+        console.error("Erreur de transmission :", error);
+        alert("Erreur de connexion au Moteur IA. Veuillez réessayer.");
+        location.reload();
+    });
 });
