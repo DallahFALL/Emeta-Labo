@@ -456,3 +456,28 @@ if (form) {
         });
     });
 }
+// --- ROUTEUR FINANCIER FEDAPAY ---
+document.getElementById('diagnosticForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Empêche la page de se recharger
+
+    // 1. On cache le formulaire et on affiche le beau loader de chargement
+    document.getElementById('diagnosticForm').style.display = 'none';
+    document.getElementById('emeta-loader').style.display = 'block';
+
+    // 2. On lit la mémoire pour savoir quel plan a été choisi
+    const plan = document.getElementById('plan_choisi').value;
+
+    // 3. On déclenche la redirection après 2.5 secondes (pour l'effet d'analyse IA)
+    setTimeout(() => {
+        if (plan === 'pro') {
+            window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
+        } else if (plan === 'expert') {
+            window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
+        } else {
+            // C'est le plan STARTER (gratuit)
+            alert("Mode STARTER activé. Les données partent vers Make.com !");
+            // Plus tard, nous mettrons ici le lien vers votre Webhook Make
+            location.reload(); 
+        }
+    }, 2500);
+});
