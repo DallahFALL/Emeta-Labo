@@ -155,7 +155,38 @@ const translations = {
         btn_full_policy: "📑 Consulter la Charte Complète",
         url_policy: "privacy.html?lang=fr",
         btn_return: "Retour au Moteur IA",
-        btn_close: "Fermer"
+        btn_close: "Fermer",
+
+        // TARIFS e-META LABS (FR)
+        "pricing_starter_name": "STARTER",
+        "pricing_starter_desc": "Pour tester la puissance analytique d'e-META LABS.",
+        "pricing_starter_price": "0 FCFA",
+        "pricing_starter_feat1": "✓ 2 Diagnostics foudroyants",
+        "pricing_starter_feat2": "✓ Identification du risque majeur",
+        "pricing_starter_feat3": "✓ Format texte (Email)",
+        "pricing_starter_feat4": "⚠️ Plan d'action stratégique non inclus",
+        "pricing_starter_btn": "Tester gratuitement",
+
+        "pricing_pro_badge": "LE PLUS POPULAIRE",
+        "pricing_pro_name": "PRO (One-Shot)",
+        "pricing_pro_desc": "L'audit stratégique complet et sans concession en 3 minutes.",
+        "pricing_pro_price": "14 900 FCFA",
+        "pricing_pro_period": "/ audit",
+        "pricing_pro_feat1": "✓ Rapport complet (3 chapitres)",
+        "pricing_pro_feat2": "✓ Diagnostic financier & KPI",
+        "pricing_pro_feat3": "✓ Stratégie de disruption (Pivoter)",
+        "pricing_pro_feat4": "✓ Rapport PDF Premium",
+        "pricing_pro_btn": "Générer l'Audit",
+
+        "pricing_expert_name": "EXPERT",
+        "pricing_expert_desc": "Votre cellule de prospective disponible 24/7.",
+        "pricing_expert_price": "29 000 FCFA",
+        "pricing_expert_period": "/ mois",
+        "pricing_expert_feat1": "✓ Jusqu'à 10 Audits / mois",
+        "pricing_expert_feat2": "✓ <b>Veille Data en temps réel</b>",
+        "pricing_expert_feat3": "✓ Protocole d'action sur 7 jours",
+        "pricing_expert_feat4": "✓ Livraison VIP (WhatsApp)",
+        "pricing_expert_btn": "S'abonner"
     },
     en: {
         // --- VISION SUBLIME ---
@@ -309,7 +340,38 @@ const translations = {
         btn_full_policy: "📑 Read Full Privacy Policy",
         url_policy: "privacy.html?lang=en",
         btn_return: "Return to AI Engine",
-        btn_close: "Close"
+        btn_close: "Close",
+
+    // TARIFS e-META LABS    
+    "pricing_starter_name": "STARTER",
+    "pricing_starter_desc": "To test the analytical power of e-META LABS.",
+    "pricing_starter_price": "$0",
+    "pricing_starter_feat1": "✓ 2 Lightning-fast diagnostics",
+    "pricing_starter_feat2": "✓ Major risk identification",
+    "pricing_starter_feat3": "✓ Text format (Email)",
+    "pricing_starter_feat4": "⚠️ Strategic action plan not included",
+    "pricing_starter_btn": "Test for free",
+
+    "pricing_pro_badge": "MOST POPULAR",
+    "pricing_pro_name": "PRO (One-Shot)",
+    "pricing_pro_desc": "The complete, uncompromising strategic audit in 3 minutes.",
+    "pricing_pro_price": "$25",
+    "pricing_pro_period": "/ audit",
+    "pricing_pro_feat1": "✓ Full report (3 chapters)",
+    "pricing_pro_feat2": "✓ Financial diagnosis & KPIs",
+    "pricing_pro_feat3": "✓ Disruption strategy (Pivot)",
+    "pricing_pro_feat4": "✓ Premium PDF Report",
+    "pricing_pro_btn": "Generate Audit",
+
+    "pricing_expert_name": "EXPERT",
+    "pricing_expert_desc": "Your strategic foresight unit available 24/7.",
+    "pricing_expert_price": "$49",
+    "pricing_expert_period": "/ month",
+    "pricing_expert_feat1": "✓ Up to 10 Audits / month",
+    "pricing_expert_feat2": "✓ <b>Real-time Data tracking</b>",
+    "pricing_expert_feat3": "✓ 7-day action protocol",
+    "pricing_expert_feat4": "✓ VIP Delivery (WhatsApp)",
+    "pricing_expert_btn": "Subscribe"
     },
     es: {
         // --- VISION SUBLIME ---
@@ -463,7 +525,38 @@ const translations = {
         btn_full_policy: "📑 Leer la Política Completa",
         url_policy: "privacy.html?lang=es",
         btn_return: "Volver al Motor IA",
-        btn_close: "Cerrar"
+        btn_close: "Cerrar",
+
+    // TARIFS e-META LABS 
+    "pricing_starter_name": "STARTER",
+    "pricing_starter_desc": "Para probar el poder analítico de e-META LABS.",
+    "pricing_starter_price": "$0",
+    "pricing_starter_feat1": "✓ 2 Diagnósticos fulminantes",
+    "pricing_starter_feat2": "✓ Identificación de riesgo principal",
+    "pricing_starter_feat3": "✓ Formato texto (Email)",
+    "pricing_starter_feat4": "⚠️ Plan de acción estratégico no incluido",
+    "pricing_starter_btn": "Probar gratis",
+
+    "pricing_pro_badge": "MÁS POPULAR",
+    "pricing_pro_name": "PRO (One-Shot)",
+    "pricing_pro_desc": "La auditoría estratégica completa e inflexible en 3 minutos.",
+    "pricing_pro_price": "$25",
+    "pricing_pro_period": "/ auditoría",
+    "pricing_pro_feat1": "✓ Informe completo (3 capítulos)",
+    "pricing_pro_feat2": "✓ Diagnóstico financiero y KPIs",
+    "pricing_pro_feat3": "✓ Estrategia de disrupción (Pivotar)",
+    "pricing_pro_feat4": "✓ Informe PDF Premium",
+    "pricing_pro_btn": "Generar Auditoría",
+
+    "pricing_expert_name": "EXPERT",
+    "pricing_expert_desc": "Su unidad de prospectiva estratégica disponible 24/7.",
+    "pricing_expert_price": "$49",
+    "pricing_expert_period": "/ mes",
+    "pricing_expert_feat1": "✓ Hasta 10 Auditorías / mes",
+    "pricing_expert_feat2": "✓ <b>Vigilancia de Datos en tiempo real</b>",
+    "pricing_expert_feat3": "✓ Protocolo de acción de 7 días",
+    "pricing_expert_feat4": "✓ Entrega VIP (WhatsApp)",
+    "pricing_expert_btn": "Suscribirse"
     },
     ar: {
         // --- VISION SUBLIME ---
@@ -617,7 +710,38 @@ const translations = {
         btn_full_policy: "📑 اقرأ السياسة كاملة",
         url_policy: "privacy.html?lang=ar",
         btn_return: "العودة إلى محرك الذكاء الاصطناعي",
-        btn_close: "إغلاق"
+        btn_close: "إغلاق",
+
+        // TARIFS e-META LABS
+        "pricing_starter_name": "الأساسي (STARTER)",
+    "pricing_starter_desc": "لاختبار القوة التحليلية لـ e-META LABS.",
+    "pricing_starter_price": "مجاناً",
+    "pricing_starter_feat1": "✓ تشخيصان سريعان",
+    "pricing_starter_feat2": "✓ تحديد المخاطر الرئيسية",
+    "pricing_starter_feat3": "✓ تنسيق نصي (بريد إلكتروني)",
+    "pricing_starter_feat4": "⚠️ خطة العمل الاستراتيجية غير مشمولة",
+    "pricing_starter_btn": "جرب مجاناً",
+
+    "pricing_pro_badge": "الأكثر شعبية",
+    "pricing_pro_name": "الاحترافي (PRO)",
+    "pricing_pro_desc": "التدقيق الاستراتيجي الكامل والصارم في 3 دقائق.",
+    "pricing_pro_price": "$25",
+    "pricing_pro_period": "/ للتدقيق",
+    "pricing_pro_feat1": "✓ تقرير كامل (3 فصول)",
+    "pricing_pro_feat2": "✓ تشخيص مالي ومؤشرات أداء (KPI)",
+    "pricing_pro_feat3": "✓ استراتيجية الابتكار المزعزع",
+    "pricing_pro_feat4": "✓ تقرير PDF فاخر",
+    "pricing_pro_btn": "إنشاء التدقيق",
+
+    "pricing_expert_name": "الخبير (EXPERT)",
+    "pricing_expert_desc": "خلية الاستشراف الخاصة بك متاحة على مدار الساعة.",
+    "pricing_expert_price": "$49",
+    "pricing_expert_period": "/ شهرياً",
+    "pricing_expert_feat1": "✓ حتى 10 تدقيقات / شهر",
+    "pricing_expert_feat2": "✓ <b>مراقبة البيانات في الوقت الفعلي</b>",
+    "pricing_expert_feat3": "✓ بروتوكول عمل لمدة 7 أيام",
+    "pricing_expert_feat4": "✓ تسليم VIP (واتساب)",
+    "pricing_expert_btn": "اشترك الآن"
     }
 };
 
