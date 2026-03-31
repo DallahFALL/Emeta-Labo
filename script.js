@@ -154,14 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// MOTEUR PRINCIPAL : SOUMISSION & ROUTAGE FINANCIER
+// MOTEUR PRINCIPAL : SOUMISSION & ROUTAGE PAYTECH.SN
 // ==========================================
 const form = document.getElementById('diagnosticForm');
 if (form) {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Validations
+        // 1. Validations de sécurité
         const whatsappConsent = document.getElementById('whatsapp-consent');
         if (!whatsappConsent.checked) { setCustomMessage(whatsappConsent); whatsappConsent.reportValidity(); return; }
         const consent = document.getElementById('consent');
@@ -171,29 +171,15 @@ if (form) {
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         
-        // Effet WOW Radar
+        // 2. Radar IA (Effet Wow)
         form.style.display = 'none';
         const wowLoader = document.getElementById('emeta-loader');
         const statusText = document.getElementById('emeta-status');
         if (wowLoader) wowLoader.style.display = 'block';
 
         const currentLang = document.documentElement.lang || 'fr';
-        const allLoadingSteps = {
-            fr: ["Analyse sémantique du contexte...", "Corrélation sectorielle...", "Génération des matrices Gemini...", "Ancrage Blockchain...", "Finalisation du PDF..."],
-            en: ["Semantic analysis...", "Sectoral correlation...", "Generating Gemini matrices...", "Blockchain anchoring...", "Finalizing PDF..."],
-            es: ["Análisis semántico...", "Correlación sectorial...", "Generando matrices Gemini...", "Anclaje Blockchain...", "Finalizando PDF..."],
-            ar: ["التحليل الدلالي...", "الارتباط القطاعي...", "إنشاء مصفوفات Gemini...", "التوثيق على البلوكشين...", "وضع اللمسات الأخيرة على PDF..."]
-        };
-        const loadingSteps = allLoadingSteps[currentLang] || allLoadingSteps['fr'];
-        let stepIndex = 0;
-        const textInterval = setInterval(() => {
-            if (stepIndex < loadingSteps.length) {
-                if (statusText) statusText.innerText = loadingSteps[stepIndex];
-                stepIndex++;
-            }
-        }, 3000); 
-
-        // Préparation des données
+        
+        // 3. Préparation du Colis de Données
         let fileData = null; let fileName = null;
         const fileInput = document.getElementById('clientFile');
         if (fileInput && fileInput.files.length > 0) {
@@ -224,71 +210,42 @@ if (form) {
             attachedFileBase64: fileData 
         };
 
-        // ENVOI À MAKE.COM
+        // 4. ENVOI À MAKE.COM & REDIRECTION PAYTECH
         fetch(WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
-        .then(async response => {
-            clearInterval(textInterval); 
-            
+        .then(response => {
+            // Note: On n'attend plus le PDF ici, on envoie payer tout de suite
             if (response.ok) {
-                const aiResponse = await response.text(); // On récupère le lien PDF renvoyé par Make
+                if (statusText) statusText.innerText = "Données sécurisées. Redirection vers le paiement...";
                 
-                // ROUTAGE FEDAPAY OU GRATUIT
-                if (planChoisi === 'pro') {
-                    window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
-                } else if (planChoisi === 'expert') {
-                    window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
-                } else {
-                    // MODE STARTER : On affiche le beau Popup Premium avec Calendly !
-                    if (wowLoader) wowLoader.style.display = 'none';
-                    
-                    const pdfUrl = aiResponse.startsWith('http') ? aiResponse : "#";
-                    const calendlyUrl = "https://calendly.com/e-metalabs/30min";
-                    
-                    const uiTexts = {
-                        fr: { popupSubtitle: "Les algorithmes e-META LABS ont finalisé vos données.", downloadBtn: "📄 TÉLÉCHARGER L'AUDIT (PDF)", nextStep: "NEXT STEP", debriefingTitle: "Débriefing Exécutif", debriefingDesc: "L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner.", calendlyBtn: "📅 RÉSERVER MON DÉBRIEFING" },
-                        en: { popupSubtitle: "e-META LABS algorithms have finalized your data.", downloadBtn: "📄 DOWNLOAD AUDIT (PDF)", nextStep: "NEXT STEP", debriefingTitle: "Executive Debriefing", debriefingDesc: "Move to execution with a Senior Partner.", calendlyBtn: "📅 BOOK MY DEBRIEFING" },
-                        es: { popupSubtitle: "Los algoritmos de e-META LABS han finalizado sus datos.", downloadBtn: "📄 DESCARGAR AUDITORÍA (PDF)", nextStep: "NEXT STEP", debriefingTitle: "Debriefing Ejecutivo", debriefingDesc: "Pase a la ejecución con un Senior Partner.", calendlyBtn: "📅 RESERVAR MI DEBRIEFING" },
-                        ar: { popupSubtitle: "لقد أنهت خوارزمياتنا معالجة بياناتك.", downloadBtn: "📄 تحميل التدقيق (PDF)", nextStep: "الخطوة التالية", debriefingTitle: "استخلاص المعلومات التنفيذية", debriefingDesc: "انتقل إلى التنفيذ مع شريك رئيسي.", calendlyBtn: "📅 حجز جلستي" }
-                    };
-                    const t = uiTexts[currentLang] || uiTexts.fr;
-
-                    const resultBody = document.getElementById('resultBody');
-                    if(resultBody) {
-                        resultBody.innerHTML = `
-                            <div style="text-align: center; margin-top: 10px;">
-                                <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">${t.popupSubtitle}</p>
-                                <a href="${pdfUrl}" target="_blank" style="display: block; width: 100%; background: #d4af37; color: #0a192f; font-weight: bold; text-align: center; text-decoration: none; margin-bottom: 30px; padding: 15px; font-size: 1.1rem; border-radius: 4px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);">
-                                    ${t.downloadBtn}
-                                </a>
-                                <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 30px 0 25px 0; position: relative;">
-                                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a192f; padding: 0 15px; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">${t.nextStep}</span>
-                                </div>
-                                <h4 style="color: #e6f1ff; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem;">${t.debriefingTitle}</h4>
-                                <p style="font-size: 0.85rem; color: #8892b0; margin-bottom: 20px;">${t.debriefingDesc}</p>
-                                <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; text-align: center;">
-                                    ${t.calendlyBtn}
-                                </a>
-                            </div>
-                        `;
+                setTimeout(() => {
+                    if (planChoisi === 'pro') {
+                        // REMPLACEZ PAR VOTRE LIEN PAYTECH PRO
+                        window.location.href = "VOTRE_LIEN_PAYTECH_PRO_ICI";
+                    } else if (planChoisi === 'expert') {
+                        // REMPLACEZ PAR VOTRE LIEN PAYTECH EXPERT
+                        window.location.href = "VOTRE_LIEN_PAYTECH_EXPERT_ICI";
+                    } else {
+                        // MODE STARTER (GRATUIT) : On affiche le succès directement
+                        if (wowLoader) {
+                            wowLoader.innerHTML = `
+                                <div style="font-size: 50px; margin-bottom: 15px;">✅</div>
+                                <h3 style="color: #d4af37; font-family: 'Cinzel', serif;">Analyse en cours</h3>
+                                <p style="color: #8892b0; margin-bottom: 25px;">Vos données sont transmises. Vérifiez votre email dans quelques minutes.</p>
+                                <button onclick="location.reload()" class="btn-outline">Nouvelle Analyse</button>
+                            `;
+                        }
                     }
-                    const resModal = document.getElementById('resultModal');
-                    if(resModal) resModal.style.display = 'flex';
-                    submitBtn.innerText = "Audit Généré";
-                }
-            } else { throw new Error('Erreur serveur Webhook'); }
+                }, 1500);
+            } else { throw new Error('Erreur Webhook'); }
         })
         .catch(error => {
-            clearInterval(textInterval);
-            form.style.display = 'block';
-            if(wowLoader) wowLoader.style.display = 'none';
             console.error('Erreur:', error);
-            alert("Erreur de connexion avec le serveur IA (Google Gemini est peut-être saturé). Veuillez réessayer dans un instant.");
-            submitBtn.disabled = false;
-            submitBtn.innerText = originalText;
+            alert("Erreur de connexion. Veuillez réessayer.");
+            location.reload();
         });
     });
 }
