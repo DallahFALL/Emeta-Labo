@@ -456,48 +456,133 @@ if (form) {
         });
     });
 }
-// --- ROUTEUR FINANCIER & PONT MAKE.COM ---
-document.getElementById('diagnosticForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Empêche le rechargement brutal de la page
+// ==========================================
+// MOTEUR PRINCIPAL : SOUMISSION & ROUTAGE FINANCIER
+// ==========================================
+const form = document.getElementById('diagnosticForm');
+if (form) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    // 1. On cache le formulaire et on active le radar IA
-    document.getElementById('diagnosticForm').style.display = 'none';
-    document.getElementById('emeta-loader').style.display = 'block';
-
-    // 2. On collecte TOUTES les précieuses données du client
-    const planChoisi = document.getElementById('plan_choisi').value;
-    const payload = {
-        plan: planChoisi,
-        company: document.getElementById('company').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        context: document.getElementById('context').value
-        // Make.com recevra ce paquet complet !
-    };
-
-    // 3. REMPLACEZ CETTE URL PAR VOTRE VRAI WEBHOOK MAKE.COM
-    const webhookMake = "https://hook.make.com/votre_code_secret_ici";
-
-    // 4. On tire les données vers Make en arrière-plan
-    fetch(webhookMake, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-    .then(response => {
-        // 5. SEULEMENT QUAND MAKE A REÇU LES DONNÉES, on envoie à la caisse FedaPay
-        if (planChoisi === 'pro') {
-            window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
-        } else if (planChoisi === 'expert') {
-            window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
-        } else {
-            alert("Mode STARTER activé. Audit en cours de génération !");
-            location.reload(); 
+        // 1. Validations de sécurité
+        const whatsappConsent = document.getElementById('whatsapp-consent');
+        if (!whatsappConsent.checked) {
+            setCustomMessage(whatsappConsent);
+            whatsappConsent.reportValidity();
+            return;
         }
-    })
-    .catch(error => {
-        console.error("Erreur de transmission :", error);
-        alert("Erreur de connexion au Moteur IA. Veuillez réessayer.");
-        location.reload();
+        const consent = document.getElementById('consent');
+        if (!consent.checked) {
+            setCustomMessage(consent);
+            consent.reportValidity();
+            return;
+        }
+
+        const submitBtn = document.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.disabled = true;
+        
+        // 2. Effet WOW (Affichage du Radar)
+        form.style.display = 'none';
+        const wowLoader = document.getElementById('emeta-loader');
+        const statusText = document.getElementById('emeta-status');
+        if (wowLoader) wowLoader.style.display = 'block';
+
+        const currentLang = document.documentElement.lang || 'fr';
+        const allLoadingSteps = {
+            fr: ["Initialisation de la connexion sécurisée...", "Extraction des paramètres...", "Transmission cryptée vers le Moteur IA..."],
+            en: ["Initializing secure connection...", "Extracting parameters...", "Encrypted transmission to AI Engine..."],
+            es: ["Inicializando conexión segura...", "Extrayendo parámetros...", "Transmisión cifrada al Motor de IA..."],
+            ar: ["جاري تهيئة الاتصال الآمن...", "استخراج المعلمات...", "نقل مشفر إلى محرك الذكاء الاصطناعي..."]
+        };
+        const loadingSteps = allLoadingSteps[currentLang] || allLoadingSteps['fr'];
+        let stepIndex = 0;
+        const textInterval = setInterval(() => {
+            if (stepIndex < loadingSteps.length) {
+                if (statusText) statusText.innerText = loadingSteps[stepIndex];
+                stepIndex++;
+            }
+        }, 1000); 
+
+        // 3. Préparation du Colis de Données (Payload)
+        let fileData = null;
+        let fileName = null;
+        const fileInput = document.getElementById('clientFile');
+        if (fileInput && fileInput.files.length > 0) {
+            try {
+                fileData = await getBase64(fileInput.files[0]);
+                fileName = fileInput.files[0].name;
+            } catch (error) { console.error("Erreur fichier", error); }
+        }
+
+        let finalSector = document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié";
+        if (finalSector === 'other') {
+            const customInput = document.getElementById('custom-sector-input');
+            finalSector = customInput ? customInput.value.trim() : "Sur-mesure non précisé";
+        }
+
+        const planChoisi = document.getElementById('plan_choisi').value;
+        
+        const formData = {
+            plan: planChoisi, // On envoie le plan choisi à Make.com !
+            timestamp: new Date().toISOString(),
+            company: document.getElementById('company').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            whatsapp_optin: true,
+            sector: finalSector, 
+            geoZone: document.getElementById('geo-zone').value,
+            expertises: Array.from(document.querySelectorAll('input[name="expertise"]:checked')).map(cb => cb.value),
+            context: document.getElementById('context').value,
+            lang: currentLang,
+            attachedFileName: fileName,
+            attachedFileBase64: fileData 
+        };
+
+        // 4. Tir sur la cible Make.com (Utilisation de la vraie variable globale)
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            clearInterval(textInterval); 
+            
+            if (response.ok) {
+                if (statusText) statusText.innerText = "Données sécurisées. Redirection...";
+                
+                // 5. ROUTEUR FINANCIER FEDAPAY (On laisse le radar tourner 1.5s pour l'expérience premium)
+                setTimeout(() => {
+                    if (planChoisi === 'pro') {
+                        window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
+                    } else if (planChoisi === 'expert') {
+                        window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
+                    } else {
+                        // MODE STARTER : Pas de paiement, on affiche simplement que c'est pris en compte
+                        if (wowLoader) {
+                            wowLoader.innerHTML = `
+                                <div style="font-size: 50px; margin-bottom: 15px;">✅</div>
+                                <h3 style="color: #d4af37; font-family: 'Cinzel', serif;">Audit en cours de génération</h3>
+                                <p style="color: #8892b0; margin-bottom: 25px;">Vos données ont été transmises à l'IA. Vous recevrez l'audit sur votre email.</p>
+                                <button onclick="location.reload()" class="btn-outline">Nouvelle Analyse</button>
+                            `;
+                        }
+                    }
+                }, 1500);
+
+            } else {
+                throw new Error('Erreur serveur Webhook');
+            }
+        })
+        .catch(error => {
+            clearInterval(textInterval);
+            form.style.display = 'block';
+            if(wowLoader) wowLoader.style.display = 'none';
+            
+            console.error('Erreur Transmission:', error);
+            alert("Impossible de joindre le serveur. Assurez-vous que le module 'Webhook Response' est bien configuré sur Make.com.");
+            submitBtn.disabled = false;
+            submitBtn.innerText = originalText;
+        });
     });
-});
+}
