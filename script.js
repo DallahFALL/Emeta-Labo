@@ -1,5 +1,5 @@
 /* * PROJET : e-META LABS
- * FICHIER : script.js (Engine Make & Validations + Wow Effect Multilingue + UX Premium + Smart Sector)
+ * FICHIER : script.js (Engine Make & FedaPay + Wow Effect Multilingue + UX Premium)
  */
 
 const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f"; 
@@ -12,9 +12,7 @@ window.addEventListener('load', () => {
         const interval = setInterval(() => {
             currentCount++;
             counterElement.innerText = currentCount.toLocaleString();
-            if (currentCount >= targetCount) {
-                clearInterval(interval);
-            }
+            if (currentCount >= targetCount) { clearInterval(interval); }
         }, 30); 
     }
 });
@@ -36,17 +34,12 @@ function setCustomMessage(input) {
         es: { required: "Por favor complete este campo.", email: "Email inválido.", checkbox: "Por favor marque esta casilla.", whatsapp: "Consentimiento WhatsApp requerido." },
         ar: { required: "يرجى ملء هذا الحقل.", email: "بريد غير صالح.", checkbox: "يرجى تحديد هذا المربع.", whatsapp: "موافقة الواتساب مطلوبة." }
     };
-
     input.setCustomValidity('');
     if (!input.validity.valid) {
         if (input.validity.valueMissing) {
-            if (input.id === 'whatsapp-consent') {
-                input.setCustomValidity(messages[lang].whatsapp || messages.fr.whatsapp);
-            } else if (input.type === 'checkbox') {
-                input.setCustomValidity(messages[lang].checkbox || messages.fr.checkbox);
-            } else {
-                input.setCustomValidity(messages[lang].required || messages.fr.required);
-            }
+            if (input.id === 'whatsapp-consent') input.setCustomValidity(messages[lang].whatsapp || messages.fr.whatsapp);
+            else if (input.type === 'checkbox') input.setCustomValidity(messages[lang].checkbox || messages.fr.checkbox);
+            else input.setCustomValidity(messages[lang].required || messages.fr.required);
         }
         else if (input.validity.typeMismatch && input.type === 'email') {
             input.setCustomValidity(messages[lang].email || messages.fr.email);
@@ -58,7 +51,6 @@ function setCustomMessage(input) {
 function nextStep(targetStep) {
     if (targetStep === 2 && !validateStep1()) return;
     if (targetStep === 3 && !validateStep2()) return;
-
     document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
     document.getElementById(`step-${targetStep}`).classList.add('active');
     document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
@@ -77,26 +69,16 @@ function validateStep1() {
 function validateStep2() {
     const sector = document.querySelector('input[name="sector"]:checked');
     const geo = document.getElementById('geo-zone');
-    
-    if (!sector) {
-        alert("Veuillez sélectionner un Secteur Stratégique.");
-        return false;
-    }
-    
+    if (!sector) { alert("Veuillez sélectionner un Secteur Stratégique."); return false; }
     if (sector.value === 'other') {
         const customInput = document.getElementById('custom-sector-input');
         if (!customInput || !customInput.value.trim()) {
-            alert("Veuillez préciser votre industrie sur-mesure dans le champ apparu.");
+            alert("Veuillez préciser votre industrie sur-mesure.");
             if(customInput) customInput.focus();
             return false;
         }
     }
-
-    if (geo.value === "") {
-        geo.setCustomValidity("Veuillez sélectionner une zone.");
-        geo.reportValidity();
-        return false;
-    }
+    if (geo.value === "") { geo.setCustomValidity("Veuillez sélectionner une zone."); geo.reportValidity(); return false; }
     return true;
 }
 
@@ -106,21 +88,18 @@ function resetForm() {
     if(confirm(msg)) {
         const form = document.getElementById('diagnosticForm');
         if (form) form.reset();
-        
         const customSectorContainer = document.getElementById('custom-sector-container');
         if (customSectorContainer) customSectorContainer.style.display = 'none';
-
         document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
         const step1 = document.getElementById('step-1');
         if (step1) step1.classList.add('active');
-        
         const glassCard = document.querySelector('.glass-card');
         if (glassCard) glassCard.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Nom de Fichier
+    // Fichiers
     const fileInput = document.getElementById('clientFile');
     const fileNameDisplay = document.getElementById('fileNameDisplay');
     if (fileInput && fileNameDisplay) {
@@ -129,31 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 fileNameDisplay.textContent = this.files[0].name;
                 fileNameDisplay.style.color = '#d4af37';
             } else {
-                const lang = document.documentElement.lang || 'fr';
-                const defaultTexts = { fr: "Aucun fichier sélectionné", en: "No file selected", es: "Ningún archivo seleccionado", ar: "لم يتم تحديد أي ملف" };
-                fileNameDisplay.textContent = defaultTexts[lang] || defaultTexts.fr;
+                fileNameDisplay.textContent = "Aucun fichier sélectionné";
                 fileNameDisplay.style.color = '#8892b0';
             }
         });
     }
 
-    // 2. Gestion des Modaux
+    // Modals
     const privacyModal = document.getElementById('privacyOverlay');
     const openPrivacyBtn = document.getElementById('openPrivacy');
     if (openPrivacyBtn && privacyModal) {
         openPrivacyBtn.addEventListener('click', (e) => { e.preventDefault(); privacyModal.style.display = 'flex'; });
-        document.querySelectorAll('.close-modal, .close-modal-btn').forEach(btn => {
-            btn.addEventListener('click', () => { privacyModal.style.display = 'none'; });
-        });
+        document.querySelectorAll('.close-modal, .close-modal-btn').forEach(btn => { btn.addEventListener('click', () => { privacyModal.style.display = 'none'; }); });
     }
 
     const guideModal = document.getElementById('guideOverlay');
     const openGuideBtn = document.getElementById('openGuide');
     if (openGuideBtn && guideModal) {
         openGuideBtn.addEventListener('click', (e) => { e.preventDefault(); guideModal.style.display = 'flex'; });
-        document.querySelectorAll('.close-guide, .close-guide-btn').forEach(btn => {
-            btn.addEventListener('click', () => { guideModal.style.display = 'none'; });
-        });
+        document.querySelectorAll('.close-guide, .close-guide-btn').forEach(btn => { btn.addEventListener('click', () => { guideModal.style.display = 'none'; }); });
     }
 
     const resultModal = document.getElementById('resultModal');
@@ -161,32 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.close-result').addEventListener('click', () => { resultModal.style.display = 'none'; });
     }
     
-    window.addEventListener('click', (e) => {
-        if (e.target === privacyModal) privacyModal.style.display = 'none';
-        if (e.target === guideModal) guideModal.style.display = 'none';
-        if (e.target === resultModal) resultModal.style.display = 'none';
-    });
-
-    // 3. Bouton "Sur-Mesure"
+    // Secteur Sur-Mesure
     const sectorRadios = document.querySelectorAll('input[name="sector"]');
     const customSectorContainer = document.getElementById('custom-sector-container');
     const customSectorInput = document.getElementById('custom-sector-input');
-
     if (sectorRadios.length > 0 && customSectorContainer) {
         sectorRadios.forEach(radio => {
             radio.addEventListener('change', (e) => {
                 if (e.target.value === 'other') {
                     customSectorContainer.style.display = 'block';
                     customSectorInput.focus();
-                    
-                    const docLang = document.documentElement.lang || 'fr';
-                    if (docLang === 'ar') {
-                        customSectorInput.style.textAlign = 'right';
-                        customSectorInput.dir = 'rtl';
-                    } else {
-                        customSectorInput.style.textAlign = 'left';
-                        customSectorInput.dir = 'ltr';
-                    }
                 } else {
                     customSectorContainer.style.display = 'none';
                     customSectorInput.value = '';
@@ -197,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// MOTEUR PRINCIPAL : SOUMISSION & ROUTAGE
+// MOTEUR PRINCIPAL : SOUMISSION & ROUTAGE FINANCIER
 // ==========================================
 const form = document.getElementById('diagnosticForm');
 if (form) {
@@ -214,25 +171,18 @@ if (form) {
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         
-        // Effet WOW
+        // Effet WOW Radar
         form.style.display = 'none';
         const wowLoader = document.getElementById('emeta-loader');
         const statusText = document.getElementById('emeta-status');
         if (wowLoader) wowLoader.style.display = 'block';
 
         const currentLang = document.documentElement.lang || 'fr';
-        
-        const loaderTitle = document.getElementById('loader-title');
-        if (loaderTitle) {
-            const titles = { fr: "MOTEUR e-META LABS ACTIVÉ", en: "e-META LABS ENGINE ACTIVATED", es: "MOTOR e-META LABS ACTIVADO", ar: "تم تنشيط محرك e-META LABS" };
-            loaderTitle.innerText = titles[currentLang] || titles.fr;
-        }
-
         const allLoadingSteps = {
-            fr: ["Initialisation de la connexion sécurisée...", "Extraction des paramètres...", "Transmission cryptée vers le Moteur IA..."],
-            en: ["Initializing secure connection...", "Extracting parameters...", "Encrypted transmission to AI Engine..."],
-            es: ["Inicializando conexión segura...", "Extrayendo parámetros...", "Transmisión cifrada al Motor de IA..."],
-            ar: ["جاري تهيئة الاتصال الآمن...", "استخراج المعلمات...", "نقل مشفر إلى محرك الذكاء الاصطناعي..."]
+            fr: ["Analyse sémantique du contexte...", "Corrélation sectorielle...", "Génération des matrices Gemini...", "Ancrage Blockchain...", "Finalisation du PDF..."],
+            en: ["Semantic analysis...", "Sectoral correlation...", "Generating Gemini matrices...", "Blockchain anchoring...", "Finalizing PDF..."],
+            es: ["Análisis semántico...", "Correlación sectorial...", "Generando matrices Gemini...", "Anclaje Blockchain...", "Finalizando PDF..."],
+            ar: ["التحليل الدلالي...", "الارتباط القطاعي...", "إنشاء مصفوفات Gemini...", "التوثيق على البلوكشين...", "وضع اللمسات الأخيرة على PDF..."]
         };
         const loadingSteps = allLoadingSteps[currentLang] || allLoadingSteps['fr'];
         let stepIndex = 0;
@@ -241,25 +191,14 @@ if (form) {
                 if (statusText) statusText.innerText = loadingSteps[stepIndex];
                 stepIndex++;
             }
-        }, 1000); 
+        }, 3000); 
 
-        // Payload
-        let fileData = null;
-        let fileName = null;
+        // Préparation des données
+        let fileData = null; let fileName = null;
         const fileInput = document.getElementById('clientFile');
         if (fileInput && fileInput.files.length > 0) {
-            if (fileInput.files[0].size > 2.5 * 1024 * 1024) {
-                alert("Pour garantir une analyse IA ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.");
-                submitBtn.disabled = false;
-                form.style.display = 'block'; 
-                if(wowLoader) wowLoader.style.display = 'none';
-                clearInterval(textInterval);
-                return;
-            }
-            try {
-                fileData = await getBase64(fileInput.files[0]);
-                fileName = fileInput.files[0].name;
-            } catch (error) { console.error("Erreur fichier", error); }
+            try { fileData = await getBase64(fileInput.files[0]); fileName = fileInput.files[0].name; } 
+            catch (error) { console.error(error); }
         }
 
         let finalSector = document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié";
@@ -269,7 +208,6 @@ if (form) {
         }
 
         const planChoisi = document.getElementById('plan_choisi').value;
-        
         const formData = {
             plan: planChoisi,
             timestamp: new Date().toISOString(),
@@ -286,54 +224,69 @@ if (form) {
             attachedFileBase64: fileData 
         };
 
-        // Envoi vers Make.com
+        // ENVOI À MAKE.COM
         fetch(WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
-        .then(response => {
+        .then(async response => {
             clearInterval(textInterval); 
             
             if (response.ok) {
-                if (statusText) statusText.innerText = "Données sécurisées. Redirection...";
+                const aiResponse = await response.text(); // On récupère le lien PDF renvoyé par Make
                 
-                setTimeout(() => {
-                    if (planChoisi === 'pro') {
-                        window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
-                    } else if (planChoisi === 'expert') {
-                        window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
-                    } else {
-                        // MODE STARTER : Succès UI Multilingue
-                        const uiTexts = {
-                            fr: { title: "Audit en cours de génération", desc: "Vos données ont été transmises à l'IA. Vous recevrez l'audit sur votre email.", btn: "Nouvelle Analyse" },
-                            en: { title: "Audit Generating", desc: "Your data has been sent to the AI. You will receive the audit by email.", btn: "New Analysis" },
-                            es: { title: "Auditoría en proceso", desc: "Sus datos han sido enviados a la IA. Recibirá la auditoría por correo electrónico.", btn: "Nuevo Análisis" },
-                            ar: { title: "جاري إنشاء التدقيق", desc: "تم إرسال بياناتك إلى الذكاء الاصطناعي. ستتلقى التدقيق عبر البريد الإلكتروني.", btn: "تحليل جديد" }
-                        };
-                        const t = uiTexts[currentLang] || uiTexts.fr;
-                        
-                        if (wowLoader) {
-                            wowLoader.innerHTML = `
-                                <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">✅</div>
-                                <h3 style="color: #d4af37; font-family: 'Cinzel', serif;">${t.title}</h3>
-                                <p style="color: #8892b0; margin-bottom: 25px;">${t.desc}</p>
-                                <button onclick="location.reload()" class="btn-outline" style="padding: 10px 20px;">${t.btn}</button>
-                            `;
-                        }
-                    }
-                }, 1500);
+                // ROUTAGE FEDAPAY OU GRATUIT
+                if (planChoisi === 'pro') {
+                    window.location.href = "https://sandbox-me.fedapay.com/obBZ-QGN";
+                } else if (planChoisi === 'expert') {
+                    window.location.href = "https://sandbox-me.fedapay.com/gbAxyMcG";
+                } else {
+                    // MODE STARTER : On affiche le beau Popup Premium avec Calendly !
+                    if (wowLoader) wowLoader.style.display = 'none';
+                    
+                    const pdfUrl = aiResponse.startsWith('http') ? aiResponse : "#";
+                    const calendlyUrl = "https://calendly.com/e-metalabs/30min";
+                    
+                    const uiTexts = {
+                        fr: { popupSubtitle: "Les algorithmes e-META LABS ont finalisé vos données.", downloadBtn: "📄 TÉLÉCHARGER L'AUDIT (PDF)", nextStep: "NEXT STEP", debriefingTitle: "Débriefing Exécutif", debriefingDesc: "L'IA a posé les fondations analytiques. Passez à l'exécution avec un Senior Partner.", calendlyBtn: "📅 RÉSERVER MON DÉBRIEFING" },
+                        en: { popupSubtitle: "e-META LABS algorithms have finalized your data.", downloadBtn: "📄 DOWNLOAD AUDIT (PDF)", nextStep: "NEXT STEP", debriefingTitle: "Executive Debriefing", debriefingDesc: "Move to execution with a Senior Partner.", calendlyBtn: "📅 BOOK MY DEBRIEFING" },
+                        es: { popupSubtitle: "Los algoritmos de e-META LABS han finalizado sus datos.", downloadBtn: "📄 DESCARGAR AUDITORÍA (PDF)", nextStep: "NEXT STEP", debriefingTitle: "Debriefing Ejecutivo", debriefingDesc: "Pase a la ejecución con un Senior Partner.", calendlyBtn: "📅 RESERVAR MI DEBRIEFING" },
+                        ar: { popupSubtitle: "لقد أنهت خوارزمياتنا معالجة بياناتك.", downloadBtn: "📄 تحميل التدقيق (PDF)", nextStep: "الخطوة التالية", debriefingTitle: "استخلاص المعلومات التنفيذية", debriefingDesc: "انتقل إلى التنفيذ مع شريك رئيسي.", calendlyBtn: "📅 حجز جلستي" }
+                    };
+                    const t = uiTexts[currentLang] || uiTexts.fr;
 
-            } else {
-                throw new Error('Erreur serveur Webhook');
-            }
+                    const resultBody = document.getElementById('resultBody');
+                    if(resultBody) {
+                        resultBody.innerHTML = `
+                            <div style="text-align: center; margin-top: 10px;">
+                                <p style="color: #8892b0; font-size: 0.95rem; margin-bottom: 25px;">${t.popupSubtitle}</p>
+                                <a href="${pdfUrl}" target="_blank" style="display: block; width: 100%; background: #d4af37; color: #0a192f; font-weight: bold; text-align: center; text-decoration: none; margin-bottom: 30px; padding: 15px; font-size: 1.1rem; border-radius: 4px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);">
+                                    ${t.downloadBtn}
+                                </a>
+                                <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin: 30px 0 25px 0; position: relative;">
+                                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a192f; padding: 0 15px; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">${t.nextStep}</span>
+                                </div>
+                                <h4 style="color: #e6f1ff; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem;">${t.debriefingTitle}</h4>
+                                <p style="font-size: 0.85rem; color: #8892b0; margin-bottom: 20px;">${t.debriefingDesc}</p>
+                                <a href="${calendlyUrl}" target="_blank" style="display: block; width: 100%; background: transparent; border: 2px solid #25D366; color: #25D366; padding: 12px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; text-align: center;">
+                                    ${t.calendlyBtn}
+                                </a>
+                            </div>
+                        `;
+                    }
+                    const resModal = document.getElementById('resultModal');
+                    if(resModal) resModal.style.display = 'flex';
+                    submitBtn.innerText = "Audit Généré";
+                }
+            } else { throw new Error('Erreur serveur Webhook'); }
         })
         .catch(error => {
             clearInterval(textInterval);
             form.style.display = 'block';
             if(wowLoader) wowLoader.style.display = 'none';
-            console.error('Erreur Transmission:', error);
-            alert("Impossible de joindre le serveur. Assurez-vous que le module 'Webhook Response' est bien configuré sur Make.com.");
+            console.error('Erreur:', error);
+            alert("Erreur de connexion avec le serveur IA (Google Gemini est peut-être saturé). Veuillez réessayer dans un instant.");
             submitBtn.disabled = false;
             submitBtn.innerText = originalText;
         });
