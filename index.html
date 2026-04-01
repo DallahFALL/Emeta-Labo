@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://paytech.sn/cdn/paytech.min.css">
     <script src="https://paytech.sn/cdn/paytech.min.js"></script>
 
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
     
     <!-- Cadenas de sécurité pour le Laboratoire -->
@@ -24,6 +25,7 @@
         }
     </script>  
     
+    <!-- Styles intégrés -->
     <style>
         body { margin: 0; background-color: #0a192f; color: #e6f1ff; font-family: 'Inter', sans-serif; }
         
@@ -48,7 +50,9 @@
         .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 25, 47, 0.9); position: sticky; top: 0; z-index: 100; }
         .logo-container { display: flex; align-items: center; gap: 15px; }
         .brand-text h1 { font-family: 'Cinzel', serif; color: #d4af37; margin: 0; font-size: 1.5rem; }
-        .header-slogan { font-size: 0.9rem; color: #8892b0; }
+        .header-slogan { font-size: 0.9rem; color: #8892b0; display: none; }
+        @media(min-width: 768px) { .header-slogan { display: block; } }
+        
         .btn-reset { background: transparent; border: 1px solid #8892b0; color: #8892b0; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-right: 10px; }
         .lang-switch button { background: transparent; border: none; color: #8892b0; cursor: pointer; font-weight: bold; padding: 5px; }
         .lang-switch button.active { color: #d4af37; border-bottom: 1px solid #d4af37; }
@@ -72,7 +76,6 @@
             border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: 0.3s;
         }
         
-        /* Illumination des champs de saisie au focus */
         .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
             border-color: #d4af37 !important;
@@ -83,7 +86,6 @@
         .checkbox-btn input { display: none; }
         .checkbox-btn span { display: block; padding: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: 0.3s; }
         
-        /* Effet Wow sur les boutons sélectionnés (Secteurs/Expertises) */
         .checkbox-btn input:checked + span {
             background: rgba(212, 175, 55, 0.15) !important;
             border-color: #d4af37 !important;
@@ -100,7 +102,6 @@
         .btn-container.split { justify-content: space-between; }
         .gold-link { color: #d4af37; text-decoration: none; border-bottom: 1px dashed #d4af37; transition: 0.3s; }
         
-        /* Bouton Lancer Analyse Ultra-Lumineux */
         .btn-gold.glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); animation: pulse-gold 2s infinite; }
         @keyframes pulse-gold { 0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } 50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.9), 0 0 10px #fff; } 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } }
 
@@ -157,12 +158,13 @@
         </div>
     </section>
 
-    <!-- SECTION PRICING (Essentielle pour router vers PayTech ou Mode Gratuit) -->
+    <!-- SECTION TARIFS (Nécessaire pour définir le plan) -->
     <section id="pricing" style="font-family: Arial, sans-serif; padding: 20px 10px; background-color: rgba(0,0,0,0.2); text-align: center;">
         <div style="max-width: 1100px; margin: 0 auto;">
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                 
-                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; width: 280px; text-align: left; transition: 0.3s;">
+                <!-- Plan Starter -->
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
                     <h3 data-i18n="pricing_starter_name" style="font-size: 18px; color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">STARTER</h3>
                     <p data-i18n="pricing_starter_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">Pour tester la puissance analytique d'e-META LABS.</p>
                     <div style="font-size: 24px; font-weight: bold; color: #d4af37; margin: 10px 0;"><span data-i18n="pricing_starter_price">0 FCFA</span></div>
@@ -175,7 +177,8 @@
                     <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='starter';" data-i18n="pricing_starter_btn" style="display: block; text-align: center; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">Tester gratuitement</a>
                 </div>
 
-                <div style="background: rgba(0, 86, 179, 0.1); border: 2px solid #0056b3; border-radius: 8px; padding: 20px; width: 280px; text-align: left; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,86,179,0.3);">
+                <!-- Plan Pro -->
+                <div style="background: rgba(0, 86, 179, 0.15); border: 2px solid #0056b3; border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 8px 15px rgba(0,86,179,0.3); transform: translateY(-5px);">
                     <div data-i18n="pricing_pro_badge" style="background: #0056b3; color: #fff; font-size: 11px; font-weight: bold; text-align: center; padding: 4px; border-radius: 3px; margin-bottom: 10px; width: fit-content;">LE PLUS POPULAIRE</div>
                     <h3 data-i18n="pricing_pro_name" style="font-size: 18px; color: #66b0ff; margin-top: 0; font-family: 'Cinzel', serif;">PRO (One-Shot)</h3>
                     <p data-i18n="pricing_pro_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">L'audit stratégique complet en 3 minutes.</p>
@@ -189,7 +192,8 @@
                     <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='pro';" data-i18n="pricing_pro_btn" style="display: block; text-align: center; background: #0056b3; color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">Générer l'Audit</a>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; width: 280px; text-align: left;">
+                <!-- Plan Expert -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid #333; border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
                     <h3 data-i18n="pricing_expert_name" style="font-size: 18px; color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">EXPERT</h3>
                     <p data-i18n="pricing_expert_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">Votre cellule prospective 24/7.</p>
                     <div style="font-size: 24px; font-weight: bold; color: #d4af37; margin: 10px 0;"><span data-i18n="pricing_expert_price">29 000 FCFA</span></div>
@@ -199,7 +203,7 @@
                         <li data-i18n="pricing_expert_feat3">✓ Protocole d'action sur 7 jours</li>
                         <li data-i18n="pricing_expert_feat4">✓ Livraison VIP (WhatsApp)</li>
                     </ul>
-                    <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='expert';" data-i18n="pricing_expert_btn" style="display: block; text-align: center; background: #d4af37; color: #0a192f; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">S'abonner</a>
+                    <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='expert';" data-i18n="pricing_expert_btn" style="display: block; text-align: center; background: #d4af37; color: #111; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">S'abonner</a>
                 </div>
 
             </div>
@@ -210,8 +214,10 @@
         <div class="glass-card">
             
             <form id="diagnosticForm">
+                <!-- Variable Plan Cachée -->
                 <input type="hidden" id="plan_choisi" value="starter">    
                 
+                <!-- ================= ETAPE 1 ================= -->
                 <div class="form-step active" id="step-1">
                     <h3 data-i18n="step1_title">01. Identification</h3>
                     <div class="input-group">
@@ -231,6 +237,7 @@
                     </div>
                 </div>
 
+                <!-- ================= ETAPE 2 ================= -->
                 <div class="form-step" id="step-2">
                     <h3 data-i18n="step2_title">02. Matrice Stratégique</h3>
                     
@@ -240,8 +247,9 @@
                             De l'ingénierie financière aux litiges internationaux les plus complexes, notre moteur polymorphe s'adapte à votre industrie. Cochez l'<strong>Auto-Détection IA</strong> si votre enjeu dépasse les cadres traditionnels.
                         </span>
                     </div>
+
                     <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                        <label class="section-label" data-i18n="lbl_sector">Secteur Stratégique</label>
+                        <label class="section-label" data-i18n="lbl_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Secteur Stratégique</label>
                         <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: none; text-shadow: 0 0 5px rgba(212,175,55,0.5);" data-i18n="btn_guide">📖 Guide des Expertises</a>
                     </div>
                     
@@ -262,7 +270,7 @@
                         <label class="checkbox-btn"><input type="radio" name="sector" value="SaaS_Software"> <span data-i18n="sec_saas">SaaS & Éditeurs Logiciels</span></label>
                         <label class="checkbox-btn"><input type="radio" name="sector" value="Telecom_Infra"> <span data-i18n="sec_telecom">Télécoms & Infrastructures</span></label>
                         
-                        <label class="checkbox-btn" style="position: relative;">
+                        <label class="checkbox-btn">
                             <input type="radio" name="sector" value="other" id="sector-other">
                             <span style="border-color: #d4af37;">
                                 <span style="font-size: 20px; display: block; margin-bottom: 5px;">💡</span>
@@ -271,12 +279,13 @@
                         </label>
                     </div>
 
+                    <!-- Champ dynamique "Autre" corrigé (un seul id) -->
                     <div id="custom-sector-container" style="display: none; margin-top: 20px; margin-bottom: 20px; animation: fadeIn 0.5s;">
-                        <label id="custom-sector-label" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block;">Précisez votre industrie :</label>
-                        <input type="text" id="custom-sector-input" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
+                        <label id="custom-sector-label" data-i18n="lbl_custom_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block; text-transform: uppercase;">Précisez votre industrie :</label>
+                        <input type="text" id="custom-sector-input" data-i18n="ph_custom_sector" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
                     </div>
 
-                    <label class="section-label mt-2" data-i18n="lbl_geo">Zone d'Intervention</label>
+                    <label class="section-label mt-2" data-i18n="lbl_geo" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Zone d'Intervention</label>
                     <div class="input-group">
                         <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
                             <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
@@ -315,7 +324,7 @@
                         </select>
                     </div>
 
-                    <label class="section-label mt-2" data-i18n="lbl_expertise">Expertise Requise</label>
+                    <label class="section-label mt-2" data-i18n="lbl_expertise" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Expertise Requise</label>
                     <div class="grid-options">
                         <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
                         <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
@@ -340,6 +349,7 @@
                     </div>
                 </div>
 
+                <!-- ================= ETAPE 3 ================= -->
                 <div class="form-step" id="step-3">
                     <h3 data-i18n="step3_title">03. Matrice Analyse & Restitution</h3>
                     <div style="text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
@@ -364,16 +374,16 @@
                     </div>
 
                     <div class="legal-check" style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px;">
-                        <input type="checkbox" id="consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top:4px;">
-                        <label for="consent" style="font-size: 0.85rem; color: #ccc;">
+                        <input type="checkbox" id="consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 4px;">
+                        <label for="consent" style="color: #ccc; font-size: 0.9rem;">
                             <span data-i18n="legal_consent">J'accepte la</span> 
                             <a href="#" id="openPrivacy" class="gold-link" data-i18n="link_privacy">Politique de Confidentialité Officielle</a>.
                         </label>
                     </div>
 
                     <div class="opt-in-container" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 8px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <input type="checkbox" id="whatsapp-consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top:4px;">
-                        <label for="whatsapp-consent" style="font-size: 0.85rem; color: #ccc;" data-i18n="lbl_wa_optin">
+                        <input type="checkbox" id="whatsapp-consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 4px;">
+                        <label for="whatsapp-consent" style="color: #ccc; font-size: 0.9rem;" data-i18n="lbl_wa_optin">
                             J'accepte de recevoir mon analyse stratégique par <strong style="color:#25D366; text-shadow: 0 0 5px rgba(37, 211, 102, 0.4);">WhatsApp</strong>.
                         </label>
                     </div>
@@ -385,6 +395,7 @@
                 </div>
             </form>
 
+            <!-- RADAR IA (Effet Wow) -->
             <div id="emeta-loader" style="display: none; text-align: center; padding: 50px 20px; background: #0a192f; border-radius: 12px; border: 1px solid #d4af37; margin-top: 20px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);">
                 <div style="width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2); border-top: 4px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px;"></div>
                 <h3 id="loader-title" style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">Moteur e-META LABS activé</h3>
@@ -396,7 +407,7 @@
     <footer class="footer">
         <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
         <p class="tiny">Strategic Intelligence Unit • Dakar - Paris - Dubai - Shanghai - New York</p>
-        <div style="margin-top: 15px; font-size: 0.8rem; color: #8892b0;">
+        <div style="margin-top: 15px;">
             <a href="mailto:contact@e-metalabs.com" style="color: #8892b0; text-decoration: none; margin-right: 15px;">✉️ contact@e-metalabs.com</a>
             <a href="mailto:support@e-metalabs.com" style="color: #8892b0; text-decoration: none;">🛠️ support@e-metalabs.com</a>
         </div>
@@ -409,9 +420,9 @@
             <h2 data-i18n="modal_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Politique de Confidentialité</h2>
             <div class="modal-body" style="text-align: left; padding-right:10px;">
                 <h4 data-i18n="priv_t1" style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">1. Identité et Opérations</h4>
-                <p data-i18n="priv_c1" style="font-size: 0.9rem; color: #ccc;">e-META LABS garantit que vos données sont traitées de manière confidentielle et ne sont pas utilisées pour entraîner des modèles publics.</p>
+                <p data-i18n="priv_c1" style="color: #ccc; font-size: 0.9rem;">e-META LABS SASU garantit le traitement crypté de vos données. Aucune de vos informations n'est utilisée pour entraîner des algorithmes publics.</p>
                 <h4 data-i18n="priv_t2" style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">2. Souveraineté des Données</h4>
-                <p data-i18n="priv_c2" style="font-size: 0.9rem; color: #ccc;">Les fichiers stratégiques que vous uploadez sont chiffrés et scellés. Ils seront purgés de nos serveurs après restitution de l'audit.</p>
+                <p data-i18n="priv_c2" style="color: #ccc; font-size: 0.9rem;">Les documents stratégiques que vous téléchargez sont purgés de nos serveurs sécurisés dans les 24h suivant l'analyse.</p>
             </div>
             <button class="btn-gold full-width close-modal-btn" data-i18n="btn_close" style="margin-top:20px;">Fermer</button>
         </div>
@@ -465,9 +476,9 @@
     <div id="resultModal" class="modal-overlay">
         <div class="modal-content" style="text-align: center;">
             <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 20px rgba(212,175,55,0.5);">✅</div>
-            <h2 style="color: #d4af37; border-bottom: 1px solid #d4af37; padding-bottom: 10px;" data-i18n="modal_res_title">Diagnostic Pris en Charge</h2>
+            <h2 style="color: #d4af37; border-bottom: 1px solid #d4af37; padding-bottom: 10px;" data-i18n="modal_res_title">Diagnostic Sécurisé</h2>
             <div class="modal-body" style="color: #e6f1ff; font-size: 0.95rem; line-height: 1.6;">
-                <p id="resultText">Vos données ont été sécurisées et transmises au Moteur e-META. Vous recevrez l'audit sur votre messagerie d'ici 5 minutes.</p>
+                <p id="resultText">Vos données ont été traitées avec succès par le Moteur e-META LABS. L'audit vous parviendra dans les 5 prochaines minutes.</p>
             </div>
             <div class="btn-container">
                 <button class="btn-gold full-width" onclick="location.reload()" data-i18n="btn_new_analysis">Nouvelle Analyse</button>
@@ -475,28 +486,61 @@
         </div>
     </div>
 
+    <!-- SCRIPT DE TRADUCTION DE LA CLIENTE -->
+    <!-- NB: Ce script permet aux attributs data-i18n de fonctionner si i18n.js existe sur le repo -->
+    <script src="i18n.js"></script>
+
     <!-- ========================================== -->
-    <!-- MOTEUR JAVASCRIPT INTÉGRÉ (Routage + UI) -->
+    <!-- MOTEUR JAVASCRIPT INTÉGRÉ (Cerveau + Routage) -->
     <!-- ========================================== -->
     <script>
+        // --- 1. CONFIGURATION WEBHOOK ---
         const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f";
 
-        // Compteur en direct
+        // --- 2. GESTION DES LANGUES (Traduction Dynamique du JS) ---
+        const uiDict = {
+            fr: {
+                load1: "Analyse sémantique du contexte...", load2: "Corrélation avec les données sectorielles...", load3: "Génération des matrices stratégiques...", load4: "Transmission cryptée vers l'IA...",
+                errFile: "Pour garantir une analyse ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.", errNet: "Impossible de joindre le serveur e-META LABS. Veuillez vérifier votre connexion.",
+                lblReq: "Ce champ est obligatoire.", lblEmail: "Veuillez entrer un email valide.", lblCheck: "Vous devez accepter cette condition pour continuer.",
+                alertSec: "Veuillez sélectionner un Secteur Stratégique.", alertCus: "Veuillez préciser votre industrie sur-mesure.", alertGeo: "Veuillez sélectionner une zone.",
+                resFree: "Votre diagnostic STARTER a été transmis à l'IA. Il vous sera envoyé par email/WhatsApp d'ici 5 minutes."
+            },
+            en: {
+                load1: "Semantic context analysis...", load2: "Sectoral data correlation...", load3: "Generating strategic matrices...", load4: "Encrypted transmission to AI...",
+                errFile: "To ensure ultra-fast analysis, the file must not exceed 2.5 MB.", errNet: "Unable to reach e-META LABS server. Please check your connection.",
+                lblReq: "This field is required.", lblEmail: "Please enter a valid email.", lblCheck: "You must accept this condition to continue.",
+                alertSec: "Please select a Strategic Sector.", alertCus: "Please specify your custom industry.", alertGeo: "Please select a zone.",
+                resFree: "Your STARTER diagnostic has been sent to the AI. It will be delivered via email/WhatsApp within 5 minutes."
+            },
+            es: {
+                load1: "Análisis semántico del contexto...", load2: "Correlación con datos sectoriales...", load3: "Generación de matrices estratégicas...", load4: "Transmisión cifrada a la IA...",
+                errFile: "Para garantizar un análisis ultrarrápido, el archivo no debe superar los 2.5 MB.", errNet: "Imposible conectar con el servidor e-META LABS. Compruebe su conexión.",
+                lblReq: "Este campo es obligatorio.", lblEmail: "Por favor ingrese un correo válido.", lblCheck: "Debe aceptar esta condición para continuar.",
+                alertSec: "Seleccione un Sector Estratégico.", alertCus: "Especifique su industria a medida.", alertGeo: "Seleccione una zona.",
+                resFree: "Su diagnóstico STARTER ha sido enviado a la IA. Lo recibirá por correo/WhatsApp en 5 minutos."
+            },
+            ar: {
+                load1: "التحليل الدلالي للسياق...", load2: "الارتباط بالبيانات القطاعية...", load3: "توليد المصفوفات الاستراتيجية...", load4: "نقل مشفر إلى الذكاء الاصطناعي...",
+                errFile: "لضمان تحليل فائق السرعة، يجب ألا يتجاوز الملف 2.5 ميجابايت.", errNet: "تعذر الاتصال بخادم e-META LABS. يرجى التحقق من اتصالك.",
+                lblReq: "هذا الحقل مطلوب.", lblEmail: "يرجى إدخال بريد إلكتروني صحيح.", lblCheck: "يجب قبول هذا الشرط للمتابعة.",
+                alertSec: "يرجى تحديد قطاع استراتيجي.", alertCus: "يرجى تحديد صناعتك المخصصة.", alertGeo: "يرجى تحديد منطقة.",
+                resFree: "تم إرسال تشخيص STARTER الخاص بك إلى الذكاء الاصطناعي. ستتلقاه عبر البريد الإلكتروني/واتساب في غضون 5 دقائق."
+            }
+        };
+
+        // --- 3. COMPTEUR & FICHIER ---
         window.addEventListener('load', () => {
             const counterElement = document.getElementById('live-counter-top');
-            const counterElementBot = document.getElementById('live-counter');
             if (counterElement) {
                 let currentCount = 1380; const targetCount = 1423; 
                 const interval = setInterval(() => {
-                    currentCount++; 
-                    counterElement.innerText = currentCount.toLocaleString();
-                    if(counterElementBot) counterElementBot.innerText = currentCount.toLocaleString();
+                    currentCount++; counterElement.innerText = currentCount.toLocaleString();
                     if (currentCount >= targetCount) clearInterval(interval);
                 }, 30); 
             }
         });
 
-        // Lecture de fichier
         function getBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader(); reader.readAsDataURL(file);
@@ -504,20 +548,18 @@
             });
         }
 
-        // Messages d'erreur personnalisés
+        // --- 4. NAVIGATION & UX ---
         function setCustomMessage(input) {
+            const lang = document.documentElement.lang || 'fr';
+            const t = uiDict[lang] || uiDict.fr;
             input.setCustomValidity('');
             if (!input.validity.valid) {
-                if (input.validity.valueMissing) {
-                    input.setCustomValidity((input.type === 'checkbox') ? "Vous devez accepter cette condition." : "Ce champ est obligatoire.");
-                } else if (input.validity.typeMismatch && input.type === 'email') {
-                    input.setCustomValidity("Veuillez entrer un email valide.");
-                }
+                if (input.validity.valueMissing) input.setCustomValidity((input.type === 'checkbox') ? t.lblCheck : t.lblReq);
+                else if (input.validity.typeMismatch && input.type === 'email') input.setCustomValidity(t.lblEmail);
             }
             return true;
         }
 
-        // Gestion Fichier Upload UI
         const fileInput = document.getElementById('clientFile');
         const fileNameDisplay = document.getElementById('fileNameDisplay');
         if (fileInput && fileNameDisplay) {
@@ -530,7 +572,6 @@
             });
         }
 
-        // Gestion Modals
         const setupModal = (btnId, modalId, closeClass) => {
             const btn = document.getElementById(btnId); const modal = document.getElementById(modalId);
             if(btn && modal) {
@@ -538,10 +579,20 @@
                 document.querySelectorAll(closeClass).forEach(c => c.addEventListener('click', () => modal.style.display = 'none'));
             }
         };
-        setupModal('openPrivacy', 'privacyOverlay', '.close-modal, .close-modal-btn');
-        setupModal('openGuide', 'guideOverlay', '.close-guide, .close-guide-btn');
+        document.addEventListener('DOMContentLoaded', () => {
+            setupModal('openPrivacy', 'privacyOverlay', '.close-modal, .close-modal-btn');
+            setupModal('openGuide', 'guideOverlay', '.close-guide, .close-guide-btn');
+            
+            // Gestion du changement de langue pour la var globale html lang (pour i18n)
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.documentElement.lang = this.getAttribute('data-lang');
+                });
+            });
+        });
 
-        // Bouton Secteur "Autre"
         document.querySelectorAll('input[name="sector"]').forEach(radio => {
             radio.addEventListener('change', (e) => {
                 const customContainer = document.getElementById('custom-sector-container');
@@ -555,7 +606,6 @@
             });
         });
 
-        // Navigation Formulaire & Boutons de Prix
         function resetForm() {
             if(confirm("Voulez-vous réinitialiser le formulaire ?")) {
                 document.getElementById('diagnosticForm').reset();
@@ -567,37 +617,38 @@
         }
 
         function nextStep(targetStep) {
-            // Validation Step 1
+            const lang = document.documentElement.lang || 'fr';
+            const t = uiDict[lang] || uiDict.fr;
+
             if (targetStep === 2) {
                 const c = document.getElementById('company'), e = document.getElementById('email'), p = document.getElementById('phone');
                 if (!c.checkValidity()) { c.reportValidity(); return; }
                 if (!e.checkValidity()) { e.reportValidity(); return; }
                 if (!p.checkValidity()) { p.reportValidity(); return; }
             }
-            // Validation Step 2
             if (targetStep === 3) {
                 const sector = document.querySelector('input[name="sector"]:checked');
                 const geo = document.getElementById('geo-zone');
-                if (!sector) { alert("Veuillez sélectionner un Secteur Stratégique."); return; }
+                if (!sector) { alert(t.alertSec); return; }
                 if (sector.value === 'other') {
                     const custom = document.getElementById('custom-sector-input');
-                    if (!custom.value.trim()) { alert("Veuillez préciser votre industrie sur-mesure."); custom.focus(); return; }
+                    if (!custom.value.trim()) { alert(t.alertCus); custom.focus(); return; }
                 }
-                if (geo.value === "") { geo.setCustomValidity("Veuillez sélectionner une zone."); geo.reportValidity(); return; }
+                if (geo.value === "") { geo.setCustomValidity(t.alertGeo); geo.reportValidity(); return; }
             }
-
             document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
             document.getElementById(`step-${targetStep}`).classList.add('active');
             document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ==========================================
-        // CERVEAU PRINCIPAL (Soumission + Make + PayTech)
-        // ==========================================
+        // --- 5. SOUMISSION, MAKE.COM & PAYTECH ---
         const form = document.getElementById('diagnosticForm');
         if (form) {
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                
+                const lang = document.documentElement.lang || 'fr';
+                const t = uiDict[lang] || uiDict.fr;
 
                 const whatsappConsent = document.getElementById('whatsapp-consent');
                 if (!whatsappConsent.checked) { setCustomMessage(whatsappConsent); whatsappConsent.reportValidity(); return; }
@@ -614,11 +665,7 @@
                 const statusText = document.getElementById('emeta-status');
                 if (wowLoader) wowLoader.style.display = 'block';
 
-                const loadingSteps = [
-                    "Analyse sémantique du contexte...", "Corrélation avec les données sectorielles...",
-                    "Génération des matrices stratégiques...", "Cryptographie SHA-256 en cours...",
-                    "Ancrage sur la Blockchain (Woleet)...", "Transmission cryptée vers l'IA..."
-                ];
+                const loadingSteps = [t.load1, t.load2, t.load3, t.load4];
                 let stepIndex = 0;
                 const textInterval = setInterval(() => {
                     if (stepIndex < loadingSteps.length) {
@@ -627,11 +674,11 @@
                     }
                 }, 1200); 
 
-                // Formatage des Données
+                // Formatage Payload
                 let fileData = null; let fileName = null;
                 if (fileInput && fileInput.files.length > 0) {
                     if (fileInput.files[0].size > 2.5 * 1024 * 1024) {
-                        alert("Pour garantir une analyse ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.");
+                        alert(t.errFile);
                         submitBtn.disabled = false; form.style.display = 'block'; 
                         if(wowLoader) wowLoader.style.display = 'none'; clearInterval(textInterval); return;
                     }
@@ -655,15 +702,14 @@
                     whatsapp_optin: true,
                     sector: finalSector, 
                     geoZone: document.getElementById('geo-zone').value,
-                    // Récupération correcte des multiples cases d'expertises cochées
                     expertises: Array.from(document.querySelectorAll('input[name="expertise"]:checked')).map(cb => cb.value),
                     context: document.getElementById('context').value,
-                    lang: "fr",
+                    lang: lang,
                     attachedFileName: fileName,
                     attachedFileBase64: fileData 
                 };
 
-                // Envoi à Make.com
+                // Envoi Make.com + Redirection
                 fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -672,22 +718,22 @@
                 .then(response => {
                     clearInterval(textInterval); 
                     if (response.ok) {
-                        if (statusText) statusText.innerText = "Données sécurisées. Redirection vers la plateforme de paiement...";
+                        if (statusText) statusText.innerText = "Données sécurisées. Redirection...";
                         
                         setTimeout(() => {
-                            // ⚠️ REDIRECTION PAYTECH ⚠️
                             if (planChoisi === 'pro') {
+                                // ⚠️ VOS LIENS PAYTECH ICI ⚠️
                                 window.location.href = "https://paytech.sn/link/votre-code-pro-ici";
                             } else if (planChoisi === 'expert') {
                                 window.location.href = "https://paytech.sn/link/votre-code-expert-ici";
                             } else {
-                                // Mode Starter (Gratuit) - Affichage du résultat final
+                                // STARTER
                                 if (wowLoader) wowLoader.style.display = 'none';
+                                document.getElementById('resultText').innerText = t.resFree;
                                 const resModal = document.getElementById('resultModal');
                                 if(resModal) resModal.style.display = 'flex';
                             }
                         }, 1500);
-
                     } else { throw new Error('Erreur Webhook'); }
                 })
                 .catch(error => {
@@ -695,7 +741,7 @@
                     form.style.display = 'block';
                     if(wowLoader) wowLoader.style.display = 'none';
                     console.error('Erreur Transmission:', error);
-                    alert("Impossible de joindre le serveur e-META LABS. Veuillez vérifier votre connexion.");
+                    alert(t.errNet);
                     submitBtn.disabled = false; submitBtn.innerText = originalText;
                 });
             });
