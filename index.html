@@ -279,7 +279,6 @@
                         </label>
                     </div>
 
-                    <!-- Champ dynamique "Autre" corrigé (un seul id) -->
                     <div id="custom-sector-container" style="display: none; margin-top: 20px; margin-bottom: 20px; animation: fadeIn 0.5s;">
                         <label id="custom-sector-label" data-i18n="lbl_custom_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block; text-transform: uppercase;">Précisez votre industrie :</label>
                         <input type="text" id="custom-sector-input" data-i18n="ph_custom_sector" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
@@ -407,7 +406,7 @@
     <footer class="footer">
         <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
         <p class="tiny">Strategic Intelligence Unit • Dakar - Paris - Dubai - Shanghai - New York</p>
-        <div style="margin-top: 15px;">
+        <div style="margin-top: 15px; font-size: 0.8rem; color: #8892b0;">
             <a href="mailto:contact@e-metalabs.com" style="color: #8892b0; text-decoration: none; margin-right: 15px;">✉️ contact@e-metalabs.com</a>
             <a href="mailto:support@e-metalabs.com" style="color: #8892b0; text-decoration: none;">🛠️ support@e-metalabs.com</a>
         </div>
@@ -500,6 +499,9 @@
         // --- 2. GESTION DES LANGUES (Traduction Dynamique du JS) ---
         const uiDict = {
             fr: {
+                loaderTitle: "MOTEUR e-META LABS ACTIVÉ",
+                loadInit: "Initialisation de la connexion sécurisée...",
+                loadSuccess: "Données sécurisées. Redirection...",
                 load1: "Analyse sémantique du contexte...", load2: "Corrélation avec les données sectorielles...", load3: "Génération des matrices stratégiques...", load4: "Transmission cryptée vers l'IA...",
                 errFile: "Pour garantir une analyse ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.", errNet: "Impossible de joindre le serveur e-META LABS. Veuillez vérifier votre connexion.",
                 lblReq: "Ce champ est obligatoire.", lblEmail: "Veuillez entrer un email valide.", lblCheck: "Vous devez accepter cette condition pour continuer.",
@@ -507,6 +509,9 @@
                 resFree: "Votre diagnostic STARTER a été transmis à l'IA. Il vous sera envoyé par email/WhatsApp d'ici 5 minutes."
             },
             en: {
+                loaderTitle: "e-META LABS ENGINE ACTIVATED",
+                loadInit: "Initializing secure connection...",
+                loadSuccess: "Data secured. Redirecting...",
                 load1: "Semantic context analysis...", load2: "Sectoral data correlation...", load3: "Generating strategic matrices...", load4: "Encrypted transmission to AI...",
                 errFile: "To ensure ultra-fast analysis, the file must not exceed 2.5 MB.", errNet: "Unable to reach e-META LABS server. Please check your connection.",
                 lblReq: "This field is required.", lblEmail: "Please enter a valid email.", lblCheck: "You must accept this condition to continue.",
@@ -514,6 +519,9 @@
                 resFree: "Your STARTER diagnostic has been sent to the AI. It will be delivered via email/WhatsApp within 5 minutes."
             },
             es: {
+                loaderTitle: "MOTOR e-META LABS ACTIVADO",
+                loadInit: "Inicializando conexión segura...",
+                loadSuccess: "Datos asegurados. Redirigiendo...",
                 load1: "Análisis semántico del contexto...", load2: "Correlación con datos sectoriales...", load3: "Generación de matrices estratégicas...", load4: "Transmisión cifrada a la IA...",
                 errFile: "Para garantizar un análisis ultrarrápido, el archivo no debe superar los 2.5 MB.", errNet: "Imposible conectar con el servidor e-META LABS. Compruebe su conexión.",
                 lblReq: "Este campo es obligatorio.", lblEmail: "Por favor ingrese un correo válido.", lblCheck: "Debe aceptar esta condición para continuar.",
@@ -521,6 +529,9 @@
                 resFree: "Su diagnóstico STARTER ha sido enviado a la IA. Lo recibirá por correo/WhatsApp en 5 minutos."
             },
             ar: {
+                loaderTitle: "تم تنشيط محرك e-META LABS",
+                loadInit: "جاري تهيئة الاتصال الآمن...",
+                loadSuccess: "بيانات آمنة. جاري التوجيه...",
                 load1: "التحليل الدلالي للسياق...", load2: "الارتباط بالبيانات القطاعية...", load3: "توليد المصفوفات الاستراتيجية...", load4: "نقل مشفر إلى الذكاء الاصطناعي...",
                 errFile: "لضمان تحليل فائق السرعة، يجب ألا يتجاوز الملف 2.5 ميجابايت.", errNet: "تعذر الاتصال بخادم e-META LABS. يرجى التحقق من اتصالك.",
                 lblReq: "هذا الحقل مطلوب.", lblEmail: "يرجى إدخال بريد إلكتروني صحيح.", lblCheck: "يجب قبول هذا الشرط للمتابعة.",
@@ -659,10 +670,14 @@
                 const originalText = submitBtn.innerText;
                 submitBtn.disabled = true;
                 
-                // Lancement Radar IA
+                // Lancement Radar IA Multilingue
                 form.style.display = 'none';
                 const wowLoader = document.getElementById('emeta-loader');
                 const statusText = document.getElementById('emeta-status');
+                const loaderTitleEl = document.getElementById('loader-title');
+                
+                if (loaderTitleEl) loaderTitleEl.innerText = t.loaderTitle;
+                if (statusText) statusText.innerText = t.loadInit;
                 if (wowLoader) wowLoader.style.display = 'block';
 
                 const loadingSteps = [t.load1, t.load2, t.load3, t.load4];
@@ -718,7 +733,7 @@
                 .then(response => {
                     clearInterval(textInterval); 
                     if (response.ok) {
-                        if (statusText) statusText.innerText = "Données sécurisées. Redirection...";
+                        if (statusText) statusText.innerText = t.loadSuccess;
                         
                         setTimeout(() => {
                             if (planChoisi === 'pro') {
