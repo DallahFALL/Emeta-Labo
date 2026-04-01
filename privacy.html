@@ -3,30 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politique de Confidentialité | e-META LABS</title>
+    <title>Souveraineté & Confidentialité | e-META LABS</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
+    
     <style>
-        body { margin: 0; background-color: #0a192f; color: #e6f1ff; font-family: 'Inter', sans-serif; line-height: 1.6; }
-        .privacy-container {
-            max-width: 900px; margin: 50px auto; padding: 50px;
-            background: rgba(10, 25, 47, 0.7); border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px);
+        :root {
+            --gold: #d4af37;
+            --dark: #0a192f;
+            --slate: #8892b0;
+            --white: #e6f1ff;
         }
+
+        body { 
+            margin: 0; 
+            background-color: var(--dark); 
+            color: var(--white); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+
+        /* Header */
         .privacy-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 20px 5%;
-            background: rgba(10, 25, 47, 0.95); border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%;
+            background: rgba(10, 25, 47, 0.95); 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
+
         .logo-container { display: flex; align-items: center; gap: 15px; }
-        .brand-text h1 { font-family: 'Cinzel', serif; color: #d4af37; margin: 0; }
-        .privacy-content h4 { color: #d4af37; font-family: 'Cinzel', serif; margin-top: 35px; margin-bottom: 15px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 8px; font-size: 1.2rem; }
-        .privacy-content p { color: #ccc; line-height: 1.8; font-size: 1rem; }
-        .btn-return {
-            background: transparent; color: #d4af37; border: 1px solid #d4af37; padding: 10px 20px;
-            border-radius: 4px; text-decoration: none; font-size: 0.9rem; transition: 0.3s; text-transform: uppercase; font-family: 'Cinzel', serif;
+        .brand-text h1 { font-family: 'Cinzel', serif; color: var(--gold); margin: 0; font-size: 1.2rem; letter-spacing: 1px; }
+
+        /* Container & Card */
+        .privacy-container {
+            max-width: 900px; 
+            margin: 60px auto; 
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(10px);
         }
-        .btn-return:hover { background: rgba(212, 175, 55, 0.1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
-        @media (max-width: 768px) { .privacy-container { padding: 20px; margin: 20px; } .privacy-header { flex-direction: column; gap: 15px; } }
+
+        h2 {
+            text-align: center; 
+            color: var(--gold); 
+            font-family: 'Cinzel', serif; 
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .update-date {
+            text-align: center; 
+            color: var(--slate); 
+            font-size: 0.85rem; 
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Content Sections */
+        .privacy-content h4 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .privacy-content p {
+            color: #ccc;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .privacy-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .privacy-content li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .privacy-content li::before {
+            content: "•";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Button Return */
+        .btn-return {
+            background: transparent; 
+            color: var(--gold); 
+            border: 1px solid var(--gold); 
+            padding: 10px 20px;
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem; 
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-return:hover {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center; 
+            padding: 40px; 
+            font-size: 0.8rem; 
+            color: var(--slate); 
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-container { padding: 30px 20px; margin: 20px; }
+            .privacy-header { flex-direction: column; gap: 15px; text-align: center; }
+            h2 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -38,7 +162,7 @@
                 <circle cx="50" cy="50" r="8" fill="#d4af37"/>
             </svg>
             <div class="brand-text">
-                <h1 style="font-size: 1.2rem;">e-META LABS</h1>
+                <h1>e-META LABS</h1>
             </div>
         </div>
         <a href="index.html" class="btn-return" data-i18n="btn_return">Retour au Moteur IA</a>
@@ -46,36 +170,55 @@
 
     <main>
         <div class="privacy-container">
-            <h2 style="text-align: center; color: #d4af37; font-family: 'Cinzel', serif; margin-bottom: 5px; font-size: 2rem;" data-i18n="modal_title">Politique de Souveraineté & Confidentialité</h2>
-            <p style="text-align: center; color: #8892b0; font-size: 0.9rem; margin-bottom: 50px;" data-i18n="priv_date">Dernière mise à jour : Mars 2026</p>
+            <h2 data-i18n="modal_title">Politique de Souveraineté & Confidentialité</h2>
+            <p class="update-date" data-i18n="priv_date">Dernière mise à jour : Février 2026</p>
 
             <div class="privacy-content">
+                <p><em>La présente charte définit les protocoles de sécurité et les engagements de confidentialité d'e-META LABS SASU concernant le traitement des données stratégiques via son moteur d'intelligence artificielle.</em></p>
+
                 <h4 data-i18n="priv_t1">1. Identité et Opérations</h4>
-                <p data-i18n="priv_c1">e-META LABS SASU opère en tant qu'unité d'intelligence stratégique internationale depuis ses différents hubs (Dakar, Paris, Dubaï). Les données collectées via notre plateforme B2B sont strictement limitées au périmètre de la réalisation de diagnostics stratégiques assistés par Intelligence Artificielle.</p>
+                <p data-i18n="priv_c1">e-META LABS SASU opère en tant qu'unité d'intelligence stratégique internationale, dont le siège et les hubs technologiques (Dakar, Paris, Dubaï, Shanghai, New York) assurent la maintenance du moteur IA. Nos opérations consistent à fournir des diagnostics de haute précision pour les décideurs. L'accès au domaine <span class="highlight">e-meta.app</span> est strictement réservé aux phases de laboratoire restreint, tandis que <span class="highlight">e-metalabs.com</span> constitue l'interface publique de déploiement.</p>
 
                 <h4 data-i18n="priv_t2">2. Collecte et Traitement des Données</h4>
-                <p data-i18n="priv_c2">Nous collectons uniquement les informations nécessaires à l'analyse : nom de l'entité, contacts professionnels, contexte opérationnel, et documents stratégiques fournis volontairement. La transmission de l'analyse finale peut s'effectuer de manière chiffrée de bout en bout via l'API WhatsApp Business, sous réserve du consentement explicite (Opt-in) du client.</p>
+                <p data-i18n="priv_c2">Le Moteur e-META collecte exclusivement les données nécessaires à la calibration du diagnostic : identité de l'entité, coordonnées professionnelles, contexte opérationnel et documents stratégiques versés volontairement.</p>
+                <ul>
+                    <li><span class="highlight">Finalité :</span> Génération d'audits, de rapports de risques et de stratégies de pivot.</li>
+                    <li><span class="highlight">Consentement :</span> En validant le formulaire, l'utilisateur accepte la transmission de ses données vers notre infrastructure sécurisée (Make.com) pour traitement immédiat.</li>
+                </ul>
 
                 <h4 data-i18n="priv_t3">3. Souveraineté et Intelligence Artificielle</h4>
-                <p data-i18n="priv_c3">Aucune de vos données sensibles, textes ou fichiers ne sera utilisée pour entraîner les algorithmes publics de nos partenaires technologiques (Google Gemini, OpenAI). Les serveurs de calcul isolent vos requêtes de manière éphémère.</p>
+                <p data-i18n="priv_c3">Nous garantissons une étanchéité totale entre vos données et les bases d'entraînement publiques.</p>
+                <ul>
+                    <li><span class="highlight">Isolation :</span> Les données transmises aux API (Google Gemini, OpenAI) sont traitées via des sessions éphémères.</li>
+                    <li><span class="highlight">Non-Apprentissage :</span> Aucune donnée client n'est utilisée pour entraîner ou améliorer les modèles d'IA globaux. Votre avantage compétitif est préservé par une architecture de "Zero-Data Retention".</li>
+                </ul>
 
                 <h4 data-i18n="priv_t4">4. Ancrage Blockchain et Propriété Intellectuelle</h4>
-                <p data-i18n="priv_c4">Les rapports générés vous appartiennent de plein droit. Pour garantir l'inaltérabilité de nos analyses, les métadonnées de l'audit peuvent être scellées via la technologie d'ancrage Woleet (Blockchain Bitcoin). Les fichiers sources sont purgés de nos serveurs 24h après restitution.</p>
-                
+                <p data-i18n="priv_c4">Chaque audit généré par e-META LABS fait l'objet d'un marquage temporel.</p>
+                <ul>
+                    <li><span class="highlight">Propriété :</span> Le client est l'unique propriétaire du rapport final et des conclusions stratégiques.</li>
+                    <li><span class="highlight">Certification :</span> Les métadonnées du rapport peuvent être scellées par ancrage Blockchain (via le protocole Woleet), rendant le document infalsifiable.</li>
+                    <li><span class="highlight">Purge :</span> Les fichiers sources sont automatiquement purgés de nos serveurs de calcul 24 heures après la livraison de l'audit.</li>
+                </ul>
+
                 <h4 data-i18n="priv_t5">5. Clause de Non-Substitution</h4>
-                <p data-i18n="priv_c5">Les audits générés par e-META LABS constituent un outil d'aide à la décision stratégique. Ils ne se substituent en aucun cas à un conseil juridique, fiscal ou financier certifié.</p>
+                <p data-i18n="priv_c5">Les résultats produits constituent des outils d'aide à la décision stratégique basés sur l'analyse de probabilités. Ils ne constituent en aucun cas des conseils juridiques, fiscaux, médicaux ou financiers certifiés. e-META LABS décline toute responsabilité quant aux décisions prises sur la base des diagnostics fournis.</p>
 
                 <h4 data-i18n="priv_t6">6. Contact & Droits Internationaux</h4>
-                <p data-i18n="priv_c6">Conformément au RGPD et aux lois internationales sur la protection des données, vous disposez d'un droit de suppression immédiate de vos empreintes numériques. Contactez notre DPO : <strong>support@e-metalabs.com</strong>.</p>
+                <p data-i18n="priv_c6">Conformément au RGPD et aux lois internationales, vous disposez d'un droit d'accès, de rectification et de suppression immédiate de vos données.</p>
+                <p>
+                    Point de contact unique : <span class="highlight">support@e-metalabs.com</span><br>
+                    DPO (Data Protection Officer) : Direction Technique e-META LABS.
+                </p>
             </div>
         </div>
     </main>
 
-    <footer style="text-align: center; padding: 40px; font-size: 0.8rem; color: #8892b0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
-        <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
+    <footer>
+        <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span><br>
+        Strategic Intelligence Unit • Dakar - Paris - Dubai - Shanghai - New York</p>
     </footer>
 
-    <!-- Traduction (si i18n.js est présent) -->
     <script src="i18n.js"></script>
     
 </body>
