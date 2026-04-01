@@ -16,37 +16,33 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
     
-    <!-- Cadenas de sécurité pour le Laboratoire -->
+    <!-- Cadenas de sécurité pour le Laboratoire (Bloque e-meta.app uniquement) -->
     <script>
-        var mdp = prompt("Laboratoire e-META LABS. Accès restreint. Mot de passe :");
-        if (mdp !== "Meta2026!") {
-            document.write("<h1 style='text-align:center; margin-top:20%; font-family:sans-serif; color:#d4af37;'>Accès Refusé.</h1>");
-            window.stop(); 
+        var host = window.location.hostname;
+        if (host.includes("e-meta.app")) {
+            var mdp = prompt("Laboratoire e-META LABS. Accès restreint. Mot de passe :");
+            if (mdp !== "Meta2026!") {
+                document.write("<body style='background:#0a192f;'><h1 style='text-align:center; margin-top:20%; font-family:sans-serif; color:#d4af37;'>Accès Refusé.</h1></body>");
+                window.stop(); 
+            }
         }
     </script>  
     
     <!-- Styles intégrés -->
     <style>
-        body { margin: 0; background-color: #0a192f; color: #e6f1ff; font-family: 'Inter', sans-serif; }
+        body { margin: 0; background-color: #0a192f; color: #e6f1ff; font-family: 'Inter', sans-serif; line-height: 1.6; }
         
-        /* Pulse lumineux sur le conteneur principal */
         .glass-card {
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 20px rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 850px;
-            margin: 40px auto;
-            transition: box-shadow 0.4s ease-in-out;
+            border: 1px solid rgba(212, 175, 55, 0.4); background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px); border-radius: 12px; padding: 40px; max-width: 850px;
+            margin: 40px auto; transition: box-shadow 0.4s ease-in-out;
         }
         .glass-card:hover {
             box-shadow: 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.7);
         }
 
-        /* Header & Hero */
         .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 25, 47, 0.9); position: sticky; top: 0; z-index: 100; }
         .logo-container { display: flex; align-items: center; gap: 15px; }
         .brand-text h1 { font-family: 'Cinzel', serif; color: #d4af37; margin: 0; font-size: 1.5rem; }
@@ -63,7 +59,6 @@
         .slogan-ia { font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 15px 0; }
         .precision-text { color: #d4af37; }
 
-        /* Formulaire & Inputs */
         .form-step { display: none; animation: fadeIn 0.5s; }
         .form-step.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -75,37 +70,28 @@
             border: 1px solid rgba(212, 175, 55, 0.4); color: #fff;
             border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: 0.3s;
         }
-        
         .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            border-color: #d4af37 !important;
-            outline: none;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); border-color: #d4af37 !important; outline: none;
         }
 
         .grid-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 20px; }
         .checkbox-btn input { display: none; }
         .checkbox-btn span { display: block; padding: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: 0.3s; }
-        
         .checkbox-btn input:checked + span {
-            background: rgba(212, 175, 55, 0.15) !important;
-            border-color: #d4af37 !important;
+            background: rgba(212, 175, 55, 0.15) !important; border-color: #d4af37 !important;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.3) !important;
-            color: #fff !important;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+            color: #fff !important; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
         }
 
-        /* Boutons */
         .btn-gold { background: #d4af37; color: #0a192f; border: none; padding: 12px 25px; border-radius: 4px; font-weight: bold; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 20px #d4af37; }
         .btn-outline { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 12px 25px; border-radius: 4px; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-family: 'Cinzel', serif; }
         .btn-container { display: flex; justify-content: flex-end; margin-top: 20px; }
         .btn-container.split { justify-content: space-between; }
-        .gold-link { color: #d4af37; text-decoration: none; border-bottom: 1px dashed #d4af37; transition: 0.3s; }
-        
+        .gold-link { color: #d4af37; text-decoration: underline; transition: 0.3s; }
         .btn-gold.glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); animation: pulse-gold 2s infinite; }
         @keyframes pulse-gold { 0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } 50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.9), 0 0 10px #fff; } 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } }
 
-        /* Loader & Modals */
         .modal-overlay { position: fixed; inset: 0; background: rgba(10, 25, 47, 0.9); display: none; justify-content: center; align-items: center; z-index: 20000; backdrop-filter: blur(5px); }
         .modal-content { background: #0a192f; border: 1px solid #d4af37; padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; position: relative; max-height: 80vh; display: flex; flex-direction: column; }
         .modal-body { overflow-y: auto; padding-right: 10px; }
@@ -124,9 +110,7 @@
                 <path d="M50 20 L80 35 V65 L50 80 L20 65 V35 Z" stroke="#d4af37" stroke-width="1" fill="rgba(212, 175, 55, 0.1)"/>
                 <circle cx="50" cy="50" r="8" fill="#d4af37"/>
             </svg>
-            <div class="brand-text">
-                <h1>e-META LABS</h1>
-            </div>
+            <div class="brand-text"><h1>e-META LABS</h1></div>
         </div>
         <div class="header-slogan" data-i18n="subtitle">Excellence Stratégique & Haute Précision IA</div>
         <div class="header-actions">
@@ -158,12 +142,11 @@
         </div>
     </section>
 
-    <!-- SECTION TARIFS (Nécessaire pour définir le plan) -->
+    <!-- SECTION TARIFS -->
     <section id="pricing" style="font-family: Arial, sans-serif; padding: 20px 10px; background-color: rgba(0,0,0,0.2); text-align: center;">
         <div style="max-width: 1100px; margin: 0 auto;">
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                 
-                <!-- Plan Starter -->
                 <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
                     <h3 data-i18n="pricing_starter_name" style="font-size: 18px; color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">STARTER</h3>
                     <p data-i18n="pricing_starter_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">Pour tester la puissance analytique d'e-META LABS.</p>
@@ -177,7 +160,6 @@
                     <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='starter';" data-i18n="pricing_starter_btn" style="display: block; text-align: center; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">Tester gratuitement</a>
                 </div>
 
-                <!-- Plan Pro -->
                 <div style="background: rgba(0, 86, 179, 0.15); border: 2px solid #0056b3; border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 8px 15px rgba(0,86,179,0.3); transform: translateY(-5px);">
                     <div data-i18n="pricing_pro_badge" style="background: #0056b3; color: #fff; font-size: 11px; font-weight: bold; text-align: center; padding: 4px; border-radius: 3px; margin-bottom: 10px; width: fit-content;">LE PLUS POPULAIRE</div>
                     <h3 data-i18n="pricing_pro_name" style="font-size: 18px; color: #66b0ff; margin-top: 0; font-family: 'Cinzel', serif;">PRO (One-Shot)</h3>
@@ -192,7 +174,6 @@
                     <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='pro';" data-i18n="pricing_pro_btn" style="display: block; text-align: center; background: #0056b3; color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">Générer l'Audit</a>
                 </div>
 
-                <!-- Plan Expert -->
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid #333; border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
                     <h3 data-i18n="pricing_expert_name" style="font-size: 18px; color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">EXPERT</h3>
                     <p data-i18n="pricing_expert_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">Votre cellule prospective 24/7.</p>
@@ -214,7 +195,6 @@
         <div class="glass-card">
             
             <form id="diagnosticForm">
-                <!-- Variable Plan Cachée -->
                 <input type="hidden" id="plan_choisi" value="starter">    
                 
                 <!-- ================= ETAPE 1 ================= -->
@@ -250,7 +230,7 @@
 
                     <div style="display: flex; justify-content: space-between; align-items: baseline;">
                         <label class="section-label" data-i18n="lbl_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Secteur Stratégique</label>
-                        <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: none; text-shadow: 0 0 5px rgba(212,175,55,0.5);" data-i18n="btn_guide">📖 Guide des Expertises</a>
+                        <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem; text-decoration: underline; text-shadow: 0 0 5px rgba(212,175,55,0.5);" data-i18n="btn_guide">📖 Guide des Expertises</a>
                     </div>
                     
                     <div class="grid-options">
@@ -269,7 +249,6 @@
                         <label class="checkbox-btn"><input type="radio" name="sector" value="Consulting_B2B"> <span data-i18n="sec_consulting">Conseil & Services B2B</span></label>
                         <label class="checkbox-btn"><input type="radio" name="sector" value="SaaS_Software"> <span data-i18n="sec_saas">SaaS & Éditeurs Logiciels</span></label>
                         <label class="checkbox-btn"><input type="radio" name="sector" value="Telecom_Infra"> <span data-i18n="sec_telecom">Télécoms & Infrastructures</span></label>
-                        
                         <label class="checkbox-btn">
                             <input type="radio" name="sector" value="other" id="sector-other">
                             <span style="border-color: #d4af37;">
@@ -372,12 +351,13 @@
                         </div>
                     </div>
 
+                    <!-- LE NOUVEAU LIEN VERS PRIVACY.HTML -->
                     <div class="legal-check" style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px;">
                         <input type="checkbox" id="consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 4px;">
                         <label for="consent" style="color: #ccc; font-size: 0.9rem;">
-    <span data-i18n="legal_consent">J'accepte la</span> 
-    <a href="privacy.html" target="_blank" class="gold-link" data-i18n="link_privacy">Charte de Souveraineté et de Confidentialité Officielle</a>.
-</label>
+                            <span data-i18n="legal_consent">J'accepte la</span> 
+                            <a href="privacy.html" target="_blank" class="gold-link" data-i18n="link_privacy">Politique de Confidentialité Officielle</a>.
+                        </label>
                     </div>
 
                     <div class="opt-in-container" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 8px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.2);">
@@ -411,21 +391,6 @@
             <a href="mailto:support@e-metalabs.com" style="color: #8892b0; text-decoration: none;">🛠️ support@e-metalabs.com</a>
         </div>
     </footer>
-
-    <!-- MODAL CONFIDENTIALITÉ -->
-    <div id="privacyOverlay" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn close-modal">&times;</span>
-            <h2 data-i18n="modal_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Politique de Confidentialité</h2>
-            <div class="modal-body" style="text-align: left; padding-right:10px;">
-                <h4 data-i18n="priv_t1" style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">1. Identité et Opérations</h4>
-                <p data-i18n="priv_c1" style="color: #ccc; font-size: 0.9rem;">e-META LABS SASU garantit le traitement crypté de vos données. Aucune de vos informations n'est utilisée pour entraîner des algorithmes publics.</p>
-                <h4 data-i18n="priv_t2" style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">2. Souveraineté des Données</h4>
-                <p data-i18n="priv_c2" style="color: #ccc; font-size: 0.9rem;">Les documents stratégiques que vous téléchargez sont purgés de nos serveurs sécurisés dans les 24h suivant l'analyse.</p>
-            </div>
-            <button class="btn-gold full-width close-modal-btn" data-i18n="btn_close" style="margin-top:20px;">Fermer</button>
-        </div>
-    </div>
 
     <!-- MODAL GUIDE LEXIQUE -->
     <div id="guideOverlay" class="modal-overlay">
@@ -471,7 +436,7 @@
         </div>
     </div>
 
-    <!-- MODAL RÉSULTAT (Pour le Mode Gratuit) -->
+    <!-- MODAL RÉSULTAT DE L'ANALYSE (S'affiche après mode Gratuit OU Retour de Paiement) -->
     <div id="resultModal" class="modal-overlay">
         <div class="modal-content" style="text-align: center;">
             <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 20px rgba(212,175,55,0.5);">✅</div>
@@ -480,67 +445,72 @@
                 <p id="resultText">Vos données ont été traitées avec succès par le Moteur e-META LABS. L'audit vous parviendra dans les 5 prochaines minutes.</p>
             </div>
             <div class="btn-container">
-                <button class="btn-gold full-width" onclick="location.reload()" data-i18n="btn_new_analysis">Nouvelle Analyse</button>
+                <button class="btn-gold full-width" onclick="window.location.href='index.html'" data-i18n="btn_new_analysis">Nouvelle Analyse</button>
             </div>
         </div>
     </div>
 
     <!-- SCRIPT DE TRADUCTION DE LA CLIENTE -->
-    <!-- NB: Ce script permet aux attributs data-i18n de fonctionner si i18n.js existe sur le repo -->
     <script src="i18n.js"></script>
 
     <!-- ========================================== -->
     <!-- MOTEUR JAVASCRIPT INTÉGRÉ (Cerveau + Routage) -->
     <!-- ========================================== -->
     <script>
-        // --- 1. CONFIGURATION WEBHOOK ---
         const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f";
 
-        // --- 2. GESTION DES LANGUES (Traduction Dynamique du JS) ---
         const uiDict = {
             fr: {
-                loaderTitle: "MOTEUR e-META LABS ACTIVÉ",
-                loadInit: "Initialisation de la connexion sécurisée...",
-                loadSuccess: "Données sécurisées. Redirection...",
+                loaderTitle: "MOTEUR e-META LABS ACTIVÉ", loadInit: "Initialisation de la connexion sécurisée...", loadSuccess: "Données sécurisées. Redirection...",
                 load1: "Analyse sémantique du contexte...", load2: "Corrélation avec les données sectorielles...", load3: "Génération des matrices stratégiques...", load4: "Transmission cryptée vers l'IA...",
                 errFile: "Pour garantir une analyse ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.", errNet: "Impossible de joindre le serveur e-META LABS. Veuillez vérifier votre connexion.",
                 lblReq: "Ce champ est obligatoire.", lblEmail: "Veuillez entrer un email valide.", lblCheck: "Vous devez accepter cette condition pour continuer.",
                 alertSec: "Veuillez sélectionner un Secteur Stratégique.", alertCus: "Veuillez préciser votre industrie sur-mesure.", alertGeo: "Veuillez sélectionner une zone.",
-                resFree: "Votre diagnostic STARTER a été transmis à l'IA. Il vous sera envoyé par email/WhatsApp d'ici 5 minutes."
+                resFree: "Votre diagnostic STARTER a été transmis à l'IA. Il vous sera envoyé par email/WhatsApp d'ici 5 minutes.",
+                resPaid: "Paiement validé avec succès. L'IA génère actuellement votre audit premium. Vous le recevrez par email et WhatsApp d'ici quelques minutes."
             },
             en: {
-                loaderTitle: "e-META LABS ENGINE ACTIVATED",
-                loadInit: "Initializing secure connection...",
-                loadSuccess: "Data secured. Redirecting...",
+                loaderTitle: "e-META LABS ENGINE ACTIVATED", loadInit: "Initializing secure connection...", loadSuccess: "Data secured. Redirecting...",
                 load1: "Semantic context analysis...", load2: "Sectoral data correlation...", load3: "Generating strategic matrices...", load4: "Encrypted transmission to AI...",
                 errFile: "To ensure ultra-fast analysis, the file must not exceed 2.5 MB.", errNet: "Unable to reach e-META LABS server. Please check your connection.",
                 lblReq: "This field is required.", lblEmail: "Please enter a valid email.", lblCheck: "You must accept this condition to continue.",
                 alertSec: "Please select a Strategic Sector.", alertCus: "Please specify your custom industry.", alertGeo: "Please select a zone.",
-                resFree: "Your STARTER diagnostic has been sent to the AI. It will be delivered via email/WhatsApp within 5 minutes."
+                resFree: "Your STARTER diagnostic has been sent to the AI. It will be delivered via email/WhatsApp within 5 minutes.",
+                resPaid: "Payment successfully validated. The AI is generating your premium audit. You will receive it by email and WhatsApp shortly."
             },
             es: {
-                loaderTitle: "MOTOR e-META LABS ACTIVADO",
-                loadInit: "Inicializando conexión segura...",
-                loadSuccess: "Datos asegurados. Redirigiendo...",
+                loaderTitle: "MOTOR e-META LABS ACTIVADO", loadInit: "Inicializando conexión segura...", loadSuccess: "Datos asegurados. Redirigiendo...",
                 load1: "Análisis semántico del contexto...", load2: "Correlación con datos sectoriales...", load3: "Generación de matrices estratégicas...", load4: "Transmisión cifrada a la IA...",
                 errFile: "Para garantizar un análisis ultrarrápido, el archivo no debe superar los 2.5 MB.", errNet: "Imposible conectar con el servidor e-META LABS. Compruebe su conexión.",
                 lblReq: "Este campo es obligatorio.", lblEmail: "Por favor ingrese un correo válido.", lblCheck: "Debe aceptar esta condición para continuar.",
                 alertSec: "Seleccione un Sector Estratégico.", alertCus: "Especifique su industria a medida.", alertGeo: "Seleccione una zona.",
-                resFree: "Su diagnóstico STARTER ha sido enviado a la IA. Lo recibirá por correo/WhatsApp en 5 minutos."
+                resFree: "Su diagnóstico STARTER ha sido enviado a la IA. Lo recibirá por correo/WhatsApp en 5 minutos.",
+                resPaid: "Pago validado con éxito. La IA está generando su auditoría premium. La recibirá por correo y WhatsApp en unos minutos."
             },
             ar: {
-                loaderTitle: "تم تنشيط محرك e-META LABS",
-                loadInit: "جاري تهيئة الاتصال الآمن...",
-                loadSuccess: "بيانات آمنة. جاري التوجيه...",
+                loaderTitle: "تم تنشيط محرك e-META LABS", loadInit: "جاري تهيئة الاتصال الآمن...", loadSuccess: "بيانات آمنة. جاري التوجيه...",
                 load1: "التحليل الدلالي للسياق...", load2: "الارتباط بالبيانات القطاعية...", load3: "توليد المصفوفات الاستراتيجية...", load4: "نقل مشفر إلى الذكاء الاصطناعي...",
                 errFile: "لضمان تحليل فائق السرعة، يجب ألا يتجاوز الملف 2.5 ميجابايت.", errNet: "تعذر الاتصال بخادم e-META LABS. يرجى التحقق من اتصالك.",
                 lblReq: "هذا الحقل مطلوب.", lblEmail: "يرجى إدخال بريد إلكتروني صحيح.", lblCheck: "يجب قبول هذا الشرط للمتابعة.",
                 alertSec: "يرجى تحديد قطاع استراتيجي.", alertCus: "يرجى تحديد صناعتك المخصصة.", alertGeo: "يرجى تحديد منطقة.",
-                resFree: "تم إرسال تشخيص STARTER الخاص بك إلى الذكاء الاصطناعي. ستتلقاه عبر البريد الإلكتروني/واتساب في غضون 5 دقائق."
+                resFree: "تم إرسال تشخيص STARTER الخاص بك إلى الذكاء الاصطناعي. ستتلقاه عبر البريد الإلكتروني/واتساب في غضون 5 دقائق.",
+                resPaid: "تم تأكيد الدفع بنجاح. يقوم الذكاء الاصطناعي بإنشاء التدقيق المتميز الخاص بك. ستتلقاه عبر البريد الإلكتروني والواتساب قريبًا."
             }
         };
 
-        // --- 3. COMPTEUR & FICHIER ---
+        // Détection du retour de paiement
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('payment') === 'success') {
+                const lang = document.documentElement.lang || 'fr';
+                const t = uiDict[lang] || uiDict.fr;
+                document.getElementById('resultText').innerText = t.resPaid;
+                document.getElementById('resultModal').style.display = 'flex';
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+
+        // Compteur Live
         window.addEventListener('load', () => {
             const counterElement = document.getElementById('live-counter-top');
             if (counterElement) {
@@ -559,7 +529,6 @@
             });
         }
 
-        // --- 4. NAVIGATION & UX ---
         function setCustomMessage(input) {
             const lang = document.documentElement.lang || 'fr';
             const t = uiDict[lang] || uiDict.fr;
@@ -590,11 +559,10 @@
                 document.querySelectorAll(closeClass).forEach(c => c.addEventListener('click', () => modal.style.display = 'none'));
             }
         };
+        
         document.addEventListener('DOMContentLoaded', () => {
-            setupModal('openPrivacy', 'privacyOverlay', '.close-modal, .close-modal-btn');
             setupModal('openGuide', 'guideOverlay', '.close-guide, .close-guide-btn');
             
-            // Gestion du changement de langue pour la var globale html lang (pour i18n)
             document.querySelectorAll('.lang-switch button').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
@@ -652,7 +620,6 @@
             document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- 5. SOUMISSION, MAKE.COM & PAYTECH ---
         const form = document.getElementById('diagnosticForm');
         if (form) {
             form.addEventListener('submit', async function(e) {
@@ -670,7 +637,6 @@
                 const originalText = submitBtn.innerText;
                 submitBtn.disabled = true;
                 
-                // Lancement Radar IA Multilingue
                 form.style.display = 'none';
                 const wowLoader = document.getElementById('emeta-loader');
                 const statusText = document.getElementById('emeta-status');
@@ -689,7 +655,6 @@
                     }
                 }, 1200); 
 
-                // Formatage Payload
                 let fileData = null; let fileName = null;
                 if (fileInput && fileInput.files.length > 0) {
                     if (fileInput.files[0].size > 2.5 * 1024 * 1024) {
@@ -724,7 +689,6 @@
                     attachedFileBase64: fileData 
                 };
 
-                // Envoi Make.com + Redirection
                 fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -742,7 +706,6 @@
                             } else if (planChoisi === 'expert') {
                                 window.location.href = "https://paytech.sn/link/votre-code-expert-ici";
                             } else {
-                                // STARTER
                                 if (wowLoader) wowLoader.style.display = 'none';
                                 document.getElementById('resultText').innerText = t.resFree;
                                 const resModal = document.getElementById('resultModal');
