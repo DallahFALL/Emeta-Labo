@@ -9,12 +9,20 @@
     <!-- Polices Premium -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- SDK PAYTECH (Balisage officiel) -->
+    <!-- SDK PAYTECH (Intégration Officielle) -->
     <link rel="stylesheet" href="https://paytech.sn/cdn/paytech.min.css">
     <script src="https://paytech.sn/cdn/paytech.min.js"></script>
-    
-    <!-- Favicon Dynamique -->
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
+    
+    <!-- Cadenas de sécurité -->
+    <script>
+        var mdp = prompt("Laboratoire e-META LABS. Accès restreint. Mot de passe :");
+        if (mdp !== "Meta2026!") {
+            document.write("<h1 style='text-align:center; margin-top:20%; font-family:sans-serif; color:#d4af37;'>Accès Refusé.</h1>");
+            window.stop(); 
+        }
+    </script>  
 
     <style>
         :root {
@@ -31,362 +39,638 @@
             color: var(--white);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* --- UI LAB ACCESS --- */
-        #lab-access-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--dark);
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(10, 25, 47, 0.9); position: sticky; top: 0; z-index: 100;
         }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .brand-text h1 { font-family: 'Cinzel', serif; color: var(--gold); margin: 0; font-size: 1.5rem; }
+        .header-slogan { font-size: 0.9rem; color: var(--light-slate); display: none; }
+        @media (min-width: 768px) { .header-slogan { display: block; } }
+        
+        .btn-reset {
+            background: transparent; border: 1px solid var(--light-slate); color: var(--light-slate);
+            padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; margin-right: 10px;
+        }
+        .lang-switch button {
+            background: transparent; border: none; color: var(--light-slate); cursor: pointer;
+            font-weight: bold; font-size: 0.8rem; padding: 5px;
+        }
+        .lang-switch button.active { color: var(--gold); border-bottom: 1px solid var(--gold); }
 
-        /* --- GLASS CARD & GLOW --- */
+        .counter-container { text-align: center; padding: 15px 0; background: rgba(10, 25, 47, 0.8); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .hero-sublime { text-align: center; padding: 50px 20px; }
+        .label-gold { color: var(--gold); font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px; }
+        .slogan-ia { font-family: 'Cinzel', serif; font-size: 2.2rem; line-height: 1.2; margin: 15px 0; }
+        .precision-text { color: var(--gold); }
+
+        /* --- SECTION PRIX --- */
+        #pricing { padding: 40px 10px; text-align: center; }
+        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .plan-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 25px; width: 280px; text-align: left; transition: 0.3s; box-sizing: border-box; }
+        .plan-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212,175,55,0.1); }
+        .plan-card.pro { border: 2px solid #0056b3; background: rgba(0, 86, 179, 0.1); }
+        .plan-card.pro:hover { box-shadow: 0 10px 30px rgba(0,86,179,0.3); }
+        .plan-price { font-size: 24px; font-weight: bold; margin: 15px 0; font-family: 'Cinzel', serif; }
+        .plan-features { list-style: none; padding: 0; margin-bottom: 25px; font-size: 13px; color: #ccc; line-height: 1.8; }
+        .plan-btn { display: block; text-align: center; text-decoration: none; padding: 12px; border-radius: 4px; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.3s; border: none; width: 100%; box-sizing: border-box; }
+
+        /* --- GLASS CARD FORMULAIRE --- */
+        .main-container { padding: 20px; }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 40px;
             max-width: 800px;
-            margin: 40px auto;
+            margin: 0 auto;
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 20px rgba(212, 175, 55, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.4);
-            transition: all 0.4s ease-in-out;
+            transition: box-shadow 0.4s ease-in-out;
         }
+        .glass-card:hover { box-shadow: 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.7); }
 
-        .glass-card:hover {
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .brand-text h1 { font-family: 'Cinzel', serif; color: var(--gold); margin: 0; font-size: 1.5rem; }
-
-        .btn-gold {
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: 'Cinzel', serif;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-
-        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 20px var(--gold); }
-        .btn-gold.glow { animation: pulse-gold 2s infinite; }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.9), 0 0 10px #fff; }
-            100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
-        }
-
-        /* --- PRICING --- */
-        #pricing { padding: 50px 5%; text-align: center; background: rgba(0,0,0,0.2); }
-        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 30px; }
-        .plan-card { background: #fff; color: #111; border-radius: 8px; padding: 30px; width: 280px; text-align: left; transition: 0.3s; }
-        .plan-card.pro { border: 2px solid #0056b3; transform: scale(1.05); }
-        .plan-card.expert { background: #111; color: #fff; border: 1px solid #333; }
-
-        /* --- FORM STEPS --- */
-        .form-step { display: none; }
-        .form-step.active { display: block; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .form-step { display: none; animation: fadeIn 0.5s; }
+        .form-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: var(--gold); font-size: 0.9rem; }
+        .input-group label { display: block; margin-bottom: 8px; color: var(--gold); font-size: 0.9rem; font-family: 'Cinzel', serif; }
         .input-group input, .input-group select, .input-group textarea {
-            width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            color: #fff; border-radius: 4px; box-sizing: border-box;
+            width: 100%; padding: 12px; background: rgba(10, 25, 47, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.4); color: var(--white);
+            border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: 0.3s;
         }
-        .input-group input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 10px rgba(212,175,55,0.3); }
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); border-color: var(--gold) !important; outline: none;
+        }
 
-        .grid-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 25px; }
+        .grid-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 15px; }
         .checkbox-btn input { display: none; }
         .checkbox-btn span {
             display: block; padding: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.1);
             border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: 0.3s;
         }
-        .checkbox-btn input:checked + span { border-color: var(--gold); background: rgba(212,175,55,0.1); color: var(--gold); box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+        .checkbox-btn input:checked + span {
+            background: rgba(212, 175, 55, 0.15) !important; border-color: var(--gold) !important;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.3) !important;
+            color: #fff !important; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+        }
+
+        .btn-gold {
+            background: var(--gold); color: var(--dark); border: none; padding: 12px 25px;
+            border-radius: 4px; font-weight: bold; font-family: 'Cinzel', serif;
+            cursor: pointer; transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 20px var(--gold); }
+        .btn-gold.glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); animation: pulse-gold 2s infinite; }
+        @keyframes pulse-gold { 0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } 50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.9), 0 0 10px #fff; } 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } }
+        
+        .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 12px 25px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        .btn-container { display: flex; justify-content: flex-end; margin-top: 20px; }
+        .btn-container.split { justify-content: space-between; }
+        .full-width { width: 100%; margin-top: 15px; }
+
+        .gold-link { color: var(--gold); text-decoration: none; border-bottom: 1px dashed var(--gold); transition: 0.3s; }
+        .gold-link:hover { color: #fff; border-bottom-color: #fff; }
 
         /* --- LOADER --- */
-        #emeta-loader { display: none; text-align: center; padding: 40px; }
-        .loader-spinner {
-            width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2);
-            border-top: 4px solid var(--gold); border-radius: 50%;
-            animation: spin 1s linear infinite; margin: 0 auto 20px;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        #emeta-loader { display: none; text-align: center; padding: 50px 20px; background: rgba(10, 25, 47, 0.8); border-radius: 12px; border: 1px solid var(--gold); margin-top: 20px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+        .loader-spinner { width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2); border-top: 4px solid var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* --- MODALS --- */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
-            display: none; justify-content: center; align-items: center; z-index: 20000;
-        }
-        .modal-content { background: var(--dark); border: 1px solid var(--gold); padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; position: relative; }
-    </style>
+        .modal-overlay { position: fixed; inset: 0; background: rgba(10, 25, 47, 0.9); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 20000; }
+        .modal-content { background: var(--dark); border: 1px solid var(--gold); padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; position: relative; max-height: 90vh; display: flex; flex-direction: column; }
+        .modal-body { overflow-y: auto; padding-right: 10px; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--light-slate); transition: 0.3s; }
+        .close-btn:hover { color: var(--gold); }
+        .lexique-item { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-    <script>
-        // Cadenas de sécurité
-        window.addEventListener('DOMContentLoaded', () => {
-            const mdp = prompt("Laboratoire e-META LABS. Accès restreint. Mot de passe :");
-            if (mdp === "Meta2026!") {
-                document.getElementById('lab-access-overlay').style.display = 'none';
-            } else {
-                document.body.innerHTML = "<h1 style='text-align:center; margin-top:20%; font-family:Cinzel, serif; color:#d4af37;'>Accès Refusé. Protocole de sécurité activé.</h1>";
-            }
-        });
-    </script>
+        .footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 50px; font-size: 0.85rem; color: var(--light-slate); }
+    </style>
 </head>
 <body>
 
-    <div id="lab-access-overlay">
-        <h2 style="color:var(--gold); font-family:'Cinzel', serif;">INITIALISATION DU LABORATOIRE...</h2>
-    </div>
-
     <header class="header">
         <div class="logo-container">
-            <svg width="40" height="40" viewBox="0 0 100 100">
+            <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50 5 L95 25 V75 L50 95 L5 75 V25 Z" stroke="#d4af37" stroke-width="2" fill="none"/>
+                <path d="M50 20 L80 35 V65 L50 80 L20 65 V35 Z" stroke="#d4af37" stroke-width="1" fill="rgba(212, 175, 55, 0.1)"/>
                 <circle cx="50" cy="50" r="8" fill="#d4af37"/>
             </svg>
             <div class="brand-text"><h1>e-META LABS</h1></div>
         </div>
-        <div class="header-actions">
+        <div class="header-slogan" data-i18n="subtitle">Excellence Stratégique & Haute Précision IA</div>
+        <div class="header-actions" style="display: flex; align-items: center;">
+            <button type="button" class="btn-reset" onclick="resetForm()" data-i18n="btn_reset">↻ Reset</button>
             <div class="lang-switch">
-                <button class="btn-gold" style="padding:5px 10px; font-size: 0.7rem;">FR</button>
+                <button data-lang="fr" class="active">FR</button>
+                <button data-lang="en">EN</button>
             </div>
         </div>
     </header>
 
+    <div class="counter-container">
+        <span style="font-family: 'Cinzel', serif; color: #d4af37; font-size: 1.5rem; font-weight: bold;" id="live-counter-top">1,420</span>
+        <span style="color: #8892b0; font-size: 0.9rem; margin-left: 10px; text-transform: uppercase; letter-spacing: 1px;" data-i18n="lbl_counter">Diagnostics Sécurisés & Ancrés</span>
+    </div>
+
+    <section class="hero-sublime">
+        <div class="container">
+            <p class="label-gold" data-i18n="hero_label">MASTER DIAGNOSTIC 2026</p>
+            <h1 class="slogan-ia">
+                <span data-i18n="hero_slogan_1">Excellence Stratégique</span> <br>
+                <span class="precision-text" data-i18n="hero_slogan_2">& Haute Précision IA</span>
+            </h1>
+            <p style="color: #25D366; font-family: 'Inter', sans-serif; font-size: 1rem; margin-top: 15px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 0 10px rgba(37, 211, 102, 0.3);" data-i18n="slogan_sniper">
+                Conçu pour la Tech. Bâti pour l'absolu.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION TARIFS (Pour activer le routage) -->
     <section id="pricing">
-        <h2 style="font-family:'Cinzel', serif; color:var(--gold);">SÉLECTIONNEZ VOTRE NIVEAU D'ANALYSE</h2>
+        <h2 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 30px;">SÉLECTIONNEZ VOTRE MATRICE</h2>
         <div class="pricing-grid">
+            <!-- STARTER -->
             <div class="plan-card">
-                <h3>STARTER</h3>
-                <p>Test gratuit</p>
-                <div style="font-size: 1.5rem; font-weight: bold;">0 FCFA</div>
-                <ul style="font-size: 0.8rem; margin: 20px 0; padding-left: 15px;">
-                    <li>✓ 2 Diagnostics</li>
-                    <li>✓ Format Email</li>
+                <h3 style="color: var(--gold); margin-top: 0; font-family: 'Cinzel', serif;">STARTER</h3>
+                <p style="color: #8892b0; font-size: 0.85rem; min-height: 40px;">Pour tester la puissance analytique.</p>
+                <div class="plan-price">0 FCFA</div>
+                <ul class="plan-features">
+                    <li>✓ 2 Diagnostics foudroyants</li>
+                    <li>✓ Identification du risque majeur</li>
+                    <li>✓ Format texte (Email)</li>
+                    <li style="color: #d9534f; margin-top: 10px;">⚠️ Plan d'action non inclus</li>
                 </ul>
-                <button class="btn-gold" style="width:100%; background:#eee; color:#111;" onclick="setPlan('starter')">Tester</button>
+                <button onclick="selectPlan('starter')" class="plan-btn" style="background: rgba(255,255,255,0.1); color: #fff;">Tester Gratuitement</button>
             </div>
+
+            <!-- PRO -->
             <div class="plan-card pro">
-                <div style="background:#0056b3; color:#fff; font-size:0.6rem; padding:3px; text-align:center; border-radius:3px;">POPULAIRE</div>
-                <h3>PRO (One-Shot)</h3>
-                <p>Audit Complet</p>
-                <div style="font-size: 1.5rem; font-weight: bold; color:#0056b3;">14 900 FCFA</div>
-                <ul style="font-size: 0.8rem; margin: 20px 0; padding-left: 15px;">
+                <div style="background: #0056b3; color: #fff; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 3px; display: inline-block; margin-bottom: 10px;">LE PLUS POPULAIRE</div>
+                <h3 style="color: #66b0ff; margin-top: 0; font-family: 'Cinzel', serif;">PRO (One-Shot)</h3>
+                <p style="color: #8892b0; font-size: 0.85rem; min-height: 40px;">L'audit stratégique complet en 3 minutes.</p>
+                <div class="plan-price" style="color: #66b0ff;">14 900 FCFA</div>
+                <ul class="plan-features">
+                    <li>✓ Rapport complet (3 chapitres)</li>
+                    <li>✓ Diagnostic financier & KPI</li>
+                    <li>✓ Stratégie de disruption (Pivot)</li>
                     <li>✓ Rapport PDF Premium</li>
-                    <li>✓ Stratégie de Pivot</li>
                 </ul>
-                <button class="btn-gold" style="width:100%; background:#0056b3; color:#fff;" onclick="setPlan('pro')">Générer l'Audit</button>
+                <button onclick="selectPlan('pro')" class="plan-btn" style="background: #0056b3; color: #fff;">Générer l'Audit</button>
             </div>
-            <div class="plan-card expert">
-                <h3>EXPERT</h3>
-                <p>Cellule Prospective</p>
-                <div style="font-size: 1.5rem; font-weight: bold;">29 000 FCFA</div>
-                <ul style="font-size: 0.8rem; margin: 20px 0; padding-left: 15px;">
-                    <li>✓ 10 Audits / mois</li>
-                    <li>✓ Livraison VIP WhatsApp</li>
+
+            <!-- EXPERT -->
+            <div class="plan-card">
+                <h3 style="color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">EXPERT</h3>
+                <p style="color: #8892b0; font-size: 0.85rem; min-height: 40px;">Votre cellule prospective 24/7.</p>
+                <div class="plan-price">29 000 FCFA</div>
+                <ul class="plan-features">
+                    <li>✓ Jusqu'à 10 Audits / mois</li>
+                    <li>✓ <b>Veille Data en temps réel</b></li>
+                    <li>✓ Protocole d'action sur 7 jours</li>
+                    <li>✓ Livraison VIP (WhatsApp)</li>
                 </ul>
-                <button class="btn-gold" style="width:100%;" onclick="setPlan('expert')">S'abonner</button>
+                <button onclick="selectPlan('expert')" class="plan-btn" style="background: var(--gold); color: var(--dark);">S'abonner</button>
             </div>
         </div>
     </section>
 
     <main class="main-container">
         <div class="glass-card">
+            
             <form id="diagnosticForm">
-                <input type="hidden" id="plan_choisi" value="starter">
+                <!-- Champ invisible vital pour le routeur PayTech -->
+                <input type="hidden" id="plan_choisi" value="starter">   
                 
                 <!-- STEP 1 -->
                 <div class="form-step active" id="step-1">
-                    <h3 style="color:var(--gold); font-family:'Cinzel', serif;">01. IDENTIFICATION</h3>
+                    <h3 data-i18n="step1_title" style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 25px;">01. Identification</h3>
                     <div class="input-group">
-                        <label>Société / Entité</label>
-                        <input type="text" id="company" required placeholder="ex: Groupe Alpha...">
+                        <label for="company" data-i18n="lbl_company">Société / Entité</label>
+                        <input type="text" id="company" required data-i18n="ph_company" placeholder="ex: Groupe Alpha, Ministère..." oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
                     </div>
                     <div class="input-group">
-                        <label>Email Professionnel</label>
-                        <input type="email" id="email" required placeholder="contact@domaine.com">
+                        <label for="email" data-i18n="lbl_email">Email Professionnel</label>
+                        <input type="email" id="email" required placeholder="contact@domain.com" oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
                     </div>
                     <div class="input-group">
-                        <label>Numéro WhatsApp</label>
-                        <input type="tel" id="phone" required placeholder="+221...">
+                        <label for="phone" data-i18n="lbl_phone">Numéro WhatsApp (+221)</label>
+                        <input type="tel" id="phone" required placeholder="77 000 00 00" oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
                     </div>
-                    <button type="button" class="btn-gold" onclick="nextStep(2)">Suivant</button>
+                    <div class="btn-container right">
+                        <button type="button" class="btn-gold" onclick="nextStep(2)" data-i18n="btn_next">Suivant →</button>
+                    </div>
                 </div>
 
                 <!-- STEP 2 -->
                 <div class="form-step" id="step-2">
-                    <h3 style="color:var(--gold); font-family:'Cinzel', serif;">02. MATRICE STRATÉGIQUE</h3>
-                    <label style="color:var(--gold); font-size:0.9rem;">Secteur Stratégique</label>
-                    <div class="grid-options">
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech"><span>FinTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech"><span>GovTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Health"><span>Santé</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech"><span>AgriTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="other"><span>Autre</span></label>
+                    <h3 data-i18n="step2_title" style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 20px;">02. Matrice Stratégique</h3>
+                    
+                    <div style="background: rgba(212, 175, 55, 0.05); border-left: 3px solid #d4af37; padding: 12px 15px; margin-bottom: 20px; border-radius: 0 4px 4px 0;">
+                        <span style="display: block; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 5px; font-weight: bold;" data-i18n="agnostic_title">INTELLIGENCE AGNOSTIQUE 🧠</span>
+                        <span style="color: #8892b0; font-size: 0.85rem; line-height: 1.4; display: block;" data-i18n="agnostic_desc">
+                            Notre moteur polymorphe s'adapte à votre industrie. Cochez l'<strong>Auto-Détection IA</strong> si votre enjeu dépasse les cadres traditionnels.
+                        </span>
                     </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                        <label class="section-label" data-i18n="lbl_sector" style="color: var(--gold); font-family: 'Cinzel', serif;">Secteur Stratégique</label>
+                        <a href="#" id="openGuide" class="gold-link" style="font-size: 0.8rem;" data-i18n="btn_guide">📖 Guide des Expertises</a>
+                    </div>
+                    
+                    <div class="grid-options">
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech_DeFi"> <span data-i18n="sec_fintech">FinTech & DeFi</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech_SmartCities"> <span data-i18n="sec_gov">GovTech & Smart Cities</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="Health_BioTech"> <span data-i18n="sec_health">Santé & BioTech</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech_FoodSec"> <span data-i18n="sec_agri">AgriTech & Food Security</span></label>
+                        <label class="checkbox-btn"><input type="radio" name="sector" value="other" id="sector-other"><span style="border-color: var(--gold);">💡 Autre / Sur-mesure</span></label>
+                    </div>
+
+                    <div id="custom-sector-container" style="display: none; margin-top: 15px; margin-bottom: 25px; animation: fadeIn 0.5s;">
+                        <label id="custom-sector-label" style="color: #d4af37; font-size: 0.85rem; margin-bottom: 8px; display: block;">Précisez votre industrie :</label>
+                        <input type="text" id="custom-sector-input" placeholder="Ex: Sport Professionnel, Aérospatial..." style="width: 100%; padding: 12px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #fff;">
+                    </div>
+
+                    <label class="section-label mt-2" data-i18n="lbl_geo" style="color: var(--gold); font-family: 'Cinzel', serif;">Zone d'Intervention</label>
                     <div class="input-group">
-                        <label>Zone Géo</label>
-                        <select id="geo-zone" required>
-                            <option value="Senegal">Sénégal</option>
-                            <option value="CoteIvoire">Côte d'Ivoire</option>
-                            <option value="France">France</option>
-                            <option value="Global">International</option>
+                        <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
+                            <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
+                            <optgroup label="Afrique" data-i18n="grp_africa">
+                                <option value="Senegal" data-i18n="geo_sn">Sénégal (Dakar Hub)</option>
+                                <option value="CotedIvoire" data-i18n="geo_ci">Côte d'Ivoire (Abidjan Hub)</option>
+                            </optgroup>
+                            <optgroup label="Global" data-i18n="grp_global">
+                                <option value="France" data-i18n="geo_fr">France / Europe</option>
+                                <option value="Global" data-i18n="geo_global">International / Multi-Zones</option>
+                            </optgroup>
                         </select>
                     </div>
-                    <div style="display:flex; gap:10px;">
-                        <button type="button" class="btn-gold" style="background:transparent; border:1px solid var(--gold); color:var(--gold);" onclick="nextStep(1)">Retour</button>
-                        <button type="button" class="btn-gold" onclick="nextStep(3)">Suivant</button>
+
+                    <label class="section-label mt-2" data-i18n="lbl_expertise" style="color: var(--gold); font-family: 'Cinzel', serif;">Expertise Requise</label>
+                    <div class="grid-options">
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="ESG_Climate"> <span data-i18n="exp_esg">Ingénierie ESG & Climat</span></label>
+                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GoToMarket_Growth"> <span data-i18n="exp_gtm">Go-to-Market & Growth</span></label>
+                        <label class="checkbox-btn">
+                            <input type="checkbox" name="expertise" value="Auto-Détection IA (Sur-mesure)">
+                            <span style="border: 1px solid #25D366; color: #25D366; box-shadow: 0 0 10px rgba(37, 211, 102, 0.1);">🧠 <span data-i18n="exp_auto">Auto-Détection IA</span></span>
+                        </label>
+                    </div>
+
+                    <div class="btn-container split">
+                        <button type="button" class="btn-outline" onclick="nextStep(1)" data-i18n="btn_prev">← Retour</button>
+                        <button type="button" class="btn-gold" onclick="nextStep(3)" data-i18n="btn_next_matrice">Ouvrir Matrice →</button>
                     </div>
                 </div>
 
                 <!-- STEP 3 -->
                 <div class="form-step" id="step-3">
-                    <h3 style="color:var(--gold); font-family:'Cinzel', serif;">03. ANALYSE OPÉRATIONNELLE</h3>
+                    <h3 data-i18n="step3_title" style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 20px;">03. Matrice Analyse & Restitution</h3>
+                    <div style="text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <i style="color: #8892b0; font-size: 0.95rem; font-family: 'Cinzel', serif;" data-i18n="elite_hook">"Au-delà des algorithmes, la résolution de l'insoluble."</i>
+                    </div>
+                    
                     <div class="input-group">
-                        <label>Contexte / Enjeux</label>
-                        <textarea id="context" rows="4" placeholder="Décrivez votre situation..."></textarea>
+                        <label for="context" data-i18n="lbl_context">Contexte Opérationnel</label>
+                        <textarea id="context" rows="4" data-i18n="ph_context" placeholder="Décrivez brièvement votre situation à auditer..."></textarea>
                     </div>
-                    <div class="input-group">
-                        <label>📁 Document (Optionnel)</label>
-                        <input type="file" id="clientFile" accept=".pdf,.doc">
+                    
+                    <div class="input-group" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 5px; border: 1px dashed rgba(212, 175, 55, 0.4); margin-bottom: 20px;">
+                        <label style="color:#d4af37;" data-i18n="lbl_file_upload">📄 Joindre un Document Stratégique (Optionnel)</label>
+                        <input type="file" id="clientFile" accept=".pdf,.doc,.docx,.txt" style="display: none;">
+                        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                            <label for="clientFile" style="cursor: pointer; background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37; padding: 8px 15px; border-radius: 4px; color: #d4af37; font-size: 0.85rem; display: inline-block; transition: 0.3s;" data-i18n="btn_browse">Parcourir...</label>
+                            <span id="fileNameDisplay" style="color: #8892b0; font-size: 0.85rem;" data-i18n="lbl_no_file">Aucun fichier sélectionné</span>
+                        </div>
+                        <div style="font-size: 0.75rem; color: #8892b0; margin-top: 10px; display: flex; align-items: center; gap: 5px;">
+                            <span style="color:#25D366;">🛡️</span> 
+                            <em data-i18n="lbl_file_desc">Propriété Intellectuelle garantie : Protection par ancrage Blockchain.</em>
+                        </div>
                     </div>
-                    <div style="font-size: 0.8rem; margin-bottom: 20px;">
-                        <input type="checkbox" id="whatsapp-consent" required checked> J'accepte de recevoir l'audit par WhatsApp.
+
+                    <div style="margin-bottom: 15px; font-size: 0.85rem; display: flex; align-items: flex-start; gap: 10px;">
+                        <input type="checkbox" id="consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 3px;">
+                        <label for="consent" style="color: #ccc; cursor: pointer;">
+                            <span data-i18n="legal_consent">J'accepte la</span> 
+                            <a href="#" id="openPrivacy" class="gold-link" data-i18n="link_privacy">Politique de Confidentialité Officielle</a>.
+                        </label>
                     </div>
-                    <div style="display:flex; gap:10px;">
-                        <button type="button" class="btn-gold" style="background:transparent; border:1px solid var(--gold); color:var(--gold);" onclick="nextStep(2)">Retour</button>
-                        <button type="submit" class="btn-gold glow" id="btnFinal">Lancer l'Analyse IA</button>
+
+                    <div style="margin-bottom: 25px; font-size: 0.85rem; display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <input type="checkbox" id="whatsapp-consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 3px;">
+                        <label for="whatsapp-consent" style="color: #ccc; cursor: pointer;" data-i18n="lbl_wa_optin">
+                            J'accepte de recevoir mon analyse stratégique par <strong style="color:#25D366;">WhatsApp</strong>.
+                        </label>
+                    </div>
+
+                    <div class="btn-container split">
+                        <button type="button" class="btn-outline" onclick="nextStep(2)" data-i18n="btn_prev">← Retour</button>
+                        <button type="submit" class="btn-gold glow" id="btnFinalSubmit" data-i18n="btn_submit">Lancer l'Analyse IA</button>
                     </div>
                 </div>
             </form>
 
+            <!-- LOADER WOW EFFECT -->
             <div id="emeta-loader">
                 <div class="loader-spinner"></div>
-                <h3 id="loader-title" style="color:var(--gold); font-family:'Cinzel', serif;">MOTEUR e-META LABS ACTIVÉ</h3>
-                <p id="emeta-status" style="color:var(--light-slate);">Initialisation des protocoles sécurisés...</p>
+                <h3 id="loader-title" style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 15px; letter-spacing: 1px;">MOTEUR e-META LABS ACTIVÉ</h3>
+                <p id="emeta-status" style="font-size: 16px; color: #8892b0; font-family: monospace;">Initialisation de la connexion sécurisée...</p>
             </div>
         </div>
     </main>
 
-    <footer style="text-align:center; padding: 40px; font-size: 0.7rem; color: var(--light-slate); border-top: 1px solid rgba(212,175,55,0.1);">
-        <p>© 2026 e-META LABS SASU. Tous droits réservés.</p>
-        <p>Strategic Intelligence Unit • Dakar - Paris - Dubai</p>
+    <footer class="footer">
+        <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
+        <p>Strategic Intelligence Unit • Dakar - Paris - Dubai - Shanghai - New York</p>
+        <div style="margin-top: 15px;">
+            <a href="mailto:contact@e-metalabs.com" style="color: #8892b0; text-decoration: none; margin-right: 15px;">✉️ contact@e-metalabs.com</a>
+        </div>
     </footer>
 
+    <!-- MODAL CONFIDENTIALITÉ -->
+    <div id="privacyOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn close-modal">&times;</span>
+            <h2 data-i18n="modal_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Politique de Confidentialité</h2>
+            <div class="modal-body" style="text-align: left;">
+                <h4 style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">1. Chiffrement et Sécurité</h4>
+                <p style="font-size: 0.9rem; color: #ccc;">Toutes vos données (fichiers, textes, emails) sont chiffrées de bout en bout (AES-256). Nous n'utilisons aucune donnée client pour entraîner des modèles publics.</p>
+                <h4 style="color:#d4af37; margin-top:15px; margin-bottom:5px; font-family:'Cinzel', serif;">2. Souveraineté et Destruction</h4>
+                <p style="font-size: 0.9rem; color: #ccc;">Les rapports générés vous appartiennent intégralement. Les fichiers sources sont purgés de nos serveurs de traitement dans les 24h suivant l'analyse.</p>
+            </div>
+            <button class="btn-gold full-width close-modal-btn" style="margin-top:20px;">Accepter & Fermer</button>
+        </div>
+    </div>
+
+    <!-- MODAL GUIDE LEXIQUE -->
+    <div id="guideOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn close-guide">&times;</span>
+            <h2 data-i18n="guide_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Lexique Stratégique</h2>
+            <div class="modal-body" style="text-align: left; color: #e6f1ff; font-size: 0.9rem;">
+                <h4 style="color:#d4af37; font-family:'Cinzel', serif; margin-bottom: 10px;">Secteurs Stratégiques</h4>
+                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <p class="lexique-item"><strong>• FinTech & DeFi :</strong> Finance numérique et décentralisation.</p>
+                    <p class="lexique-item"><strong>• GovTech & Smart Cities :</strong> Modernisation de l'État et services publics.</p>
+                    <p class="lexique-item"><strong>• Santé & BioTech :</strong> Innovations médicales et data.</p>
+                    <p class="lexique-item" style="border-bottom: none;"><strong>• AgriTech & Food Sec. :</strong> Optimisation technologique agricole.</p>
+                </div>
+            </div>
+            <button class="btn-gold full-width close-guide-btn" style="margin-top:20px;">Fermer</button>
+        </div>
+    </div>
+
+    <!-- MODAL RÉSULTAT (Pour le mode Starter) -->
+    <div id="resultModal" class="modal-overlay">
+        <div class="modal-content" style="text-align: center;">
+            <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 20px rgba(212,175,55,0.5);">✅</div>
+            <h2 style="color: #d4af37; font-family: 'Cinzel', serif; margin-bottom: 10px;">Audit Pris en Charge</h2>
+            <p id="resultBodyText" style="color: #ccc; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6;">
+                Vos données stratégiques ont été transmises au moteur IA e-META LABS.<br>
+                Vous recevrez votre rapport complet par Email et WhatsApp dans les prochaines minutes.
+            </p>
+            <button class="btn-gold full-width" onclick="location.reload()">Nouvelle Analyse</button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT ENGINE (Logique & Routage) -->
+    <!-- ========================================== -->
     <script>
+        // 1. CONFIGURATION WEBHOOK MAKE.COM
         const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f";
 
-        function setPlan(plan) {
-            document.getElementById('plan_choisi').value = plan;
-            document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
-        }
+        // 2. COMPTEUR LIVE
+        window.addEventListener('load', () => {
+            const counterElement = document.getElementById('live-counter-top');
+            if (counterElement) {
+                let currentCount = 1380; const targetCount = 1423; 
+                const interval = setInterval(() => {
+                    currentCount++; counterElement.innerText = currentCount.toLocaleString();
+                    if (currentCount >= targetCount) clearInterval(interval);
+                }, 30); 
+            }
+        });
 
-        function nextStep(step) {
-            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-            document.getElementById(`step-${step}`).classList.add('active');
-        }
-
+        // 3. FONCTIONS UTILITAIRES
         function getBase64(file) {
             return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
+                const reader = new FileReader(); reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result); reader.onerror = error => reject(error);
             });
         }
 
-        document.getElementById('diagnosticForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('btnFinal');
-            submitBtn.disabled = true;
-            
-            // UI Transition
-            document.getElementById('diagnosticForm').style.display = 'none';
-            document.getElementById('emeta-loader').style.display = 'block';
+        function setCustomMessage(input) {
+            const msgs = {
+                required: "Veuillez remplir ce champ obligatoire.",
+                email: "Veuillez entrer une adresse email valide.",
+                checkbox: "Vous devez accepter cette condition pour continuer."
+            };
+            input.setCustomValidity('');
+            if (!input.validity.valid) {
+                if (input.validity.valueMissing) {
+                    input.setCustomValidity((input.type === 'checkbox') ? msgs.checkbox : msgs.required);
+                } else if (input.validity.typeMismatch && input.type === 'email') {
+                    input.setCustomValidity(msgs.email);
+                }
+            }
+            return true;
+        }
 
-            // Collecte des données
-            let fileData = null;
-            let fileName = null;
-            const fileInput = document.getElementById('clientFile');
-            if (fileInput.files.length > 0) {
-                fileData = await getBase64(fileInput.files[0]);
-                fileName = fileInput.files[0].name;
+        // 4. NAVIGATION FORMULAIRE & PRIX
+        function selectPlan(planId) {
+            document.getElementById('plan_choisi').value = planId;
+            document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function nextStep(targetStep) {
+            // Validation simple
+            if (targetStep === 2) {
+                const c = document.getElementById('company'), e = document.getElementById('email'), p = document.getElementById('phone');
+                if (!c.checkValidity()) { c.reportValidity(); return; }
+                if (!e.checkValidity()) { e.reportValidity(); return; }
+                if (!p.checkValidity()) { p.reportValidity(); return; }
+            }
+            if (targetStep === 3) {
+                const sector = document.querySelector('input[name="sector"]:checked');
+                const geo = document.getElementById('geo-zone');
+                if (!sector) { alert("Veuillez sélectionner un Secteur Stratégique."); return; }
+                if (sector.value === 'other') {
+                    const custom = document.getElementById('custom-sector-input');
+                    if (!custom.value.trim()) { alert("Veuillez préciser votre industrie."); custom.focus(); return; }
+                }
+                if (geo.value === "") { geo.setCustomValidity("Veuillez sélectionner une zone."); geo.reportValidity(); return; }
             }
 
-            const planChoisi = document.getElementById('plan_choisi').value;
-            const payload = {
-                plan: planChoisi,
-                company: document.getElementById('company').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                sector: document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié",
-                geo: document.getElementById('geo-zone').value,
-                context: document.getElementById('context').value,
-                attachedFileName: fileName,
-                attachedFileBase64: fileData,
-                lang: "fr"
-            };
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step-${targetStep}`).classList.add('active');
+            document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
+        }
 
-            // ÉTAPE 1 : ENVOI À MAKE.COM
-            try {
-                const response = await fetch(WEBHOOK_URL, {
+        function resetForm() {
+            if(confirm("Voulez-vous vraiment réinitialiser le diagnostic ?")) {
+                document.getElementById('diagnosticForm').reset();
+                document.getElementById('custom-sector-container').style.display = 'none';
+                document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+                document.getElementById('step-1').classList.add('active');
+                document.querySelector('.glass-card').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 5. GESTION DOM (Fichiers, Modals, Secteur Autre)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Affichage nom de fichier
+            const fileInput = document.getElementById('clientFile');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            if (fileInput && fileNameDisplay) {
+                fileInput.addEventListener('change', function() {
+                    if (this.files && this.files.length > 0) {
+                        fileNameDisplay.textContent = this.files[0].name; fileNameDisplay.style.color = '#d4af37';
+                    } else {
+                        fileNameDisplay.textContent = "Aucun fichier sélectionné"; fileNameDisplay.style.color = '#8892b0';
+                    }
+                });
+            }
+
+            // Affichage Secteur "Autre"
+            document.querySelectorAll('input[name="sector"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const customContainer = document.getElementById('custom-sector-container');
+                    if (e.target.value === 'other') {
+                        customContainer.style.display = 'block';
+                        document.getElementById('custom-sector-input').focus();
+                    } else {
+                        customContainer.style.display = 'none';
+                    }
+                });
+            });
+
+            // Modals
+            const setupModal = (btnId, modalId, closeClass) => {
+                const btn = document.getElementById(btnId); const modal = document.getElementById(modalId);
+                if(btn && modal) {
+                    btn.addEventListener('click', (e) => { e.preventDefault(); modal.style.display = 'flex'; });
+                    document.querySelectorAll(closeClass).forEach(c => c.addEventListener('click', () => modal.style.display = 'none'));
+                }
+            };
+            setupModal('openPrivacy', 'privacyOverlay', '.close-modal, .close-modal-btn');
+            setupModal('openGuide', 'guideOverlay', '.close-guide, .close-guide-btn');
+        });
+
+        // 6. SOUMISSION & ROUTAGE (LE CERVEAU)
+        const form = document.getElementById('diagnosticForm');
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Validations finales
+                const whatsappConsent = document.getElementById('whatsapp-consent');
+                if (!whatsappConsent.checked) { setCustomMessage(whatsappConsent); whatsappConsent.reportValidity(); return; }
+                const consent = document.getElementById('consent');
+                if (!consent.checked) { setCustomMessage(consent); consent.reportValidity(); return; }
+
+                const submitBtn = document.getElementById('btnFinalSubmit');
+                const originalText = submitBtn.innerText;
+                submitBtn.disabled = true;
+                
+                // EFFET WOW (Radar UI)
+                form.style.display = 'none';
+                const wowLoader = document.getElementById('emeta-loader');
+                const statusText = document.getElementById('emeta-status');
+                if (wowLoader) wowLoader.style.display = 'block';
+
+                const loadingSteps = ["Analyse sémantique du contexte...", "Corrélation sectorielle...", "Transmission cryptée vers le Moteur IA...", "Sécurisation des données..."];
+                let stepIndex = 0;
+                const textInterval = setInterval(() => {
+                    if (stepIndex < loadingSteps.length) {
+                        if (statusText) statusText.innerText = loadingSteps[stepIndex];
+                        stepIndex++;
+                    }
+                }, 1000); 
+
+                // Préparation du Payload (Colis)
+                let fileData = null; let fileName = null;
+                const fileInput = document.getElementById('clientFile');
+                if (fileInput && fileInput.files.length > 0) {
+                    if (fileInput.files[0].size > 2.5 * 1024 * 1024) {
+                        alert("Pour garantir une analyse ultra-rapide, le fichier ne doit pas dépasser 2.5 Mo.");
+                        submitBtn.disabled = false; form.style.display = 'block'; 
+                        if(wowLoader) wowLoader.style.display = 'none'; clearInterval(textInterval); return;
+                    }
+                    try { fileData = await getBase64(fileInput.files[0]); fileName = fileInput.files[0].name; } 
+                    catch (error) { console.error("Erreur fichier", error); }
+                }
+
+                let finalSector = document.querySelector('input[name="sector"]:checked')?.value || "Non spécifié";
+                if (finalSector === 'other') {
+                    const customInput = document.getElementById('custom-sector-input');
+                    finalSector = customInput ? customInput.value.trim() : "Sur-mesure non précisé";
+                }
+
+                const planChoisi = document.getElementById('plan_choisi').value;
+                const formData = {
+                    plan: planChoisi,
+                    timestamp: new Date().toISOString(),
+                    company: document.getElementById('company').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    whatsapp_optin: true,
+                    sector: finalSector, 
+                    geoZone: document.getElementById('geo-zone').value,
+                    expertises: Array.from(document.querySelectorAll('input[name="expertise"]:checked')).map(cb => cb.value),
+                    context: document.getElementById('context').value,
+                    lang: "fr",
+                    attachedFileName: fileName,
+                    attachedFileBase64: fileData 
+                };
+
+                // ENVOI À MAKE.COM & REDIRECTION PAYTECH
+                fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    document.getElementById('emeta-status').innerText = "Données sécurisées. Redirection...";
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    clearInterval(textInterval); 
                     
-                    // ÉTAPE 2 : ROUTAGE FINANCIER PAYTECH
-                    setTimeout(() => {
-                        if (planChoisi === 'pro') {
-                            // Lien PayTech PRO (À remplacer par votre vrai lien marchand)
-                            window.location.href = "https://paytech.sn/link/votre-code-audit-pro";
-                        } else if (planChoisi === 'expert') {
-                            // Lien PayTech EXPERT
-                            window.location.href = "https://paytech.sn/link/votre-code-abonnement-expert";
-                        } else {
-                            // MODE GRATUIT (STARTER)
-                            document.getElementById('emeta-loader').innerHTML = `
-                                <div style="font-size: 50px; margin-bottom: 20px;">✅</div>
-                                <h3 style="color:var(--gold); font-family:'Cinzel', serif;">Mission Reçue</h3>
-                                <p style="color:var(--white);">Vos données sont en cours d'analyse. Vérifiez votre email/WhatsApp d'ici 5 minutes.</p>
-                                <button class="btn-gold" onclick="location.reload()">Nouvelle Analyse</button>
-                            `;
-                        }
-                    }, 2000);
-                } else {
-                    throw new Error();
-                }
-            } catch (err) {
-                alert("Erreur de transmission. Vérifiez votre connexion.");
-                location.reload();
-            }
-        });
+                    if (response.ok) {
+                        if (statusText) statusText.innerText = "Données sécurisées. Redirection vers la passerelle financière...";
+                        
+                        setTimeout(() => {
+                            if (planChoisi === 'pro') {
+                                // ⚠️ REMPLACEZ ICI PAR VOTRE VRAI LIEN PAYTECH PRO
+                                window.location.href = "https://paytech.sn/link/votre-code-audit-pro";
+                            } else if (planChoisi === 'expert') {
+                                // ⚠️ REMPLACEZ ICI PAR VOTRE VRAI LIEN PAYTECH EXPERT
+                                window.location.href = "https://paytech.sn/link/votre-code-abonnement-expert";
+                            } else {
+                                // MODE STARTER (GRATUIT) : Affichage Modal Succès
+                                if (wowLoader) wowLoader.style.display = 'none';
+                                const resModal = document.getElementById('resultModal');
+                                if(resModal) resModal.style.display = 'flex';
+                            }
+                        }, 1500);
+
+                    } else { throw new Error('Erreur Webhook'); }
+                })
+                .catch(error => {
+                    clearInterval(textInterval);
+                    form.style.display = 'block';
+                    if(wowLoader) wowLoader.style.display = 'none';
+                    console.error('Erreur Transmission:', error);
+                    alert("Impossible de joindre le serveur. Veuillez vérifier votre connexion ou réessayer plus tard.");
+                    submitBtn.disabled = false; submitBtn.innerText = originalText;
+                });
+            });
+        }
     </script>
 </body>
 </html>
