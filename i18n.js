@@ -309,7 +309,7 @@ const translations = {
         lex_exp_ai: "<strong>• GenAI & Data:</strong> AI integration for predictive analysis and automation.",
         lex_exp_cyber: "<strong>• Cybersecurity:</strong> Protection of critical infrastructure and resilience audits.",
         lex_exp_esg: "<strong>• ESG Engineering:</strong> Environmental, Social, and Governance strategy.",
-        lex_exp_web3: "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique certifié sur la Blockchain Bitcoin via OpenTimestamps."
+        lex_exp_web3: "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique certifié sur la Blockchain Bitcoin via OpenTimestamps.",
         lex_exp_mkt: "<strong>• Digital Marketing:</strong> Acquisition strategy, SEO, and online visibility.",
         lex_exp_proc: "<strong>• Process Opti.:</strong> Operational excellence and cost reduction.",
         lex_exp_hr: "<strong>• Talent Mgt (HR):</strong> Recruitment, retention, and 2.0 training.",
@@ -494,7 +494,7 @@ const translations = {
         lex_exp_ai: "<strong>• GenAI & Data:</strong> Integración de IA para análisis predictivo y automatización.",
         lex_exp_cyber: "<strong>• Ciberseguridad:</strong> Protección de infraestructuras críticas y auditorías de resiliencia.",
         lex_exp_esg: "<strong>• Ingeniería ESG:</strong> Estrategia Ambiental, Social y de Gobernanza.",
-        lex_exp_web3": "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique certifié sur la Blockchain Bitcoin via OpenTimestamps.",
+        lex_exp_web3: "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique certifié sur la Blockchain Bitcoin via OpenTimestamps.",
         lex_exp_mkt: "<strong>• Marketing Digital:</strong> Estrategia de adquisición, SEO y visibilidad en línea.",
         lex_exp_proc: "<strong>• Optimización de Proc.:</strong> Excelencia operativa y reducción de costos.",
         lex_exp_hr: "<strong>• Gestión de Talento:</strong> Reclutamiento, retención y formación 2.0.",
