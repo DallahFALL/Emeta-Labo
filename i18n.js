@@ -494,7 +494,7 @@ const translations = {
         lex_exp_ai: "<strong>• GenAI & Data:</strong> Integración de IA para análisis predictivo y automatización.",
         lex_exp_cyber: "<strong>• Ciberseguridad:</strong> Protección de infraestructuras críticas y auditorías de resiliencia.",
         lex_exp_esg: "<strong>• Ingeniería ESG:</strong> Estrategia Ambiental, Social y de Gobernanza.",
-        lex_exp_web3": "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique certifié sur la Blockchain Bitcoin via OpenTimestamps."
+        lex_exp_web3": "<strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique certifié sur la Blockchain Bitcoin via OpenTimestamps.",
         lex_exp_mkt: "<strong>• Marketing Digital:</strong> Estrategia de adquisición, SEO y visibilidad en línea.",
         lex_exp_proc: "<strong>• Optimización de Proc.:</strong> Excelencia operativa y reducción de costos.",
         lex_exp_hr: "<strong>• Gestión de Talento:</strong> Reclutamiento, retención y formación 2.0.",
