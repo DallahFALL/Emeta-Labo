@@ -1,5 +1,5 @@
 /* * PROJET : e-META LABS
- * FICHIER : i18n.js (Traduction Intégrale Exhaustive + Nouveaux Secteurs)
+ * FICHIER : i18n.js (Traduction Intégrale Exhaustive + Offre PACK 3)
  */
 
 const translations = {
@@ -168,15 +168,15 @@ const translations = {
         "pricing_starter_btn": "Tester gratuitement",
 
         "pricing_pro_badge": "LE PLUS POPULAIRE",
-        "pricing_pro_name": "PRO (One-Shot)",
-        "pricing_pro_desc": "L'audit stratégique complet et sans concession en 3 minutes.",
+        "pricing_pro_name": "PRO (PACK 3)",
+        "pricing_pro_desc": "Un pack de <strong>3 audits stratégiques</strong> complets et sans concession.",
         "pricing_pro_price": "14 900 FCFA",
-        "pricing_pro_period": "/ audit",
-        "pricing_pro_feat1": "✓ Rapport complet (3 chapitres)",
+        "pricing_pro_period": "",
+        "pricing_pro_feat1": "✓ <strong>3 Rapports</strong> complets",
         "pricing_pro_feat2": "✓ Diagnostic financier & KPI",
-        "pricing_pro_feat3": "✓ Stratégie de disruption (Pivoter)",
-        "pricing_pro_feat4": "✓ Rapport PDF Premium",
-        "pricing_pro_btn": "Générer l'Audit",
+        "pricing_pro_feat3": "✓ Stratégies de disruption",
+        "pricing_pro_feat4": "✓ Rapports PDF Premium",
+        "pricing_pro_btn": "Acheter le Pack",
 
         "pricing_expert_name": "EXPERT",
         "pricing_expert_desc": "Votre cellule de prospective disponible 24/7.",
@@ -342,7 +342,7 @@ const translations = {
         btn_return: "Return to AI Engine",
         btn_close: "Close",
 
-    // TARIFS e-META LABS    
+    // TARIFS e-META LABS (EN)   
     "pricing_starter_name": "STARTER",
     "pricing_starter_desc": "To test the analytical power of e-META LABS.",
     "pricing_starter_price": "$0",
@@ -353,15 +353,15 @@ const translations = {
     "pricing_starter_btn": "Test for free",
 
     "pricing_pro_badge": "MOST POPULAR",
-    "pricing_pro_name": "PRO (One-Shot)",
-    "pricing_pro_desc": "The complete, uncompromising strategic audit in 3 minutes.",
+    "pricing_pro_name": "PRO (PACK 3)",
+    "pricing_pro_desc": "A pack of <strong>3 comprehensive</strong> and uncompromising strategic audits.",
     "pricing_pro_price": "$25",
-    "pricing_pro_period": "/ audit",
-    "pricing_pro_feat1": "✓ Full report (3 chapters)",
+    "pricing_pro_period": "",
+    "pricing_pro_feat1": "✓ <strong>3 Complete Reports</strong>",
     "pricing_pro_feat2": "✓ Financial diagnosis & KPIs",
     "pricing_pro_feat3": "✓ Disruption strategy (Pivot)",
-    "pricing_pro_feat4": "✓ Premium PDF Report",
-    "pricing_pro_btn": "Generate Audit",
+    "pricing_pro_feat4": "✓ Premium PDF Reports",
+    "pricing_pro_btn": "Buy the Pack",
 
     "pricing_expert_name": "EXPERT",
     "pricing_expert_desc": "Your strategic foresight unit available 24/7.",
@@ -527,7 +527,7 @@ const translations = {
         btn_return: "Volver al Motor IA",
         btn_close: "Cerrar",
 
-    // TARIFS e-META LABS 
+    // TARIFS e-META LABS (ES)
     "pricing_starter_name": "STARTER",
     "pricing_starter_desc": "Para probar el poder analítico de e-META LABS.",
     "pricing_starter_price": "$0",
@@ -538,15 +538,15 @@ const translations = {
     "pricing_starter_btn": "Probar gratis",
 
     "pricing_pro_badge": "MÁS POPULAR",
-    "pricing_pro_name": "PRO (One-Shot)",
-    "pricing_pro_desc": "La auditoría estratégica completa e inflexible en 3 minutos.",
+    "pricing_pro_name": "PRO (PACK 3)",
+    "pricing_pro_desc": "Un paquete de <strong>3 auditorías estratégicas</strong> completas y sin concesiones.",
     "pricing_pro_price": "$25",
-    "pricing_pro_period": "/ auditoría",
-    "pricing_pro_feat1": "✓ Informe completo (3 capítulos)",
+    "pricing_pro_period": "",
+    "pricing_pro_feat1": "✓ <strong>3 Informes completos</strong>",
     "pricing_pro_feat2": "✓ Diagnóstico financiero y KPIs",
     "pricing_pro_feat3": "✓ Estrategia de disrupción (Pivotar)",
-    "pricing_pro_feat4": "✓ Informe PDF Premium",
-    "pricing_pro_btn": "Generar Auditoría",
+    "pricing_pro_feat4": "✓ Informes PDF Premium",
+    "pricing_pro_btn": "Comprar el Paquete",
 
     "pricing_expert_name": "EXPERT",
     "pricing_expert_desc": "Su unidad de prospectiva estratégica disponible 24/7.",
@@ -712,7 +712,7 @@ const translations = {
         btn_return: "العودة إلى محرك الذكاء الاصطناعي",
         btn_close: "إغلاق",
 
-        // TARIFS e-META LABS
+        // TARIFS e-META LABS (AR)
         "pricing_starter_name": "الأساسي (STARTER)",
     "pricing_starter_desc": "لاختبار القوة التحليلية لـ e-META LABS.",
     "pricing_starter_price": "مجاناً",
@@ -723,15 +723,15 @@ const translations = {
     "pricing_starter_btn": "جرب مجاناً",
 
     "pricing_pro_badge": "الأكثر شعبية",
-    "pricing_pro_name": "الاحترافي (PRO)",
-    "pricing_pro_desc": "التدقيق الاستراتيجي الكامل والصارم في 3 دقائق.",
+    "pricing_pro_name": "PRO (حزمة 3)",
+    "pricing_pro_desc": "حزمة من <strong>3 عمليات تدقيق استراتيجية</strong> شاملة وصارمة.",
     "pricing_pro_price": "$25",
-    "pricing_pro_period": "/ للتدقيق",
-    "pricing_pro_feat1": "✓ تقرير كامل (3 فصول)",
+    "pricing_pro_period": "",
+    "pricing_pro_feat1": "✓ <strong>3 تقارير</strong> كاملة",
     "pricing_pro_feat2": "✓ تشخيص مالي ومؤشرات أداء (KPI)",
     "pricing_pro_feat3": "✓ استراتيجية الابتكار المزعزع",
-    "pricing_pro_feat4": "✓ تقرير PDF فاخر",
-    "pricing_pro_btn": "إنشاء التدقيق",
+    "pricing_pro_feat4": "✓ تقارير PDF فاخرة",
+    "pricing_pro_btn": "شراء الحزمة",
 
     "pricing_expert_name": "الخبير (EXPERT)",
     "pricing_expert_desc": "خلية الاستشراف الخاصة بك متاحة على مدار الساعة.",
