@@ -79,7 +79,7 @@
 
         /* Modals & One-Page Overlays */
         .modal-overlay { position: fixed; inset: 0; background: rgba(10, 25, 47, 0.95); display: none; justify-content: center; align-items: center; z-index: 20000; backdrop-filter: blur(8px); }
-        .modal-content { background: #0a192f; border: 1px solid #d4af37; padding: 35px; border-radius: 8px; max-width: 800px; width: 90%; position: relative; max-height: 85vh; display: flex; flex-direction: column; }
+        .modal-content { background: #0a192f; border: 1px solid #d4af37; padding: 35px; border-radius: 8px; max-width: 800px; width: 90%; position: relative; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
         .modal-body { overflow-y: auto; padding-right: 15px; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #8892b0; transition: 0.3s; }
         .close-btn:hover { color: #d4af37; }
@@ -349,8 +349,8 @@
                         </div>
                     </div>
 
-                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; padding: 15px; margin-bottom: 25px;">
-                        <div class="legal-check" style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; padding: 15px; margin-bottom: 25px; display: flex; flex-direction: column; gap: 12px;">
+                        <div class="legal-check" style="display: flex; align-items: flex-start; gap: 10px;">
                             <input type="checkbox" id="consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 3px; transform: scale(1.1); cursor: pointer;">
                             <label for="consent" style="color: #ccc; font-size: 0.9rem; cursor: pointer; line-height: 1.4;">
                                 <span data-i18n="legal_consent" id="txt-legal-consent">J'accepte la</span> 
@@ -436,7 +436,7 @@
                     <p class="lexique-item" data-i18n="lex_sec_green"><strong>• GreenTech & Énergies :</strong> Transition écologique, décarbonation et énergies renouvelables.</p>
                     <p class="lexique-item" data-i18n="lex_sec_agri"><strong>• AgriTech & Food Sec. :</strong> Sécurité alimentaire et optimisation technologique agricole.</p>
                     <p class="lexique-item" data-i18n="lex_sec_log"><strong>• Logistique & Supply :</strong> Optimisation de la chaîne logistique et traçabilité globale.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_mine"><strong>• Mines, Pétrole & Gaz :</strong> Extraction inteligente, sécurité et conformité.</p>
+                    <p class="lexique-item" data-i18n="lex_sec_mine"><strong>• Mines, Pétrole & Gaz :</strong> Extraction intelligente, sécurité et conformité.</p>
                     <p class="lexique-item" data-i18n="lex_sec_btp"><strong>• Immobilier & PropTech:</strong> Innovation immobilière et gestion de bâtiments intelligents.</p>
                     <p class="lexique-item" data-i18n="lex_sec_retail"><strong>• E-commerce & Retail :</strong> Retail digital, experience client et transactions.</p>
                     <p class="lexique-item" data-i18n="lex_sec_edu"><strong>• Éducation (EdTech) :</strong> Plateformes d'apprentissage et transmission du savoir.</p>
@@ -452,12 +452,12 @@
                     <p class="lexique-item" data-i18n="lex_exp_ai"><strong>• GenAI & Data Science :</strong> Intégration de l'IA pour l'analyse prédictive et l'automatisation.</p>
                     <p class="lexique-item" data-i18n="lex_exp_cyber"><strong>• Cybersécurité :</strong> Protection des infrastructures critiques et audit de résilience.</p>
                     <p class="lexique-item" data-i18n="lex_exp_esg"><strong>• Ingénierie ESG :</strong> Stratégie environnementale, sociale et de gouvernance.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_web3"><strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_web3"><strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique (Woleet).</p>
                     <p class="lexique-item" data-i18n="lex_exp_mkt"><strong>• Marketing Digital :</strong> Stratégie d'acquisition, visibilité en ligne et conversion.</p>
                     <p class="lexique-item" data-i18n="lex_exp_proc"><strong>• Opti. des Processus :</strong> Excellence opérationnelle et réduction des coûts (RPA).</p>
                     <p class="lexique-item" data-i18n="lex_exp_hr"><strong>• Gestion des Talents :</strong> Recrutement prédictif, rétention et formation 2.0.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_design"><strong>• Design Thinking :</strong> Expérience utilisateur et innovation produit.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_gtm" style="border-bottom: none;"><strong>• Go-to-Market & Growth:</strong> Stratégie de pénétration de marché, distribution y acquisition client asymétrique.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_design"><strong>• Design Thinking :</strong> Expérience utilisateur et innovation producto.</p>
+                    <p class="lexique-item" data-i18n="lex_exp_gtm" style="border-bottom: none;"><strong>• Go-to-Market & Growth:</strong> Stratégie de pénétration de mercado, distribution et acquisition client asymétrique.</p>
                 </div>
             </div>
             
@@ -483,7 +483,7 @@
     <script>
         const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f";
 
-        // === VOS LIENS DE PAIEMENT (À MODIFIER ICI) ===
+        // === VOS LIENS DE PAIEMENT (À MODIFIER ICI PLUS TARD) ===
         const LINKS = {
             pro: {
                 paydunya: "https://paydunya.com/votre-lien-pro",
@@ -495,7 +495,7 @@
             }
         };
 
-        // --- DICTIONNAIRE MULTILINGUE INTÉGRAL ---
+        // --- DICTIONNAIRE MULTILINGUE INTÉGRAL (COMPLET) ---
         const uiDict = {
             fr: {
                 loaderTitle: "MOTEUR e-META LABS ACTIVÉ", loadInit: "Initialisation de la connexion sécurisée...", loadSuccess: "Données sécurisées. Redirection...",
@@ -677,8 +677,7 @@
 
         function openModal(modalId) { document.getElementById(modalId).style.display = 'flex'; }
         function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
-
-        // Fonction d'ouverture du Double Guichet
+        
         function showPaymentGateway(plan) {
             const btnPaydunya = document.getElementById('linkPaydunya');
             const btnLemon = document.getElementById('linkLemon');
@@ -686,7 +685,7 @@
             btnLemon.href = LINKS[plan].lemon;
             openModal('paymentModal');
         }
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.lang-switch button').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -701,7 +700,6 @@
                 });
             });
 
-            // Sécurisation de l'ouverture du champ "Sur-mesure" (Doit être chargé après le DOM)
             document.querySelectorAll('input[name="sector"]').forEach(radio => {
                 radio.addEventListener('change', (e) => {
                     const customContainer = document.getElementById('custom-sector-container');
@@ -830,7 +828,6 @@
                         
                         setTimeout(() => {
                             if (wowLoader) wowLoader.style.display = 'none';
-                            
                             if (planChoisi === 'pro' || planChoisi === 'expert') {
                                 showPaymentGateway(planChoisi);
                             } else {
