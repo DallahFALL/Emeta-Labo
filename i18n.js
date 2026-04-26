@@ -1,5 +1,5 @@
 /* * PROJET : e-META LABS
- * FICHIER : i18n.js (Traduction Intégrale + Pages Légales + Mémoire Sécurisée)
+ * FICHIER : i18n.js (Traduction Intégrale + Pages Légales + Mémoire Sécurisée + Corrections)
  */
 
 const translations = {
@@ -7,11 +7,14 @@ const translations = {
         // --- VISION SUBLIME & UI ---
         hero_label: "MASTER DIAGNOSTIC 2026", hero_slogan_1: "Excellence Stratégique", hero_slogan_2: "& Haute Précision IA",
         subtitle: "Excellence Stratégique & Haute Précision IA", btn_reset: "↻ Reset", lbl_counter: "Diagnostics Sécurisés & Ancrés",
+        slogan_sniper: "Conçu pour la Tech. Bâti pour l'absolu.",
         step1_title: "01. Identification", lbl_company: "Société / Entité", ph_company: "ex: Groupe Alpha, Ministère...",
         lbl_email: "Email Professionnel", lbl_phone: "Numéro WhatsApp", btn_next: "Suivant",
         
         // --- MATRICE & EXPERTISES ---
         step2_title: "02. Matrice Stratégique", btn_guide: "📖 Guide des Expertises", lbl_sector: "Secteur Stratégique",
+        agnostic_title: "INTELLIGENCE AGNOSTIQUE 🧠",
+        agnostic_desc: "De l'ingénierie financière aux litiges internationaux les plus complexes, notre moteur polymorphe s'adapte à votre industrie. Cochez l'<strong>Auto-Détection IA</strong> si votre enjeu dépasse les cadres traditionnels.",
         sec_fintech: "FinTech & DeFi", sec_agri: "AgriTech & Food Security", sec_green: "GreenTech & Énergies",
         sec_gov: "GovTech & Smart Cities", sec_health: "Santé & BioTech", sec_log: "Logistique & Supply Chain",
         sec_mine: "Mines, Pétrole & Gaz", sec_btp: "Immobilier & PropTech", sec_retail: "E-commerce & Retail",
@@ -39,7 +42,9 @@ const translations = {
         btn_prev: "Retour", btn_next_matrice: "Ouvrir Matrice",
         
         // --- ETAPE 3 ---
-        step3_title: "03. Matrice Analyse", lbl_context: "Contexte Opérationnel", ph_context: "Décrivez votre situation actuelle, vos objectifs à 1-3 ans et vos défis majeurs. Plus vous fournirez de détails, plus les recommandations de l'IA seront chirurgicales.",
+        step3_title: "03. Matrice Analyse", 
+        elite_hook: "\"Au-delà des algorithmes, la résolution de l'insoluble.\"",
+        lbl_context: "Contexte Opérationnel", ph_context: "Décrivez votre situation actuelle, vos objectifs à 1-3 ans et vos défis majeurs. Plus vous fournirez de détails, plus les recommandations de l'IA seront chirurgicales.",
         lbl_file_upload: "📄 Joindre un Document (Optionnel)", btn_browse: "Parcourir...", lbl_no_file: "Aucun fichier",
         lbl_file_desc: "Propriété Intellectuelle garantie : Votre fichier sera scellé (Woleet).", legal_consent: "J'accepte la", link_privacy: "Politique de Confidentialité Officielle",
         lbl_wa_optin: "J'accepte de recevoir mon analyse par WhatsApp.", btn_submit: "Lancer l'Analyse IA",
@@ -86,22 +91,21 @@ const translations = {
         btn_return_site: "← Retour au Moteur IA",
         link_mentions: "Mentions Légales", link_cgv: "CGV", link_confidentialite: "Confidentialité", link_remboursement: "Remboursement",
 
-        // --- TEXTES LEGAUX INTÉGRAUX (FR) ---
         content_mentions: `<h1>Mentions Légales</h1><h2>1. Éditeur du site</h2><p>Le site <strong>e-metalabs.com</strong> (et e-meta.app) est édité par la société <strong>E-META LABS</strong>.<br><strong>Forme juridique :</strong> SASU au capital social de 500 000 FCFA.<br><strong>Siège social :</strong> Face Débarcadère, Rosso, Sénégal.<br><strong>RCCM :</strong> SN STL 2026 B768<br><strong>NINEA :</strong> 012887553<br><strong>Directeur de la publication :</strong> Abdoulaye Fall<br><strong>Contact :</strong> support@e-metalabs.com</p><h2>2. Hébergement</h2><p>L'infrastructure front-end est hébergée via GitHub Pages et nos serveurs cloud sont gérés par <strong>OVH Groupe SAS</strong>.<br><strong>Siège social OVH :</strong> 2 rue Kellermann, 59100 Roubaix, France.</p><h2>3. Propriété Intellectuelle</h2><p>L'ensemble des éléments figurant sur cette plateforme (textes, algorithmes, architecture, logos) est protégé par les dispositions du Code de la Propriété Intellectuelle. Toute reproduction ou tentative d'ingénierie inverse est strictement interdite sans l'accord écrit de E-META LABS.</p>`,
-        
         content_cgv: `<h1>Conditions Générales de Vente (CGV)</h1><h2>1. Objet</h2><p>Les présentes CGV régissent la vente des services d'audit stratégique automatisé par Intelligence Artificielle fournis par E-META LABS (SASU, NINEA 012887553, Rosso Sénégal).</p><h2>2. Processus et Livraison</h2><p>Après validation du paiement, le rapport d'audit est généré et expédié exclusivement sous format numérique (PDF). La livraison s'effectue de manière asynchrone via l'application WhatsApp au numéro indiqué par le client, ou par courrier électronique.</p><h2>3. Tarification et Revendeurs (Merchant of Record)</h2><p>Les prix sont indiqués sur le site en FCFA ou devises équivalentes (EUR/USD). Les paiements sont sécurisés par nos partenaires financiers :</p><ul><li><strong>Transactions Internationales (Paddle) :</strong> Notre processus de commande est géré par Paddle.com. Paddle.com Market Ltd est le revendeur légal pour ces commandes.</li><li><strong>Transactions UEMOA (PayTech) :</strong> Les paiements par Mobile Money sont traités et sécurisés par l'infrastructure PayTech au Sénégal.</li></ul><h2>4. Responsabilité Opérationnelle</h2><p>Les diagnostics fournis par E-META LABS sont générés par une IA. Ils constituent un outil d'aide à la décision mais ne peuvent se substituer à une consultation juridique, fiscale ou médicale certifiée. E-META LABS décline toute responsabilité quant aux décisions prises sur la base exclusive de ces rapports.</p>`,
-        
         content_confidentialite: `<h1>Politique de Confidentialité (RGPD & CDP)</h1><h2>1. Collecte des données stratégiques</h2><p>Le Moteur E-META LABS collecte : le Nom de l'entité, l'Email professionnel, le Numéro WhatsApp, le Secteur d'activité, ainsi que les données de contexte et documents fournis volontairement.</p><h2>2. Finalité et Sécurité (Zero-Data Retention)</h2><p>Vos données servent uniquement à calibrer et générer l'audit via notre Moteur IA, puis à vous l'expédier. Nous appliquons une politique stricte de "Zero-Data Retention" au niveau des modèles de langage (LLM) tiers : vos données industrielles ne sont <strong>jamais</strong> utilisées pour entraîner des algorithmes publics. Votre secret professionnel est garanti.</p><h2>3. Partage aux sous-traitants accrédités</h2><p>Pour assurer le service, vos données transitent de manière cryptée (SSL/TLS) via nos partenaires : OpenAI/Google Cloud (Traitement IA), Meta (API WhatsApp Business), et Paddle/PayTech (Facturation). E-META LABS ne revend aucune donnée.</p><h2>4. Exercice de vos Droits</h2><p>Conformément au RGPD européen et à la CDP (Sénégal), vous disposez d'un droit absolu d'accès, de rectification et d'effacement de vos données. Pour l'exercer, contactez notre DPO : <strong>support@e-metalabs.com</strong>.</p>`,
-        
         content_remboursement: `<h1>Politique de Remboursement et Rétractation</h1><h2>1. Nature du produit numérique</h2><p>Les services proposés par E-META LABS constituent des prestations de génération immédiate de contenus numériques hautement personnalisés (Audits Stratégiques PDF).</p><h2>2. Renoncement au droit de rétractation</h2><p>En cochant la case d'acceptation lors de la commande, <strong>le Client accepte expressément que l'exécution du service (ingestion des données par l'IA) commence immédiatement après le succès du paiement.</strong> Conformément aux lois internationales sur la consommation de biens numériques immatériels, le Client renonce par conséquent à son droit de rétractation de 14 jours dès lors que la génération a démarré et que le rapport a été expédié.</p><h2>3. Conditions exceptionnelles de remboursement</h2><p>E-META LABS accordera un remboursement intégral et immédiat <strong>uniquement</strong> dans les cas suivants :</p><ul><li>Échec technique avéré de notre serveur empêchant la génération ou la livraison finale du rapport.</li><li>Double facturation accidentelle due à une erreur de la passerelle de paiement (PayTech ou Paddle).</li></ul><h2>4. Procédure de réclamation</h2><p>Toute demande technique ou de remboursement doit être adressée dans un délai maximum de 14 jours à notre cellule de support : <strong>support@e-metalabs.com</strong>.</p>`
     },
     en: {
         hero_label: "MASTER DIAGNOSTIC 2026", hero_slogan_1: "Strategic Excellence", hero_slogan_2: "& High Precision AI",
         subtitle: "Strategic Excellence & High Precision AI", btn_reset: "↻ Reset", lbl_counter: "Secured & Anchored Diagnostics",
+        slogan_sniper: "Built for Tech. Engineered for the Absolute.",
         step1_title: "01. Identification", lbl_company: "Company / Entity", ph_company: "e.g., Alpha Group...",
         lbl_email: "Corporate Email", lbl_phone: "WhatsApp Number", btn_next: "Next",
         
         step2_title: "02. Strategic Matrix", btn_guide: "📖 Expertise Guide", lbl_sector: "Strategic Sector",
+        agnostic_title: "AGNOSTIC INTELLIGENCE 🧠",
+        agnostic_desc: "From financial engineering to the most complex international disputes, our polymorphic engine adapts to your industry. Select <strong>AI Auto-Detection</strong> if your challenge transcends traditional boundaries.",
         sec_fintech: "FinTech & DeFi", sec_agri: "AgriTech & Food Security", sec_green: "GreenTech & Energy",
         sec_gov: "GovTech & Smart Cities", sec_health: "Healthcare & BioTech", sec_log: "Logistics & Supply Chain",
         sec_mine: "Mining, Oil & Gas", sec_btp: "Real Estate & PropTech", sec_retail: "E-commerce & Retail",
@@ -127,7 +131,9 @@ const translations = {
         
         btn_prev: "Back", btn_next_matrice: "Open Matrix",
         
-        step3_title: "03. Analysis Matrix", lbl_context: "Operational Context", ph_context: "Describe your current situation, 1-3 year goals, and major challenges...",
+        step3_title: "03. Analysis Matrix", 
+        elite_hook: "\"Beyond algorithms, resolving the unsolvable.\"",
+        lbl_context: "Operational Context", ph_context: "Describe your current situation, 1-3 year goals, and major challenges...",
         lbl_file_upload: "📄 Attach Document (Optional)", btn_browse: "Browse...", lbl_no_file: "No file selected",
         lbl_file_desc: "IP Guaranteed: File protected by Blockchain anchoring.", legal_consent: "I accept the", link_privacy: "Official Privacy Policy",
         lbl_wa_optin: "I agree to receive my analysis via WhatsApp.", btn_submit: "Launch AI Analysis", footer_rights: "All Rights Reserved.",
@@ -171,22 +177,21 @@ const translations = {
         btn_return_site: "← Return to AI Engine",
         link_mentions: "Legal Notice", link_cgv: "T&C", link_confidentialite: "Privacy Policy", link_remboursement: "Refund Policy",
 
-        // --- TEXTES LEGAUX INTÉGRAUX (EN) ---
         content_mentions: `<h1>Legal Notice</h1><h2>1. Site Publisher</h2><p>The site <strong>e-metalabs.com</strong> (and e-meta.app) is published by <strong>E-META LABS</strong>.<br><strong>Legal form:</strong> SASU with a share capital of 500,000 FCFA.<br><strong>Head office:</strong> Face Débarcadère, Rosso, Senegal.<br><strong>RCCM:</strong> SN STL 2026 B768<br><strong>NINEA:</strong> 012887553<br><strong>Director of Publication:</strong> Abdoulaye Fall<br><strong>Contact:</strong> support@e-metalabs.com</p><h2>2. Hosting</h2><p>The front-end infrastructure is hosted via GitHub Pages and our cloud servers are managed by <strong>OVH Groupe SAS</strong>.<br><strong>OVH Head Office:</strong> 2 rue Kellermann, 59100 Roubaix, France.</p><h2>3. Intellectual Property</h2><p>All elements on this platform (texts, algorithms, architecture, logos) are protected by Intellectual Property laws. Any reproduction or reverse engineering attempt is strictly prohibited without the written consent of E-META LABS.</p>`,
-        
         content_cgv: `<h1>Terms and Conditions of Sale (T&C)</h1><h2>1. Purpose</h2><p>These T&Cs govern the sale of automated strategic audit services powered by Artificial Intelligence provided by E-META LABS (SASU, NINEA 012887553, Rosso Senegal).</p><h2>2. Process and Delivery</h2><p>Upon payment validation, the audit report is generated and delivered exclusively in digital format (PDF). Delivery is performed asynchronously via the WhatsApp application to the number provided by the client, or via email.</p><h2>3. Pricing and Merchant of Record</h2><p>Prices are listed in FCFA or equivalent currencies (EUR/USD). Payments are secured by our financial partners:</p><ul><li><strong>International Transactions (Paddle):</strong> Our order process is conducted by our online reseller Paddle.com. Paddle.com Market Ltd is the Merchant of Record for all our orders.</li><li><strong>UEMOA Transactions (PayTech):</strong> Mobile Money payments are processed and secured end-to-end by the PayTech infrastructure in Senegal.</li></ul><h2>4. Operational Liability</h2><p>The diagnostics provided by E-META LABS are generated by AI. They constitute a highly valuable strategic decision-making tool, but cannot substitute for certified legal, tax, or medical consultation. E-META LABS declines any responsibility for decisions made solely based on these reports.</p>`,
-        
         content_confidentialite: `<h1>Privacy Policy (GDPR compliant)</h1><h2>1. Strategic Data Collection</h2><p>E-META LABS collects: Entity Name, Corporate Email, WhatsApp Number, Industry Sector, as well as context data and strategic documents voluntarily provided by the user.</p><h2>2. Purpose and Security (Zero-Data Retention)</h2><p>Your data is used solely to calibrate and generate the audit via our AI Engine, and to deliver it to you. We apply a strict "Zero-Data Retention" policy regarding third-party Large Language Models (LLMs): your industrial data is <strong>never</strong> used to train public algorithms. Your trade secrets are guaranteed.</p><h2>3. Sharing with Accredited Processors</h2><p>To provide the service, your data transits securely (SSL/TLS encrypted) via our partner infrastructures: OpenAI/Google Cloud (AI Processing), Meta (WhatsApp Business API), and Paddle/PayTech (Billing security). E-META LABS does not sell any data to third-party brokers.</p><h2>4. Exercising Your Rights</h2><p>In accordance with the European GDPR and applicable local laws, you have an absolute right to access, rectify, and erase your data. To exercise this right, contact our Data Protection Officer (DPO): <strong>support@e-metalabs.com</strong>.</p>`,
-        
         content_remboursement: `<h1>Refund and Cancellation Policy</h1><h2>1. Nature of the Digital Product</h2><p>The services offered by E-META LABS constitute the immediate generation of highly personalized digital content (Strategic PDF Audits).</p><h2>2. Waiver of the Right of Withdrawal</h2><p>By checking the acceptance box during the order process, <strong>the Client expressly agrees that the execution of the service (data ingestion by the AI) begins immediately after successful payment.</strong> In accordance with international consumer laws regarding intangible digital goods, the Client therefore waives their 14-day right of withdrawal once the generation process has started and the report has been dispatched.</p><h2>3. Exceptional Refund Conditions</h2><p>E-META LABS (and its Merchant of Record Paddle for international transactions) will grant a full and immediate refund <strong>only</strong> in the following cases:</p><ul><li>Proven technical failure of our server preventing the final generation or delivery of the PDF report.</li><li>Accidental double billing due to an error by the payment gateway (PayTech or Paddle).</li></ul><h2>4. Claim Procedure</h2><p>Any request for technical assistance or refund related to an operational incident must be sent within a maximum of 14 days after the transaction to our support team: <strong>support@e-metalabs.com</strong>.</p>`
     },
     es: {
         hero_label: "DIAGNÓSTICO MAESTRO 2026", hero_slogan_1: "Excelencia Estratégica", hero_slogan_2: "& Alta Precisión IA",
         subtitle: "Excelencia Estratégica y Alta Precisión IA", btn_reset: "↻ Reiniciar", lbl_counter: "Diagnósticos Asegurados",
+        slogan_sniper: "Diseñado para la Tech. Construido para lo absoluto.",
         step1_title: "01. Identificación", lbl_company: "Empresa / Entidad", ph_company: "ej. Grupo Alfa...",
         lbl_email: "Correo Profesional", lbl_phone: "Número WhatsApp", btn_next: "Siguiente",
         
         step2_title: "02. Matriz Estratégica", btn_guide: "📖 Guía de Especialidades", lbl_sector: "Sector Estratégico",
+        agnostic_title: "INTELIGENCIA AGNÓSTICA 🧠",
+        agnostic_desc: "Desde la ingeniería financiera hasta los litigios internacionales más complejos, nuestro motor polimorfo se adapta a su industria. Seleccione <strong>Auto-Detección por IA</strong> si su desafío supera los marcos tradicionales.",
         sec_fintech: "FinTech y DeFi", sec_agri: "AgriTech y Seguridad Alimentaria", sec_green: "GreenTech y Energía",
         sec_gov: "GovTech y Smart Cities", sec_health: "Salud y BioTech", sec_log: "Logística y Cadena",
         sec_mine: "Minería, Petróleo y Gas", sec_btp: "Bienes Raíces y PropTech", sec_retail: "E-commerce y Retail",
@@ -212,7 +217,9 @@ const translations = {
         
         btn_prev: "Volver", btn_next_matrice: "Abrir Matriz",
         
-        step3_title: "03. Matriz de Análisis", lbl_context: "Contexto Operativo", ph_context: "Describa su situación actual, objetivos a 1-3 años y desafíos principales...",
+        step3_title: "03. Matriz de Análisis", 
+        elite_hook: "\"Más allá de los algoritmos, la resolución de lo irresoluble.\"",
+        lbl_context: "Contexto Operativo", ph_context: "Describa su situación actual, objetivos a 1-3 años y desafíos principales...",
         lbl_file_upload: "📄 Adjuntar Documento (Opcional)", btn_browse: "Explorar...", lbl_no_file: "Ningún archivo",
         lbl_file_desc: "Propiedad Intelectual garantizada: Archivo protegido por anclaje Blockchain.", legal_consent: "Acepto la", link_privacy: "Política de Privacidad Oficial",
         lbl_wa_optin: "Acepto recibir mi análisis a través de WhatsApp.", btn_submit: "Lanzar Análisis IA", footer_rights: "Todos los derechos reservados.",
@@ -256,22 +263,21 @@ const translations = {
         btn_return_site: "← Volver al Motor IA",
         link_mentions: "Aviso Legal", link_cgv: "CGV", link_confidentialite: "Privacidad", link_remboursement: "Reembolso",
 
-        // --- TEXTES LEGAUX INTÉGRAUX (ES) ---
         content_mentions: `<h1>Aviso Legal</h1><h2>1. Editor del sitio</h2><p>El sitio <strong>e-metalabs.com</strong> (y e-meta.app) es editado por la empresa <strong>E-META LABS</strong>.<br><strong>Forma legal:</strong> SASU con un capital social de 500,000 FCFA.<br><strong>Sede social:</strong> Face Débarcadère, Rosso, Senegal.<br><strong>RCCM:</strong> SN STL 2026 B768<br><strong>NINEA:</strong> 012887553<br><strong>Director de Publicación:</strong> Abdoulaye Fall<br><strong>Contacto:</strong> support@e-metalabs.com</p><h2>2. Alojamiento</h2><p>La infraestructura front-end está alojada a través de GitHub Pages y nuestros servidores en la nube son gestionados por <strong>OVH Groupe SAS</strong>.<br><strong>Sede de OVH:</strong> 2 rue Kellermann, 59100 Roubaix, Francia.</p><h2>3. Propiedad Intelectual</h2><p>Todos los elementos de esta plataforma (textos, algoritmos, arquitectura, logotipos) están protegidos por las leyes de Propiedad Intelectual. Queda estrictamente prohibida cualquier reproducción o intento de ingeniería inversa sin el consentimiento escrito de E-META LABS.</p>`,
-        
         content_cgv: `<h1>Términos y Condiciones de Venta (CGV)</h1><h2>1. Objeto</h2><p>Estos T&C rigen la venta de servicios de auditoría estratégica automatizada impulsada por Inteligencia Artificial proporcionados por E-META LABS (SASU, NINEA 012887553, Rosso Senegal).</p><h2>2. Proceso y Entrega</h2><p>Tras la validación del pago, el informe de auditoría se genera y entrega exclusivamente en formato digital (PDF). La entrega se realiza de forma asincrónica a través de la aplicación WhatsApp al número proporcionado por el cliente, o por correo electrónico.</p><h2>3. Precios y Comerciante Registrado (Merchant of Record)</h2><p>Los precios se indican en FCFA o monedas equivalentes (EUR/USD). Los pagos están asegurados por nuestros socios financieros:</p><ul><li><strong>Transacciones Internacionales (Paddle):</strong> Nuestro proceso de pedido es gestionado por Paddle.com. Paddle.com Market Ltd es el Comerciante Registrado (Merchant of Record) para estos pedidos.</li><li><strong>Transacciones UEMOA (PayTech):</strong> Los pagos de Mobile Money son procesados y asegurados de extremo a extremo por la infraestructura de PayTech en Senegal.</li></ul><h2>4. Responsabilidad Operativa</h2><p>Los diagnósticos proporcionados por E-META LABS son generados por IA. Constituyen una herramienta de apoyo a la toma de decisiones estratégicas, pero no pueden sustituir a una consulta legal, fiscal o médica certificada. E-META LABS declina toda responsabilidad por las decisiones tomadas basándose exclusivamente en estos informes.</p>`,
-        
         content_confidentialite: `<h1>Política de Privacidad (Cumple con el RGPD)</h1><h2>1. Recopilación de Datos Estratégicos</h2><p>El Motor E-META LABS recopila: Nombre de la Entidad, Correo Profesional, Número de WhatsApp, Sector de la Industria, así como datos de contexto y documentos estratégicos proporcionados voluntariamente por el usuario.</p><h2>2. Propósito y Seguridad (Zero-Data Retention)</h2><p>Sus datos se utilizan únicamente para calibrar y generar la auditoría a través de nuestro Motor de IA, y luego enviársela. Aplicamos una política estricta de "Retención de Datos Cero" a nivel de los Modelos de Lenguaje (LLM) de terceros: sus datos industriales <strong>nunca</strong> se utilizan para entrenar algoritmos públicos. Su secreto profesional está garantizado.</p><h2>3. Intercambio con Subcontratistas Acreditados</h2><p>Para garantizar el servicio, sus datos transitan de forma cifrada (SSL/TLS) a través de nuestras infraestructuras asociadas: OpenAI/Google Cloud (Procesamiento de IA), Meta (API de WhatsApp Business) y Paddle/PayTech (Seguridad de facturación). E-META LABS no vende ningún dato a terceros.</p><h2>4. Ejercicio de sus Derechos</h2><p>De acuerdo con el RGPD europeo y las leyes locales aplicables, usted tiene un derecho absoluto a acceder, rectificar y borrar sus datos. Para ejercerlo, póngase en contacto con nuestro Delegado de Protección de Datos (DPO): <strong>support@e-metalabs.com</strong>.</p>`,
-        
         content_remboursement: `<h1>Política de Reembolso y Cancelación</h1><h2>1. Naturaleza del Producto Digital</h2><p>Los servicios ofrecidos por E-META LABS constituyen la generación inmediata de contenido digital altamente personalizado (Auditorías Estratégicas PDF).</p><h2>2. Renuncia al Derecho de Desistimiento</h2><p>Al marcar la casilla de aceptación durante el pedido, <strong>el Cliente acepta expresamente que la ejecución del servicio (ingestión de datos por la IA) comience inmediatamente después del pago exitoso.</strong> De conformidad con las leyes internacionales de consumo sobre bienes digitales intangibles, el Cliente renuncia, por tanto, a su derecho de desistimiento de 14 días una vez que el proceso de generación ha comenzado y el informe ha sido enviado.</p><h2>3. Condiciones Excepcionales de Reembolso</h2><p>E-META LABS (y su Comerciante Registrado Paddle para transacciones internacionales) otorgará un reembolso total e inmediato <strong>únicamente</strong> en los siguientes casos:</p><ul><li>Fallo técnico comprobado de nuestro servidor que impida la generación o entrega final del informe PDF.</li><li>Doble facturación accidental debido a un error de la pasarela de pago (PayTech o Paddle).</li></ul><h2>4. Procedimiento de Reclamación</h2><p>Toda solicitud de asistencia técnica o reembolso relacionada con un incidente operativo debe enviarse en un plazo máximo de 14 días después de la transacción a nuestro equipo de soporte: <strong>support@e-metalabs.com</strong>.</p>`
     },
     ar: {
         hero_label: "التشخيص الرئيسي 2026", hero_slogan_1: "التميز الاستراتيجي", hero_slogan_2: "والذكاء الاصطناعي عالي الدقة",
         subtitle: "التميز الاستراتيجي والذكاء الاصطناعي عالي الدقة", btn_reset: "↻ إعادة تعيين", lbl_counter: "تشخيصات آمنة وموثقة",
+        slogan_sniper: "صُمم للتكنولوجيا. بُني من أجل المطلق.",
         step1_title: "01. تحديد الهوية", lbl_company: "الشركة / المؤسسة", ph_company: "مثال: مجموعة ألفا...",
         lbl_email: "البريد الإلكتروني المهني", lbl_phone: "رقم الواتساب", btn_next: "التالي",
         
         step2_title: "02. المصفوفة الاستراتيجية", btn_guide: "📖 دليل الخبرات", lbl_sector: "القطاع الاستراتيجي",
+        agnostic_title: "ذكاء شامل ومتكيف 🧠",
+        agnostic_desc: "من الهندسة المالية إلى النزاعات الدولية الأكثر تعقيدًا، يتكيف محركنا متعدد الأشكال مع مجالك. اختر <strong>الاكتشاف التلقائي بالذكاء الاصطناعي</strong> إذا كان التحدي الذي تواجهه يتجاوز الأطر التقليدية.",
         sec_fintech: "التكنولوجيا المالية", sec_agri: "التكنولوجيا الزراعية", sec_green: "التكنولوجيا الخضراء",
         sec_gov: "تكنولوجيا الحكومة", sec_health: "الصحة والتكنولوجيا الحيوية", sec_log: "سلسلة التوريد",
         sec_mine: "التعدين والغاز", sec_btp: "تكنولوجيا العقارات", sec_retail: "التجارة الإلكترونية",
@@ -297,7 +303,9 @@ const translations = {
         
         btn_prev: "رجوع", btn_next_matrice: "فتح مصفوفة التحليل",
         
-        step3_title: "03. مصفوفة التحليل", lbl_context: "السياق التشغيلي", ph_context: "صف وضعك الحالي وأهدافك والتحديات الرئيسية...",
+        step3_title: "03. مصفوفة التحليل", 
+        elite_hook: "\"ما وراء الخوارزميات، حل ما لا يمكن حله.\"",
+        lbl_context: "السياق التشغيلي", ph_context: "صف وضعك الحالي وأهدافك والتحديات الرئيسية...",
         lbl_file_upload: "📄 إرفاق مستند (اختياري)", btn_browse: "تصفح...", lbl_no_file: "لم يتم تحديد أي ملف",
         lbl_file_desc: "ضمان الملكية الفكرية: محمي بواسطة البلوكشين.", legal_consent: "أوافق على", link_privacy: "سياسة الخصوصية الرسمية",
         lbl_wa_optin: "أوافق على تلقي تحليلي عبر واتساب.", btn_submit: "بدء تحليل الذكاء الاصطناعي", footer_rights: "جميع الحقوق محفوظة.",
@@ -341,13 +349,9 @@ const translations = {
         btn_return_site: "← العودة إلى محرك الذكاء الاصطناعي",
         link_mentions: "الإشعارات القانونية", link_cgv: "الشروط والأحكام", link_confidentialite: "الخصوصية", link_remboursement: "سياسة الاسترداد",
 
-        // --- TEXTES LEGAUX INTÉGRAUX (AR) ---
         content_mentions: `<div dir="rtl"><h1>الإشعارات القانونية</h1><h2>1. ناشر الموقع</h2><p>تم نشر الموقع <strong>e-metalabs.com</strong> (و e-meta.app) بواسطة شركة <strong>E-META LABS</strong>.<br><strong>الشكل القانوني:</strong> SASU برأس مال قدره 500,000 فرنك أفريقي.<br><strong>المقر الرئيسي:</strong> Face Débarcadère، روصو، السنغال.<br><strong>السجل التجاري (RCCM):</strong> SN STL 2026 B768<br><strong>NINEA:</strong> 012887553<br><strong>مدير النشر:</strong> عبد الله فال<br><strong>الاتصال:</strong> support@e-metalabs.com</p><h2>2. الاستضافة</h2><p>تتم استضافة البنية التحتية عبر GitHub Pages وتتم إدارة خوادمنا السحابية بواسطة <strong>OVH Groupe SAS</strong>.<br><strong>المقر الرئيسي لشركة OVH:</strong> 2 rue Kellermann, 59100 Roubaix، فرنسا.</p><h2>3. الملكية الفكرية</h2><p>جميع العناصر الموجودة على هذه المنصة (النصوص والخوارزميات والهندسة المعمارية والشعارات) محمية بموجب قوانين الملكية الفكرية. يُحظر تمامًا أي استنساخ أو محاولة هندسة عكسية دون موافقة كتابية من E-META LABS.</p></div>`,
-        
         content_cgv: `<div dir="rtl"><h1>الشروط والأحكام العامة للبيع (CGV)</h1><h2>1. الغرض</h2><p>تحكم هذه الشروط والأحكام بيع خدمات التدقيق الاستراتيجي الآلي المدعومة بالذكاء الاصطناعي المقدمة من E-META LABS (السنغال).</p><h2>2. العملية والتسليم</h2><p>عند التحقق من الدفع، يتم إنشاء تقرير التدقيق وتسليمه حصريًا بتنسيق رقمي (PDF). يتم التسليم بشكل غير متزامن عبر تطبيق WhatsApp إلى الرقم الذي قدمه العميل، أو عبر البريد الإلكتروني.</p><h2>3. التسعير وبائع التجزئة (Merchant of Record)</h2><p>يتم تأمين المدفوعات بواسطة شركائنا الماليين:</p><ul><li><strong>المعاملات الدولية (Paddle):</strong> تتم إدارة عملية الطلب الخاصة بنا بواسطة Paddle.com، وهو البائع القانوني لهذه الطلبات.</li><li><strong>معاملات منطقة UEMOA (PayTech):</strong> تتم معالجة مدفوعات الأموال عبر الهاتف المحمول وتأمينها بواسطة البنية التحتية PayTech في السنغال.</li></ul><h2>4. المسؤولية التشغيلية</h2><p>التشخيصات التي تقدمها E-META LABS يتم إنشاؤها بواسطة الذكاء الاصطناعي. إنها تشكل أداة لدعم اتخاذ القرار الاستراتيجي، ولكنها لا يمكن أن تحل محل الاستشارة القانونية أو الضريبية أو الطبية المعتمدة. تخلي E-META LABS مسؤوليتها عن القرارات المتخذة بناءً على هذه التقارير حصريًا.</p></div>`,
-        
         content_confidentialite: `<div dir="rtl"><h1>سياسة الخصوصية (متوافقة مع RGPD)</h1><h2>1. جمع البيانات الاستراتيجية</h2><p>يجمع محرك E-META LABS: اسم الكيان، البريد الإلكتروني للشركة، رقم WhatsApp، قطاع الصناعة، بالإضافة إلى بيانات السياق والمستندات الاستراتيجية المقدمة طواعية من قبل المستخدم.</p><h2>2. الغرض والأمان (الاحتفاظ الصفري بالبيانات)</h2><p>تُستخدم بياناتك فقط لمعايرة وإنشاء التدقيق عبر محرك الذكاء الاصطناعي الخاص بنا، ثم إرساله إليك. نحن نطبق سياسة صارمة لـ "الاحتفاظ الصفري بالبيانات" فيما يتعلق بنماذج اللغات الكبيرة (LLMs) التابعة لجهات خارجية: <strong>لا يتم استخدام بياناتك الصناعية أبدًا</strong> لتدريب الخوارزميات العامة. أسرارك المهنية مضمونة.</p><h2>3. المشاركة مع المعالجين المعتمدين</h2><p>لتقديم الخدمة، تنتقل بياناتك بشكل آمن (مشفرة SSL/TLS) عبر البنى التحتية الشريكة لنا: OpenAI/Google Cloud و Meta و Paddle/PayTech. لا تبيع E-META LABS أي بيانات لوسطاء خارجيين.</p><h2>4. ممارسة حقوقك</h2><p>وفقًا للقانون الأوروبي العام لحماية البيانات (RGPD) والقوانين المحلية المعمول بها، يحق لك الوصول إلى بياناتك وتصحيحها ومحوها. لممارسة هذا الحق، اتصل بمسؤول حماية البيانات (DPO) لدينا: <strong>support@e-metalabs.com</strong>.</p></div>`,
-        
         content_remboursement: `<div dir="rtl"><h1>سياسة الاسترداد والإلغاء</h1><h2>1. طبيعة المنتج الرقمي</h2><p>تشكل الخدمات التي تقدمها E-META LABS التوليد الفوري للمحتوى الرقمي المخصص للغاية (عمليات التدقيق الاستراتيجية PDF).</p><h2>2. التنازل عن حق الانسحاب</h2><p>من خلال تحديد مربع القبول أثناء عملية الطلب، <strong>يوافق العميل صراحةً على أن تنفيذ الخدمة (استيعاب البيانات بواسطة الذكاء الاصطناعي) يبدأ فورًا بعد الدفع الناجح.</strong> وفقًا لقوانين المستهلك الدولية فيما يتعلق بالسلع الرقمية غير الملموسة، يتنازل العميل بالتالي عن حقه في الانسحاب لمدة 14 يومًا بمجرد بدء عملية الإنشاء وإرسال التقرير.</p><h2>3. شروط الاسترداد الاستثنائية</h2><p>ستمنح E-META LABS استردادًا كاملاً وفوريًا <strong>فقط</strong> في الحالات التالية:</p><ul><li>فشل فني مثبت في خادمنا يمنع الإنشاء النهائي أو تسليم تقرير PDF.</li><li>فاتورة مزدوجة عرضية بسبب خطأ من بوابة الدفع.</li></ul><h2>4. إجراءات المطالبة</h2><p>يجب إرسال أي طلب للحصول على مساعدة فنية أو استرداد يتعلق بحادث تشغيلي في غضون 14 يومًا كحد أقصى بعد المعاملة إلى فريق الدعم لدينا: <strong>support@e-metalabs.com</strong>.</p></div>`
     }
 };
@@ -383,7 +387,7 @@ function setLanguage(lang) {
 
     // Forçage de la langue dans les URL du footer
     document.querySelectorAll('.footer a.gold-link').forEach(link => {
-        if (link.getAttribute('href')) { // Vérifie que le lien a bien un href
+        if (link.getAttribute('href')) { 
             let baseHref = link.getAttribute('href').split('?')[0]; 
             link.href = baseHref + '?lang=' + lang;
         }
