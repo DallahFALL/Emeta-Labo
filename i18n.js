@@ -43,6 +43,8 @@ const translations = {
         pricing_expert_feat1: "✓ Jusqu'à 10 Audits / mois", pricing_expert_feat2: "✓ <b>Veille Data en temps réel</b>", pricing_expert_feat3: "✓ Protocole d'action sur 7 jours", pricing_expert_feat4: "✓ Livraison VIP (WhatsApp)", pricing_expert_btn: "S'abonner",
         
         btn_return_site: "← Retour au Moteur IA",
+        
+        link_mentions: "Mentions Légales", link_cgv: "CGV", link_confidentialite: "Confidentialité", link_remboursement: "Remboursement",
 
         // --- TEXTES LEGAUX INTÉGRAUX (FR) ---
         content_mentions: `<h1>Mentions Légales</h1><h2>1. Éditeur du site</h2><p>Le site <strong>e-metalabs.com</strong> (et e-meta.app) est édité par la société <strong>E-META LABS</strong>.<br><strong>Forme juridique :</strong> SASU au capital social de 500 000 FCFA.<br><strong>Siège social :</strong> Face Débarcadère, Rosso, Sénégal.<br><strong>RCCM :</strong> SN STL 2026 B768<br><strong>NINEA :</strong> 012887553<br><strong>Directeur de la publication :</strong> Abdoulaye Fall<br><strong>Contact :</strong> support@e-metalabs.com</p><h2>2. Hébergement</h2><p>L'infrastructure front-end est hébergée via GitHub Pages et nos serveurs cloud sont gérés par <strong>OVH Groupe SAS</strong>.<br><strong>Siège social OVH :</strong> 2 rue Kellermann, 59100 Roubaix, France.</p><h2>3. Propriété Intellectuelle</h2><p>L'ensemble des éléments figurant sur cette plateforme (textes, algorithmes, architecture, logos) est protégé par les dispositions du Code de la Propriété Intellectuelle. Toute reproduction ou tentative d'ingénierie inverse est strictement interdite sans l'accord écrit de E-META LABS.</p>`,
@@ -94,6 +96,8 @@ const translations = {
 
         btn_return_site: "← Return to AI Engine",
 
+        link_mentions: "Legal Notice", link_cgv: "T&C", link_confidentialite: "Privacy Policy", link_remboursement: "Refund Policy",
+
         // --- TEXTES LEGAUX INTÉGRAUX (EN) ---
         content_mentions: `<h1>Legal Notice</h1><h2>1. Site Publisher</h2><p>The site <strong>e-metalabs.com</strong> (and e-meta.app) is published by <strong>E-META LABS</strong>.<br><strong>Legal form:</strong> SASU with a share capital of 500,000 FCFA.<br><strong>Head office:</strong> Face Débarcadère, Rosso, Senegal.<br><strong>RCCM:</strong> SN STL 2026 B768<br><strong>NINEA:</strong> 012887553<br><strong>Director of Publication:</strong> Abdoulaye Fall<br><strong>Contact:</strong> support@e-metalabs.com</p><h2>2. Hosting</h2><p>The front-end infrastructure is hosted via GitHub Pages and our cloud servers are managed by <strong>OVH Groupe SAS</strong>.<br><strong>OVH Head Office:</strong> 2 rue Kellermann, 59100 Roubaix, France.</p><h2>3. Intellectual Property</h2><p>All elements on this platform (texts, algorithms, architecture, logos) are protected by Intellectual Property laws. Any reproduction or reverse engineering attempt is strictly prohibited without the written consent of E-META LABS.</p>`,
         
@@ -144,6 +148,8 @@ const translations = {
 
         btn_return_site: "← Volver al Motor IA",
 
+        link_mentions: "Aviso Legal", link_cgv: "CGV", link_confidentialite: "Privacidad", link_remboursement: "Reembolso",
+
         // --- TEXTES LEGAUX INTÉGRAUX (ES) ---
         content_mentions: `<h1>Aviso Legal</h1><h2>1. Editor del sitio</h2><p>El sitio <strong>e-metalabs.com</strong> (y e-meta.app) es editado por la empresa <strong>E-META LABS</strong>.<br><strong>Forma legal:</strong> SASU con un capital social de 500,000 FCFA.<br><strong>Sede social:</strong> Face Débarcadère, Rosso, Senegal.<br><strong>RCCM:</strong> SN STL 2026 B768<br><strong>NINEA:</strong> 012887553<br><strong>Director de Publicación:</strong> Abdoulaye Fall<br><strong>Contacto:</strong> support@e-metalabs.com</p><h2>2. Alojamiento</h2><p>La infraestructura front-end está alojada a través de GitHub Pages y nuestros servidores en la nube son gestionados por <strong>OVH Groupe SAS</strong>.<br><strong>Sede de OVH:</strong> 2 rue Kellermann, 59100 Roubaix, Francia.</p><h2>3. Propiedad Intelectual</h2><p>Todos los elementos de esta plataforma (textos, algoritmos, arquitectura, logotipos) están protegidos por las leyes de Propiedad Intelectual. Queda estrictamente prohibida cualquier reproducción o intento de ingeniería inversa sin el consentimiento escrito de E-META LABS.</p>`,
         
@@ -193,6 +199,8 @@ const translations = {
         pricing_expert_feat1: "✓ حتى 10 تدقيقات / شهر", pricing_expert_feat2: "✓ <b>مراقبة البيانات في الوقت الفعلي</b>", pricing_expert_feat3: "✓ بروتوكول عمل لمدة 7 أيام", pricing_expert_feat4: "✓ تسليم VIP (واتساب)", pricing_expert_btn: "اشترك الآن",
 
         btn_return_site: "← العودة إلى محرك الذكاء الاصطناعي",
+
+        link_mentions: "الإشعارات القانونية", link_cgv: "الشروط والأحكام", link_confidentialite: "الخصوصية", link_remboursement: "سياسة الاسترداد",
 
         // --- TEXTES LEGAUX INTÉGRAUX (AR) ---
         content_mentions: `<div dir="rtl"><h1>الإشعارات القانونية</h1><h2>1. ناشر الموقع</h2><p>تم نشر الموقع <strong>e-metalabs.com</strong> (و e-meta.app) بواسطة شركة <strong>E-META LABS</strong>.<br><strong>الشكل القانوني:</strong> SASU برأس مال قدره 500,000 فرنك أفريقي.<br><strong>المقر الرئيسي:</strong> Face Débarcadère، روصو، السنغال.<br><strong>السجل التجاري (RCCM):</strong> SN STL 2026 B768<br><strong>NINEA:</strong> 012887553<br><strong>مدير النشر:</strong> عبد الله فال<br><strong>الاتصال:</strong> support@e-metalabs.com</p><h2>2. الاستضافة</h2><p>تتم استضافة البنية التحتية عبر GitHub Pages وتتم إدارة خوادمنا السحابية بواسطة <strong>OVH Groupe SAS</strong>.<br><strong>المقر الرئيسي لشركة OVH:</strong> 2 rue Kellermann, 59100 Roubaix، فرنسا.</p><h2>3. الملكية الفكرية</h2><p>جميع العناصر الموجودة على هذه المنصة (النصوص والخوارزميات والهندسة المعمارية والشعارات) محمية بموجب قوانين الملكية الفكرية. يُحظر تمامًا أي استنساخ أو محاولة هندسة عكسية دون موافقة كتابية من E-META LABS.</p></div>`,
