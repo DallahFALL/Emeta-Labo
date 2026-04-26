@@ -242,7 +242,13 @@ function setLanguage(lang) {
         }
     });
 
-    // Mise à jour des liens de retour pour conserver la langue
+    // NOUVEAU BARRAGE : Forçage de la langue dans les URL du footer
+    document.querySelectorAll('.footer a.gold-link').forEach(link => {
+        let baseHref = link.getAttribute('href').split('?')[0]; // Retire l'ancienne langue s'il y en avait une
+        link.href = baseHref + '?lang=' + lang; // Injecte la langue active dans le lien
+    });
+
+    // Mise à jour du lien de retour (pour les pages légales)
     const backBtn = document.getElementById('backBtn');
     if (backBtn) {
         backBtn.href = `index.html?lang=${lang}`;
