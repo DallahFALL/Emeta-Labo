@@ -264,41 +264,62 @@
 
                     <label class="section-label mt-2" data-i18n="lbl_geo" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Zone d'Intervention</label>
                     <div class="input-group">
-                        <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
-                            <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner une zone d'intervention...</option>
-                            <optgroup label="Afrique" data-i18n="grp_africa">
-                                <option value="Senegal" data-i18n="geo_sn">Sénégal (Dakar Hub)</option>
-                                <option value="CotedIvoire" data-i18n="geo_ci">Côte d'Ivoire (Abidjan Hub)</option>
-                                <option value="Nigeria" data-i18n="geo_ng">Nigeria (Lagos Hub)</option>
-                                <option value="Maroc" data-i18n="geo_ma">Maroc (Casablanca Hub)</option>
-                                <option value="SouthAfrica" data-i18n="geo_za">Afrique du Sud (Johannesburg)</option>
-                            </optgroup>
-                            <optgroup label="Amérique du Nord" data-i18n="grp_na">
-                                <option value="USA" data-i18n="geo_us">États-Unis (USA)</option>
-                                <option value="Canada" data-i18n="geo_ca">Canada (Toronto / Montréal)</option>
-                            </optgroup>
-                            <optgroup label="Amérique Latine" data-i18n="grp_latam">
-                                <option value="LatAm_Brazil" data-i18n="geo_br">Brésil (São Paulo)</option>
-                                <option value="LatAm_General" data-i18n="geo_latam">Amérique Latine (Mexique, Colombie...)</option>
-                            </optgroup>
-                            <optgroup label="Asie-Pacifique (APAC)" data-i18n="grp_apac">
-                                <option value="China" data-i18n="geo_cn">Chine (Shanghai / Beijing)</option>
-                                <option value="Singapore" data-i18n="geo_sg">Singapour (Hub APAC)</option>
-                                <option value="India" data-i18n="geo_in">Inde (Mumbai / Bangalore)</option>
-                            </optgroup>
-                            <optgroup label="Europe" data-i18n="grp_eu">
-                                <option value="France" data-i18n="geo_fr">France (Paris Hub)</option>
-                                <option value="UK" data-i18n="geo_uk">Royaume-Uni (Londres)</option>
-                                <option value="EU_General" data-i18n="geo_eu">Union Européenne (Allemagne, Espagne...)</option>
-                            </optgroup>
-                            <optgroup label="Moyen-Orient (MENA)" data-i18n="grp_mena">
-                                <option value="UAE" data-i18n="geo_ae">Émirats Arabes Unis (Dubai Hub)</option>
-                                <option value="SaudiArabia" data-i18n="geo_sa">Arabie Saoudite (Riyadh)</option>
-                            </optgroup>
-                            <optgroup label="Global" data-i18n="grp_global">
-                                <option value="Global" data-i18n="geo_global">International / Multi-Zones</option>
-                            </optgroup>
-                        </select>
+                        <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="max-height: 250px; overflow-y: auto;">
+    <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner votre pays exact...</option>
+    <option value="Afrique du Sud">Afrique du Sud</option>
+    <option value="Algérie">Algérie</option>
+    <option value="Allemagne">Allemagne</option>
+    <option value="Arabie Saoudite">Arabie Saoudite</option>
+    <option value="Argentine">Argentine</option>
+    <option value="Australie">Australie</option>
+    <option value="Belgique">Belgique</option>
+    <option value="Bénin">Bénin</option>
+    <option value="Brésil">Brésil</option>
+    <option value="Burkina Faso">Burkina Faso</option>
+    <option value="Burundi">Burundi</option>
+    <option value="Cameroun">Cameroun</option>
+    <option value="Canada">Canada</option>
+    <option value="Cap-Vert">Cap-Vert</option>
+    <option value="Centrafrique">Centrafrique</option>
+    <option value="Chili">Chili</option>
+    <option value="Chine">Chine</option>
+    <option value="Colombie">Colombie</option>
+    <option value="Congo">Congo</option>
+    <option value="RD Congo">Congo (RDC)</option>
+    <option value="Corée du Sud">Corée du Sud</option>
+    <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+    <option value="Djibouti">Djibouti</option>
+    <option value="Égypte">Égypte</option>
+    <option value="Émirats Arabes Unis">Émirats Arabes Unis</option>
+    <option value="Espagne">Espagne</option>
+    <option value="États-Unis">États-Unis</option>
+    <option value="Éthiopie">Éthiopie</option>
+    <option value="France">France</option>
+    <option value="Gabon">Gabon</option>
+    <option value="Guinée">Guinée</option>
+    <option value="Guinée équatoriale">Guinée équatoriale</option>
+    <option value="Inde">Inde</option>
+    <option value="Italie">Italie</option>
+    <option value="Japon">Japon</option>
+    <option value="Kenya">Kenya</option>
+    <option value="Madagascar">Madagascar</option>
+    <option value="Mali">Mali</option>
+    <option value="Maroc">Maroc</option>
+    <option value="Maurice">Maurice</option>
+    <option value="Mauritanie">Mauritanie</option>
+    <option value="Mexique">Mexique</option>
+    <option value="Niger">Niger</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="Ouganda">Ouganda</option>
+    <option value="Royaume-Uni">Royaume-Uni</option>
+    <option value="Rwanda">Rwanda</option>
+    <option value="Sénégal">Sénégal</option>
+    <option value="Suisse">Suisse</option>
+    <option value="Tchad">Tchad</option>
+    <option value="Togo">Togo</option>
+    <option value="Tunisie">Tunisie</option>
+    <option value="Autre Pays">Autre pays...</option>
+</select>
                     </div>
 
                     <label class="section-label mt-2" data-i18n="lbl_expertise" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Expertise Requise</label>
