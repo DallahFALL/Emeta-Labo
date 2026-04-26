@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<head>                
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-META LABS | Strategic AI Engine</title>
@@ -382,8 +382,14 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 e-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
-        <p class="tiny">Strategic Intelligence Unit • Dakar - Paris - Dubai - Shanghai - New York</p>
+        <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 20px;">
+            <a href="mentions-legales.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;">Mentions Légales</a>
+            <a href="cgv.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;">CGV</a>
+            <a href="confidentialite.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;">Confidentialité</a>
+            <a href="remboursement.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;">Remboursement</a>
+        </div>
+        <p>&copy; 2026 E-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
+        <p class="tiny">Strategic Intelligence Unit • Rosso - Dakar - Paris - Dubai - Shanghai - New York</p>
         <div style="margin-top: 15px; font-size: 0.8rem; color: #8892b0;">
             <a href="mailto:contact@e-metalabs.com" style="color: #8892b0; text-decoration: none; margin-right: 15px;">✉️ contact@e-metalabs.com</a>
             <a href="mailto:support@e-metalabs.com" style="color: #8892b0; text-decoration: none;">🛠️ support@e-metalabs.com</a>
@@ -396,14 +402,14 @@
             <h2 style="color: #d4af37; font-family: 'Cinzel', serif; margin-top: 0;">Validation Sécurisée</h2>
             <p style="color: #e6f1ff; font-size: 0.95rem; margin-bottom: 30px;">Vos données ont été ancrées. Choisissez votre méthode pour déclencher l'Intelligence Artificielle :</p>
             
-            <a href="#" id="linkPaydunya" class="gateway-btn gateway-paydunya">
-                🌍 Payer par Wave / Orange Money
-                <div style="font-size: 0.75rem; font-weight: normal; margin-top: 5px;">Via PayDunya (Zone Afrique)</div>
+            <a href="#" id="linkPaytech" class="gateway-btn gateway-paydunya">
+                🌍 Wave / Orange Money / Free
+                <div style="font-size: 0.75rem; font-weight: normal; margin-top: 5px;">Via PayTech (Sénégal & UEMOA)</div>
             </a>
             
-            <a href="#" id="linkLemon" class="gateway-btn gateway-lemon">
-                💳 Payer par Carte / PayPal
-                <div style="font-size: 0.75rem; font-weight: normal; margin-top: 5px;">Via Lemon Squeezy (International)</div>
+            <a href="#" id="linkPaddle" class="gateway-btn gateway-lemon">
+                💳 Carte Bancaire / PayPal
+                <div style="font-size: 0.75rem; font-weight: normal; margin-top: 5px;">Via Paddle (International)</div>
             </a>
             
             <p style="font-size: 0.8rem; color: #8892b0; margin-top: 20px;">Transactions chiffrées de bout en bout.</p>
@@ -483,15 +489,16 @@
     <script>
         const WEBHOOK_URL = "https://hook.eu2.make.com/moupzawutk6h7ab6f5ap2li1qaypzh2f";
 
-        // === VOS LIENS DE PAIEMENT (À MODIFIER ICI PLUS TARD) ===
+        // === SECTION MODIFIÉE : VOS LIENS DE PAIEMENT (PADDLE ET PAYTECH) ===
+        // Remplacez ces liens par ceux générés dans vos tableaux de bord respectifs.
         const LINKS = {
             pro: {
-                paydunya: "https://paydunya.com/votre-lien-pro",
-                lemon: "https://e-metalabs.lemonsqueezy.com/checkout/buy/VOTRE_ID_PRO"
+                paytech: "https://paytech.sn/votre-lien-pro",
+                paddle: "https://checkout.paddle.com/votre-id-pro"
             },
             expert: {
-                paydunya: "https://paydunya.com/votre-lien-expert",
-                lemon: "https://e-metalabs.lemonsqueezy.com/checkout/buy/VOTRE_ID_EXPERT"
+                paytech: "https://paytech.sn/votre-lien-expert",
+                paddle: "https://checkout.paddle.com/votre-id-expert"
             }
         };
 
@@ -678,11 +685,12 @@
         function openModal(modalId) { document.getElementById(modalId).style.display = 'flex'; }
         function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
         
+        // --- SECTION MODIFIÉE : FONCTION D'AFFICAHGE DE LA MODAL DE PAIEMENT ---
         function showPaymentGateway(plan) {
-            const btnPaydunya = document.getElementById('linkPaydunya');
-            const btnLemon = document.getElementById('linkLemon');
-            btnPaydunya.href = LINKS[plan].paydunya;
-            btnLemon.href = LINKS[plan].lemon;
+            const btnPaytech = document.getElementById('linkPaytech');
+            const btnPaddle = document.getElementById('linkPaddle');
+            btnPaytech.href = LINKS[plan].paytech;
+            btnPaddle.href = LINKS[plan].paddle;
             openModal('paymentModal');
         }
 
