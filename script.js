@@ -422,3 +422,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ==========================================
+// FONCTIONS DE L'AUTO-DÉTECTION IA (STEALTH HANDOFF)
+// ==========================================
+
+// Ouvre le modal et récupère intelligemment les données de l'étape 1
+function openAutoDetectModal() {
+    // On pré-remplit les champs s'ils ont déjà été saisis par le client
+    document.getElementById('auto-email').value = document.getElementById('email').value || '';
+    document.getElementById('auto-phone').value = document.getElementById('phone').value || '';
+    
+    document.getElementById('autoDetectModal').style.display = 'flex';
+}
+
+// Déclenche le tir vers n8n
+function fireAutoDetection() {
+    const email = document.getElementById('auto-email').value;
+    const phone = document.getElementById('auto-phone').value;
+    
+    // Récupère le secteur sélectionné sur la page
+    let sectorObj = document.querySelector('input[name="sector"]:checked');
+    let sector = sectorObj ? sectorObj.value : 'Non spécifié';
+    
+    // Récupère le pays
+    const geo = document.getElementById('geo-zone').value;
+
+    if(!email || !phone) {
+        alert("Veuillez renseigner votre email et numéro WhatsApp pour recevoir le rapport.");
+        return;
+    }
+
+    // Construction de la munition (Payload)
+    const payload = {
+        "email_client": email,
+        "telephone_client": phone,
+        "secteur": sector,
+        "zone": geo,
+        "expertise": "Auto-Détection IA (Sur-mesure)"
+    };
+
+    // Animation de chargement sur le bouton
+    const btn = document.getElementById('btn-fire-ia');
+    btn.innerHTML = "Transmission en cours... ⏳";
+    btn.style.opacity = "0.7";
+    btn.disabled = true;
+
+    // LE TIR VERS N8N (REMPLACEZ L'URL PAR CELLE FOURNIE PAR N8N)
+    fetch('COLLEZ_VOTRE_TEST_URL_N8N_ICI', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        closeModal('autoDetectModal');
+        alert("✅ Données sécurisées reçues. L'Agent e-META prépare votre rapport. Surveillez vos mails et WhatsApp !");
+        
+        // Remise à zéro du bouton
+        btn.innerHTML = "Déclencher l'Analyse";
+        btn.style.opacity = "1";
+        btn.disabled = false;
+    })
+    .catch(error => {
+        console.error("Erreur:", error);
+        alert("Une erreur est survenue lors de la connexion au serveur souverain.");
+        btn.innerHTML = "Déclencher l'Analyse";
+        btn.style.opacity = "1";
+        btn.disabled = false;
+    });
+}
