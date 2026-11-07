@@ -1,536 +1,581 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>                  
+<html lang="fr" class="dark scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-META LABS | Strategic AI Engine</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title>e-META LABS | Audit Décisionnel & Strategic Engine</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Vrai Logo Favicon e-META LABS (Géométrique Souverain) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 V25 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
-      
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ebony: '#0a0b0e',
+                        ebonyCard: '#12141c',
+                        ebonyBorder: '#232634',
+                        gold: '#d4af37',
+                        goldLight: '#f3e5ab',
+                        goldDark: '#aa8c2c',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { margin: 0; background-color: #0a192f; color: #e6f1ff; font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        
+        body {
+            background-color: #0a0b0e;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8c2c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-glow:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
         .glass-card {
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 20px rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.4); background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px); border-radius: 12px; padding: 40px; max-width: 850px;
-            margin: 40px auto; transition: box-shadow 0.4s ease-in-out;
+            background: rgba(18, 20, 28, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        .glass-card:hover {
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.7);
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 25, 47, 0.9); position: sticky; top: 0; z-index: 100; }
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .brand-text h1 { font-family: 'Cinzel', serif; color: #d4af37; margin: 0; font-size: 1.5rem; }
-        .header-slogan { font-size: 0.9rem; color: #8892b0; display: none; }
-        @media(min-width: 768px) { .header-slogan { display: block; } }
-        
-        .btn-reset { background: transparent; border: 1px solid #8892b0; color: #8892b0; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-right: 10px; }
-        .lang-switch button { background: transparent; border: none; color: #8892b0; cursor: pointer; font-weight: bold; padding: 5px; }
-        .lang-switch button.active { color: #d4af37; border-bottom: 1px solid #d4af37; }
-
-        .counter-container { text-align: center; padding: 15px 0; background: rgba(10, 25, 47, 0.8); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
-        .hero-sublime { text-align: center; padding: 50px 20px; }
-        .label-gold { color: #d4af37; font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px; }
-        .slogan-ia { font-family: 'Cinzel', serif; font-size: 2.2rem; margin: 15px 0; }
-        .precision-text { color: #d4af37; }
-
-        .form-step { display: none; animation: fadeIn 0.5s; }
-        .form-step.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: #d4af37; font-size: 0.9rem; font-family: 'Cinzel', serif; }
-        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; background: rgba(10, 25, 47, 0.5); border: 1px solid rgba(212, 175, 55, 0.4); color: #fff; border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: 0.3s; }
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); border-color: #d4af37 !important; outline: none; }
-
-        .grid-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 20px; }
-        .checkbox-btn input { display: none; }
-        .checkbox-btn span { display: block; padding: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: 0.3s; }
-        .checkbox-btn input:checked + span { background: rgba(212, 175, 55, 0.15) !important; border-color: #d4af37 !important; box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); color: #fff !important; }
-
-        .btn-gold { background: #d4af37; color: #0a192f; border: none; padding: 12px 25px; border-radius: 4px; font-weight: bold; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
-        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 20px #d4af37; }
-        .btn-outline { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 12px 25px; border-radius: 4px; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-family: 'Cinzel', serif; }
-        .btn-container { display: flex; justify-content: flex-end; margin-top: 20px; }
-        .btn-container.split { justify-content: space-between; }
-        
-        .gold-link { color: #d4af37; text-decoration: underline; cursor: pointer; transition: 0.3s; }
-        .gold-link:hover { color: #fff; }
-        
-        .btn-gold.glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); animation: pulse-gold 2s infinite; }
-        @keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); } 50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.9); } }
-
-        /* Modals & One-Page Overlays */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(10, 25, 47, 0.95); display: none; justify-content: center; align-items: center; z-index: 20000; backdrop-filter: blur(8px); }
-        .modal-content { background: #0a192f; border: 1px solid #d4af37; padding: 35px; border-radius: 8px; max-width: 800px; width: 90%; position: relative; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-        .modal-body { overflow-y: auto; padding-right: 15px; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #8892b0; transition: 0.3s; }
-        .close-btn:hover { color: #d4af37; }
-        
-        .lexique-item { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .privacy-title { color: #d4af37; font-family: 'Cinzel', serif; font-size: 1.1rem; margin-top: 25px; margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 5px; }
-        
-        /* Payment Gateway Buttons */
-        .gateway-btn { display: block; width: 100%; padding: 20px; margin-bottom: 15px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-align: center; text-decoration: none; border: 2px solid transparent; }
-        .gateway-paydunya { background: rgba(13, 110, 253, 0.1); border-color: #0d6efd; color: #66b0ff; }
-        .gateway-paydunya:hover { background: #0d6efd; color: #fff; box-shadow: 0 0 20px rgba(13, 110, 253, 0.4); }
-        .gateway-lemon { background: rgba(212, 175, 55, 0.1); border-color: #d4af37; color: #d4af37; }
-        .gateway-lemon:hover { background: #d4af37; color: #0a192f; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #8892b0; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 40px; }
-
-        [dir="rtl"] { text-align: right; }
-        [dir="rtl"] .logo-container { flex-direction: row-reverse; }
-        [dir="rtl"] .btn-container { flex-direction: row-reverse; }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0b0e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #232634;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
     </style>
 </head>
-<body id="main-body">
+<body class="bg-ebony text-slate-100 antialiased selection:bg-gold selection:text-ebony">
 
-    <header class="header">
-        <div class="logo-container">
-            <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 5 L95 25 V75 L50 95 L5 75 V25 Z" stroke="#d4af37" stroke-width="2" fill="none"/>
-                <path d="M50 20 L80 35 V65 L50 80 L20 65 V35 Z" stroke="#d4af37" stroke-width="1" fill="rgba(212, 175, 55, 0.1)"/>
-                <circle cx="50" cy="50" r="8" fill="#d4af37"/>
-            </svg>
-            <div class="brand-text"><h1>e-META LABS</h1></div>
+    <!-- Top Notification / Status Bar -->
+    <div class="bg-gradient-to-r from-ebony via-ebonyCard to-ebony border-b border-gold/20 py-2 px-4 text-xs font-medium text-slate-300 flex justify-between items-center z-50 sticky top-0 backdrop-blur-md">
+        <div class="flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-gold font-semibold">Référentiel Exécutif Octobre 2026</span>
+            <span class="hidden md:inline text-slate-500">|</span>
+            <span class="hidden md:inline text-slate-400">Systèmes d'Analyse, de Gouvernance & de Pilotage Stratégique</span>[cite: 3]
         </div>
-        <div class="header-slogan" data-i18n="subtitle">Excellence Stratégique & Haute Précision IA</div>
-        <div class="header-actions">
-            <button type="button" class="btn-reset" onclick="resetForm()" data-i18n="btn_reset">↻ Reset</button>
-            <div class="lang-switch">
-                <button data-lang="fr" class="active">FR</button>
-                <button data-lang="en">EN</button>
-                <button data-lang="es">ES</button>
-                <button data-lang="ar">AR</button>
+        <div class="flex items-center gap-4">
+            <a href="#verification" class="hover:text-gold transition flex items-center gap-1">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-gold"></i>
+                <span>Vérification SHA-256</span>
+            </a>
+            <span class="text-slate-600">|</span>
+            <a href="expert.html" class="hover:text-gold transition flex items-center gap-1">
+                <i data-lucide="user-check" class="w-3.5 h-3.5 text-gold"></i>
+                <span>Portail Expert</span>
+            </a>
+            <span class="text-slate-600">|</span>
+            <a href="tracker.html" class="hover:text-gold transition flex items-center gap-1">
+                <i data-lucide="compass" class="w-3.5 h-3.5 text-gold"></i>
+                <span>Cockpit Tracker</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Header & Navigation -->
+    <header class="sticky top-[33px] z-40 bg-ebony/90 backdrop-blur-xl border-b border-ebonyCard shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Vrai Logo SVG Institutionnel -->
+            <a href="#" class="flex items-center gap-3 group">
+                <svg class="w-10 h-10 drop-shadow-lg gold-glow rounded-xl" viewBox="0 0 100 100">
+                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" stroke="#d4af37" stroke-width="4" fill="#0a192f"/>
+                    <circle cx="50" cy="50" r="12" fill="#d4af37"/>
+                </svg>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-serif text-xl font-bold tracking-wider text-white">e-META <span class="gold-gradient">LABS</span></span>
+                        <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 font-mono">SASU</span>[cite: 3]
+                    </div>
+                    <p class="text-[10px] text-slate-400 tracking-wider">AUDIT DÉCISIONNEL & STRATEGIC ENGINE</p>[cite: 3]
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#manifeste" class="hover:text-gold transition">Manifeste</a>
+                <a href="#piliers" class="hover:text-gold transition">Piliers</a>
+                <a href="#secteurs" class="hover:text-gold transition">10 Secteurs</a>
+                <a href="#paliers" class="hover:text-gold transition">Protocoles (3 Paliers)</a>
+                <a href="#verification" class="hover:text-gold transition">Chaîne de Preuve</a>
+            </nav>
+
+            <!-- Action CTA -->
+            <div class="flex items-center gap-4">
+                <button onclick="openSaisineModal()" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-semibold text-sm shadow-lg gold-glow transition transform hover:-translate-y-0.5">
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                    <span>Démarrer une Mission</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-ebonyCard text-slate-300 hover:text-gold border border-ebonyBorder">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-ebonyCard border-b border-ebonyBorder px-6 py-6 space-y-4">
+            <a href="#manifeste" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-gold font-medium py-1">Manifeste Souverain</a>
+            <a href="#piliers" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-gold font-medium py-1">Trois Piliers</a>
+            <a href="#secteurs" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-gold font-medium py-1">10 Secteurs d'Excellence</a>
+            <a href="#paliers" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-gold font-medium py-1">Protocoles en 3 Paliers</a>
+            <a href="#verification" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-gold font-medium py-1">Chaîne de Preuve SHA-256</a>
+            <div class="pt-4 border-t border-ebonyBorder">
+                <button onclick="openSaisineModal(); toggleMobileMenu();" class="w-full py-3 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-semibold text-center shadow-lg">
+                    Démarrer une Mission
+                </button>
             </div>
         </div>
     </header>
 
-    <div class="counter-container">
-        <span style="font-family: 'Cinzel', serif; color: #d4af37; font-size: 1.5rem; font-weight: bold;" id="live-counter-top">1,420</span>
-        <span style="color: #8892b0; font-size: 0.9rem; margin-left: 10px; text-transform: uppercase; letter-spacing: 1px;" data-i18n="lbl_counter">Diagnostics Sécurisés & Ancrés</span>
-    </div>
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-10 right-10 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <section class="hero-sublime">
-        <div class="container">
-            <p class="label-gold" data-i18n="hero_label">MASTER DIAGNOSTIC 2026</p>
-            <h1 class="slogan-ia">
-                <span data-i18n="hero_slogan_1">Excellence Stratégique</span> <br>
-                <span class="precision-text" data-i18n="hero_slogan_2">& Haute Précision IA</span>
-            </h1>
-            <p style="color: #25D366; font-family: 'Inter', sans-serif; font-size: 1rem; margin-top: 15px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 0 10px rgba(37, 211, 102, 0.3);" data-i18n="slogan_sniper">
-                Conçu pour la Tech. Bâti pour l'absolu.
-            </p>
-        </div>
-    </section>
-
-    <section id="pricing" style="font-family: Arial, sans-serif; padding: 20px 10px; background-color: rgba(0,0,0,0.2); text-align: center;">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                
-                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-                    <h3 data-i18n="pricing_starter_name" style="font-size: 18px; color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">STARTER</h3>
-                    <p data-i18n="pricing_starter_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">Pour tester la puissance analytique d'e-META LABS.</p>
-                    <div style="font-size: 24px; font-weight: bold; color: #d4af37; margin: 10px 0;"><span data-i18n="pricing_starter_price">0 FCFA</span></div>
-                    <ul style="list-style: none; padding: 0; margin-bottom: 20px; font-size: 13px; color: #ccc; line-height: 1.5;">
-                        <li data-i18n="pricing_starter_feat1">✓ 2 Diagnostics foudroyants</li>
-                        <li data-i18n="pricing_starter_feat2">✓ Identification du risque majeur</li>
-                        <li data-i18n="pricing_starter_feat3">✓ Format texte (Email)</li>
-                        <li data-i18n="pricing_starter_feat4" style="color: #d9534f; font-weight: bold; margin-top: 8px;">⚠️ Plan d'action non inclus</li>
-                    </ul>
-                    <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='starter';" data-i18n="pricing_starter_btn" style="display: block; text-align: center; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">Tester gratuitement</a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ebonyCard border border-gold/30 text-xs text-gold uppercase tracking-widest font-mono shadow-inner">
+                    <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                    <span>Cabinet d'Arbitrage Stratégique Augmenté</span>
                 </div>
 
-                <div class="pricing-card card-pro" style="background-color: rgba(13, 27, 42, 0.9); border-radius: 8px; padding: 20px; width: 280px; text-align: left; border: 2px solid #d4af37; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; transform: scale(1.05); z-index: 10;">
-                    <div data-i18n="pricing_pro_badge" style="background: #d4af37; color: #000; font-size: 11px; font-weight: bold; text-align: center; padding: 4px; border-radius: 3px; margin-bottom: 10px; width: fit-content; text-transform: uppercase;">LE PLUS POPULAIRE</div>
-                    <h3 data-i18n="pricing_pro_name" style="font-size: 18px; color: #d4af37; margin-top: 0; font-family: 'Cinzel', serif;">PRO (PACK 3)</h3>
-                    <p data-i18n="pricing_pro_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">Un pack de <strong>3 audits stratégiques</strong> complets y compris le plan d'action.</p>
-                    <div style="font-size: 24px; font-weight: bold; color: #d4af37; margin: 10px 0;"><span data-i18n="pricing_pro_price">14 900 FCFA</span></div>
-                    <ul style="list-style: none; padding: 0; margin-bottom: 20px; font-size: 13px; color: #ccc; line-height: 1.5;">
-                        <li data-i18n="pricing_pro_feat1"><strong style="color: #d4af37;">✓</strong> <strong>3 Rapports</strong> complets</li>
-                        <li data-i18n="pricing_pro_feat2"><strong style="color: #d4af37;">✓</strong> Diagnostic financier & KPI</li>
-                        <li data-i18n="pricing_pro_feat3"><strong style="color: #d4af37;">✓</strong> Stratégies de disruption</li>
-                        <li data-i18n="pricing_pro_feat4"><strong style="color: #d4af37;">✓</strong> Rapports PDF Premium</li>
-                    </ul>
-                    <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='pro';" data-i18n="pricing_pro_btn" style="display: block; text-align: center; background: #d4af37; color: #0a192f; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px; text-transform: uppercase;">Acheter el Pack</a>
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]">
+                    Strategic Intelligence, <br>
+                    <span class="gold-gradient">Audit Décisionnel & Strategic Engine</span>[cite: 3]
+                </h1>
+
+                <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-light max-w-3xl mx-auto">
+                    e-META LABS conçoit des systèmes d'analyse, de gouvernance et de pilotage stratégique pour transformer les données en décisions rapides, fiables et créatrices de valeur par l'alliance souveraine de l'intelligence algorithmique, de la cryptographie probatoire et du jugement expert de terrain[cite: 3].
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <button onclick="openSaisineModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-base shadow-xl gold-glow transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                        <span>Démarrer une Saisine</span>
+                    </button>
+                    <a href="#verification" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-ebonyCard border border-gold/30 text-slate-200 hover:text-gold font-semibold text-base transition flex items-center justify-center gap-3 hover:border-gold">
+                        <i data-lucide="search" class="w-5 h-5 text-gold"></i>
+                        <span>Vérifier un Scellement SHA-256</span>[cite: 3]
+                    </a>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid #333; border-radius: 8px; padding: 20px; width: 280px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-                    <h3 data-i18n="pricing_expert_name" style="font-size: 18px; color: #fff; margin-top: 0; font-family: 'Cinzel', serif;">EXECUTIVE (MATCHING)</h3>
-                    <p data-i18n="pricing_expert_desc" style="font-size: 13px; color: #8892b0; min-height: 35px; margin-bottom: 10px;">L'audit IA de pointe couplé a l'expertise humaine de haut niveau.</p>
-                    <div style="font-size: 24px; font-weight: bold; color: #d4af37; margin: 10px 0;"><span data-i18n="pricing_expert_price">29 000 FCFA</span></div>
-                    <ul style="list-style: none; padding: 0; margin-bottom: 20px; font-size: 13px; color: #ccc; line-height: 1.5;">
-                        <li data-i18n="pricing_expert_feat1">✓ Jusqu'à 10 Audits Premium / mois</li>
-                        <li data-i18n="pricing_expert_feat2">✓ Veille Data sectorielle en temps réel</li>
-                        <li data-i18n="pricing_expert_feat3">✓ Protocole d'action sur 7 jours</li>
-                        <li data-i18n="pricing_expert_feat4">✓ Mise en relation avec Expert Senior</li>
-                    </ul>
-                    <a href="#diagnosticForm" onclick="document.getElementById('plan_choisi').value='expert';" data-i18n="pricing_expert_btn" style="display: block; text-align: center; background: #d4af37; color: #111; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 14px;">Activer le Matching</a>
+                <!-- Impact Metrics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
+                    <div class="glass-card p-6 rounded-2xl border border-ebonyBorder text-center hover:border-gold/40 transition">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-gold font-mono">+148%</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">ROI Prévu</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-ebonyBorder text-center hover:border-gold/40 transition">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white font-mono">96.4%</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Précision d'Analyse</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-ebonyBorder text-center hover:border-gold/40 transition">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-gold font-mono">-41%</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Temps de Décision</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-ebonyBorder text-center hover:border-gold/40 transition">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white font-mono">32%</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Gain d'Efficacité</div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <main class="main-container">
-        <div class="glass-card">
-            
-            <form id="diagnosticForm">
-                <input type="hidden" id="plan_choisi" value="starter">   
-                
-                <div class="form-step active" id="step-1">
-                    <h3 data-i18n="step1_title">01. Identification</h3>
-                    
-<div class="input-group">
-    <label for="company" data-i18n="lbl_company">Société / Entité</label>
-    <input type="text" id="company" name="company" required data-i18n="ph_company" placeholder="ex: Groupe Alpha, Ministère..." oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
-</div>
+    <!-- Manifeste Souverain & Les 3 Piliers -->
+    <section id="manifeste" class="py-24 bg-ebonyCard/40 border-y border-ebonyBorder relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Doctrine & Méthode</span>[cite: 3]
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Le Manifeste Souverain e-META LABS</h2>[cite: 3]
+                <p class="text-slate-400 text-base">
+                    La transformation ne se décrète pas au moyen d’un outil. Elle se conduit à partir d’une compréhension exacte du terrain, d’une analyse disciplinée des faits et d’arbitrages assumés par les personnes responsables[cite: 3].
+                </p>
+            </div>
 
-<div class="input-group">
-    <label for="email" data-i18n="lbl_email">Email Professionnel</label>
-    <input type="email" id="email" name="email" required placeholder="contact@domain.com" oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
-</div>
-
-<div class="input-group">
-    <label for="phone" data-i18n="lbl_phone">Numéro WhatsApp</label>
-    <input type="tel" id="phone" name="telephone" required placeholder="+221..." oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)">
-</div>
-                    
-<div class="input-group">
-    <label for="linkedin" data-i18n="lbl_linkedin">Profil LinkedIn (Optionnel)</label>
-    <input type="url" id="linkedin" name="linkedin" data-i18n="ph_linkedin" placeholder="https://linkedin.com/in/votre-nom">
-</div>
-
-<div class="btn-container right">
-    <button type="button" class="btn-gold" onclick="nextStep(2)" data-i18n="btn_next">Suivant</button>
-</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="glass-card p-8 rounded-3xl border border-ebonyBorder hover:border-gold/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Intelligence Algorithmique (CORTEX_03)</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Organisation et analyse à distance des éléments transmis, identification des incohérences, comparaison de scénarios et préparation des pistes d'orientation[cite: 3].
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Distinctions faits / hypothèses[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Modélisation de scénarios[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Traçabilité des sources[cite: 3]</li>
+                    </ul>
                 </div>
 
-                <div class="form-step" id="step-2">
-                    <h3 data-i18n="step2_title">02. Matrice Stratégique</h3>
-                    
-<div style="background: rgba(212, 175, 55, 0.05); border-left: 3px solid #d4af37; padding: 12px 15px; margin-bottom: 20px; border-radius: 0 4px 4px 0;">
-    <span style="display: block; color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 5px; font-weight: bold;" data-i18n="agnostic_title">INTELLIGENCE AGNOSTIQUE 🧠</span>
-    <span style="color: #8892b0; font-size: 0.85rem; line-height: 1.4; display: block;" data-i18n="agnostic_desc">
-        De l'ingénierie financière aux litiges internationaux les plus complexes, notre moteur polymorphe s'adapte à votre industrie. Cochez l'<strong>Auto-Détection IA</strong> si votre enjeu dépasse les cadres traditionnels.
-    </span>
-</div>
-
-<div style="display: flex; justify-content: space-between; align-items: baseline;">
-    <label class="section-label" data-i18n="lbl_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Secteur Stratégique</label>
-    <a href="javascript:void(0)" onclick="openModal('guideOverlay')" class="gold-link" style="font-size: 0.8rem;">
-        📖 <span data-i18n="btn_guide">Guide des Expertises</span>
-    </a>
-</div> 
-                    <div class="grid-options">
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="FinTech_DeFi"> <span data-i18n="sec_fintech">FinTech & DeFi</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="GovTech_SmartCities"> <span data-i18n="sec_gov">GovTech & Smart Cities</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Health_BioTech"> <span data-i18n="sec_health">Santé & BioTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="GreenTech_Energy"> <span data-i18n="sec_green">GreenTech & Énergies</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="AgriTech_FoodSec"> <span data-i18n="sec_agri">AgriTech & Food Security</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Logistics_SupplyChain"> <span data-i18n="sec_log">Logistique & Supply Chain</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Mining_OilGas"> <span data-i18n="sec_mine">Mines, Pétrole & Gaz</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="RealEstate_PropTech"> <span data-i18n="sec_btp">Immobilier & PropTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Ecommerce_Retail"> <span data-i18n="sec_retail">E-commerce & Retail</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Education_EdTech"> <span data-i18n="sec_edu">Éducation & EdTech</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Tourism_Hospitality"> <span data-i18n="sec_tour">Tourisme & Hôtellerie</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Creative_Media"> <span data-i18n="sec_media">Industries Créatives & Médias</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Consulting_B2B"> <span data-i18n="sec_consulting">Conseil & Services B2B</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="SaaS_Software"> <span data-i18n="sec_saas">SaaS & Éditeurs Logiciels</span></label>
-                        <label class="checkbox-btn"><input type="radio" name="sector" value="Telecom_Infra"> <span data-i18n="sec_telecom">Télécoms & Infrastructures</span></label>
-                        
-                        <label class="checkbox-btn">
-                            <input type="radio" name="sector" value="other" id="sector-other">
-                            <span style="border-color: #d4af37;">
-                                <span style="font-size: 20px; display: block; margin-bottom: 5px;">💡</span>
-                                <span id="txt-autre-text" data-i18n="sec_other">Autre / Sur-mesure</span>
-                            </span>
-                        </label>
+                <!-- Pillar 2 -->
+                <div class="glass-card p-8 rounded-3xl border border-ebonyBorder hover:border-gold/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="lock" class="w-7 h-7"></i>
                     </div>
-
-                    <div id="custom-sector-container" style="display: none; margin-top: 20px; margin-bottom: 20px; animation: fadeIn 0.5s;">
-                        <label id="txt-custom-sector-label" data-i18n="lbl_custom_sector" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 8px; display: block; text-transform: uppercase;">Précisez votre industrie :</label>
-                        <input type="text" id="custom-sector-input" data-i18n="ph_custom_sector" placeholder="Ex: Sport Professionnel, Aérospatial, Industrie Navale..." style="width: 100%; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 4px; background: rgba(10, 25, 47, 0.5); color: #e6f1ff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#d4af37'; this.style.boxShadow='0 0 10px rgba(212, 175, 55, 0.2)';" onblur="this.style.borderColor='rgba(212, 175, 55, 0.4)'; this.style.boxShadow='none';">
-                    </div>
-
-                    <label class="section-label mt-2" data-i18n="lbl_geo" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Zone d'Intervention</label>
-                    <div class="input-group">
-                        <select id="geo-zone" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="max-height: 250px; overflow-y: auto;">
-                            <option value="" disabled selected data-i18n="opt_geo_def">Sélectionner votre pays exact...</option>
-                            <option value="Afrique du Sud" data-i18n="c_za">Afrique du Sud</option>
-                            <option value="Algérie" data-i18n="c_dz">Algérie</option>
-                            <option value="Allemagne" data-i18n="c_de">Allemagne</option>
-                            <option value="Arabie Saoudite" data-i18n="c_sa">Arabie Saoudite</option>
-                            <option value="Argentine" data-i18n="c_ar">Argentine</option>
-                            <option value="Australie" data-i18n="c_au">Australie</option>
-                            <option value="Belgique" data-i18n="c_be">Belgique</option>
-                            <option value="Bénin" data-i18n="c_bj">Bénin</option>
-                            <option value="Brésil" data-i18n="c_br">Brésil</option>
-                            <option value="Burkina Faso" data-i18n="c_bf">Burkina Faso</option>
-                            <option value="Burundi" data-i18n="c_bi">Burundi</option>
-                            <option value="Cameroun" data-i18n="c_cm">Cameroun</option>
-                            <option value="Canada" data-i18n="c_ca">Canada</option>
-                            <option value="Cap-Vert" data-i18n="c_cv">Cap-Vert</option>
-                            <option value="Centrafrique" data-i18n="c_cf">Centrafrique</option>
-                            <option value="Chili" data-i18n="c_cl">Chili</option>
-                            <option value="Chine" data-i18n="c_cn">Chine</option>
-                            <option value="Colombie" data-i18n="c_co">Colombie</option>
-                            <option value="Congo" data-i18n="c_cg">Congo</option>
-                            <option value="RD Congo" data-i18n="c_cd">RD Congo</option>
-                            <option value="Corée du Sud" data-i18n="c_kr">Corée du Sud</option>
-                            <option value="Côte d'Ivoire" data-i18n="c_ci">Côte d'Ivoire</option>
-                            <option value="Djibouti" data-i18n="c_dj">Djibouti</option>
-                            <option value="Égypte" data-i18n="c_eg">Égypte</option>
-                            <option value="Émirats Arabes Unis" data-i18n="c_ae">Émirats Arabes Unis</option>
-                            <option value="Espagne" data-i18n="c_es">Espagne</option>
-                            <option value="États-Unis" data-i18n="c_us">États-Unis</option>
-                            <option value="Éthiopie" data-i18n="c_et">Éthiopie</option>
-                            <option value="France" data-i18n="c_fr">France</option>
-                            <option value="Gabon" data-i18n="c_ga">Gabon</option>
-                            <option value="Guinée" data-i18n="c_gn">Guinée</option>
-                            <option value="Guinée équatoriale" data-i18n="c_gq">Guinée équatoriale</option>
-                            <option value="Inde" data-i18n="c_in">Inde</option>
-                            <option value="Italie" data-i18n="c_it">Italie</option>
-                            <option value="Japon" data-i18n="c_jp">Japon</option>
-                            <option value="Kenya" data-i18n="c_ke">Kenya</option>
-                            <option value="Madagascar" data-i18n="c_mg">Madagascar</option>
-                            <option value="Mali" data-i18n="c_ml">Mali</option>
-                            <option value="Maroc" data-i18n="c_ma">Maroc</option>
-                            <option value="Maurice" data-i18n="c_mu">Maurice</option>
-                            <option value="Mauritanie" data-i18n="c_mr">Mauritanie</option>
-                            <option value="Mexique" data-i18n="c_mx">Mexique</option>
-                            <option value="Niger" data-i18n="c_ne">Niger</option>
-                            <option value="Nigeria" data-i18n="c_ng">Nigeria</option>
-                            <option value="Ouganda" data-i18n="c_ug">Ouganda</option>
-                            <option value="Royaume-Uni" data-i18n="c_uk">Royaume-Uni</option>
-                            <option value="Rwanda" data-i18n="c_rw">Rwanda</option>
-                            <option value="Sénégal" data-i18n="c_sn">Sénégal</option>
-                            <option value="Suisse" data-i18n="c_ch">Suisse</option>
-                            <option value="Tchad" data-i18n="c_td">Tchad</option>
-                            <option value="Togo" data-i18n="c_tg">Togo</option>
-                            <option value="Tunisie" data-i18n="c_tn">Tunisie</option>
-                            <option value="Autre Pays" data-i18n="c_other">Autre pays...</option>
-                        </select>
-                    </div>
-
-                    <label class="section-label mt-2" data-i18n="lbl_expertise" style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 0.9rem;">Expertise Requise</label>
-                    <div class="grid-options">
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GenAI_DataScience"> <span data-i18n="exp_ai">GenAI & Data Science</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Cyber_Resilience"> <span data-i18n="exp_cyber">Cybersécurité & Résilience</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="ESG_Climate"> <span data-i18n="exp_esg">Ingénierie ESG & Climat</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Web3_Blockchain"> <span data-i18n="exp_web3">Web3 & Blockchain (Woleet)</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Digital_Marketing"> <span data-i18n="exp_mkt">Marketing Digital & SEO</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Process_Optimization"> <span data-i18n="exp_proc">Optimisation des Processus</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="HR_Talent"> <span data-i18n="exp_hr">Gestion des Talents (RH)</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="Design_Thinking"> <span data-i18n="exp_design">Design Thinking & UX</span></label>
-                        <label class="checkbox-btn"><input type="checkbox" name="expertise" value="GoToMarket_Growth"> <span data-i18n="exp_gtm">Go-to-Market & Growth Strategy</span></label>
-                        
-                        <button type="button" onclick="openAutoDetectModal()" style="grid-column: 1 / -1; background: transparent; cursor: pointer; padding:0; border:none; width: 100%;">
-                            <span style="display:block; padding: 12px; text-align: center; border-radius: 4px; border: 1px solid #25D366; color: #25D366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.2); font-size: 0.9rem; font-weight: bold; transition: 0.3s;" onmouseover="this.style.background='rgba(37, 211, 102, 0.1)'" onmouseout="this.style.background='transparent'">
-                                🧠 <span data-i18n="exp_auto">AUTO-DÉTECTION PAR L'IA (FRACTIONNEMENT DIRECT)</span>
-                            </span>
-                        </button>
-                        
-                    </div>
-
-                    <div class="btn-container split">
-                        <button type="button" class="btn-outline" onclick="nextStep(1)" data-i18n="btn_prev">Retour</button>
-                        <button type="button" class="btn-gold" onclick="nextStep(3)" data-i18n="btn_next_matrice">Ouvrir Matrice Analyse</button>
-                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Cryptographie Probatoire</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Calcul d'une empreinte SHA-256 à partir du jeu de données, couplé à un horodatage OpenTimestamps pour attester techniquement de l'intégrité et de l'antériorité[cite: 3].
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Empreinte SHA-256 immuable[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Horodatage OpenTimestamps[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Opposabilité contractuelle[cite: 3]</li>
+                    </ul>
                 </div>
 
-                <div class="form-step" id="step-3">
-                    <h3 data-i18n="step3_title">03. Matrice Analyse & Restitution</h3>
-                    <div style="text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <i style="color: #8892b0; font-size: 0.95rem; font-family: 'Cinzel', serif;" data-i18n="elite_hook">"Au-delà des algorithmes, la résolution de l'insoluble."</i>
+                <!-- Pillar 3 -->
+                <div class="glass-card p-8 rounded-3xl border border-ebonyBorder hover:border-gold/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
                     </div>
-                    <div class="input-group">
-                        <label for="context" data-i18n="lbl_context">Contexte Opérationnel</label>
-                        <textarea id="context" rows="4" data-i18n="ph_context" placeholder="Décrivez brièvement votre situation..."></textarea>
-                    </div>
-                    
-                    <div class="input-group" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 5px; border: 1px dashed rgba(212, 175, 55, 0.4); margin-bottom: 20px;">
-                        <label style="color:#d4af37;" data-i18n="lbl_file_upload">📄 Joindre un Document Stratégique (Optionnel)</label>
-                        <input type="file" id="clientFile" accept=".pdf,.doc,.docx,.txt" style="display: none;">
-                        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-                            <label for="clientFile" style="cursor: pointer; background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37; padding: 8px 15px; border-radius: 4px; color: #d4af37; font-size: 0.85rem; display: inline-block; transition: 0.3s;" data-i18n="btn_browse">Parcourir...</label>
-                            <span id="fileNameDisplay" style="color: #8892b0; font-size: 0.85rem;" data-i18n="lbl_no_file">Aucun fichier sélectionné</span>
-                        </div>
-                        <div style="font-size: 0.75rem; color: #8892b0; margin-top: 10px; display: flex; align-items: center; gap: 5px;">
-                            <span style="color:#25D366;">🛡️</span> 
-                            <em data-i18n="lbl_file_desc">Propriété Intellectuelle garantie : Votre fichier sera scellé et protégé par ancrage Blockchain (Woleet).</em>
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; padding: 15px; margin-bottom: 25px; display: flex; flex-direction: column; gap: 12px;">
-                        <div class="legal-check" style="display: flex; align-items: flex-start; gap: 10px;">
-                            <input type="checkbox" id="consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 3px; transform: scale(1.1); cursor: pointer;">
-                            <label for="consent" style="color: #ccc; font-size: 0.9rem; cursor: pointer; line-height: 1.4;">
-                                <span data-i18n="legal_consent" id="txt-legal-consent">J'accepte la</span> 
-                                <a href="javascript:void(0)" onclick="openModal('privacyArchive')" class="gold-link" id="txt-link-privacy">Charte de Souveraineté et de Confidentialité Officielle</a>.
-                            </label>
-                        </div>
-
-                        <div class="opt-in-container" style="display: flex; align-items: flex-start; gap: 10px;">
-                            <input type="checkbox" id="whatsapp-consent" required oninvalid="setCustomMessage(this)" oninput="setCustomMessage(this)" style="margin-top: 3px; transform: scale(1.1); cursor: pointer;">
-                            <label for="whatsapp-consent" style="color: #ccc; font-size: 0.9rem; cursor: pointer; line-height: 1.4;" id="txt-wa-optin">
-                                J'accepte de recevoir mon analyse stratégique par <strong style="color:#25D366; text-shadow: 0 0 5px rgba(37, 211, 102, 0.4);">WhatsApp</strong>.
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="btn-container split">
-                        <button type="button" class="btn-outline" onclick="nextStep(2)" data-i18n="btn_prev">Retour</button>
-                        <button type="submit" class="btn-gold glow" id="btnFinalSubmit" data-i18n="btn_submit">Lancer l'Analyse IA</button>
-                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Arbitrage Humain — Desk Exécutif</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        <strong>Option B :</strong> Immersion contradictoire sur site par un Expert accrédité pour la levée des doutes topographiques, thermiques, hydrauliques, des sols et du froid[cite: 3].
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Vérification des 5 points critiques[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Contreseing par Expert Senior[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Verrouillage SLA 2h</li>
+                    </ul>
                 </div>
-            </form>
-
-            <div id="emeta-loader" style="display: none; text-align: center; padding: 50px 20px; background: #0a192f; border-radius: 12px; border: 1px solid #d4af37; margin-top: 20px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);">
-                <div style="width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.2); border-top: 4px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 25px;"></div>
-                <h3 id="loader-title" style="color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">Moteur e-META LABS activé</h3>
-                <p id="emeta-status" style="font-size: 16px; color: #8892b0; font-family: 'Inter', sans-serif;">Initialisation de la connexion sécurisée...</p>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer">
-        <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 20px;">
-            <a href="mentions-legales.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;" data-i18n="link_mentions">Mentions Légales</a>
-            <a href="cgv.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;" data-i18n="link_cgv">CGV</a>
-            <a href="confidentialite.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;" data-i18n="link_confidentialite">Confidentialité</a>
-            <a href="remboursement.html" class="gold-link" style="margin: 0 15px; font-size: 0.85rem; text-decoration: none;" data-i18n="link_remboursement">Remboursement</a>
+    <!-- La Matrice des 10 Secteurs d'Excellence -->
+    <section id="secteurs" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Expertise Sectorielle</span>[cite: 3]
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">La Matrice des 10 Secteurs d'Excellence</h2>[cite: 3]
+                <p class="text-slate-400 text-base">
+                    Doctrine d'arbitrage méthodologique adaptée aux enjeux critiques de chaque industrie. Cliquez sur un secteur pour consulter sa grille d'audit et ses stress-tests[cite: 3].
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="sectorsGrid">
+                <!-- Dynamically populated -->
+            </div>
         </div>
-        <p>&copy; 2026 E-META LABS SASU. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
-        <p class="tiny">Strategic Intelligence Unit • Rosso - Dakar - Paris - Dubai - Shanghai - New York</p>
-        <div style="margin-top: 15px; font-size: 0.8rem; color: #8892b0;">
-            <a href="mailto:contact@e-metalabs.com" style="color: #8892b0; text-decoration: none; margin-right: 15px;">✉️ contact@e-metalabs.com</a>
-            <a href="mailto:support@e-metalabs.com" style="color: #8892b0; text-decoration: none;">🛠️ support@e-metalabs.com</a>
+    </section>
+
+    <!-- Le Protocole en 3 Paliers -->
+    <section id="paliers" class="py-24 bg-ebonyCard/40 border-y border-ebonyBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Parcours & Livrables</span>[cite: 3]
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Le Protocole d'Audit en 3 Paliers</h2>[cite: 3]
+                <p class="text-slate-400 text-base">
+                    Du diagnostic d'urgence à l'accompagnement exécutif permanent, découvrez nos formats d'intervention calibrés selon la criticité de vos décisions[cite: 3].
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Palier 1 -->
+                <div class="glass-card p-8 rounded-3xl border border-ebonyBorder relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Palier 1</span>[cite: 3]
+                            <span class="text-xs text-gold font-mono">3 à 5 pages</span>[cite: 3]
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Diagnostic Découverte</h3>[cite: 3]
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Orientation d'urgence et premier cadrage pour faire ressortir les principaux sujets nécessitant une décision ou une investigation complémentaire[cite: 3].
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Synthèse de la situation décrite[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Jusqu'à 3 points de vigilance prioritaires[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Score de maturité sectorielle[cite: 3]</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSaisineModal()" class="w-full py-3 rounded-xl bg-ebonyCard border border-gold/40 text-gold font-semibold text-sm hover:bg-gold hover:text-ebony transition">
+                        Commander le Palier 1 (Offert)
+                    </button>
+                </div>
+
+                <!-- Palier 2 -->
+                <div class="glass-card p-8 rounded-3xl border-2 border-gold relative flex flex-col justify-between shadow-2xl gold-glow">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gold text-ebony text-xs font-bold uppercase tracking-widest font-mono">
+                        Le plus demandé • 350 €
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-6 mt-2">
+                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-gold/10 text-gold border border-gold/30">Palier 2</span>[cite: 3]
+                            <span class="text-xs text-gold font-mono">15 à 25 pages</span>[cite: 3]
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Mandat Certifié</h3>[cite: 3]
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Investigation approfondie avec application des grilles sectorielles, stress-tests, modélisation financière et empreinte SHA-256 incluse[cite: 3].
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Manifeste exécutif & matrice de maturité[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Scénarios de résistance financière & opérationnelle[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Plan d'action (30 / 60 / 90 jours)[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Scellement SHA-256 & OpenTimestamps[cite: 3]</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSaisineModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-sm shadow-lg">
+                        Commander le Mandat Certifié
+                    </button>
+                </div>
+
+                <!-- Palier 3 -->
+                <div class="glass-card p-8 rounded-3xl border border-ebonyBorder relative flex flex-col justify-between">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-slate-800 text-gold border border-gold/30 text-xs font-bold uppercase tracking-widest font-mono">
+                        1 450 € / mois
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-6 mt-2">
+                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Palier 3</span>[cite: 3]
+                            <span class="text-xs text-gold font-mono">25 à 45 pages+</span>[cite: 3]
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Chambre Exécutive</h3>[cite: 3]
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Accompagnement stratégique permanent ou récurrent pour les comités de direction, groupes, filiales ou institutions majeures[cite: 3].
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Vision consolidée groupe & filiales[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Anticipation macro & géopolitique[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Arbitrages d'investissement & capital[cite: 3]</li>
+                        </ul>
+                    </div>
+                    <button onclick="openSaisineModal()" class="w-full py-3 rounded-xl bg-ebonyCard border border-gold/40 text-gold font-semibold text-sm hover:bg-gold hover:text-ebony transition">
+                        Engager la Chambre Exécutive
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vérification SHA-256 & Suivi -->
+    <section id="verification" class="py-24 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl border border-gold/30 shadow-2xl">
+                <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-mono uppercase">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Registre NocoDB & Cockpit Tracker[cite: 3]
+                    </div>
+                    <h2 class="font-serif text-3xl font-bold text-white">Vérification de Scellement & Suivi de Mission</h2>
+                    <p class="text-slate-400 text-sm">
+                        Entrez votre référence de mission (ex: <code class="text-gold font-mono">MIS-2026-0842</code>) pour interroger en temps réel le registre d'intégrité[cite: 3].
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto mb-8">
+                    <div class="relative flex-1">
+                        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
+                        <input type="text" id="missionInput" placeholder="Ex: MIS-2026-0842 ou Hash SHA-256..." class="w-full pl-12 pr-4 py-3.5 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold transition font-mono">
+                    </div>
+                    <button onclick="simulateVerification()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-sm shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                        <span>Interroger</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div id="simulationResult" class="hidden space-y-6 pt-6 border-t border-ebonyBorder">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
+                            <span class="text-xs text-slate-400 block font-mono">Statut Mission</span>
+                            <span id="resStatus" class="text-emerald-400 font-bold text-sm flex items-center gap-1.5 mt-1">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i> Mandat Certifié Actif
+                            </span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
+                            <span class="text-xs text-slate-400 block font-mono">Secteur d'Excellence</span>
+                            <span id="resSecteur" class="text-white font-bold text-sm mt-1 block">Énergie et mines</span>[cite: 3]
+                        </div>
+                        <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
+                            <span class="text-xs text-slate-400 block font-mono">Option B (Arbitrage Terrain)</span>[cite: 3]
+                            <span id="resOptionB" class="text-gold font-bold text-sm mt-1 block">Levée validée (5 points OK)</span>[cite: 3]
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-400 font-mono">Empreinte Cryptographique SHA-256</span>[cite: 3]
+                            <span class="text-emerald-400 flex items-center gap-1 font-mono"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Ancré OpenTimestamps</span>[cite: 3]
+                        </div>
+                        <div id="resHash" class="p-3 rounded bg-ebonyCard text-gold font-mono text-xs break-all border border-ebonyBorder">
+                            a42d4a1e98fbc149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ebonyCard border-t border-ebonyBorder pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8 rounded-lg" viewBox="0 0 100 100">
+                            <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" stroke="#d4af37" stroke-width="4" fill="#0a192f"/>
+                            <circle cx="50" cy="50" r="12" fill="#d4af37"/>
+                        </svg>
+                        <span class="font-serif text-lg font-bold text-white">e-META <span class="gold-gradient">LABS</span></span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Systèmes d'analyse, de gouvernance et de pilotage stratégique. Cabinet d'arbitrage exécutif augmenté.
+                    </p>
+                    <div class="text-xs text-slate-400">
+                        <p class="font-semibold text-slate-300">E-META LABS SASU</p>
+                        <p>Face Débarcadère, Rosso, Sénégal</p>[cite: 3]
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Navigation</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#manifeste" class="hover:text-gold transition">Manifeste Souverain</a>[cite: 3]</li>
+                        <li><a href="#piliers" class="hover:text-gold transition">Trois Piliers</a></li>
+                        <li><a href="#secteurs" class="hover:text-gold transition">10 Secteurs d'Excellence</a>[cite: 3]</li>
+                        <li><a href="#paliers" class="hover:text-gold transition">Protocoles en 3 Paliers</a>[cite: 3]</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Souveraineté</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#verification" class="hover:text-gold transition">Vérification SHA-256</a>[cite: 3]</li>
+                        <li><a href="expert.html" class="hover:text-gold transition">Portail Expert</a></li>
+                        <li><a href="tracker.html" class="hover:text-gold transition">Cockpit Tracker Mission</a>[cite: 3]</li>
+                        <li><a href="cgv.html" class="hover:text-gold transition">Conditions Générales de Vente</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Contact</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-gold"></i> contact@e-metalabs.com</li>[cite: 3]
+                        <li class="flex items-center gap-2"><i data-lucide="headphones" class="w-3.5 h-3.5 text-gold"></i> support@e-metalabs.com</li>[cite: 3]
+                        <li class="pt-2">
+                            <button onclick="openSaisineModal()" class="w-full py-2.5 rounded-lg bg-gold/10 text-gold border border-gold/30 hover:bg-gold hover:text-ebony font-semibold text-xs transition">
+                                Ouvrir un Dossier
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-ebonyBorder flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 E-META LABS SASU. Tous droits réservés. Référentiel Exécutif Édition Octobre 2026.</p>[cite: 3]
+                <div class="flex items-center gap-4">
+                    <span class="font-mono text-[11px] text-gold">SHA-256 Verified</span>[cite: 3]
+                    <span>•</span>
+                    <span class="font-mono text-[11px]">OpenTimestamps Active</span>[cite: 3]
+                </div>
+            </div>
         </div>
     </footer>
 
-    <div id="paymentModal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 500px; text-align: center; padding: 40px;">
-            <span class="close-btn" onclick="closeModal('paymentModal')">&times;</span>
-            <h2 style="color: #d4af37; font-family: 'Cinzel', serif; margin-top: 0;">Validation Sécurisée</h2>
-            <p style="color: #e6f1ff; font-size: 0.95rem; margin-bottom: 30px;">Vos données ont été ancrées. Choisissez votre méthode pour déclencher l'Intelligence Artificielle :</p>
-            
-            <a href="#" id="linkPaytech" class="gateway-btn gateway-paydunya">
-                🌍 Wave / Orange Money / Free
-                <div style="font-size: 0.75rem; font-weight: normal; margin-top: 5px;">Via PayTech (Sénégal & UEMOA)</div>
-            </a>
-            
-            <a href="#" id="linkPaddle" class="gateway-btn gateway-lemon">
-                💳 Carte Bancaire / PayPal
-                <div style="font-size: 0.75rem; font-weight: normal; margin-top: 5px;">Via Paddle (International)</div>
-            </a>
-            
-            <p style="font-size: 0.8rem; color: #8892b0; margin-top: 20px;">Transactions chiffrées de bout en bout.</p>
-        </div>
-    </div>
-
-    <div id="privacyArchive" class="modal-overlay">
-        <div class="modal-content" style="max-width: 850px; width: 95%;">
-            <span class="close-btn" onclick="closeModal('privacyArchive')">&times;</span>
-            
-            <div class="modal-body" data-i18n="content_confidentialite" style="text-align: left; padding-right:15px; font-size:0.95rem; color:#e6f1ff; line-height: 1.8;">
-            </div>
-            
-            <div style="text-align:center; margin-top:20px;">
-                <button class="btn-gold full-width" onclick="closeModal('privacyArchive')" style="width: 100%;">Accepter & Fermer</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="guideOverlay" class="modal-overlay">
-        <div class="modal-content" style="max-width: 600px;">
-        <span onclick="document.getElementById('guideOverlay').style.display='none'" style="position: absolute; top: 15px; right: 20px; color: #d4af37; font-size: 32px; cursor: pointer; line-height: 1; z-index: 10;">&times;</span>    
-            <h2 data-i18n="guide_title" style="margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; font-family: 'Cinzel', serif;">Lexique Stratégique</h2>
-            
-            <div class="modal-body" style="text-align: left; padding-right:15px; color: #e6f1ff; font-size: 0.9rem; line-height: 1.6;">
-                <h4 data-i18n="guide_sec_title" style="color:#d4af37; font-family:'Cinzel', serif; margin-bottom: 10px;">Secteurs Stratégiques</h4>
-                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-                    <p class="lexique-item" data-i18n="lex_sec_fintech"><strong>• FinTech & DeFi :</strong> Finance numérique, paiements et décentralisation.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_gov"><strong>• GovTech & Smart Cities :</strong> Modernisation de l'État et numérisation des services publics.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_health"><strong>• Santé & BioTech :</strong> Innovations médicales et gestion des données de santé.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_green"><strong>• GreenTech & Énergies :</strong> Transition écologique, décarbonation et énergies renouvelables.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_agri"><strong>• AgriTech & Food Sec. :</strong> Sécurité alimentaire et optimisation technologique agricole.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_log"><strong>• Logistique & Supply :</strong> Optimisation de la chaîne logistique et traçabilité globale.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_mine"><strong>• Mines, Pétrole & Gaz :</strong> Extraction intelligente, sécurité et conformité.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_btp"><strong>• Immobilier & PropTech:</strong> Innovation immobilière et gestion de bâtiments intelligents.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_retail"><strong>• E-commerce & Retail :</strong> Retail digital, experience client et transactions.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_edu"><strong>• Éducation (EdTech) :</strong> Plateformes d'apprentissage et transmission du savoir.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_tour"><strong>• Tourisme & Hôtellerie:</strong> Digitalisation de l'hôtellerie y gestion des flux.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_media"><strong>• Industries Créatives :</strong> Médias, divertissement et propriété intellectuelle.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_consulting"><strong>• Conseil & Services B2B :</strong> Stratégie d'entreprise, transformation digitale et accompagnement des dirigeants.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_saas"><strong>• SaaS & Éditeurs :</strong> Développement de solutions cloud, scalabilité et modèles d'abonnement.</p>
-                    <p class="lexique-item" data-i18n="lex_sec_telecom" style="border-bottom: none;"><strong>• Télécoms & Infra. :</strong> Connectivité à haut débit, data centers et souveraineté des réseaux.</p>
-                </div>
-
-                <h4 data-i18n="guide_exp_title" style="color:#d4af37; font-family:'Cinzel', serif; margin-bottom: 10px;">Expertises Requises</h4>
-                <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 5px;">
-                    <p class="lexique-item" data-i18n="lex_exp_ai"><strong>• GenAI & Data Science :</strong> Intégration de l'IA pour l'analyse prédictive y la automatisation.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_cyber"><strong>• Cybersécurité :</strong> Protection des infrastructures critiques et audit de résilience.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_esg"><strong>• Ingénierie ESG :</strong> Stratégie environnementale, sociale et de gouvernance.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_web3"><strong>• Web3 & Blockchain :</strong> Tokenisation, traçabilité et ancrage numérique (Woleet).</p>
-                    <p class="lexique-item" data-i18n="lex_exp_mkt"><strong>• Marketing Digital :</strong> Stratégie d'acquisition, visibilité en ligne et conversion.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_proc"><strong>• Opti. des Processus :</strong> Excellence opérationnelle et réduction des coûts (RPA).</p>
-                    <p class="lexique-item" data-i18n="lex_exp_hr"><strong>• Gestion des Talents :</strong> Recrutement prédictif, rétention et formation 2.0.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_design"><strong>• Design Thinking :</strong> Expérience utilisateur et innovation producto.</p>
-                    <p class="lexique-item" data-i18n="lex_exp_gtm" style="border-bottom: none;"><strong>• Go-to-Market & Growth:</strong> Stratégie de pénétration de mercado, distribution et acquisition client asymétrique.</p>
-                </div>
-            </div>
-            
-            <button onclick="document.getElementById('guideOverlay').style.display='none'" data-i18n="btn_close" style="width: 100%; padding: 12px; background-color: #d4af37; color: #0a192f; font-weight: bold; border: none; border-radius: 4px; cursor: pointer; font-family: 'Cinzel', serif; text-transform: uppercase; transition: 0.3s;">FERMER</button>
-        </div>
-    </div>
-
-    <div id="resultModal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 600px; padding: 40px;">
-            <span class="close-btn close-result" onclick="closeModal('resultModal')" style="top: 15px; right: 20px;">&times;</span>
-            <div id="resultBody" style="width: 100%; text-align: center;">
-                <p id="resultText" style="color: #e6f1ff; font-size: 1.1rem; line-height: 1.6;"></p>
-            </div>
-        </div>
-    </div>
-
-    <div id="autoDetectModal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 450px; text-align: center; padding: 35px; border-color: #25D366; box-shadow: 0 10px 40px rgba(37, 211, 102, 0.2);">
-            <span class="close-btn" onclick="closeModal('autoDetectModal')" style="color: #25D366;">&times;</span>
-            <div style="font-size: 40px; margin-bottom: 15px;">🧠</div>
-            <h2 style="color: #25D366; font-family: 'Cinzel', serif; margin-top: 0; font-size: 1.4rem;">Connexion à l'Agent e-META</h2>
-            <p style="color: #e6f1ff; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.5;">
-                Où devons-nous envoyer votre rapport stratégique confidentiel ?
-            </p>
-            
-            <div class="input-group" style="text-align: left;">
-                <label style="color: #25D366;">Email Professionnel</label>
-                <input type="email" id="auto-email" placeholder="contact@domain.com" style="border-color: rgba(37, 211, 102, 0.4); background: rgba(10, 25, 47, 0.8);">
-            </div>
-            
-            <div class="input-group" style="text-align: left;">
-                <label style="color: #25D366;">Numéro WhatsApp</label>
-                <input type="tel" id="auto-phone" placeholder="+221..." style="border-color: rgba(37, 211, 102, 0.4); background: rgba(10, 25, 47, 0.8);">
-            </div>
-
-            <button type="button" id="btn-fire-ia" onclick="fireAutoDetection()" style="width: 100%; padding: 15px; background: #25D366; color: #0a192f; border: none; border-radius: 4px; font-weight: bold; font-family: 'Cinzel', serif; cursor: pointer; font-size: 1rem; text-transform: uppercase; margin-top: 10px; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transition: 0.3s;">
-                Déclencher l'Analyse
+    <!-- Saisine Modal (Email, WhatsApp sans +, Pièce jointe) -->
+    <div id="saisineModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-lg p-8 rounded-3xl border border-gold/40 relative shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeSaisineModal()" class="absolute top-6 right-6 p-2 rounded-lg bg-ebony text-slate-400 hover:text-white border border-ebonyBorder">
+                <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            <p style="font-size: 0.75rem; color: #8892b0; margin-top: 15px;">Transmission cryptée vers le serveur souverain e-META</p>
+            <div class="space-y-2 mb-6">
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Saisine Exécutive</span>
+                <h3 class="font-serif text-2xl font-bold text-white">Démarrer une Mission</h3>
+                <p class="text-slate-400 text-xs">Renseignez vos coordonnées, joignez vos documents pour l'analyse RAG et initiez le scellement SHA-256 ($T+0$)[cite: 3].</p>
+            </div>
+
+            <form onsubmit="handleSaisineSubmit(event)" enctype="multipart/form-data" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5">Nom de l'Entreprise / Institution</label>
+                    <input type="text" id="entrepriseInput" required placeholder="Ex: Compagnie Minière de l'Ouest" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1.5">Email Professionnel</label>
+                        <input type="email" id="emailInput" required placeholder="dirigeant@institution.com" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1.5">WhatsApp (chiffres seuls sans '+')</label>
+                        <input type="text" id="whatsappInput" required placeholder="221770000000" pattern="[0-9]{8,15}" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold font-mono">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1.5">Secteur d'Excellence</label>
+                        <select id="secteurSelect" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
+                            <option>Agro-industrie et souveraineté</option>[cite: 3]
+                            <option>Banque, FinTech et assurance</option>[cite: 3]
+                            <option selected>Énergie et mines</option>[cite: 3]
+                            <option>Logistique, ports et supply chain</option>[cite: 3]
+                            <option>Santé, pharmacie et biotechnologies</option>[cite: 3]
+                            <option>Télécommunications, cloud et infrastructures</option>[cite: 3]
+                            <option>BTP, immobilier et foncier</option>[cite: 3]
+                            <option>Industrie manufacturière</option>[cite: 3]
+                            <option>Secteur public et parapublic</option>[cite: 3]
+                            <option>Retail, distribution et négoce</option>[cite: 3]
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1.5">Palier d'Intervention</label>
+                        <select id="palierSelect" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
+                            <option>Palier 1 — Diagnostic Découverte (0 €)</option>[cite: 3]
+                            <option selected>Palier 2 — Mandat Certifié (350 €)</option>[cite: 3]
+                            <option>Palier 3 — Chambre Exécutive (1 450 €/mois)</option>[cite: 3]
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5">Pièce jointe / Données d'audit (PDF, Excel, TXT)</label>
+                    <input type="file" id="auditFile" class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold file:text-ebony hover:file:bg-goldLight cursor-pointer bg-ebony border border-ebonyBorder rounded-xl p-1.5">
+                    <p class="text-[10px] text-slate-500 mt-1">Sert de support pour le calcul SHA-256 initial et l'analyse RAG Qdrant[cite: 3].</p>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-300 mb-1.5">Décision à Éclairer ou Problématique Critique</label>
+                    <textarea id="descInput" rows="3" required placeholder="Décrivez succinctement les frictions ou arbitrages attendus..." class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-sm shadow-lg hover:opacity-95 transition">
+                    Générer la Référence & Sceller la Saisine ($T+0$)[cite: 3]
+                </button>
+            </form>
         </div>
     </div>
 
-    <script src="i18n.js"></script>
+    <!-- Sector Detail Modal -->
+    <div id="sectorModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-2xl p-8 rounded-3xl border border-gold/40 relative shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeSectorModal()" class="absolute top-6 right-6 p-2 rounded-lg bg-ebony text-slate-400 hover:text-white border border-ebonyBorder">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="sectorModalContent" class="space-y-6">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
-
-</body>
-</html>
+    <!-- Script Application -->
+    <script>
