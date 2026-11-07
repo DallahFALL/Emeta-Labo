@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-META LABS | Audit Décisionnel & Strategic Engine</title>
-    
-    <!-- Vrai Logo Favicon e-META LABS (Géométrique Souverain) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L95 25 V75 L50 95 L5 75 Z' stroke='%23d4af37' stroke-width='4' fill='%230a192f'/><circle cx='50' cy='50' r='12' fill='%23d4af37'/></svg>">
-    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -46,6 +42,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.25);
+        }
         .gold-glow:hover {
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
         }
@@ -77,7 +76,7 @@
             <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span class="text-gold font-semibold">Référentiel Exécutif Octobre 2026</span>
             <span class="hidden md:inline text-slate-500">|</span>
-            <span class="hidden md:inline text-slate-400">Systèmes d'Analyse, de Gouvernance & de Pilotage Stratégique</span>[cite: 3]
+            <span class="hidden md:inline text-slate-400">Systèmes d'Analyse, de Gouvernance & de Pilotage Stratégique</span>
         </div>
         <div class="flex items-center gap-4">
             <a href="#verification" class="hover:text-gold transition flex items-center gap-1">
@@ -89,29 +88,23 @@
                 <i data-lucide="user-check" class="w-3.5 h-3.5 text-gold"></i>
                 <span>Portail Expert</span>
             </a>
-            <span class="text-slate-600">|</span>
-            <a href="tracker.html" class="hover:text-gold transition flex items-center gap-1">
-                <i data-lucide="compass" class="w-3.5 h-3.5 text-gold"></i>
-                <span>Cockpit Tracker</span>
-            </a>
         </div>
     </div>
 
     <!-- Main Header & Navigation -->
     <header class="sticky top-[33px] z-40 bg-ebony/90 backdrop-blur-xl border-b border-ebonyCard shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Vrai Logo SVG Institutionnel -->
+            <!-- Logo & Sovereignty Badge -->
             <a href="#" class="flex items-center gap-3 group">
-                <svg class="w-10 h-10 drop-shadow-lg gold-glow rounded-xl" viewBox="0 0 100 100">
-                    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" stroke="#d4af37" stroke-width="4" fill="#0a192f"/>
-                    <circle cx="50" cy="50" r="12" fill="#d4af37"/>
-                </svg>
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-goldDark via-gold to-goldLight flex items-center justify-center shadow-lg gold-glow">
+                    <i data-lucide="compass" class="w-6 h-6 text-ebony font-black"></i>
+                </div>
                 <div>
                     <div class="flex items-center gap-2">
                         <span class="font-serif text-xl font-bold tracking-wider text-white">e-META <span class="gold-gradient">LABS</span></span>
-                        <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 font-mono">SASU</span>[cite: 3]
+                        <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 font-mono">SASU</span>
                     </div>
-                    <p class="text-[10px] text-slate-400 tracking-wider">AUDIT DÉCISIONNEL & STRATEGIC ENGINE</p>[cite: 3]
+                    <p class="text-[10px] text-slate-400 tracking-wider">AUDIT DÉCISIONNEL & STRATEGIC ENGINE</p>
                 </div>
             </a>
 
@@ -128,8 +121,9 @@
             <div class="flex items-center gap-4">
                 <button onclick="openSaisineModal()" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-semibold text-sm shadow-lg gold-glow transition transform hover:-translate-y-0.5">
                     <i data-lucide="zap" class="w-4 h-4"></i>
-                    <span>Démarrer une Mission</span>
+                    <span>Démarrer une Saisine</span>
                 </button>
+                <!-- Mobile Menu Button -->
                 <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-ebonyCard text-slate-300 hover:text-gold border border-ebonyBorder">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
@@ -145,7 +139,7 @@
             <a href="#verification" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-gold font-medium py-1">Chaîne de Preuve SHA-256</a>
             <div class="pt-4 border-t border-ebonyBorder">
                 <button onclick="openSaisineModal(); toggleMobileMenu();" class="w-full py-3 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-semibold text-center shadow-lg">
-                    Démarrer une Mission
+                    Démarrer une Saisine
                 </button>
             </div>
         </div>
@@ -153,37 +147,41 @@
 
     <!-- Hero Section -->
     <section class="relative pt-24 pb-20 overflow-hidden">
+        <!-- Background Glow Effects -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute top-10 right-10 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto space-y-8">
+                <!-- Badge -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ebonyCard border border-gold/30 text-xs text-gold uppercase tracking-widest font-mono shadow-inner">
-                    <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-                    <span>Cabinet d'Arbitrage Stratégique Augmenté</span>
+                    <i data-lucide="shield" class="w-3.5 h-3.5"><span>Cabinet d'Arbitrage Stratégique Augmenté</span></i>
                 </div>
 
+                <!-- Main Title -->
                 <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]">
                     Strategic Intelligence, <br>
-                    <span class="gold-gradient">Audit Décisionnel & Strategic Engine</span>[cite: 3]
+                    <span class="gold-gradient">Audit Décisionnel & Strategic Engine</span>
                 </h1>
 
+                <!-- Subtitle -->
                 <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-light max-w-3xl mx-auto">
-                    e-META LABS conçoit des systèmes d'analyse, de gouvernance et de pilotage stratégique pour transformer les données en décisions rapides, fiables et créatrices de valeur par l'alliance souveraine de l'intelligence algorithmique, de la cryptographie probatoire et du jugement expert de terrain[cite: 3].
+                    e-META LABS conçoit des systèmes d'analyse, de gouvernance et de pilotage stratégique pour transformer les données en décisions rapides, fiables et créatrices de valeur par l'alliance souveraine de l'intelligence algorithmique, de la cryptographie probatoire et du jugement expert de terrain.
                 </p>
 
+                <!-- CTAs -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                     <button onclick="openSaisineModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-base shadow-xl gold-glow transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
                         <i data-lucide="play-circle" class="w-5 h-5"></i>
-                        <span>Démarrer une Saisine</span>
+                        <span>Lancer un Diagnostic</span>
                     </button>
                     <a href="#verification" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-ebonyCard border border-gold/30 text-slate-200 hover:text-gold font-semibold text-base transition flex items-center justify-center gap-3 hover:border-gold">
                         <i data-lucide="search" class="w-5 h-5 text-gold"></i>
-                        <span>Vérifier un Scellement SHA-256</span>[cite: 3]
+                        <span>Vérifier un Scellement SHA-256</span>
                     </a>
                 </div>
 
-                <!-- Impact Metrics -->
+                <!-- Real-Time Impact Metrics -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
                     <div class="glass-card p-6 rounded-2xl border border-ebonyBorder text-center hover:border-gold/40 transition">
                         <div class="text-3xl sm:text-4xl font-extrabold text-gold font-mono">+148%</div>
@@ -206,64 +204,102 @@
         </div>
     </section>
 
-    <!-- Manifeste Souverain & Les 3 Piliers -->
-    <section id="manifeste" class="py-24 bg-ebonyCard/40 border-y border-ebonyBorder relative">
+    <!-- Manifeste Souverain & Les Trois Piliers -->
+    <section id="piliers" class="py-24 bg-ebonyCard/40 border-y border-ebonyBorder relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold font-mono">Doctrine & Méthode</span>[cite: 3]
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Le Manifeste Souverain e-META LABS</h2>[cite: 3]
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Doctrine & Méthode</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Le Manifeste Souverain e-META LABS</h2>
                 <p class="text-slate-400 text-base">
-                    La transformation ne se décrète pas au moyen d’un outil. Elle se conduit à partir d’une compréhension exacte du terrain, d’une analyse disciplinée des faits et d’arbitrages assumés par les personnes responsables[cite: 3].
+                    La transformation ne se décrète pas au moyen d’un outil. Elle se conduit à partir d’une compréhension exacte du terrain, d’une analyse disciplinée des faits et d’arbitrages assumés par les personnes responsables.
                 </p>
             </div>
 
+            <!-- 3 Pillars Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Pillar 1 -->
+                <!-- Pillar 1: Intelligence Algorithmique -->
                 <div class="glass-card p-8 rounded-3xl border border-ebonyBorder hover:border-gold/50 transition duration-300 group">
                     <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
                         <i data-lucide="cpu" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-3">Intelligence Algorithmique (CORTEX_03)</h3>[cite: 3]
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Intelligence Algorithmique (CORTEX_03)</h3>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Organisation et analyse à distance des éléments transmis, identification des incohérences, comparaison de scénarios et préparation des pistes d'orientation[cite: 3].
+                        Organisation et analyse à distance des éléments transmis, identification des incohérences, comparaison de scénarios et préparation des pistes d'orientation par notre moteur algorithmique.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-300 font-mono">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Distinctions faits / hypothèses[cite: 3]</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Modélisation de scénarios[cite: 3]</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Traçabilité des sources[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Distinctions faits / hypothèses</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Modélisation de scénarios</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Traçabilité des sources</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 2 -->
+                <!-- Pillar 2: Cryptographie Probatoire -->
                 <div class="glass-card p-8 rounded-3xl border border-ebonyBorder hover:border-gold/50 transition duration-300 group">
                     <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
                         <i data-lucide="lock" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-3">Cryptographie Probatoire</h3>[cite: 3]
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Cryptographie Probatoire</h3>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Calcul d'une empreinte SHA-256 à partir du jeu de données, couplé à un horodatage OpenTimestamps pour attester techniquement de l'intégrité et de l'antériorité[cite: 3].
+                        Calcul d'une empreinte cryptographique SHA-256 à partir du jeu de données de la mission, couplé à un horodatage OpenTimestamps pour attester techniquement de l'intégrité et de l'antériorité.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-300 font-mono">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Empreinte SHA-256 immuable[cite: 3]</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Horodatage OpenTimestamps[cite: 3]</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Opposabilité contractuelle[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Empreinte SHA-256 immuable</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Horodatage OpenTimestamps</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Opposabilité contractuelle</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 3 -->
+                <!-- Pillar 3: Arbitrage Humain / Option B -->
                 <div class="glass-card p-8 rounded-3xl border border-ebonyBorder hover:border-gold/50 transition duration-300 group">
                     <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
                         <i data-lucide="user-check" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-3">Arbitrage Humain — Desk Exécutif</h3>[cite: 3]
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Arbitrage Humain — Desk Exécutif</h3>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        <strong>Option B :</strong> Immersion contradictoire sur site par un Expert accrédité pour la levée des doutes topographiques, thermiques, hydrauliques, des sols et du froid[cite: 3].
+                        <strong>Option B :</strong> Immersion contradictoire sur site par un Expert accrédité pour la levée des doutes topographiques, thermiques, hydrauliques, des sols et de la logistique du froid.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-300 font-mono">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Vérification des 5 points critiques[cite: 3]</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Contreseing par Expert Senior[cite: 3]</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Vérification des 5 points critiques</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Contreseing par Expert Senior</li>
                         <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold"></i> Verrouillage SLA 2h</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Option B 5 Critical Points Details Banner -->
+            <div class="mt-16 glass-card p-8 rounded-3xl border border-gold/30 bg-gradient-to-r from-ebonyCard via-ebony to-ebonyCard">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-3">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-gold/10 text-gold text-xs font-mono uppercase">
+                            <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> Chapitre 19 — Levée Contradictoire sur Site (Option B)
+                        </div>
+                        <h4 class="font-serif text-2xl font-bold text-white">Les 5 Familles de Points Critiques Audités</h4>
+                        <p class="text-slate-400 text-sm max-w-2xl">
+                            Dès qu'une réserve exige la vérification des conditions réelles sur le terrain, notre Desk Exécutif déploie un expert pour confronter les hypothèses aux réalités physiques de l'infrastructure.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full lg:w-auto">
+                        <div class="px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-center">
+                            <span class="text-gold font-bold block text-sm">1. Sols</span>
+                            <span class="text-[11px] text-slate-400">Nature & prélèvements</span>
+                        </div>
+                        <div class="px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-center">
+                            <span class="text-gold font-bold block text-sm">2. Hydraulique</span>
+                            <span class="text-[11px] text-slate-400">Ressources & drainage</span>
+                        </div>
+                        <div class="px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-center">
+                            <span class="text-gold font-bold block text-sm">3. Thermique</span>
+                            <span class="text-[11px] text-slate-400">Seuils & procédés</span>
+                        </div>
+                        <div class="px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-center">
+                            <span class="text-gold font-bold block text-sm">4. Chaîne du Froid</span>
+                            <span class="text-[11px] text-slate-400">Stockage & transport</span>
+                        </div>
+                        <div class="px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-center col-span-2 sm:col-span-2">
+                            <span class="text-gold font-bold block text-sm">5. Topographie & Infrastructures</span>
+                            <span class="text-[11px] text-slate-400">Accessibilité & équipements critiques</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -273,15 +309,16 @@
     <section id="secteurs" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold font-mono">Expertise Sectorielle</span>[cite: 3]
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">La Matrice des 10 Secteurs d'Excellence</h2>[cite: 3]
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Expertise Sectorielle</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">La Matrice des 10 Secteurs d'Excellence</h2>
                 <p class="text-slate-400 text-base">
-                    Doctrine d'arbitrage méthodologique adaptée aux enjeux critiques de chaque industrie. Cliquez sur un secteur pour consulter sa grille d'audit et ses stress-tests[cite: 3].
+                    Doctrine d'arbitrage méthodologique adaptée aux enjeux critiques de chaque industrie. Cliquez sur un secteur pour consulter sa grille d'audit et ses stress-tests associés.
                 </p>
             </div>
 
+            <!-- Sectors Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="sectorsGrid">
-                <!-- Dynamically populated -->
+                <!-- Injected via JavaScript for clean interactivity -->
             </div>
         </div>
     </section>
@@ -290,10 +327,10 @@
     <section id="paliers" class="py-24 bg-ebonyCard/40 border-y border-ebonyBorder">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold font-mono">Parcours & Livrables</span>[cite: 3]
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Le Protocole d'Audit en 3 Paliers</h2>[cite: 3]
+                <span class="text-xs uppercase tracking-widest text-gold font-mono">Parcours & Livrables</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Le Protocole d'Audit en 3 Paliers</h2>
                 <p class="text-slate-400 text-base">
-                    Du diagnostic d'urgence à l'accompagnement exécutif permanent, découvrez nos formats d'intervention calibrés selon la criticité de vos décisions[cite: 3].
+                    Du diagnostic d'urgence à l'accompagnement exécutif permanent, découvrez nos formats d'intervention calibrés selon la criticité de vos décisions.
                 </p>
             </div>
 
@@ -302,43 +339,44 @@
                 <div class="glass-card p-8 rounded-3xl border border-ebonyBorder relative flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-center mb-6">
-                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Palier 1</span>[cite: 3]
-                            <span class="text-xs text-gold font-mono">3 à 5 pages</span>[cite: 3]
+                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Palier 1</span>
+                            <span class="text-xs text-gold font-mono">3 à 5 pages</span>
                         </div>
-                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Diagnostic Découverte</h3>[cite: 3]
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Diagnostic Découverte</h3>
                         <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Orientation d'urgence et premier cadrage pour faire ressortir les principaux sujets nécessitant une décision ou une investigation complémentaire[cite: 3].
+                            Orientation d'urgence et premier cadrage pour faire ressortir les principaux sujets nécessitant une décision ou une investigation complémentaire.
                         </p>
                         <ul class="space-y-3 text-sm text-slate-300 mb-8">
-                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Synthèse de la situation décrite[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Jusqu'à 3 points de vigilance prioritaires[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Score de maturité sectorielle[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Synthèse de la situation décrite</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Jusqu'à 3 failles ou points de vigilance prioritaires</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Premier score de maturité sectorielle</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Recommandations immédiates hiérarchisées</li>
                         </ul>
                     </div>
                     <button onclick="openSaisineModal()" class="w-full py-3 rounded-xl bg-ebonyCard border border-gold/40 text-gold font-semibold text-sm hover:bg-gold hover:text-ebony transition">
-                        Commander le Palier 1 (Offert)
+                        Commander le Palier 1
                     </button>
                 </div>
 
                 <!-- Palier 2 -->
                 <div class="glass-card p-8 rounded-3xl border-2 border-gold relative flex flex-col justify-between shadow-2xl gold-glow">
                     <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gold text-ebony text-xs font-bold uppercase tracking-widest font-mono">
-                        Le plus demandé • 350 €
+                        Le plus demandé
                     </div>
                     <div>
                         <div class="flex justify-between items-center mb-6 mt-2">
-                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-gold/10 text-gold border border-gold/30">Palier 2</span>[cite: 3]
-                            <span class="text-xs text-gold font-mono">15 à 25 pages</span>[cite: 3]
+                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-gold/10 text-gold border border-gold/30">Palier 2</span>
+                            <span class="text-xs text-gold font-mono">15 à 25 pages</span>
                         </div>
-                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Mandat Certifié</h3>[cite: 3]
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Mandat Certifié</h3>
                         <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Investigation approfondie avec application des grilles sectorielles, stress-tests, modélisation financière et empreinte SHA-256 incluse[cite: 3].
+                            Approfondissement stratégique et opérationnel avec application des grilles sectorielles, stress-tests, modélisation financière et empreinte SHA-256 incluse.
                         </p>
                         <ul class="space-y-3 text-sm text-slate-300 mb-8">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Manifeste exécutif & matrice de maturité[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Scénarios de résistance financière & opérationnelle[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Plan d'action (30 / 60 / 90 jours)[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Scellement SHA-256 & OpenTimestamps[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Manifeste exécutif & matrice de maturité</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Scénarios de résistance financière & opérationnelle</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Plan d'action opérationnel (30 / 60 / 90 jours)</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Scellement SHA-256 & OpenTimestamps</li>
                         </ul>
                     </div>
                     <button onclick="openSaisineModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-sm shadow-lg">
@@ -348,22 +386,20 @@
 
                 <!-- Palier 3 -->
                 <div class="glass-card p-8 rounded-3xl border border-ebonyBorder relative flex flex-col justify-between">
-                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-slate-800 text-gold border border-gold/30 text-xs font-bold uppercase tracking-widest font-mono">
-                        1 450 € / mois
-                    </div>
                     <div>
-                        <div class="flex justify-between items-center mb-6 mt-2">
-                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Palier 3</span>[cite: 3]
-                            <span class="text-xs text-gold font-mono">25 à 45 pages+</span>[cite: 3]
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Palier 3</span>
+                            <span class="text-xs text-gold font-mono">25 à 45 pages+</span>
                         </div>
-                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Chambre Exécutive</h3>[cite: 3]
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Chambre Exécutive</h3>
                         <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Accompagnement stratégique permanent ou récurrent pour les comités de direction, groupes, filiales ou institutions majeures[cite: 3].
+                            Accompagnement stratégique permanent ou récurrent pour les comités de direction, groupes, filiales ou institutions majeures.
                         </p>
                         <ul class="space-y-3 text-sm text-slate-300 mb-8">
-                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Vision consolidée groupe & filiales[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Anticipation macro & géopolitique[cite: 3]</li>
-                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Arbitrages d'investissement & capital[cite: 3]</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Vision consolidée groupe & filiales</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Anticipation macroéconomique & géopolitique</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Arbitrages d'investissement & allocation du capital</li>
+                            <li class="flex items-start gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0 mt-0.5"></i> Revue périodique des risques & décisions</li>
                         </ul>
                     </div>
                     <button onclick="openSaisineModal()" class="w-full py-3 rounded-xl bg-ebonyCard border border-gold/40 text-gold font-semibold text-sm hover:bg-gold hover:text-ebony transition">
@@ -374,20 +410,21 @@
         </div>
     </section>
 
-    <!-- Vérification SHA-256 & Suivi -->
+    <!-- Simulateur de Vérification d'Empreinte SHA-256 & Suivi de Mission -->
     <section id="verification" class="py-24 relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="glass-card p-8 sm:p-12 rounded-3xl border border-gold/30 shadow-2xl">
                 <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-mono uppercase">
-                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Registre NocoDB & Cockpit Tracker[cite: 3]
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Registre NocoDB & Cockpit Tracker
                     </div>
                     <h2 class="font-serif text-3xl font-bold text-white">Vérification de Scellement & Suivi de Mission</h2>
                     <p class="text-slate-400 text-sm">
-                        Entrez votre référence de mission (ex: <code class="text-gold font-mono">MIS-2026-0842</code>) pour interroger en temps réel le registre d'intégrité[cite: 3].
+                        Entrez votre référence de mission (ex: <code class="text-gold font-mono">MIS-2026-0842</code>) pour interroger en temps réel le registre d'intégrité et l'état de l'arbitrage terrain (Option B).
                     </p>
                 </div>
 
+                <!-- Search Input Form -->
                 <div class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto mb-8">
                     <div class="relative flex-1">
                         <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
@@ -399,6 +436,14 @@
                     </button>
                 </div>
 
+                <!-- Sample Quick Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-400 mb-8">
+                    <span>Exemples rapides :</span>
+                    <button onclick="loadSampleMission('MIS-2026-0842')" class="px-2.5 py-1 rounded bg-ebony border border-ebonyBorder text-gold font-mono hover:border-gold">MIS-2026-0842</button>
+                    <button onclick="loadSampleMission('MIS-2026-1109')" class="px-2.5 py-1 rounded bg-ebony border border-ebonyBorder text-gold font-mono hover:border-gold">MIS-2026-1109</button>
+                </div>
+
+                <!-- Result Box (Hidden by default, shown on search) -->
                 <div id="simulationResult" class="hidden space-y-6 pt-6 border-t border-ebonyBorder">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
@@ -409,18 +454,18 @@
                         </div>
                         <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
                             <span class="text-xs text-slate-400 block font-mono">Secteur d'Excellence</span>
-                            <span id="resSecteur" class="text-white font-bold text-sm mt-1 block">Énergie et mines</span>[cite: 3]
+                            <span id="resSecteur" class="text-white font-bold text-sm mt-1 block">Énergie & Mines</span>
                         </div>
                         <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
-                            <span class="text-xs text-slate-400 block font-mono">Option B (Arbitrage Terrain)</span>[cite: 3]
-                            <span id="resOptionB" class="text-gold font-bold text-sm mt-1 block">Levée validée (5 points OK)</span>[cite: 3]
+                            <span class="text-xs text-slate-400 block font-mono">Option B (Arbitrage Terrain)</span>
+                            <span id="resOptionB" class="text-gold font-bold text-sm mt-1 block">Levée validée (5 points OK)</span>
                         </div>
                     </div>
 
                     <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder space-y-2">
                         <div class="flex justify-between items-center text-xs">
-                            <span class="text-slate-400 font-mono">Empreinte Cryptographique SHA-256</span>[cite: 3]
-                            <span class="text-emerald-400 flex items-center gap-1 font-mono"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Ancré OpenTimestamps</span>[cite: 3]
+                            <span class="text-slate-400 font-mono">Empreinte Cryptographique SHA-256</span>
+                            <span class="text-emerald-400 flex items-center gap-1 font-mono"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Ancré OpenTimestamps</span>
                         </div>
                         <div id="resHash" class="p-3 rounded bg-ebonyCard text-gold font-mono text-xs break-all border border-ebonyBorder">
                             a42d4a1e98fbc149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
@@ -431,16 +476,16 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Institutionnel -->
     <footer class="bg-ebonyCard border-t border-ebonyBorder pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Col 1: Brand -->
                 <div class="space-y-4 md:col-span-1">
                     <div class="flex items-center gap-3">
-                        <svg class="w-8 h-8 rounded-lg" viewBox="0 0 100 100">
-                            <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" stroke="#d4af37" stroke-width="4" fill="#0a192f"/>
-                            <circle cx="50" cy="50" r="12" fill="#d4af37"/>
-                        </svg>
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-goldDark via-gold to-goldLight flex items-center justify-center">
+                            <i data-lucide="compass" class="w-5 h-5 text-ebony"></i>
+                        </div>
                         <span class="font-serif text-lg font-bold text-white">e-META <span class="gold-gradient">LABS</span></span>
                     </div>
                     <p class="text-slate-400 text-xs leading-relaxed">
@@ -448,35 +493,38 @@
                     </p>
                     <div class="text-xs text-slate-400">
                         <p class="font-semibold text-slate-300">E-META LABS SASU</p>
-                        <p>Face Débarcadère, Rosso, Sénégal</p>[cite: 3]
+                        <p>Face Débarcadère, Rosso, Sénégal</p>
                     </div>
                 </div>
 
+                <!-- Col 2: Liens Rapides -->
                 <div class="space-y-3">
                     <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Navigation</h4>
                     <ul class="space-y-2 text-xs text-slate-400">
-                        <li><a href="#manifeste" class="hover:text-gold transition">Manifeste Souverain</a>[cite: 3]</li>
-                        <li><a href="#piliers" class="hover:text-gold transition">Trois Piliers</a></li>
-                        <li><a href="#secteurs" class="hover:text-gold transition">10 Secteurs d'Excellence</a>[cite: 3]</li>
-                        <li><a href="#paliers" class="hover:text-gold transition">Protocoles en 3 Paliers</a>[cite: 3]</li>
+                        <li><a href="#manifeste" class="hover:text-gold transition">Manifeste Souverain</a></li>
+                        <li><a href="#piliers" class="hover:text-gold transition">Trois Piliers Fondamentaux</a></li>
+                        <li><a href="#secteurs" class="hover:text-gold transition">10 Secteurs d'Excellence</a></li>
+                        <li><a href="#paliers" class="hover:text-gold transition">Protocoles en 3 Paliers</a></li>
                     </ul>
                 </div>
 
+                <!-- Col 3: Gouvernance & Preuve -->
                 <div class="space-y-3">
                     <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Souveraineté</h4>
                     <ul class="space-y-2 text-xs text-slate-400">
-                        <li><a href="#verification" class="hover:text-gold transition">Vérification SHA-256</a>[cite: 3]</li>
-                        <li><a href="expert.html" class="hover:text-gold transition">Portail Expert</a></li>
-                        <li><a href="tracker.html" class="hover:text-gold transition">Cockpit Tracker Mission</a>[cite: 3]</li>
-                        <li><a href="cgv.html" class="hover:text-gold transition">Conditions Générales de Vente</a></li>
+                        <li><a href="#verification" class="hover:text-gold transition">Vérification SHA-256</a></li>
+                        <li><a href="expert.html" class="hover:text-gold transition">Portail de Recrutement Expert</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Conditions Générales de Vente</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Politique de Confidentialité</a></li>
                     </ul>
                 </div>
 
+                <!-- Col 4: Contact -->
                 <div class="space-y-3">
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Contact</h4>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Contact Institutionnel</h4>
                     <ul class="space-y-2 text-xs text-slate-400">
-                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-gold"></i> contact@e-metalabs.com</li>[cite: 3]
-                        <li class="flex items-center gap-2"><i data-lucide="headphones" class="w-3.5 h-3.5 text-gold"></i> support@e-metalabs.com</li>[cite: 3]
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-gold"></i> contact@e-metalabs.com</li>
+                        <li class="flex items-center gap-2"><i data-lucide="headphones" class="w-3.5 h-3.5 text-gold"></i> support@e-metalabs.com</li>
                         <li class="pt-2">
                             <button onclick="openSaisineModal()" class="w-full py-2.5 rounded-lg bg-gold/10 text-gold border border-gold/30 hover:bg-gold hover:text-ebony font-semibold text-xs transition">
                                 Ouvrir un Dossier
@@ -486,80 +534,66 @@
                 </div>
             </div>
 
+            <!-- Bottom Copyright -->
             <div class="pt-8 border-t border-ebonyBorder flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>© 2026 E-META LABS SASU. Tous droits réservés. Référentiel Exécutif Édition Octobre 2026.</p>[cite: 3]
+                <p>© 2026 E-META LABS SASU. Tous droits réservés. Référentiel Exécutif Édition Octobre 2026.</p>
                 <div class="flex items-center gap-4">
-                    <span class="font-mono text-[11px] text-gold">SHA-256 Verified</span>[cite: 3]
+                    <span class="font-mono text-[11px] text-gold">SHA-256 Verified</span>
                     <span>•</span>
-                    <span class="font-mono text-[11px]">OpenTimestamps Active</span>[cite: 3]
+                    <span class="font-mono text-[11px]">OpenTimestamps Active</span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Saisine Modal (Email, WhatsApp sans +, Pièce jointe) -->
+    <!-- Saisine Modal -->
     <div id="saisineModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="glass-card w-full max-w-lg p-8 rounded-3xl border border-gold/40 relative shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+        <div class="glass-card w-full max-w-lg p-8 rounded-3xl border border-gold/40 relative shadow-2xl">
             <button onclick="closeSaisineModal()" class="absolute top-6 right-6 p-2 rounded-lg bg-ebony text-slate-400 hover:text-white border border-ebonyBorder">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="space-y-2 mb-6">
                 <span class="text-xs uppercase tracking-widest text-gold font-mono">Saisine Exécutive</span>
                 <h3 class="font-serif text-2xl font-bold text-white">Démarrer une Mission</h3>
-                <p class="text-slate-400 text-xs">Renseignez vos coordonnées, joignez vos documents pour l'analyse RAG et initiez le scellement SHA-256 ($T+0$)[cite: 3].</p>
+                <p class="text-slate-400 text-xs">Renseignez les informations de votre organisation pour initier le protocole d'audit et l'attribution de la référence canonique.</p>
             </div>
 
-            <form onsubmit="handleSaisineSubmit(event)" enctype="multipart/form-data" class="space-y-4">
+            <form onsubmit="handleSaisineSubmit(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-mono text-slate-300 mb-1.5">Nom de l'Entreprise / Institution</label>
-                    <input type="text" id="entrepriseInput" required placeholder="Ex: Compagnie Minière de l'Ouest" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 mb-1.5">Email Professionnel</label>
-                        <input type="email" id="emailInput" required placeholder="dirigeant@institution.com" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 mb-1.5">WhatsApp (chiffres seuls sans '+')</label>
-                        <input type="text" id="whatsappInput" required placeholder="221770000000" pattern="[0-9]{8,15}" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold font-mono">
-                    </div>
+                    <input type="text" required placeholder="Ex: Compagnie Minière de l'Ouest" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-mono text-slate-300 mb-1.5">Secteur d'Excellence</label>
-                        <select id="secteurSelect" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
-                            <option>Agro-industrie et souveraineté</option>[cite: 3]
-                            <option>Banque, FinTech et assurance</option>[cite: 3]
-                            <option selected>Énergie et mines</option>[cite: 3]
-                            <option>Logistique, ports et supply chain</option>[cite: 3]
-                            <option>Santé, pharmacie et biotechnologies</option>[cite: 3]
-                            <option>Télécommunications, cloud et infrastructures</option>[cite: 3]
-                            <option>BTP, immobilier et foncier</option>[cite: 3]
-                            <option>Industrie manufacturière</option>[cite: 3]
-                            <option>Secteur public et parapublic</option>[cite: 3]
-                            <option>Retail, distribution et négoce</option>[cite: 3]
+                        <select class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
+                            <option>Agro-industrie</option>
+                            <option>Banque & FinTech</option>
+                            <option selected>Énergie & Mines</option>
+                            <option>Logistique & Ports</option>
+                            <option>Santé & Pharma</option>
+                            <option>Télécoms & Cloud</option>
+                            <option>BTP & Immobilier</option>
+                            <option>Industrie Manufacturière</option>
+                            <option>Secteur Public</option>
+                            <option>Retail & Négoce</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-mono text-slate-300 mb-1.5">Palier d'Intervention</label>
-                        <select id="palierSelect" class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
-                            <option>Palier 1 — Diagnostic Découverte (0 €)</option>[cite: 3]
-                            <option selected>Palier 2 — Mandat Certifié (350 €)</option>[cite: 3]
-                            <option>Palier 3 — Chambre Exécutive (1 450 €/mois)</option>[cite: 3]
+                        <select class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold">
+                            <option>Palier 1 — Diagnostic Découverte</option>
+                            <option selected>Palier 2 — Mandat Certifié</option>
+                            <option>Palier 3 — Chambre Exécutive</option>
                         </select>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-mono text-slate-300 mb-1.5">Pièce jointe / Données d'audit (PDF, Excel, TXT)</label>
-                    <input type="file" id="auditFile" class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold file:text-ebony hover:file:bg-goldLight cursor-pointer bg-ebony border border-ebonyBorder rounded-xl p-1.5">
-                    <p class="text-[10px] text-slate-500 mt-1">Sert de support pour le calcul SHA-256 initial et l'analyse RAG Qdrant[cite: 3].</p>
-                </div>
-                <div>
                     <label class="block text-xs font-mono text-slate-300 mb-1.5">Décision à Éclairer ou Problématique Critique</label>
-                    <textarea id="descInput" rows="3" required placeholder="Décrivez succinctement les frictions ou arbitrages attendus..." class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold"></textarea>
+                    <textarea rows="3" required placeholder="Décrivez succinctement les frictions ou arbitrages attendus..." class="w-full px-4 py-3 rounded-xl bg-ebony border border-ebonyBorder text-white text-sm focus:outline-none focus:border-gold"></textarea>
                 </div>
                 <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-goldDark via-gold to-goldLight text-ebony font-bold text-sm shadow-lg hover:opacity-95 transition">
-                    Générer la Référence & Sceller la Saisine ($T+0$)[cite: 3]
+                    Générer la Référence & Sceller la Saisine ($T+0$)
                 </button>
             </form>
         </div>
@@ -577,5 +611,199 @@
         </div>
     </div>
 
-    <!-- Script Application -->
+    <!-- JavaScript Application Logic -->
     <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 10 Sectors Data
+        const sectorsData = [
+            {
+                id: 1,
+                name: "Agro-industrie & Souveraineté",
+                icon: "wheat",
+                audit: "Approvisionnement, saisonnalité, rendement agricole/industriel, pertes post-récolte, traçabilité des lots, chaîne du froid.",
+                stressTests: "Baisse de rendement, hausse des intrants/transport, panne d'équipement critique, rupture frigorifique.",
+                indicators: "Taux de pertes, rendement matière, durée de stockage, BFR saisonnier."
+            },
+            {
+                id: 2,
+                name: "Banque, FinTech & Assurance",
+                icon: "landmark",
+                audit: "Gouvernance des risques, liquidité, refinancement, fraude, résilience des paiements, conformité BCEAO/UEMOA.",
+                stressTests: "Retraits concentrés, défauts de contreparties, hausse du coût de refinancement, incident cyber.",
+                indicators: "Ratio de liquidité, concentration, coût du risque, taux de fraude."
+            },
+            {
+                id: 3,
+                name: "Énergie & Mines",
+                icon: "zap",
+                audit: "Disponibilité des actifs, coûts d'extraction, réserves documentées, consommation énergétique, sécurité, maintenance.",
+                stressTests: "Baisse de teneur, variation prix matières, indisponibilité de corridor, retard d'autorisation.",
+                indicators: "Coût unitaire, TRS/OEE, intensité énergétique, redevances."
+            },
+            {
+                id: 4,
+                name: "Logistique, Ports & Supply Chain",
+                icon: "ship",
+                audit: "Planification des flux, capacité des actifs, délais de transit et dédouanement, traçabilité documentaire.",
+                stressTests: "Congestion de corridor, grève portuaire, hausse carburant, rupture de stock.",
+                indicators: "Coût par tonne-km, OTIF (livraison à l'heure), rotation des stocks."
+            },
+            {
+                id: 5,
+                name: "Santé, Pharma & Biotech",
+                icon: "pill",
+                audit: "Continuité des soins, chaîne du froid, sécurité patients, traçabilité des lots, conformité et cybersécurité.",
+                stressTests: "Rupture de médicament critique, excursion thermique, incident de données de santé.",
+                indicators: "Taux de disponibilité, conformité des lots, délais de prise en charge."
+            },
+            {
+                id: 6,
+                name: "Télécoms, Cloud & Numérique",
+                icon: "wifi",
+                audit: "Disponibilité des réseaux, qualité de service, redondance, gestion des incidents, souveraineté des données.",
+                stressTests: "Perte de site majeur, panne d'énergie prolongée, surcharge de trafic, incident cloud.",
+                indicators: "Disponibilité (SLA), temps de rétablissement (MTTR), ARPU, churn."
+            },
+            {
+                id: 7,
+                name: "BTP, Immobilier & Foncier",
+                icon: "building-2",
+                audit: "Vérification des titres fonciers, autorisations, suivi de chantiers, sous-traitance, maîtrise des délais.",
+                stressTests: "Hausse des matériaux, retard de livraison, défaillance sous-traitant, aléa géotechnique.",
+                indicators: "Marge prévisionnelle, dérive coût/délai, taux de réserves."
+            },
+            {
+                id: 8,
+                name: "Industrie & Transformation",
+                icon: "factory",
+                audit: "Performance des lignes, rebuts, maintenance, disponibilité des pièces, sécurité industrielle, traçabilité.",
+                stressTests: "Panne de goulot d'étranglement, rappel produit, baisse de demande, arrêt automatisme.",
+                indicators: "TRS/OEE, taux de rebut, rendement matière, temps d'arrêt."
+            },
+            {
+                id: 9,
+                name: "Secteur Public & Parapublic",
+                icon: "landmark",
+                audit: "Alignement service public, exécution budgétaire, conformité des marchés, traçabilité des décisions.",
+                stressTests: "Retard de crédits, rupture de service numérique, dépendance prestataire critique.",
+                indicators: "Taux d'exécution, délai de procédure, coût par service rendu."
+            },
+            {
+                id: 10,
+                name: "Retail, Distribution & Négoce",
+                icon: "shopping-bag",
+                audit: "Marge par canal, rotation des stocks, démarque, prévision de demande, logistique dernier kilomètre.",
+                stressTests: "Baisse de panier moyen, rupture produit clé, surstock, variation de change.",
+                indicators: "Marge brute, jours de stock, taux de rupture, panier moyen."
+            }
+        ];
+
+        // Render Sectors Grid
+        const grid = document.getElementById('sectorsGrid');
+        sectorsData.forEach(s => {
+            const card = document.createElement('div');
+            card.className = 'glass-card p-6 rounded-2xl border border-ebonyBorder hover:border-gold/50 transition cursor-pointer flex flex-col justify-between group';
+            card.onclick = () => openSectorModal(s);
+            card.innerHTML = `
+                <div>
+                    <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="${s.icon}" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-white text-base mb-2">${s.name}</h4>
+                    <p class="text-xs text-slate-400 line-clamp-2">${s.audit}</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-ebonyBorder flex items-center justify-between text-xs text-gold font-mono">
+                    <span>Explorer grille</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+        lucide.createIcons();
+
+        // Sector Modal Functions
+        function openSectorModal(sector) {
+            const content = document.getElementById('sectorModalContent');
+            content.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
+                        <i data-lucide="${sector.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-gold font-mono">Secteur d'Excellence #${sector.id}</span>
+                        <h3 class="font-serif text-2xl font-bold text-white">${sector.name}</h3>
+                    </div>
+                </div>
+                <div class="space-y-4 pt-2">
+                    <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
+                        <h5 class="text-xs font-mono uppercase text-gold mb-2 flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> Grille d'Audit & Investigation</h5>
+                        <p class="text-sm text-slate-300 leading-relaxed">${sector.audit}</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
+                        <h5 class="text-xs font-mono uppercase text-gold mb-2 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4"></i> Stress-Tests Structurés</h5>
+                        <p class="text-sm text-slate-300 leading-relaxed">${sector.stressTests}</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-ebony border border-ebonyBorder">
+                        <h5 class="text-xs font-mono uppercase text-gold mb-2 flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4"></i> Indicateurs Clés à Contextualiser</h5>
+                        <p class="text-sm text-slate-300 leading-relaxed">${sector.indicators}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('sectorModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeSectorModal() {
+            document.getElementById('sectorModal').classList.add('hidden');
+        }
+
+        // Saisine Modal Functions
+        function openSaisineModal() {
+            document.getElementById('saisineModal').classList.remove('hidden');
+        }
+        function closeSaisineModal() {
+            document.getElementById('saisineModal').classList.add('hidden');
+        }
+        function handleSaisineSubmit(e) {
+            e.preventDefault();
+            alert("Saisine enregistrée avec succès. Référence canonique générée et scellement SHA-256 initié en T+0.");
+            closeSaisineModal();
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Verification Simulation
+        function simulateVerification() {
+            const val = document.getElementById('missionInput').value.trim();
+            if(!val) {
+                alert("Veuillez entrer une référence de mission valide.");
+                return;
+            }
+            document.getElementById('simulationResult').classList.remove('hidden');
+            if(val.includes('0842') || val.includes('MIS')) {
+                document.getElementById('resStatus').innerHTML = '<i data-lucide="check-circle" class="w-4 h-4"></i> Mandat Certifié Actif';
+                document.getElementById('resSecteur').innerText = 'Énergie & Mines';
+                document.getElementById('resOptionB').innerText = 'Levée validée (5 points OK)';
+                document.getElementById('resHash').innerText = 'a42d4a1e98fbc149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+            } else {
+                document.getElementById('resStatus').innerHTML = '<i data-lucide="clock" class="w-4 h-4 text-amber-400"></i> En attente de scellement';
+                document.getElementById('resSecteur').innerText = 'Secteur Général';
+                document.getElementById('resOptionB').innerText = 'Option B non requise';
+                document.getElementById('resHash').innerText = 'b7852b8559afbf4c8996fb92427ae41e4649b934ca49599178fbc149af42d4a1e';
+            }
+            lucide.createIcons();
+        }
+
+        function loadSampleMission(ref) {
+            document.getElementById('missionInput').value = ref;
+            simulateVerification();
+        }
+    </script>
+</body>
+</html>
